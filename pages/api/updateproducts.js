@@ -6,7 +6,7 @@ const handler = async (req, res) => {
     if (req.method == "POST") {
       
         console.log(req.body)
-            let p= await Product.findOneAndUpdate(req.body.pid,req.body.data[0])
+            let p= await Product.findOneAndReplace({_id:req.body.pid},req.body.data[0])
             res.status(200).json({ success: "success" })
         
     }

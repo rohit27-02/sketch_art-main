@@ -16,14 +16,13 @@ import { useState, Fragment } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
-import reactDom from 'react-dom';
 import { MdCancel } from 'react-icons/md';
 import Router from 'next/router';
 
 
 
 const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
-  let [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const [title, settitle] = useState("");
   const [desc, setdesc] = useState("");
   const [price, setprice] = useState(0);
@@ -35,13 +34,14 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [img, setimg] = useState();
   const [slug, setslug] = useState("");
   const [au, setau] = useState(false);
-  const [pid, setpid] = useState("");
+  const [pid, setpid] = useState();
   const [nav, setnav] = useState("home");
   const [data, setdata] = useState("false");
   const [index, setindex] = useState();
   const [email, setemail] = useState("");
   const [address, setaddress] = useState("");
   const [phone, setphone] = useState("");
+  const [ready, setready] = useState(false);
 
 
 useEffect(() => {
@@ -49,10 +49,28 @@ useEffect(() => {
 if(!localStorage.getItem("admin")){
 Router.push("/")
 }
-if(isOpen && !au){ 
 
-}
 }, []);
+useEffect(() => {
+setready(true)
+
+
+}, [pid]);
+useEffect(() => {
+ if(au == false && isOpen){
+  settitle(products[index].title)
+  setdesc(products[index].desc)
+  setprice(products[index].price)
+  setcolor(products[index].color)
+  setsize(products[index].size)
+  setavailableQty(products[index].availableQty)
+  setimg(products[index].img)
+  setslug(products[index].slug)
+  setcategory(products[index].category)
+  setsubcategory(products[index].subcategory)
+ }
+
+}, [index]);
 
   function handleChange(e) {
     if (e.target.id == "title") {
@@ -87,21 +105,31 @@ if(isOpen && !au){
   function closeModal() {
     setIsOpen(false)
     setau(false)
+    settitle("")
+    setdesc("")
+    setprice(0)
+    setcolor("")
+    setsize("")
+    setavailableQty(0)
+    setimg("")
+    setcategory("")
+    setsubcategory("")
+    setslug("")
     
    
   }
-const selectedproduct=async (event)=>{
+const selectedproduct= (event)=>{
   setpid(event.currentTarget.id)
   setindex(event.currentTarget.value)
+ openModal()
+ 
  console.log(index)
  console.log(pid)
  
 }
 
   function openModal() {
-   
     setIsOpen(true)
-   
           } 
   
   function addup() {
@@ -118,17 +146,7 @@ const selectedproduct=async (event)=>{
         "Content-Type": "application/json"
       }, body: JSON.stringify(data)
     })
-    let response = await res.json()
-    settitle("")
-    setdesc("")
-    setprice(0)
-    setcolor("")
-    setsize("")
-    setavailableQty(0)
-    setimg("")
-    setcategory("")
-    setsubcategory("")
-    setslug("")
+  
     toast.success('Product added to site', {
       position: "top-center",
       autoClose: 2000,
@@ -139,28 +157,26 @@ const selectedproduct=async (event)=>{
       progress: undefined,
     });}
     else{
-    
-     
-      settitle(products[index].title)
-setcategory(products[index].category)
-setavailableQty(products[index].availableQty)
-setcolor(products[index].color)
-setsize(products[index].size)
-setdesc(products[index].desc)
-setimg(products[index].img)
-setslug(products[index].slug)
-setprice(products[index].price)
-    
-      const data = [{ title, desc, img, category, size, color, price, availableQty, slug }]
+    if(index !=null && ready){
+      const data = [{ title, desc, img, category, size, color, price, availableQty,subcategory, slug }]
    
-    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      }, body: JSON.stringify({pid,data})
-    })
-    let response = await res.json()
-    
+      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }, body: JSON.stringify({pid,data})
+      })
+    }
+   
+    toast.success('Product updated', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });  
  
   }
    
@@ -168,9 +184,9 @@ setprice(products[index].price)
     Router.push("/adminpanel")
   }
   const removeItem = async (e) => {
-
-    setpid(e.currentTarget.id)
-    const data = { pid }
+setpid(e.currentTarget.id)
+   if(ready ==true && pid != null){
+    const data =  pid 
     let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/removeproduct`, {
       method: "POST",
       headers: {
@@ -179,7 +195,7 @@ setprice(products[index].price)
     })
     let response = await res.json()
    
-   {response=="success" && toast.success('Product removed', {
+   {response.success=="success" && toast.success('Product removed', {
       position: "top-center",
       autoClose: 2000,
       hideProgressBar: false,
@@ -188,7 +204,9 @@ setprice(products[index].price)
       draggable: true,
       progress: undefined,
     });}
+    setpid()
     Router.push("/adminpanel")
+   }
   }
   const removefeed = async (e) => {
 
@@ -257,7 +275,7 @@ setprice(products[index].price)
   var file = document.getElementById('img');
   var form = new FormData();
   form.append("image", file.files[0])
-  let res = await fetch(`https://api.imgbb.com/1/upload?key=a8f78f799a9c15e877e19ef5fe33f296`,{
+  let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`,{
     method:"POST",body:form,
   })
   let response = await res.json()
@@ -388,7 +406,7 @@ if(response.success){
                       <div className="md:flex md:items-center mb-6">
                         <div className="md:w-1/3">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="subcategory">
-                            Subcategory
+                            subcategory
                           </label>
                         </div>
                         <div className="md:w-2/3">
@@ -453,7 +471,7 @@ if(response.success){
                           {au ? <button className="shadow bg-yellow-400 hover:bg-yellow-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
                             Add product
                           </button> :
-                            <button className="shadow bg-yellow-400 hover:bg-yellow-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                            ready && <button className="shadow bg-yellow-400 hover:bg-yellow-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
                               update product
                             </button>}
                         </div>
@@ -470,7 +488,7 @@ if(response.success){
         <header className="text-gray-600 body-font">
           <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
             <a href={"/"} className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-              
+              <img src='/logo.jpeg' width={60} height={50}></img>
               <span className="ml-3 text-xl">Admin Panel</span>
             </a>
             <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
@@ -569,7 +587,7 @@ if(response.success){
                         value={i}
                       
                             type="button"
-                            onClick={function(event){openModal();selectedproduct(event);}}
+                            onClick={function(event){selectedproduct(event);}}
                             className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
                           >
                             <GrDocumentUpdate />

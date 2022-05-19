@@ -4,8 +4,8 @@ import connectDb from "../../middleware/mongoose"
 
 const handler = async (req, res) => {
     if (req.method == "POST") {
-   
-            let p= await Product.deleteOne(req.body)
+   console.log(req.body)
+            let p= await Product.deleteOne({"_id":req.body})
          
         res.status(200).json({ success: "success" })
     }
