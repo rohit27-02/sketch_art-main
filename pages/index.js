@@ -83,7 +83,7 @@ export default function Home() {
           <section className="text-white body-font">
             <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
               <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                <img className="object-cover object-center rounded" alt="hero" src="http://dooya.in/wp-content/uploads/2022/04/LL_Venetian_Chestnut_1.jpg" />
+                <img className="object-cover object-center rounded" alt="hero" src="https://dooya.in/wp-content/uploads/2022/04/LL_Venetian_Chestnut_1.jpg" />
               </div>
               <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
                 <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">INNOVATIVE DESIGN IS OUR PASSION
@@ -116,19 +116,19 @@ export default function Home() {
 
       >
         <div>
-          <img className='p-6 hover:scale-110 hover:opacity-60' src='http://dooya.in/wp-content/uploads/2022/04/battery-motor-1-1.jpg'></img>
+          <img className='p-6 hover:scale-110 hover:opacity-60' src='https://dooya.in/wp-content/uploads/2022/04/battery-motor-1-1.jpg'></img>
           <legend className='text-white text-center pb-10 font-bold'>Battery Motor</legend>
         </div>
         <div>
-          <img className='p-6 hover:scale-110 hover:opacity-60' src="http://dooya.in/wp-content/uploads/2022/04/motorized-window-system.jpg"></img>
+          <img className='p-6 hover:scale-110 hover:opacity-60' src="https://dooya.in/wp-content/uploads/2022/04/motorized-window-system.jpg"></img>
           <legend className='text-white text-center pb-10 font-bold'>Motorized Window System</legend>
         </div>
         <div>
-          <img className='p-6 hover:scale-110 hover:opacity-60' src='http://dooya.in/wp-content/uploads/2022/04/motor-control-system.jpg'></img>
+          <img className='p-6 hover:scale-110 hover:opacity-60' src='https://dooya.in/wp-content/uploads/2022/04/motor-control-system.jpg'></img>
           <legend className='text-white text-center pb-10 font-bold'>Window Control System</legend>
         </div>
         <div>
-          <img className='p-6 hover:scale-110 hover:opacity-60' src="http://dooya.in/wp-content/uploads/2022/04/WiFi-system-.jpg" />
+          <img className='p-6 hover:scale-110 hover:opacity-60' src="https://dooya.in/wp-content/uploads/2022/04/WiFi-system-.jpg" />
           <legend className='text-white text-center pb-10 font-bold'>Wifi System</legend>
         </div>
 
