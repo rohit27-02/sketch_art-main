@@ -11,7 +11,6 @@ import { RiArrowDownSFill } from 'react-icons/ri';
 import { useRef, useState, useEffect } from 'react';
 
 
-
 function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subTotal, products }) {
     const [dropDown, setdropDown] = useState(false);
     const [admin, setadmin] = useState(false);
@@ -145,9 +144,8 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                     })
                 }
             </div>
-            {subcategory && listd && <div   className='bg-slate-100  text-gray-700  flex flex-col   '>{Object.keys(subcategory).map((p) => {
-                return <a  className='hover:p-2 hover:text-slate-900 hover:font-semibold hover:bg-slate-300 ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} key={p}>{subcategory[p].subcategory}</a>
- 
+            {subcategory && listd && <div   className='bg-slate-100  text-gray-700  flex flex-col  '>{Object.keys(subcategory).map((p) => {
+                return<a  className='hover:p-2 hover:text-slate-900 hover:font-semibold hover:bg-slate-300 ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} key={p}>{subcategory[p].subcategory}</a>
             })}</div>}
 
         </div>
