@@ -29,7 +29,6 @@ const Contact = ({info}) => {
    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/feedback`, {
     method: "POST",
   headers: {
-    "Access-Control-Allow-Origin": "*",
     "Content-Type": "application/json"
   }, body: JSON.stringify(data)
 })
