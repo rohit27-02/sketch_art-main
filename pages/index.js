@@ -83,7 +83,7 @@ export default function Home() {
           <section className="text-white body-font">
             <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
               <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                <img className="object-cover object-center rounded" alt="hero" src="https://dooya.in/wp-content/uploads/2022/04/LL_Venetian_Chestnut_1.jpg" />
+                <img className="object-cover object-center rounded" alt="hero" src="https://images.dwell.com/photos/6063391372700811264/6590314608523845632/large.jpg" />
               </div>
               <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
                 <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">INNOVATIVE DESIGN IS OUR PASSION
@@ -115,20 +115,20 @@ export default function Home() {
         centerMode={true}
 
       >
-        <div>
-          <img className='p-6 hover:scale-110 hover:opacity-60' src='https://dooya.in/wp-content/uploads/2022/04/battery-motor-1-1.jpg'></img>
+        <div >
+          <img className='p-6 hover:scale-110 hover:opacity-60  '  src='https://ae01.alicdn.com/kf/HTB186DcJFXXXXagXXXXq6xXFXXX4/Free-shipping-lithium-battery-Motorized-zebra-blinds-double-layer-roller-blinds-for-customized-size.jpg'></img>
           <legend className='text-white text-center pb-10 font-bold'>Battery Motor</legend>
         </div>
-        <div>
-          <img className='p-6 hover:scale-110 hover:opacity-60' src="https://dooya.in/wp-content/uploads/2022/04/motorized-window-system.jpg"></img>
+        <div >
+          <img className='p-6 hover:scale-110 hover:opacity-60  '  src="https://m.media-amazon.com/images/I/91J9GAFWf1L._SL1500_.jpg"></img>
           <legend className='text-white text-center pb-10 font-bold'>Motorized Window System</legend>
         </div>
-        <div>
-          <img className='p-6 hover:scale-110 hover:opacity-60' src='https://dooya.in/wp-content/uploads/2022/04/motor-control-system.jpg'></img>
+        <div >
+          <img className='p-6 hover:scale-110 hover:opacity-60  '  src='https://www.spec-net.com.au/press/0212/uws_150212/images/uws150212_img01.jpg'></img>
           <legend className='text-white text-center pb-10 font-bold'>Window Control System</legend>
         </div>
-        <div>
-          <img className='p-6 hover:scale-110 hover:opacity-60' src="https://dooya.in/wp-content/uploads/2022/04/WiFi-system-.jpg" />
+        <div >
+          <img className='p-6 hover:scale-110 hover:opacity-60  '  src="https://cdn11.bigcommerce.com/s-6663a/images/stencil/1280x1280/products/178/494/cell-phone_controlled__00457.1519867255.jpg?c=2" />
           <legend className='text-white text-center pb-10 font-bold'>Wifi System</legend>
         </div>
 
