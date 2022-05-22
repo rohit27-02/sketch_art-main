@@ -36,7 +36,7 @@ const Footer = () => {
           <h2 className="title-font font-medium text-gray tracking-widest text-sm mb-3">SHOP</h2>
           <nav className="list-none mb-10">
            {Object.keys(category).map((p)=>{return <li key={p}>
-              <a  href={'Tshirts'} className="text-black hover:text-gray">{category[p]}</a>
+              <a  href={`/category/${category[p]}`} className="text-black hover:text-gray">{category[p]}</a>
             </li>})}
            
           </nav>

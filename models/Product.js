@@ -9,6 +9,7 @@ const ProductSchema = new mongoose.Schema({
     subcategory : {type: String},
     size : {type: String,required:true},
     color : {type: String,required:true},
+    colorpic : {type: String,required:true},
     price : {type: Number, required:true},
     availableQty : {type: Number, required:true},
 },{timestamps:true});

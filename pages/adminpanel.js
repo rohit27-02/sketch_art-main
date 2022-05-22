@@ -30,6 +30,7 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [category, setcategory] = useState("");
   const [subcategory, setsubcategory] = useState("");
   const [color, setcolor] = useState("");
+  const [colorpic, setcolorpic] = useState("");
   const [size, setsize] = useState("");
   const [img, setimg] = useState();
   const [slug, setslug] = useState("");
@@ -61,8 +62,9 @@ useEffect(() => {
   settitle(products[index].title)
   setdesc(products[index].desc)
   setprice(products[index].price)
-  setcolor(products[index].color)
   setsize(products[index].size)
+  setcolor(products[index].color)
+  setcolorpic(products[index].colorpic)
   setavailableQty(products[index].availableQty)
   setimg(products[index].img)
   setslug(products[index].slug)
@@ -97,6 +99,9 @@ useEffect(() => {
     else if (e.target.id == "color") {
       setcolor(e.target.value)
     }
+    else if (e.target.id == "colorpic") {
+      setcolorpic(e.target.value)
+    }
 
     else if (e.target.id == "slug") {
       setslug(e.target.value)
@@ -109,6 +114,7 @@ useEffect(() => {
     setdesc("")
     setprice(0)
     setcolor("")
+    setcolorpic("")
     setsize("")
     setavailableQty(0)
     setimg("")
@@ -139,7 +145,7 @@ const selectedproduct= (event)=>{
    
     e.preventDefault()
     if(au){
-      const data = [{ title, desc, img, category, size, color, price, availableQty, slug,subcategory }]
+      const data = [{ title, desc, img,colorpic, category, size, color, price, availableQty, slug,subcategory }]
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addproducts`, {
         method: "POST",
       headers: {
@@ -158,7 +164,7 @@ const selectedproduct= (event)=>{
     });}
     else{
     if(index !=null && ready){
-      const data = [{ title, desc, img, category, size, color, price, availableQty,subcategory, slug }]
+      const data = [{ title, desc, img,colorpic, category, size, color, price, availableQty,subcategory, slug }]
    
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
         method: "POST",
@@ -441,6 +447,18 @@ if(response.success){
                         </div>
                         <div className="md:w-2/3">
                           <input value={color} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="color" type="text" />
+                          
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-1/3">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="color">
+                            Colorpic
+                          </label>
+                        </div>
+                        <div className="md:w-2/3">
+                        <input value={colorpic} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="colorpic" type="color" />
+                          
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">

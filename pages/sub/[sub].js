@@ -47,7 +47,7 @@ export async function getServerSideProps(context) {
     await mongoose.connect(process.env.MONGO_URI)
 }
 
-  let products = await Product.find({category:context.query.category}) 
+  let products = await Product.find({subcategory:context.query.subcategory}) 
   let tshirts={}
   for (let item of products){
       if(item.title in tshirts){

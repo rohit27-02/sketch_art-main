@@ -7,7 +7,12 @@ import "react-multi-carousel/lib/styles.css";
 export default function Home() {
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 400 },
+      breakpoint: { max: 3000, min: 600 },
+      items: 1,
+      slidesToSlide: 1
+    },
+    mobile: {
+      breakpoint: { max: 600, min: 200 },
       items: 1,
       slidesToSlide: 1
     }
