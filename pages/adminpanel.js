@@ -9,7 +9,7 @@ import Order from '../models/Order';
 import Feed from '../models/Feed';
 import mongoose from "mongoose";
 import { GrDocumentUpdate } from "react-icons/gr"
-import { AiFillFileAdd } from "react-icons/ai"
+import { AiFillFileAdd,AiOutlinePlus } from "react-icons/ai"
 import { RiDeleteBin5Fill } from "react-icons/ri"
 import { Dialog, Transition,Disclosure } from '@headlessui/react'
 import { useState, Fragment } from 'react';
@@ -29,20 +29,24 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [availableQty, setavailableQty] = useState(0);
   const [category, setcategory] = useState("");
   const [subcategory, setsubcategory] = useState("");
-  const [color, setcolor] = useState("");
-  const [colorpic, setcolorpic] = useState("");
-  const [size, setsize] = useState("");
-  const [img, setimg] = useState();
+  const [height, setheight] = useState([]);
+  const [width, setwidth] = useState([]);
+  const [variants, setvariants] = useState([]);
   const [slug, setslug] = useState("");
+  const [color, setcolor] = useState("");
+  const [colorcode, setcolorcode] = useState("");
   const [au, setau] = useState(false);
   const [pid, setpid] = useState();
-  const [nav, setnav] = useState("home");
+  const [nav, setnav] = useState("products");
   const [data, setdata] = useState("false");
   const [index, setindex] = useState();
   const [email, setemail] = useState("");
   const [address, setaddress] = useState("");
   const [phone, setphone] = useState("");
   const [ready, setready] = useState(false);
+  const [w, setw] = useState("");
+  const [h, seth] = useState("");
+  const [img, setimg] = useState("");
 
 
 useEffect(() => {
@@ -62,11 +66,10 @@ useEffect(() => {
   settitle(products[index].title)
   setdesc(products[index].desc)
   setprice(products[index].price)
-  setsize(products[index].size)
-  setcolor(products[index].color)
-  setcolorpic(products[index].colorpic)
+  setheight(products[index].height)
+  setwidth(products[index].width)
   setavailableQty(products[index].availableQty)
-  setimg(products[index].img)
+  setvariants(products[index].variants)
   setslug(products[index].slug)
   setcategory(products[index].category)
   setsubcategory(products[index].subcategory)
@@ -93,16 +96,18 @@ useEffect(() => {
     else if (e.target.id == "quantity") {
       setavailableQty(e.target.value)
     }
-    else if (e.target.id == "size") {
-      setsize(e.target.value)
+    else if (e.target.id == "height") {
+    seth(e.target.value)
+    }
+    else if (e.target.id == "width") {
+     setw(e.target.value)
     }
     else if (e.target.id == "color") {
       setcolor(e.target.value)
     }
-    else if (e.target.id == "colorpic") {
-      setcolorpic(e.target.value)
+    else if (e.target.id == "colorcode") {
+      setcolorcode(e.target.value)
     }
-
     else if (e.target.id == "slug") {
       setslug(e.target.value)
     }
@@ -113,14 +118,16 @@ useEffect(() => {
     settitle("")
     setdesc("")
     setprice(0)
-    setcolor("")
-    setcolorpic("")
-    setsize("")
+    setheight([])
+    setwidth([])
     setavailableQty(0)
-    setimg("")
+    setvariants([])
     setcategory("")
     setsubcategory("")
     setslug("")
+    setcolor("")
+    setcolorcode("")
+    setimg("")
     
    
   }
@@ -128,9 +135,6 @@ const selectedproduct= (event)=>{
   setpid(event.currentTarget.id)
   setindex(event.currentTarget.value)
  openModal()
- 
- console.log(index)
- console.log(pid)
  
 }
 
@@ -145,7 +149,7 @@ const selectedproduct= (event)=>{
    
     e.preventDefault()
     if(au){
-      const data = [{ title, desc, img,colorpic, category, size, color, price, availableQty, slug,subcategory }]
+      const data = [{ title, desc, variants, category, height,width, price, availableQty, slug,subcategory }]
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addproducts`, {
         method: "POST",
       headers: {
@@ -164,7 +168,7 @@ const selectedproduct= (event)=>{
     });}
     else{
     if(index !=null && ready){
-      const data = [{ title, desc, img,colorpic, category, size, color, price, availableQty,subcategory, slug }]
+      const data = [{ title, desc, variants,width, category, height, price, availableQty,subcategory, slug }]
    
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
         method: "POST",
@@ -299,6 +303,36 @@ if(response.success){
 }
  
   }
+  function add(){
+    
+    setheight(arr=>[...arr,h])
+  
+  }
+ 
+  function addwidth(){
+    
+    setwidth(arr=>[...arr,w])
+  
+  }
+ 
+  useEffect(() => {
+    seth("")
+    
+  }, [height]);
+  useEffect(() => {
+    setw("")
+    
+  }, [width]);
+  function addvariant(){
+   
+    setvariants(arr=>[...arr,{color:color,colorcode:colorcode,img:img}])
+  }
+  useEffect(() => {
+
+  setcolor("")
+  setcolorcode("")
+  setimg("")
+  }, [variants]);
  
   return (
     <div>
@@ -357,135 +391,139 @@ if(response.success){
                         Update Product:  {pid}
                       </Dialog.Title>}
                     
-                    <form onSubmit={handleSubmit} className="w-full max-w-sm">
+                    <form onSubmit={handleSubmit} className="w-full">
                       <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/3">
+                        <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="title">
                             Title
                           </label>
                         </div>
-                        <div className="md:w-2/3">
+                        <div className="md:w-4/6">
                         
                           <input value={title} name='title'  onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="title" type="text" ></input>
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/3">
+                        <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="slug">
                             Slug
                           </label>
                         </div>
-                        <div className="md:w-2/3">
+                        <div className="md:w-4/6">
                           <input  value={slug} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="slug" type="text" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/3">
+                        <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="description">
                             Description
                           </label>
                         </div>
-                        <div className="md:w-2/3">
+                        <div className="md:w-4/6">
                           <textarea value={desc} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="desc" type="text" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/3">
+                        <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="price">
                             Price
                           </label>
                         </div>
-                        <div className="md:w-2/3">
+                        <div className="md:w-4/6">
                           <input value={price} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="price" type="number" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/3">
+                        <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="category">
                             Category
                           </label>
                         </div>
-                        <div className="md:w-2/3">
+                        <div className="md:w-4/6">
                           <input value={category} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="category" type="text" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/3">
+                        <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="subcategory">
                             subcategory
                           </label>
                         </div>
-                        <div className="md:w-2/3">
+                        <div className="md:w-4/6">
                           <input value={subcategory} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="subcategory" type="text" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/3">
+                        <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="quantity">
                             Quantity
                           </label>
                         </div>
-                        <div className="md:w-2/3">
+                        <div className="md:w-4/6">
                           <input  value={availableQty} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="quantity" type="number" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/3">
-                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="size">
-                            Size
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="height">
+                            height
                           </label>
                         </div>
-                        <div className="md:w-2/3">
-                          <input value={size} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="size" type="text" />
+                        <div className="md:w-2/6 mr-2 ">
+                          <input value={h} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="height" type="text" />
                         </div>
+                        <AiOutlinePlus onClick={add} className='cursor-pointer hover:bg-yellow-400 '/>
                       </div>
                       <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/3">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="width">
+                            width
+                          </label>
+                        </div>
+                        <div className="md:w-2/6 mr-2 ">
+                          <input value={w} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="width" type="text" />
+                        </div>
+                        <AiOutlinePlus onClick={addwidth} className='cursor-pointer hover:bg-yellow-400 '/>
+                      </div>
+                      <div className='grid grid-flow-row grid-cols-2 bg-slate-100 pt-6'>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="color">
                             Color
                           </label>
                         </div>
-                        <div className="md:w-2/3">
+                        <div className="md:w-20">
                           <input value={color} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="color" type="text" />
                           
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/3">
-                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="color">
+                        <div className="md:w-20">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="colorpic">
                             Colorpic
                           </label>
                         </div>
-                        <div className="md:w-2/3">
-                        <input value={colorpic} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="colorpic" type="color" />
+                        <div className="md:w-20">
+                        <input value={colorcode} onChange={(e) => handleChange(e)} className="" id="colorcode" type="color" />
                           
                         </div>
                       </div>
-                      <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/3">
+                      <div className="md:flex md:items-center ml-2 mb-6">
+                        <div className="md:w-20">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="img">
                             Image
                           </label>
                         </div>
-                        <div className="md:w-2/3">
-                          <input  onChange={(e)=>upload(e)} className="form-control block w-full px-3 py-1.5
-    text-base
-    font-normal
-    text-gray-700
-    bg-white bg-clip-padding
-    border border-solid border-gray-300
-    rounded
-    transition
-    ease-in-out
-    m-0
-    focus:text-gray-700 focus:bg-white focus:border-yellow-600 focus:outline-none" type="file" id="img" accept="image/*"/>
+                        <div className="md:w-fit">
+                          <input  onChange={(e)=>upload(e)}  type="file" id="img" accept="image/*"/>
     
                         </div>
                       </div>
-
+                      <AiOutlinePlus onClick={addvariant} className='cursor-pointer text-2xl mx-auto my-1 hover:bg-yellow-400 border-2 border-yellow-400 '/>
+                      </div>
                       <div className="md:flex md:items-center">
-                        <div className="md:w-1/3"></div>
-                        <div className="md:w-2/3">
+                        <div className="md:w-2/6"></div>
+                        <div className="md:w-4/6">
                           {au ? <button className="shadow bg-yellow-400 hover:bg-yellow-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
                             Add product
                           </button> :
@@ -546,7 +584,7 @@ if(response.success){
                         subcategory
                       </th>
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
-                        Size
+                        sizes
                       </th>
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                         Color
@@ -569,9 +607,8 @@ if(response.success){
                     </tr>
                   </thead >
                   {Object.keys(products).map((p,i) => {
-  
-                    return <tbody key={products[p]._id}>
 
+                    return <tbody key={products[p]._id}>
                       <tr className="bg-white border-b ">
                         <td id='id' className=" px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{products[p]._id}</td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -583,11 +620,12 @@ if(response.success){
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                           {products[p].subcategory}
                         </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {products[p].size}
+                        <td className="text-sm grid grid-flow-col  text-gray-900 font-light px-6 py-4 space-x-1 whitespace-nowrap">
+                         <div>{products[p].height.map((i)=>{ return <div key={i}>{i} x </div>}) }</div>
+                         <div>{products[p].width.map((i)=>{ return <div key={i}>{i}  </div>}) }</div>
                         </td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {products[p].color}
+                          <div>{products[p].variants.map((i)=>{return <div key={i}>{i.color}</div>})}</div>
                         </td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                           {products[p].price}
@@ -595,8 +633,8 @@ if(response.success){
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                           {products[p].availableQty}
                         </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <img src={products[p].img} />
+                        <td className="text-sm  text-gray-900 font-light  whitespace-nowrap">
+                        <div className='grid grid-flow-col grid-rows-3 '>{products[p].variants.map((i)=>{return <div key={i}><img src={i.img} /></div>})}</div>
                         </td>
                         <td className="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
 
@@ -725,7 +763,7 @@ if(response.success){
         <section className="text-gray-600 body-font">
   <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
     <img className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="/logo.jpeg"/>
-    <div className="text-center lg:w-2/3 w-full">
+    <div className="text-center lg:w-4/6 w-full">
       <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{info[0].email}</h1>
       <p className="mb-8 leading-relaxed">{info[0].address}</p>
       <p className="mb-8 leading-relaxed">{info[0].phone}</p>
