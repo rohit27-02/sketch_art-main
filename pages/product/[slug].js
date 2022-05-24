@@ -2,13 +2,17 @@
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Product from '../../models/Product';
 import mongoose from "mongoose";
-const Post = ({ buyNow, addToCart, product, variants }) => {
-
+const Post = ({ buyNow, addToCart, product }) => {
+  const [selectedheight, setselectedheight] = useState("");
+  const [selectedwidth, setselectedwidth] = useState("");
+  const [selectedcolor, setselectedcolor] = useState(0);
+  const [prevcolor, setprevcolor] = useState(0);
   const [pin, setPin] = useState();
   const [service, setService] = useState();
+
   const checkServiceablilty = async () => {
     let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`)
     let pinJson = await pins.json()
@@ -22,7 +26,7 @@ const Post = ({ buyNow, addToCart, product, variants }) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
+      });
     }
     else {
       setService(false)
@@ -34,76 +38,105 @@ const Post = ({ buyNow, addToCart, product, variants }) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
+      });
     }
   }
   const onChangePin = (e) => {
     setPin(e.target.value)
   }
-  const [color, setolor] = useState(product.color);
-  const [size, setSize] = useState(product.size);
-
-  const refreshVariants = (newsize, newcolor) => {
-    let url = `${process.env.NEXT_PUBLIC_HOST}/product/${variants[newcolor][newsize]["slug"]}`
-    window.location = url;
+  function selecth(e) {
+    setselectedheight(e.target.value)
   }
+  function selectw(e) {
+    setselectedwidth(e.target.value)
+  }
+  function selectcolor(e) {
+    setselectedcolor(e.target.id)
 
+    document.getElementById(e.target.id).classList.add("shadow-md")
+    document.getElementById(e.target.id).classList.add("shadow-slate-700")
+    console.log(e.target)
+  }
+  useEffect(() => {
+    document.getElementById(prevcolor).classList.remove("shadow-md")
+    setprevcolor(selectedcolor)
+  }, [selectedcolor]);
 
   return <>
-    <section className="text-gray-600 body-font overflow-hidden">
-    <ToastContainer
-position="top-right"
-autoClose={1000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-/>
-      <div className="container px-2 py-10 mx-auto">
-        <div className="lg:w-4/5 mx-auto flex flex-wrap">
-          <img alt="ecommerce" className="md:w-1/2 w-full lg:h-auto px-8 object-cover object-center rounded" src={product.img} />
-          <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-            <h2 className="text-sm title-font text-gray-500 tracking-widest">Sketch Arts</h2>
-            <h1 className="text-gray-900 text-3xl title-font font-medium mb-4">{product.title} ({product.size}/{product.color})</h1>
+    <section className="text-gray-600 flex justify-center  body-font overflow-hidden">
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <div className="container mx-14 py-14">
 
-          
-            <p className="leading-relaxed">{product.desc}</p>
-            <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-              <div className="flex">
-                <span className="mr-3">Color</span>
-                {Object.keys(variants).map((p)=>{<div className='h-10 w-10' style={{backgroundColor:`${p.colorpic}`}}></div>})}
-                {Object.keys(variants).map((p)=>{Object.keys(variants).includes(p.color) && Object.keys(variants[p.color]).includes(p.size) && <button onClick={() => { refreshVariants(p.size, p.color) }} className={` border-2 bg-black  w-15 h-15 focus:outline-none ${color === p.color ? "border-yellow-500" : "border-gray-50"}`}></button>})}
-              </div>
-              <div className="flex ml-6 items-center">
-                <span className="mr-3">Size</span>
-                <div className="relative">
-                 
-                  <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
-                      <path d="M6 9l6 6 6-6"></path>
-                    </svg>
-                  </span>
-                </div>
-              </div>
+        <div className='w-full shadow-lg flex-col md:flex-row flex   '>
+          <div className=''><img alt="ecommerce" className=" w-full " src={product.variants[selectedcolor].img} />
+            <div className='px-10 '><h1 className=' text-xl font-bold font-serif py-4'>Product Details</h1>
+              <table className=' w-full mb-8 '>
+                <tr className=''>
+                  <td>Style</td>
+                  <td>{product.category}</td>
+                </tr>
+                <tr>
+                  <td>Height</td>
+                  <td>{selectedheight}</td>
+                </tr>
+                <tr>
+                  <td>Width</td>
+                  <td>{selectedwidth}</td>
+                </tr>
+                <tr>
+                  <td>Color</td>
+                  <td >{product.variants[selectedcolor].color}</td>
+                </tr>
+              </table>
+            </div></div>
+          <div  className='flex flex-col  px-14 bg-slate-200 '>
+            <h1 className=" text-gray-900  text-xl md:text-3xl mt-10 title-font font-bold font-serif mb-8">{product.title} </h1><span className='text-xl font-medium p-2'>Color Selection</span>
+            <div className=" flex md:h-2/3 w-full px-6  drop-shadow-md  justify-evenly h-80 text-center overflow-y-scroll bg-white flex-wrap ">
+              {Object.keys(product.variants).map((p) => { return <div className='' key={p} ><div id={p} onClick={(e) => { selectcolor(e) }} style={{ backgroundColor: `${product.variants[p].colorcode}` }} className="h-40 mt-4 cursor-pointer  w-32"></div><span className=' font-semibold'>{product.variants[p].color}</span></div> })}
+            </div><div className="flex my-auto mx-auto items-center space-x-10 ">
+
+              <div><span className="mr-3 text-lg font-medium">Height</span>
+
+                <select  id='h' onChange={(e) => selecth(e)} className='w-24  border-2 font-semibold text-lg '>
+                  {product.height.map((i) => { return <option className='text-lg font-semibold ' key={i}>{i}  </option> })}
+                </select></div>
+
+              <div><span className="mr-3 text-lg font-medium">Width</span>
+
+                <select  id='w' onChange={(e) => selectw(e)} className='w-24  border-2 font-semibold text-lg'>
+                  {product.width.map((i) => { return <option className='text-lg font-semibold' key={i}>{i}  </option> })}
+                </select></div>
+            </div></div></div>
+        <div className='flex justify-around mt-20'>
+          <h1 className='text-xl font-bold'>Description</h1>
+          <p className="leading-relaxed md:pr-60 mt-10">{product.desc}</p><div>
+
+            <div className="flex justify-start ">
+              <span className="title-font font-medium  text-2xl text-gray-900">₹ {product.price}</span>
+              <button className="flex  ml-10 text-white bg-yellow-500 border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none hover:bg-slate-800 " onClick={() => { buyNow(product.slug, product.price, product.title,height,width,product.variants[selectedcolor].color) }}>Buy now</button>
+              <button onClick={() => { addToCart(product.slug, 1, product.price, product.title, height,width,product.variants[selectedcolor].color) }} className="flex ml-10 text-white bg-yellow-500 border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none hover:bg-slate-800 ">Add to cart</button>
+
             </div>
-            <div className="flex justify-evenly">
-              <span className="title-font font-medium text-2xl text-gray-900">₹ {product.price}</span>
-              <button className="flex  md:ml-10 text-white bg-yellow-500 border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none hover:bg-yellow-600 rounded" onClick={() => { buyNow(product.slug, product.price, product.title, size, color) }}>Buy now</button>
-              <button onClick={() => { addToCart(product.slug, 1, product.price, product.title, size, color) }} className="flex  md:ml-10 text-white bg-yellow-500 border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none hover:bg-yellow-600 rounded">Add to cart</button>
-              
-            </div>
-            <div className='flex mt-12 '>
-              <input onChange={onChangePin} className='text-lg font-bold px-2 border-2 border-gray-400 rounded-md' type="text" placeholder='Enter your pin'></input>
-              <button onClick={checkServiceablilty} className='ml-2 text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded'>Check</button>
-            </div>
-            {!service && service != null && <div className='text-red-600 mt-3 '>sorry! we are not available in your area</div>}
-            {service && service != null && <div className='text-green-600 mt-3 '>Yay! we are available at your area</div>}
-          </div>
+            <div className='flex mt-12 mb-20 '>
+              <input onChange={onChangePin} className='text-sm md:text-lg font-bold px-2 border-2 border-gray-400 -md' type="text" placeholder='Enter your pin'></input>
+              <button onClick={checkServiceablilty} className='ml-2 text-white bg-yellow-500 border-0 py-2 px-4 focus:outline-none hover:bg-slate-800 '>Check</button>
+            </div></div>
+          {!service && service != null && <div className='text-red-600 mt-3 '>sorry! we are not available in your area</div>}
+          {service && service != null && <div className='text-green-600 mt-3 '>Yay! we are available at your area</div>}
         </div>
       </div>
+
+
     </section>
   </>
 }
@@ -112,21 +145,10 @@ export async function getServerSideProps(context) {
     await mongoose.connect(process.env.MONGO_URI)
   }
   let product = await Product.findOne({ slug: context.query.slug })
-  let variants = await Product.find({ title: product.title })
-  let colorSizeSlug = {}
-  console.log(variants)
-  for (let item of variants) {
-    if (Object.keys(colorSizeSlug).includes(item.colorpic)) {
-      colorSizeSlug[item.colorpic][item.size] = { slug: item.slug }
-    }
-    else {
-      colorSizeSlug[item.colorpic] = {colorpic:item.colorpic}
-      colorSizeSlug[item.colorpic][item.size] = { slug: item.slug }
-    }
-  }
-  console.log(colorSizeSlug)
+ 
+
   return {
-    props: { product: JSON.parse(JSON.stringify(product)), variants: JSON.parse(JSON.stringify(colorSizeSlug)) }, // will be passed to the page component as props
+    props: { product: JSON.parse(JSON.stringify(product)) }, // will be passed to the page component as props
   }
 }
 

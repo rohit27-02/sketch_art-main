@@ -17,20 +17,7 @@ const Tshirts = ({products}) => {
         <div className="mt-4 ">
           <h2 className="text-center text-gray-900 title-font text-lg font-medium">{products[item].title}</h2>
           <p className="mt-1 text-center">₹{products[item].price}</p>
-          <div className='mt-1'>
-            {products[item].size.includes("S") && <span className='border border-gray-300 mx-1 px-1'>S</span>}
-            {products[item].size.includes("M") && <span className='border border-gray-300 mx-1 px-1'>M</span>}
-            {products[item].size.includes("L") && <span className='border border-gray-300 mx-1 px-1'>L</span>}
-            {products[item].size.includes("XL") && <span className='border border-gray-300 mx-1 px-1'>XL</span>}
-            {products[item].size.includes("XXL") && <span className='border border-gray-300 mx-1 px-1'>XXL</span>}
-            </div>
-          <div className='mt-2'>
-            {products[item].color.includes("Red") && <button className=" bg-red-500 rounded-full w-5 h-5 focus:outline-none mx-1"></button>}
-            {products[item].color.includes("Black") && <button className=" bg-black rounded-full w-5 h-5 focus:outline-none mx-1"></button>}
-            {products[item].color.includes("Blue") && <button className=" bg-blue-500 rounded-full w-5 h-5 focus:outline-none mx-1"></button>}
-            {products[item].color.includes("Yellow") && <button className=" bg-yellow-500 rounded-full w-5 h-5 focus:outline-none mx-1"></button>}
-            {products[item].color.includes("Green") && <button className=" bg-green-500 rounded-full w-5 h-5 focus:outline-none mx-1"></button>}
-            </div>
+          
             <button className='mx-auto w-full p-4 bg-yellow-400 hover:bg-slate-800 hover:text-white font-bold rounded'>Shop now</button>
         </div>
         </a>
