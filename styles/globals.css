@@ -10,5 +10,11 @@ body{
 .scale-0 { transform: scale(0);
 min-width: 12%;
  }
-
-     
+ .carosuel{
+     height: 700px;
+ }
+ @media(max-width:500px){
+.carosuel{
+    height:300px;
+}
+}

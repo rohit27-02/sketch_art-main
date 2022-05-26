@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react'
 import Product from '../../models/Product';
 import mongoose from "mongoose";
 const Post = ({ buyNow, addToCart, product }) => {
-  const [selectedheight, setselectedheight] = useState("");
-  const [selectedwidth, setselectedwidth] = useState("");
+  const [selectedheight, setselectedheight] = useState(product.height[0]);
+  const [selectedwidth, setselectedwidth] = useState(product.width[0]);
   const [selectedcolor, setselectedcolor] = useState(0);
   const [prevcolor, setprevcolor] = useState(0);
   const [pin, setPin] = useState();
@@ -55,13 +55,15 @@ const Post = ({ buyNow, addToCart, product }) => {
 
     document.getElementById(e.target.id).classList.add("shadow-md")
     document.getElementById(e.target.id).classList.add("shadow-slate-700")
-    console.log(e.target)
+   
   }
   useEffect(() => {
     document.getElementById(prevcolor).classList.remove("shadow-md")
     setprevcolor(selectedcolor)
   }, [selectedcolor]);
-
+useEffect(() => {
+ console.log(product)
+}, []);
   return <>
     <section className="text-gray-600 flex justify-center  body-font overflow-hidden">
       <ToastContainer
@@ -81,7 +83,7 @@ const Post = ({ buyNow, addToCart, product }) => {
           <div className=''><img alt="ecommerce" className=" w-full " src={product.variants[selectedcolor].img} />
             <div className='px-10 '><h1 className=' text-xl font-bold font-serif py-4'>Product Details</h1>
               <table className=' w-full mb-8 '>
-                <tr className=''>
+                <tr>
                   <td>Style</td>
                   <td>{product.category}</td>
                 </tr>
@@ -117,9 +119,9 @@ const Post = ({ buyNow, addToCart, product }) => {
                   {product.width.map((i) => { return <option className='text-lg font-semibold' key={i}>{i}  </option> })}
                 </select></div>
             </div></div></div>
-        <div className='flex justify-around mt-20'>
-          <h1 className='text-xl font-bold'>Description</h1>
-          <p className="leading-relaxed md:pr-60 mt-10">{product.desc}</p><div>
+        <div className='grid grid-flow-col mt-20'>
+          <div className='text-xl  font-bold'>Description
+          <p className="leading-relaxed text-base font-normal md:pr-60 mt-10">{product.desc}</p></div><div>
 
             <div className="flex justify-start ">
               <span className="title-font font-medium  text-2xl text-gray-900">₹ {product.price}</span>
