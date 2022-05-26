@@ -22,7 +22,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     const [data, setdata] = useState([]);
     const [sw, setsw] = useState(false);
     const [subcategory, setsubcategory] = useState();
- 
+    const [info, setinfo] = useState({});
 
 
 
@@ -55,6 +55,11 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
             .then((data) => {
                 setdata(data)
             })
+            fetch(`${process.env.NEXT_PUBLIC_HOST}/api/info`)
+    .then((res) => res.json())
+    .then((data) => {
+      setinfo(data)
+    })
         setnav(false)
         if (screen.width > 768) {
             setsw(true)
@@ -92,9 +97,9 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     const ref = useRef();
     const menu = useRef();
     return (<>
-  {sw && <div className='h-10 w-full bg-yellow-100'><div className='w-2/6 float-right transform bg-black h-10'><div className='text-white float-right flex items-center border-l-2  px-4'><IoIosMail className='mx-2 text-xl text-yellow-300'/>Email us<div onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className="cart ml-6 bg-white h-10 w-8  cursor-pointer">
+  {sw && <div className='h-10 w-full bg-yellow-100'><div className='w-2/6 float-right transform bg-black h-10'><div className='text-white float-right flex items-center border-l-2  px-4'><IoIosMail className='mx-2 text-xl text-yellow-300'/><a href="mailto:">Email us</a><div onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className="cart ml-6 bg-white h-10 w-8  cursor-pointer">
                 <HiShoppingCart className='hover:text-slate-900  mx-auto mt-2  text-xl  text-black md:text-2xl' /></div>
-            </div><div className='text-white font-mono mx-16 mt-2 flex '><BsFillTelephoneFill className='mx-2 text-yellow-300 my-auto'/>+91 8689865372</div></div></div>}
+            </div><div className='text-white font-mono mx-16 mt-2 flex '><BsFillTelephoneFill className='mx-2 text-yellow-300 my-auto'/><a href='tel:+91931-840-9519'>{info.phone}</a></div></div></div>}
         
         <div style={{ minHeight: 50 }} onMouseLeave={() => setdropDown(false)} className='text-xs md:text-base top-0 bg-yellow-300  justify-center flex  items-center flex-col md:flex-row md:justify-start  shadow-xl'>
      <div className='logo  mx-1 absolute scale-50 md:scale-100  md:top-2 left-0'>
@@ -156,13 +161,13 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                 <button onClick={clearCart} className="flex text-white bg-yellow-400 border-0 py-2 px-4  mr-3 focus:outline-none hover:bg-yellow-600 rounded text-lg"><CgTrashEmpty className='my-auto mr-1' />Empty cart</button>
             </div>
         </div>
-        {sw && <div onMouseLeave={() => setlistd(false)} className='w-full bg-black text-white h-10 sticky top-0 z-30 ' >
+        {sw && <div onMouseLeave={() => setlistd(false)} className='w-full bg-black text-white h-16 sticky top-0 z-30 ' >
             <div className=" flex justify-center  flex-wrap ">
                 {
                     Object.keys(data).map((p) => {
                         return (
                             <div key={p} className=" group flex ">
-                                <a id={data[p]} onMouseOver={() => setlistd(true)} onMouseEnter={function (e) { getData(e); }} className='border-l-2 px-4 my-2 font-sans hover:bg-yellow-300 hover:text-black hover:font-bold ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}</a>
+                                <a id={data[p]} onMouseOver={() => setlistd(true)} onMouseEnter={function (e) { getData(e); }} className='border-l-2 w-36 px-4 my-2 text-sm  font-sans hover:bg-yellow-300 hover:text-black hover:font-bold ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}</a>
                                 {subcategory && listd && <li className=' bg-slate-100  rounded-sm  transform scale-0 group-hover:scale-100 absolute 
   transition duration-150  ease-in-out  top-10 z-40  text-gray-700  flex flex-col  '>{Object.keys(subcategory).map((s) => {
                                     return <a className='py-3 hover:border-l-4 border-black  px-6  hover:text-slate-900 hover:font-semibold   hover:bg-yellow-300 '  href={`${process.env.NEXT_PUBLIC_HOST}/sub/${subcategory[s]}`} key={s}>{subcategory[s]}</a>

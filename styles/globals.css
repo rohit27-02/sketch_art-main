@@ -17,4 +17,10 @@ min-width: 12%;
 .carosuel{
     height:300px;
 }
+.explore{
+    visibility: hidden;
+}
+}
+.explore{
+    margin-top:600px;
 }

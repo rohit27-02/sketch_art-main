@@ -24,7 +24,7 @@ const Footer = () => {
  
   return (
     <div><footer className=" bg-yellow-300 font-medium">
-     <div className='bg-amber-300 py-1 text-center w-full'>Back to top</div>
+     <div className='bg-amber-300 py-1 text-center w-full'><a href='#' className='cursor-pointer ease-in-out hover:text-white'>Back to top</a></div>
     <div className="container  py-8 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
       <div className="w-80   flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
         <a href={"/"} className="w-full ">
