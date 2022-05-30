@@ -52,7 +52,7 @@ const Signup = () => {
     });
   }
   return (
-    <div className="min-h-full flex items-center justify-center bg-lime-100">
+    <div className="min-h-full flex items-center justify-center bg-yellow-100">
       <div className='flex pt-8 pb-32 drop-shadow-md'>
        <div style={{backgroundColor:"yellow"}} className='text-center font-medium flex flex-col items-center justify-center w-80 space-y-5'>
 <h1 className='text-3xl font-semibold  '>Welcome back</h1>

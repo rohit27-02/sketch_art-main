@@ -72,11 +72,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='animate-fade-in-down carosuel' >
-        <button className='bg-yellow-300 md:p-2 p-1 hover:bg-black  hover:text-yellow-400  cursor-pointer explore md:font-semibold absolute  right-60 z-20'>EXPLORE NOW</button>
-        <button className='border-2 text-yellow-400 hover:bg-black hover:border-none hover:scale-110 border-yellow-300 md:p-2 p-1 cursor-pointer explore md:font-semibold absolute  right-20 z-20'><a href={'/contact'}>CONTACT US</a></button>
+      <div className='animate-fade-in-down  ' >
+        <button className='bg-yellow-300 md:p-2 p-1 hover:bg-transparent border-yellow-300 border-2 hover:text-yellow-400  cursor-pointer explore md:font-semibold absolute  right-60 z-20'>EXPLORE NOW</button>
+        <button className='border-2 text-yellow-300 hover:bg-yellow-300 hover:text-black  border-yellow-300 md:p-2 p-1 cursor-pointer explore md:font-semibold absolute  right-20 z-20'><a href={'/contact'}>CONTACT US</a></button>
         <Carousel
-          className='h-full '
+          className=' carosuel'
           autoPlay={true}
           swipeable={false}
           draggable={false}
@@ -91,26 +91,16 @@ export default function Home() {
           removeArrowOnDeviceType={["tablet", "mobile"]}
           dotListClass="custom-dot-list-style"
         >
-          <div className='  w-full bg-gray-700  h-full relative '><img className='md:mt-44 mt-12 ' src='https://i.ibb.co/CWjMC5L/Group-162.png'></img>
+          <div className='  w-full bg-gray-700  h-full  '><img className=' ' src='https://i.ibb.co/CWjMC5L/Group-162.png'></img>
           </div>
-          <div className='  w-full   h-full  relative '><img className='object-scale-down ' src='https://i.ibb.co/C9YbYgL/Home-page-Screen-1-image.jpg'></img>
-            <div className='absolute md:top-56 top-28 text-center w-full font-extrabold text-2xl md:text-7xl text-white '>Pushing Limits <br></br> For Your Luxuries</div>
+          <div className='  w-full bg-gray-700  h-full  '><img className=' ' src='https://i.ibb.co/CWjMC5L/Group-162.png'></img>
           </div>
-          <div className='  w-full   h-full  relative '><img className='object-scale-down ' src="https://i.ibb.co/RSBJK54/Home-page-Screen-1-1-image6.jpg"></img>
-            <div className='absolute md:top-56 top-28 text-center w-full font-extrabold text-2xl md:text-7xl text-white '>Live In Comfort</div>
-          </div>
-          <div className='  w-full   h-full  relative '><img className='object-scale-down ' src="https://i.ibb.co/RS0snZR/dining-room-g0dcc99ec7-1920.jpg"></img>
-            <div className='absolute md:top-56 top-28 text-center w-full font-extrabold text-2xl md:text-7xl text-white '>Make Home a Better<br></br> Place</div>
-          </div>
-
-
-
         </Carousel>
       </div>
       <section className="text-white  bg-gray-900 body-font">
-        <div className="container  mx-auto ">
+        <div className="w-full  mx-auto ">
           <div className="w-full bg-white md:pt-10 pt-4 text-center">
-            <div className='border-b-2 border-black font-bold px-10 w-full  md:text-2xl text-black font-serif '>Our Speciality Products</div>
+            <div className='border-b border-black font-bold px-10 w-full  md:text-2xl text-black font-serif '>Our Speciality Products</div>
 
             <Carousel className='py-4 scale-90  mx-4 md:scale-100 md:py-8 '
               swipeable={false}
@@ -184,9 +174,9 @@ export default function Home() {
 
             </Carousel>
 
-            <div className='md:py-7  bg-yellow-100' ><div className='md:h-32 md:w-96 relative -mb-96 float-right mt-24 bg-gray-900 bg-opacity-80'>
-              <h1 className='md:text-4xl w-fit mx-4 float-right pt-7 border-b-2 font-semibold border-yellow-400 font-sans'>BLINDS GALLERY</h1>
-              <h1 className='md:mx-5  text-yellow-400 float-right'>INSPIRED BY SKETCH ART</h1>
+            <div className='md:py-7  bg-yellow-100' ><div className='md:h-32 md:w-96 relative -mb-96 float-right md:mt-24 mt-16 bg-gray-900 bg-opacity-80'>
+              <h1 style={{borderBottom:" 3px solid yellow"}} className='md:text-4xl w-fit mx-4 float-right pt-7 border-b-2 font-semibold  font-sans'>BLINDS GALLERY</h1>
+              <h1 style={{color:"yellow"}} className='md:mx-5   float-right'>INSPIRED BY SKETCH ART</h1>
             </div>
               <div className='md:h-96 w-full scrollbar-hide overflow-y-scroll'>
                 <img className=' ' src="https://i.ibb.co/RSBJK54/Home-page-Screen-1-1-image6.jpg"></img>
@@ -198,7 +188,7 @@ export default function Home() {
         </div>
       </section>
       <div className='bg-gray-900'>
-        <div className="h-20 font-serif text-white text-center py-6 mb-10 border-white border-b-2 md:text-2xl ">Shop like a local at home</div>
+        <div className="h-20 font-serif text-white text-center py-6 mb-10 border-white border-b md:text-2xl ">Shop like a local at home</div>
         <Carousel className='bg-black  '
           swipeable={false}
           draggable={false}
@@ -213,7 +203,7 @@ export default function Home() {
           containerClass="carousel-container"
           removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
           dotListClass="custom-dot-list-style"
-
+         
 
         >
 

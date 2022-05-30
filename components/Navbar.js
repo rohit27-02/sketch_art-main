@@ -97,9 +97,9 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     const ref = useRef();
     const menu = useRef();
     return (<>
-  {sw && <div className='h-10 w-full bg-lime-100'><div className='w-2/6 float-right transform bg-black h-10'><div className='text-white float-right flex items-center border-l-2  px-4'><IoIosMail className='mx-2 text-xl text-yellow-300'/><a href="mailto:">Email us</a><div onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className="cart ml-6 bg-white h-10 w-8  cursor-pointer">
+  {sw && <div className='h-10 w-full bg-yellow-100'><div style={{width:410}} className=' float-right transform bg-black h-10'><div className='text-white float-right flex items-center border-l-2  px-4'><IoIosMail className='mx-2 text-xl text-yellow-300'/><a href="mailto:">Email us</a><div onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className="cart ml-6 bg-white h-10 w-8  cursor-pointer">
                 <HiShoppingCart className='hover:text-slate-900  mx-auto mt-2  text-xl  text-black md:text-2xl' /></div>
-            </div><div className='text-white font-mono mx-16 mt-2 flex '><BsFillTelephoneFill className='mx-2 text-yellow-300 my-auto'/><a href='tel:+91931-840-9519'>{info.phone}</a></div></div></div>}
+            </div><div className='text-white font-mono mx-10 mt-2 flex '><BsFillTelephoneFill className='mx-2 text-yellow-300 my-auto'/><a href='tel:+91931-840-9519'>{info.phone}</a></div></div></div>}
         
         <div style={{ minHeight: 50, backgroundColor:'yellow'  }} onMouseLeave={() => setdropDown(false)} className='text-xs md:text-base top-0   justify-center flex  items-center flex-col md:flex-row md:justify-start  shadow-xl'>
      <div className='logo  mx-1 absolute scale-50 md:scale-100  md:top-2 left-0'>

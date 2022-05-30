@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { RiAccountCircleFill } from "react-icons/ri"
 import { BsFillTelephoneFill } from "react-icons/bs"
 
+
 const Footer = () => {
   const [data, setdata] = useState({});
   const [category, setcategory] = useState([]);
@@ -25,18 +26,18 @@ const Footer = () => {
   return (
     <div><footer style={{ backgroundColor: "yellow" }} className="">
       <div className=' border-b border-black text-center w-full'><a href='#' className='cursor-pointer ease-in-out hover:font-semibold'>Back to top</a></div>
-      <div className="container  py-4 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-        <div className="w-80   flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-          <a href={"/"} className="w-full ">
-            <img className='scale-125 mx-auto pb-4 mb-6 border-b border-black' width={100} height={100} src="/logo.svg" alt="" />
+      <div className="container  py-4 mx-auto flex items-center  md:flex-row   flex-col">
+        <div className="w-80 flex flex-col justify-center items-center mx-auto flex-wrap   md:text-left">
+          <a href={"/"} >
+            <img className=' mx-auto pb-4 mb-6 border-b border-black' width={100} height={100} src="/logo.svg" alt="" />
           </a>
-          <p className="mt-3 text-sm ml-16 flex items-center text-black"><RiAccountCircleFill className='mr-2' />{data.email}</p>
-          <p className="mt-3 text-sm ml-16 flex items-center text-black">< BsFillTelephoneFill className='mr-2' />{data.phone}</p>
-          <p className="mt-3 text-sm ml-16 flex items-center text-black">{data.address}</p>
+          <p className=" text-sm  flex items-center text-black"><RiAccountCircleFill className='mr-2' />{data.email}</p>
+          <p className="mt-3 text-sm flex items-center text-black">< BsFillTelephoneFill className='mr-2' />{data.phone}</p>
+          <p className="mt-3 text-sm flex  text-center text-black">{data.address}</p>
         </div>
-        <div className="flex-grow text-sm  flex flex-wrap md:px-20   md:mt-0 mt-10 md:text-left text-center">
-          <div className=" md:w-1/4 w-full px-4">
-            <h2 className="title-font font-medium text-gray w-fit tracking-widest border-b border-black pb-2 mb-3">PRODUCTS</h2>
+        <div className="flex-grow text-sm  flex flex-wrap md:px-20 md:mt-0 mt-10 md:text-left text-center">
+          <div className=" md:w-1/4 w-full px-4 mb-6 border-l border-black">
+            <h2 className="title-font font-medium text-gray w-fit tracking-widest border-b border-black mx-auto md:mx-0 pb-2 mb-3">PRODUCTS</h2>
             <nav className="list-none ">
               {Object.keys(category).map((p) => {
                 return <li key={p}>
@@ -46,8 +47,8 @@ const Footer = () => {
 
             </nav>
           </div>
-          <div className=" md:w-1/4 w-full px-4">
-            <h2 className="title-font font-medium w-fit text-gray tracking-widest border-b border-black pb-2 mb-3">POLICY</h2>
+          <div className=" md:w-1/4 w-full px-4  mb-6 border-l border-black">
+            <h2 className="title-font font-medium w-fit text-gray tracking-widest mx-auto md:mx-0  border-b border-black pb-2 mb-3">POLICY</h2>
             <nav className="list-none ">
               <li>
                 <a href={''} className="text-black hover:text-gray">Return Policy</a>
@@ -66,8 +67,8 @@ const Footer = () => {
               </li>
             </nav>
           </div>
-          <div className=" md:w-1/4 w-full px-4">
-            <h2 className="title-font font-medium w-fit text-gray tracking-widest border-b border-black pb-2 mb-3">ABOUT US</h2>
+          <div className=" md:w-1/4 w-full px-4  mb-6 border-l border-black">
+            <h2 className="title-font font-medium w-fit text-gray tracking-widest mx-auto md:mx-0  border-b border-black pb-2 mb-3">ABOUT US</h2>
             <nav className="list-none ">
               <li>
                 <a href={''} className="text-black hover:text-gray">Who We Are</a>
@@ -78,8 +79,8 @@ const Footer = () => {
               </li>
             </nav>
           </div>
-          <div className=" md:w-1/4 w-full px-4">
-            <h2 className="title-font font-medium w-fit text-gray tracking-widest border-b border-black pb-2 mb-3">LETS HELP YOU</h2>
+          <div className=" md:w-1/4 w-full px-4  mb-6 border-l border-black">
+            <h2 className="title-font font-medium w-fit text-gray tracking-widest mx-auto md:mx-0  border-b border-black pb-2 mb-3">LETS HELP YOU</h2>
             <nav className="list-none ">
               <li>
                 <a href={''} className="text-black hover:text-gray">Your Account</a>
@@ -94,9 +95,7 @@ const Footer = () => {
               <li>
                 <a href={'contact '} className="text-black hover:text-gray">Help</a>
               </li>
-              <li className="pt-20 absolute mt-8 right-3 text-sm">© 2022 Sketch Art
-                <a href="https://www.linkedin.com/in/rohit-rawat-a41b411a9/" rel="noopener noreferrer" className="text-black ml-1" target="_blank">@rohitrawat</a>
-              </li>
+
             </nav>
 
           </div>
@@ -105,9 +104,11 @@ const Footer = () => {
 
       </div>
 
-      <div className="bg-black items-center flex justify-center">
-        <div className="  py-4 flex flex-wrap justify-center flex-col sm:flex-row">
-          <span className="inline-flex -ml-20 sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+      <div className="bg-black items-center  md:flex-row flex-col flex justify-between">
+        <div className=" text-white  md:ml-4 ">© Copyright 2022 Sketch Art
+        </div>
+ 
+          <div className="inline-flex  py-4 ">
             <a style={{ color: "yellow" }} className=" scale-125 mr-4">
               <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
@@ -130,8 +131,9 @@ const Footer = () => {
                 <circle cx="4" cy="4" r="2" stroke="none"></circle>
               </svg>
             </a>
-          </span>
-        </div>
+          </div>
+  
+          <div className='text-white md:mr-4'>Created by <a href='https://developersinfotech.com/' className='text-yellow-300'>Developers Infotech</a></div>
       </div>
     </footer></div>
   )
