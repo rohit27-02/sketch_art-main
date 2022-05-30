@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import Router from 'next/router';
+import {FcGoogle} from "react-icons/fc";
 const Signup = () => {
   
   const [name, setName] = useState("");
@@ -51,7 +52,13 @@ const Signup = () => {
     });
   }
   return (
-    <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-full flex items-center justify-center bg-lime-100">
+      <div className='flex pt-8 pb-32 drop-shadow-md'>
+       <div style={{backgroundColor:"yellow"}} className='text-center font-medium flex flex-col items-center justify-center w-80 space-y-5'>
+<h1 className='text-3xl font-semibold  '>Welcome back</h1>
+<p>To keep connected with us please <br></br>login with your personal info</p>
+<button style={{backgroundColor:"yellow",border:"1px solid black"}} className= 'px-8 hover:shadow-lg shadow-black py-1 drop-shadow-md '><a href='/Login'>SIGN IN</a></button>
+    </div>
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -63,24 +70,20 @@ const Signup = () => {
         draggable
         pauseOnHover
       />
-      <div className="max-w-md w-full space-y-8">
+      <div className='bg-white px-32 py-12'>
+      <div className="max-w-md w-full space-y-8 ">
         <div>
           <img
             className="mx-auto h-20 w-auto"
             src="/logo.jpeg"
             alt="Workflow"
           />
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign up your new account</h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Or{' '}
-            <a href={"/Login"} className="font-medium text-yellow-600 hover:text-yellow-500">
-              Login
-            </a>
-          </p>
+          <h2 className="mt-6 text-center text-3xl px-4 font-extrabold text-gray-900">Sign up your Sketch Art</h2>
+         
         </div>
-        <form onSubmit={handleSubmit} className="mt-8 space-y-6" method="POST">
+        <form onSubmit={handleSubmit} className="mt-8  space-y-6" method="POST">
           <input type="hidden" name="remember" defaultValue="true" />
-          <div className="rounded-md shadow-sm -space-y-px">
+          <div className=" shadow-sm ">
             <div>
               <label htmlFor="name" className="sr-only">
                 Name
@@ -92,7 +95,7 @@ const Signup = () => {
                 autoComplete="name"
                 required
                 value={name}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                className="appearance-none  relative block w-full px-3 py-2 border mb-2 bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
                 placeholder="Name"
               />
             </div>
@@ -107,8 +110,8 @@ const Signup = () => {
                 autoComplete="email"
                 required
                 value={email}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
+                className="appearance-none  relative block w-full px-3 py-2 border mb-2 bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                placeholder="Email"
               />
             </div>
             <div>
@@ -122,7 +125,7 @@ const Signup = () => {
                 autoComplete="password"
                 required
                 value={password}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                className="appearance-none  relative block w-full px-3 py-2 border bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
               />
             </div>
@@ -134,16 +137,24 @@ const Signup = () => {
 
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+              style={{backgroundColor:"yellow"}} className="group drop-shadow-sm relative w-full flex justify-center py-2 px-4 border hover:shadow-lg  text-sm font-medium  "
             >
 
               Sign up
             </button>
           </div>
+          <div className='flex justify-center space-x-2 '>
+            <div className='border-b border-gray-800 my-3 w-32'></div>
+            <div className=''>Or</div>
+            <div className='border-b border-gray-800 my-3 w-32'></div>
+          </div>
+          <div className='flex justify-center   items-center'>Sign up using <FcGoogle className='ml-4 mr-1 scale-150 cursor-pointer '/>oogle</div>
+          
         </form>
+        </div>
       </div>
     </div>
-
+</div>
   )
 }
 

@@ -47,6 +47,7 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [w, setw] = useState("");
   const [h, seth] = useState("");
   const [img, setimg] = useState("");
+  const [poster, setposter] = useState("");
 
 
 useEffect(() => {
@@ -58,8 +59,6 @@ Router.push("/")
 }, []);
 useEffect(() => {
 setready(true)
-
-
 }, [pid]);
 useEffect(() => {
  if(au == false && isOpen){
@@ -73,9 +72,15 @@ useEffect(() => {
   setslug(products[index].slug)
   setcategory(products[index].category)
   setsubcategory(products[index].subcategory)
+  setposter(products[index].img)
  }
 
 }, [index]);
+function rm(e){
+  setpid(e.target.id)
+  setready(true)
+  removeItem();
+}
 
   function handleChange(e) {
     if (e.target.id == "title") {
@@ -128,7 +133,7 @@ useEffect(() => {
     setcolor("")
     setcolorcode("")
     setimg("")
-    
+    setposter("")
    
   }
 const selectedproduct= (event)=>{
@@ -149,7 +154,7 @@ const selectedproduct= (event)=>{
    
     e.preventDefault()
     if(au){
-      const data = [{ title, desc, variants, category, height,width, price, availableQty, slug,subcategory }]
+      const data = [{ title, desc, variants,poster, category, height,width, price, availableQty, slug,subcategory }]
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addproducts`, {
         method: "POST",
       headers: {
@@ -168,7 +173,7 @@ const selectedproduct= (event)=>{
     });}
     else{
     if(index !=null && ready){
-      const data = [{ title, desc, variants,width, category, height, price, availableQty,subcategory, slug }]
+      const data = [{ title, desc, variants,width,poster, category, height, price, availableQty,subcategory, slug }]
    
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
         method: "POST",
@@ -193,9 +198,8 @@ const selectedproduct= (event)=>{
     closeModal()
     Router.push("/adminpanel")
   }
-  const removeItem = async (e) => {
-setpid(e.currentTarget.id)
-   if(ready ==true && pid != null){
+  const removeItem = async () => {
+   if(ready && pid != null){
     const data =  pid 
     let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/removeproduct`, {
       method: "POST",
@@ -290,6 +294,29 @@ setpid(e.currentTarget.id)
   })
   let response = await res.json()
   setimg(response.data.url)
+if(response.success){
+  toast.success('Image uploaded', {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+}
+ 
+  }
+ async function uploadposter(e){
+   
+  var file = document.getElementById('poster');
+  var form = new FormData();
+  form.append("image", file.files[0])
+  let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`,{
+    method:"POST",body:form,
+  })
+  let response = await res.json()
+  setposter(response.data.url)
 if(response.success){
   toast.success('Image uploaded', {
     position: "top-center",
@@ -461,6 +488,16 @@ if(response.success){
                         </div>
                         <div className="md:w-4/6">
                           <input  value={availableQty} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="quantity" type="number" />
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="poster">
+                            Poster
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                          <input  onChange={(e)=>uploadposter(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="poster" type="file" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
@@ -652,7 +689,7 @@ if(response.success){
 
                         </td>
                         <td className="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <button id={products[p]._id} onClick={(e)=>removeItem(e)}><RiDeleteBin5Fill /></button>
+                          <button id={products[p]._id} onClick={(e)=>rm(e)}><RiDeleteBin5Fill /></button>
                         </td>
                       </tr >
                     </tbody>

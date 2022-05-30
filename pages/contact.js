@@ -6,13 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import Router from 'next/router';
 
-
-
 const Contact = ({info}) => {
  const [name, setname] = useState("");
  const [email, setemail] = useState("");
  const [message, setmessage] = useState("");
 
+ 
  function handleChange(e){
    if(e.target.id=="name"){
      setname(e.target.value)
@@ -66,7 +65,7 @@ if(response.success=="success"){
           pauseOnHover
         />
   <div className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
-    <div id='map' className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+    <div id='map' style={{backgroundImage:`url("https://i.ibb.co/g9ZXHZR/Home-page-Screen-1-image3.png")`}} className="lg:w-2/3 md:w-1/2  bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
       
       <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md">
         <div className="lg:w-1/2 px-6">

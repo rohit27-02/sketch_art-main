@@ -11,6 +11,7 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.14.3",
     "@headlessui/react": "^1.6.2",
     "@popperjs/core": "^2.11.5",
     "bootstrap": "^5.1.3",

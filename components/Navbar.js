@@ -97,11 +97,11 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     const ref = useRef();
     const menu = useRef();
     return (<>
-  {sw && <div className='h-10 w-full bg-yellow-100'><div className='w-2/6 float-right transform bg-black h-10'><div className='text-white float-right flex items-center border-l-2  px-4'><IoIosMail className='mx-2 text-xl text-yellow-300'/><a href="mailto:">Email us</a><div onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className="cart ml-6 bg-white h-10 w-8  cursor-pointer">
+  {sw && <div className='h-10 w-full bg-lime-100'><div className='w-2/6 float-right transform bg-black h-10'><div className='text-white float-right flex items-center border-l-2  px-4'><IoIosMail className='mx-2 text-xl text-yellow-300'/><a href="mailto:">Email us</a><div onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className="cart ml-6 bg-white h-10 w-8  cursor-pointer">
                 <HiShoppingCart className='hover:text-slate-900  mx-auto mt-2  text-xl  text-black md:text-2xl' /></div>
             </div><div className='text-white font-mono mx-16 mt-2 flex '><BsFillTelephoneFill className='mx-2 text-yellow-300 my-auto'/><a href='tel:+91931-840-9519'>{info.phone}</a></div></div></div>}
         
-        <div style={{ minHeight: 50 }} onMouseLeave={() => setdropDown(false)} className='text-xs md:text-base top-0 bg-yellow-300  justify-center flex  items-center flex-col md:flex-row md:justify-start  shadow-xl'>
+        <div style={{ minHeight: 50, backgroundColor:'yellow'  }} onMouseLeave={() => setdropDown(false)} className='text-xs md:text-base top-0   justify-center flex  items-center flex-col md:flex-row md:justify-start  shadow-xl'>
      <div className='logo  mx-1 absolute scale-50 md:scale-100  md:top-2 left-0'>
                 <Link href={"/"}><a><Image width={100} height={80} src="/logo.svg" alt="" /></a></Link>
             </div>
@@ -125,7 +125,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 {!sw && <div onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className="cart  absolute right-2 top-2   cursor-pointer">
                 <HiShoppingCart className='hover:text-slate-900  mx-auto mt-2  text-xl  text-black md:text-2xl' /></div>}
 
-            {dropDown && <div className='absolute right-5  z-40 top-10 md:top-20 border shadow-lg bg-yellow-50 rounded-md px-4 py-3 text-l md:text-xl'>
+            {dropDown && <div className='absolute right-5  z-40 top-10 md:top-20 border shadow-lg bg-yellow-50 rounded-md px-4 py-3 text-lg md:text-xl'>
                 <ul>
                     <a className='hover:text-yellow-600 font-bold' href={"/myaccount"}><li>Account</li></a>
                     <a className='hover:text-yellow-600 font-bold' href={'/orders'}><li>Orders</li></a>
@@ -161,15 +161,14 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                 <button onClick={clearCart} className="flex text-white bg-yellow-400 border-0 py-2 px-4  mr-3 focus:outline-none hover:bg-yellow-600 rounded text-lg"><CgTrashEmpty className='my-auto mr-1' />Empty cart</button>
             </div>
         </div>
-        {sw && <div onMouseLeave={() => setlistd(false)} className='w-full bg-black text-white h-16 sticky top-0 z-30 ' >
+        {sw && <div onMouseLeave={function(){setlistd(false);setsubcategory(false);}} className='w-full bg-black text-white h-14 sticky top-0 z-30 ' >
             <div className=" flex justify-center  flex-wrap ">
                 {
                     Object.keys(data).map((p) => {
                         return (
                             <div key={p} className=" group flex ">
                                 <a id={data[p]} onMouseOver={() => setlistd(true)} onMouseEnter={function (e) { getData(e); }} className='border-l-2 w-36 px-4 my-2 text-sm  font-sans hover:bg-yellow-300 hover:text-black hover:font-bold ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}</a>
-                                {subcategory && listd && <li className=' bg-slate-100  rounded-sm  transform scale-0 group-hover:scale-100 absolute 
-  transition duration-150  ease-in-out  top-10 z-40  text-gray-700  flex flex-col  '>{Object.keys(subcategory).map((s) => {
+                                {subcategory && listd && <li className=' bg-slate-100  rounded-sm  transform scale-0 group-hover:scale-100 absolute  top-14 z-40  text-gray-700  flex flex-col  '>{Object.keys(subcategory).map((s) => {
                                     return <a className='py-3 hover:border-l-4 border-black  px-6  hover:text-slate-900 hover:font-semibold   hover:bg-yellow-300 '  href={`${process.env.NEXT_PUBLIC_HOST}/sub/${subcategory[s]}`} key={s}>{subcategory[s]}</a>
                                 })}</li>}
                             </div>
@@ -183,7 +182,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
 
         </div>}
-       <div ref={menu} style={{minWidth:180}}  className=' transform transition-transform delay-300 ease-in-out  -translate-x-full  shadow-xl overflow-y-hidden  left-0 py-4 top-0 h-full bg-gradient-to-t from-black via-slate-800 to-slate-800 text-white fixed  z-30 ' >
+       <div ref={menu} style={{minWidth:180}}  className=' transform transition-transform delay-300 ease-in-out  -translate-x-full  shadow-xl overflow-y-hidden  left-0 py-4 top-0 h-full bg-black text-white fixed  z-30 ' >
        <AiOutlineClose className='float-right mx-3 text-lg ' onClick={toggleproducts} />
             <h1 className='font-bold mb-8 text-yellow-400 mx-4 text-xl underline underline-offset-4'>Products</h1>
             <div className=" flex justify-center flex-col flex-wrap ">

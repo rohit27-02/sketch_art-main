@@ -8,8 +8,8 @@ const About = () => {
   return (
     <div>
       <div >
-<img className='overflow-hidden' src='https://pbs.twimg.com/media/FO8RsG4VcAU2mHZ?format=jpg&name=large'></img>
-<div className=' w-full absolute  top-48 animate-fade-in-down text-white text-3xl md:text-5xl font-extrabold text-center'>About Us</div>
+<img className='overflow-hidden relative top-0' src='https://pbs.twimg.com/media/FO8RsG4VcAU2mHZ?format=jpg&name=large'></img>
+<div className=' w-full absolute  top-56 animate-fade-in-down  text-white text-3xl md:text-5xl font-extrabold text-center'>About Us</div>
       </div>
       <div className='text-center md:py-20 py-8 px-1 bg-slate-50 md:flex-row flex flex-col justify-center items-center '>
        <div> <h1 className='text-xl font-bold'>GLOBAL LEADING MANUFACTURER</h1>

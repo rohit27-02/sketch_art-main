@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Product from '../../models/Product';
@@ -6,11 +7,12 @@ import mongoose from "mongoose";
 const Tshirts = ({products}) => {
   return (
     <div>
+      <img className='' src="https://i.ibb.co/B2xYb9w/Group-39.png"></img>
       <section className="text-gray-600 body-font ">
   <div className="container px-5 py-20  mx-auto ">
     <div className="flex flex-wrap justify-evenly   -m-4">
       {Object.keys(products).map((item)=>{
-       return <div key={products[item]._id} className="lg:w-1/5 md:w-1/3 p-2 m-4  w-full shadow-lg cursor-pointer ">
+       return <div key={products[item]._id} className="lg:w-1/4 md:w-1/3 p-2 m-4  w-full shadow-lg cursor-pointer ">
         <a href={`/product/${products[item].slug}`} className="block relative  rounded overflow-hidden">
           <img alt="ecommerce" className=" h-[36vh] m-auto block" src={products[item].img}/>
         
