@@ -49,13 +49,13 @@ function MyApp({ Component, pageProps }) {
     }
     setSubTotal(subt)
   }
-  const addToCart = (itemCode, qty, price, name, size, variant) => {
+  const addToCart = (itemCode, qty, price, name, height,width, variant) => {
     let newCart = cart;
     if (itemCode in cart) {
       newCart[itemCode].qty = cart[itemCode].qty + qty
     }
     else {
-      newCart[itemCode] = { qty: 1, price, name, size, variant }
+      newCart[itemCode] = { qty: 1, price, name, height,width, variant }
     }
       setCart(newCart)
       saveCart(newCart)
@@ -81,9 +81,9 @@ function MyApp({ Component, pageProps }) {
     setCart(newCart)
     saveCart(newCart)
   }
-  const buyNow=(itemCode, price, name, size, variant)=>{
+  const buyNow=(itemCode, price, name, height,width, variant)=>{
     saveCart({})
-    let newCart = {itemCode:{qty:1,price,name,size,variant}};
+    let newCart = {itemCode:{qty:1,price,name,height,width,variant}};
     setCart(newCart)
     saveCart(newCart)
     router.push("/Checkout") 
