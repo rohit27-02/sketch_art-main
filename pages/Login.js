@@ -71,7 +71,7 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-full bg-lime-100 flex items-center justify-center pt-8 pb-28 ">
+    <div className="min-h-full bg-yellow-100 flex items-center justify-center pt-8 pb-28 ">
       <ToastContainer
         position="top-center"
         autoClose={2000}
