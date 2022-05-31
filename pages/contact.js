@@ -11,7 +11,6 @@ const Contact = ({info}) => {
  const [email, setemail] = useState("");
  const [message, setmessage] = useState("");
 
- 
  function handleChange(e){
    if(e.target.id=="name"){
      setname(e.target.value)

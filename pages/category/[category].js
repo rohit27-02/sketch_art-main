@@ -14,13 +14,13 @@ const Tshirts = ({products}) => {
       {Object.keys(products).map((item)=>{
        return <div key={products[item]._id} className="lg:w-1/4 md:w-1/3 p-2 m-4  w-full shadow-lg cursor-pointer ">
         <a href={`/product/${products[item].slug}`} className="block relative  rounded overflow-hidden">
-          <img alt="ecommerce" className=" h-[36vh] m-auto block" src={products[item].img}/>
+          <img alt="ecommerce" className=" h-[36vh] m-auto block" src={products[item].poster}/>
         
         <div className="mt-4 ">
           <h2 className="text-center text-gray-900 title-font text-lg font-medium">{products[item].title}</h2>
           <p className="mt-1 text-center">₹{products[item].price}</p>
           
-            <button className='mx-auto w-full p-4 bg-yellow-400 hover:bg-slate-800 hover:text-white font-bold rounded'>Shop now</button>
+            <button className='mx-auto w-full p-4  hover:bg-slate-800 hover:text-white btn font-bold rounded'>Shop now</button>
         </div>
         </a>
       </div>})}

@@ -77,10 +77,10 @@ useEffect(() => {
         draggable
         pauseOnHover
       />
-      <div className="container mx-14 py-14">
+      <div className="container px-4 md:w-5/6 md:py-14">
 
         <div className='w-full shadow-lg flex-col md:flex-row flex   '>
-          <div className=''><img alt="ecommerce" className=" w-full " src={product.variants[selectedcolor].img} />
+          <div className='md:w-2/5 '><img alt="ecommerce" className=" w-full p-16 md:p-0 mx-auto " src={product.variants[selectedcolor].img} />
             <div className='px-10 '><h1 className=' text-xl font-bold font-serif py-4'>Product Details</h1>
               <table className=' w-full mb-8 '>
                 <tr>
@@ -101,37 +101,38 @@ useEffect(() => {
                 </tr>
               </table>
             </div></div>
-          <div  className='flex flex-col  px-14 bg-slate-200 '>
-            <h1 className=" text-gray-900  text-xl md:text-3xl mt-10 title-font font-bold font-serif mb-8">{product.title} </h1><span className='text-xl font-medium p-2'>Color Selection</span>
-            <div className=" flex md:h-2/3 w-full px-6  drop-shadow-md  justify-evenly h-80 text-center overflow-y-scroll bg-white flex-wrap ">
-              {Object.keys(product.variants).map((p) => { return <div className='' key={p} ><div id={p} onClick={(e) => { selectcolor(e) }} style={{ backgroundColor: `${product.variants[p].colorcode}` }} className="h-40 mt-4 cursor-pointer  w-32"></div><span className=' font-semibold'>{product.variants[p].color}</span></div> })}
-            </div><div className="flex my-auto mx-auto items-center space-x-10 ">
+          <div  className='flex flex-col  md:w-3/5 px-2 md:px-14 bg-slate-200 '>
+            <h1 className=" text-gray-900 px-2 text-2xl md:text-3xl md:first-letter:mt-10 title-font font-bold font-serif mb-8">{product.title} </h1><span className=' lg:text-2xl font-medium p-2'>Color Selection</span>
+            <div className=" flex md:h-2/5 w-full px-8  drop-shadow-md  justify-evenly  h-80  overflow-y-scroll bg-white flex-wrap  ">
+              {Object.keys(product.variants).map((p) => { return <div  key={p} ><div id={p} onClick={(e) => { selectcolor(e) }} style={{ backgroundColor: `${product.variants[p].colorcode}` }} className="md:h-40 h-32 mt-8  cursor-pointer md:w-36 w-32"></div><span className=' font-semibold uppercase '>{product.variants[p].color}</span></div> })}
+            </div><div className="flex my-12  mx-auto  space-x-10 ">
 
-              <div><span className="mr-3 text-lg font-medium">Height</span>
+              <div><span className="ml-2 text-lg lg:text-2xl font-medium">Height</span>
 
-                <select  id='h' onChange={(e) => selecth(e)} className='w-24  border-2 font-semibold text-lg '>
+                <select  id='h' onChange={(e) => selecth(e)} className='w-24  border-2 ml-2 font-semibold text-lg lg:text-xl '>
                   {product.height.map((i) => { return <option className='text-lg font-semibold ' key={i}>{i}  </option> })}
                 </select></div>
 
-              <div><span className="mr-3 text-lg font-medium">Width</span>
+              <div><span className="ml-2 text-lg lg:text-2xl font-medium">Width</span>
 
-                <select  id='w' onChange={(e) => selectw(e)} className='w-24  border-2 font-semibold text-lg'>
+                <select  id='w' onChange={(e) => selectw(e)} className='w-24  border-2 ml-2 font-semibold text-lg lg:text-xl'>
                   {product.width.map((i) => { return <option className='text-lg font-semibold' key={i}>{i}  </option> })}
                 </select></div>
-            </div></div></div>
-        <div className='grid grid-flow-col mt-20'>
-          <div className='text-xl  font-bold'>Description
-          <p className="leading-relaxed text-base font-normal md:pr-60 mt-10">{product.desc}</p></div><div>
-
-            <div className="flex justify-start ">
-              <span className="title-font font-medium  text-2xl text-gray-900">₹ {product.price}</span>
-              <button className="flex  ml-10 text-white bg-yellow-500 border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none hover:bg-slate-800 " onClick={() => { buyNow(product.slug, product.price, product.title,height,width,product.variants[selectedcolor].color) }}>Buy now</button>
-              <button onClick={() => { addToCart(product.slug, 1, product.price, product.title, height,width,product.variants[selectedcolor].color) }} className="flex ml-10 text-white bg-yellow-500 border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none hover:bg-slate-800 ">Add to cart</button>
-
             </div>
+            <div className="flex justify-center space-x-6 mb-4 my-auto ">
+              <span className="title-font font-medium  text-2xl text-gray-900">₹ {product.price}</span>
+              <button className="flex  text-slate-700 btn font-semibold border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none hover:text-white " onClick={() => { buyNow(product.slug, product.price, product.title,height,width,product.variants[selectedcolor].color) }}>Buy now</button>
+              <button onClick={() => { addToCart(product.slug, 1, product.price, product.title, height,width,product.variants[selectedcolor].color) }} className="flex  text-slate-700 btn border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none hover:text-white font-semibold ">Add to cart</button>
+
+            </div></div></div>
+        <div className='grid grid-flow-row md:grid-flow-col mt-20'>
+          <div className='text-xl lg:text-3xl text-center md:text-left font-bold'>Description
+          <p className="leading-relaxed text-base lg:text-xl font-normal md:pr-60 mt-10">{product.desc}</p></div><div>
+
+          
             <div className='flex mt-12 mb-20 '>
               <input onChange={onChangePin} className='text-sm md:text-lg font-bold px-2 border-2 border-gray-400 -md' type="text" placeholder='Enter your pin'></input>
-              <button onClick={checkServiceablilty} className='ml-2 text-white bg-yellow-500 border-0 py-2 px-4 focus:outline-none hover:bg-slate-800 '>Check</button>
+              <button onClick={checkServiceablilty} className='ml-2 text-slate-700 hover:text-white btn border-0 py-2 px-4 font-semibold focus:outline-none  '>Check</button>
             </div></div>
           {!service && service != null && <div className='text-red-600 mt-3 '>sorry! we are not available in your area</div>}
           {service && service != null && <div className='text-green-600 mt-3 '>Yay! we are available at your area</div>}

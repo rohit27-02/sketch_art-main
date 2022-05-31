@@ -28,7 +28,7 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [price, setprice] = useState(0);
   const [availableQty, setavailableQty] = useState(0);
   const [category, setcategory] = useState("");
-  const [subcategory, setsubcategory] = useState("");
+  const [subcategory, setsubcategory] = useState();
   const [height, setheight] = useState([]);
   const [width, setwidth] = useState([]);
   const [variants, setvariants] = useState([]);
@@ -72,7 +72,7 @@ useEffect(() => {
   setslug(products[index].slug)
   setcategory(products[index].category)
   setsubcategory(products[index].subcategory)
-  setposter(products[index].img)
+  setposter(products[index].poster)
  }
 
 }, [index]);
@@ -128,7 +128,7 @@ function rm(e){
     setavailableQty(0)
     setvariants([])
     setcategory("")
-    setsubcategory("")
+    setsubcategory()
     setslug("")
     setcolor("")
     setcolorcode("")
@@ -139,7 +139,7 @@ function rm(e){
 const selectedproduct= (event)=>{
   setpid(event.currentTarget.id)
   setindex(event.currentTarget.value)
- openModal()
+  openModal()
  
 }
 
