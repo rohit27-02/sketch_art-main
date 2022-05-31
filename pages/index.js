@@ -4,7 +4,6 @@ import Head from 'next/head'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useState,useEffect } from 'react';
-
 export default function Home() {
   const [sw, setsw] = useState(false);
   const responsive = {
@@ -64,7 +63,9 @@ export default function Home() {
       setsw(true)
   }
   }, []);
+  
   return (
+    
     <div >
       <Head>
         <title>Sketch Art</title>
@@ -174,9 +175,9 @@ export default function Home() {
 
             </Carousel>
 
-            <div className='md:py-7  bg-yellow-100' ><div className='md:h-32 md:w-96 relative -mb-96 float-right md:mt-24 mt-16 bg-gray-900 bg-opacity-80'>
-              <h1 style={{borderBottom:" 3px solid yellow"}} className='md:text-4xl w-fit mx-4 float-right pt-7 border-b-2 font-semibold  font-sans'>BLINDS GALLERY</h1>
-              <h1 style={{color:"yellow"}} className='md:mx-5   float-right'>INSPIRED BY SKETCH ART</h1>
+            <div className='md:py-7  bg-yellow-100' ><div className='md:h-32 md:w-96 flex flex-col items-end px-10 py-1 justify-center relative md:-mb-96 -mb-32 float-right md:mt-24 mt-16 bg-gray-900 bg-opacity-80'>
+              <h1 style={{borderBottom:" 3px solid yellow"}} className='md:text-4xl  float-right border-b-2 font-semibold  font-sans'>BLINDS GALLERY</h1>
+              <h1 style={{color:"yellow"}} className='float-right'>INSPIRED BY SKETCH ART</h1>
             </div>
               <div className='md:h-96 w-full scrollbar-hide overflow-y-scroll'>
                 <img className=' ' src="https://i.ibb.co/RSBJK54/Home-page-Screen-1-1-image6.jpg"></img>
@@ -229,6 +230,7 @@ export default function Home() {
         </Carousel>
         { sw ? <div><img className='md:p-10 p-2' src='https://i.ibb.co/QYky3cJ/Group-160.png'></img></div>:""}
       </div>
+      
     </div>
   )
 }

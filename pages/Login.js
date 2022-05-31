@@ -5,16 +5,16 @@ import React from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Router from 'next/router';
-import {IoIosMail} from "react-icons/io"
-import {FcGoogle} from "react-icons/fc";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
+import jwtDecode from 'jwt-decode';
 const Login = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   useEffect(() => {
-    if(localStorage.getItem("token"))
-  Router.push("/")
+    if(localStorage.getItem("token")){
+  Router.push("/")}
+ 
   }, []);
   const handleChange = (e) => {
 
@@ -69,7 +69,48 @@ const Login = () => {
     }
 
   }
-
+  function assign(obj){
+    return {email:obj.email}
+  }
+  const auth= async(res)=>{
+       const obj = await jwtDecode(res.credential)
+       setEmail(obj.email)
+       const data=await assign(obj)
+       let response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/auth`,{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }, body: JSON.stringify(data)
+      })
+       let status = await response.json()
+       setEmail("")
+       if (status.success) {
+        localStorage.setItem("token",status.token)
+        toast.success('congratulation your are logged in', {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setTimeout(() => {
+          Router.push(process.env.NEXT_PUBLIC_HOST)
+        }, 2000);
+      }
+      else {
+        toast.warning(status.error, {
+          position: "top-center",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+  }
   return (
     <div className="min-h-full bg-yellow-100 flex items-center justify-center pt-8 pb-28 ">
       <ToastContainer
@@ -148,8 +189,15 @@ const Login = () => {
             <div className=''>Or</div>
             <div className='border-b border-gray-800 my-3 w-32'></div>
           </div>
-          <div className='flex justify-center   items-center'>Sign in using <FcGoogle className='ml-4 mr-1 scale-150 cursor-pointer '/>oogle</div>
-        </form>
+          <div className='text-center'><GoogleOAuthProvider clientId="390204161646-6noec67uc8qleni584kq3ojnbbebeo1i.apps.googleusercontent.com"><GoogleLogin
+  onSuccess={res=> auth(res)}
+  onError={() => {
+    console.log('Login Failed');
+  }}
+  auto_select
+  useOneTap
+/></GoogleOAuthProvider></div>
+       </form>
       </div>
     </div>
     <div style={{backgroundColor:"yellow"}} className='text-center font-medium flex flex-col items-center justify-center w-80 space-y-5'>

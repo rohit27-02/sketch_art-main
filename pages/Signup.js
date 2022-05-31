@@ -6,7 +6,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import Router from 'next/router';
-import {FcGoogle} from "react-icons/fc";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
+import jwtDecode from 'jwt-decode';
 const Signup = () => {
   
   const [name, setName] = useState("");
@@ -38,18 +40,56 @@ const Signup = () => {
       }, body: JSON.stringify(data)
     })
     let response = await res.json()
+    if(response.success){
     setEmail("")
     setName("")
     setPassword("")
     toast.success('congratulation your account is signed up', {
       position: "top-center",
-      autoClose: 2000,
+      autoClose: 1200,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
     });
+    setTimeout(() => {
+      Router.push("/Login")
+    }, 2000);
+   
+  }
+  }
+  const assign=(obj)=>{
+    return { name:obj.name, email:obj.email, password:obj.email}
+  }
+  const auth = async (e) => {
+    let obj= await jwtDecode(e.credential)
+    const data = await assign(obj)
+
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }, body: JSON.stringify(data)
+    })
+    let response = await res.json()
+    setEmail("")
+    setName("")
+    setPassword("")
+    if(response.success){
+    toast.success('congratulation your account is signed up', {
+      position: "top-center",
+      autoClose: 1200,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    setTimeout(() => {
+      Router.push("/Login")
+    }, 2000);
+  }
   }
   return (
     <div className="min-h-full flex items-center justify-center bg-yellow-100">
@@ -148,7 +188,13 @@ const Signup = () => {
             <div className=''>Or</div>
             <div className='border-b border-gray-800 my-3 w-32'></div>
           </div>
-          <div className='flex justify-center   items-center'>Sign up using <FcGoogle className='ml-4 mr-1 scale-150 cursor-pointer '/>oogle</div>
+          <div className='text-center'><GoogleOAuthProvider clientId="390204161646-6noec67uc8qleni584kq3ojnbbebeo1i.apps.googleusercontent.com"><GoogleLogin
+          
+  onSuccess={res=> auth(res)}
+  onError={() => {
+    console.log('Login Failed');
+  }}
+/></GoogleOAuthProvider></div>
           
         </form>
         </div>

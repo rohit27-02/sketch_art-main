@@ -125,7 +125,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 {!sw && <div onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className="cart  absolute right-2 top-2   cursor-pointer">
                 <HiShoppingCart className='hover:text-slate-900  mx-auto mt-2  text-xl  text-black md:text-2xl' /></div>}
 
-            {dropDown && <div className='absolute right-5  z-40 top-10 md:top-20 border shadow-lg bg-yellow-50 rounded-md px-4 py-3 text-lg md:text-xl'>
+            {dropDown && <div className='absolute right-5  z-40 top-10 md:top-20 border shadow-lg bg-yellow-50 rounded-md px-4 py-3 text-lg md:text-xl lg:text-2xl'>
                 <ul>
                     <a className='hover:text-yellow-600 font-bold' href={"/myaccount"}><li>Account</li></a>
                     <a className='hover:text-yellow-600 font-bold' href={'/orders'}><li>Orders</li></a>
@@ -167,9 +167,9 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                     Object.keys(data).map((p) => {
                         return (
                             <div key={p} className=" group flex ">
-                                <a id={data[p]} onMouseOver={() => setlistd(true)} onMouseEnter={function (e) { getData(e); }} className='border-l-2 w-36 px-4 my-2 text-sm  font-sans hover:bg-yellow-300 hover:text-black hover:font-bold ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}</a>
-                                {subcategory && listd && <li className=' bg-slate-100  rounded-sm  transform scale-0 group-hover:scale-100 absolute  top-14 z-40  text-gray-700  flex flex-col  '>{Object.keys(subcategory).map((s) => {
-                                    return <a className='py-3 hover:border-l-4 border-black  px-6  hover:text-slate-900 hover:font-semibold   hover:bg-yellow-300 '  href={`${process.env.NEXT_PUBLIC_HOST}/sub/${subcategory[s]}`} key={s}>{subcategory[s]}</a>
+                                <a id={data[p]} onMouseOver={() => setlistd(true)} onMouseEnter={function (e) { getData(e); }} className='border-l-2 w-36 px-4 my-2 text-sm   font-sans hover:bg-yellow-300 hover:text-black hover:font-bold ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}</a>
+                                {subcategory && listd && <li className=' bg-slate-100  transform scale-0 group-hover:scale-100 absolute  top-14 z-40  text-gray-700  flex flex-col  '>{Object.keys(subcategory).map((s) => {
+                                    return <a className='py-3 hover:border-l-4 border-black  px-6  hover:text-slate-900 hover:font-semibold   hover:bg-yellow-300 '  href={`${process.env.NEXT_PUaC_HOST}/sub/${subcategory[s]}`} key={s}>{subcategory[s]}</a>
                                 })}</li>}
                             </div>
                         )
