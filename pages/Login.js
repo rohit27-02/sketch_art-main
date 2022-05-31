@@ -11,10 +11,13 @@ import jwtDecode from 'jwt-decode';
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [sw, setsw] = useState(false);
   useEffect(() => {
     if(localStorage.getItem("token")){
   Router.push("/")}
- 
+  if (screen.width > 500) {
+    setsw(true)
+}
   }, []);
   const handleChange = (e) => {
 
@@ -125,17 +128,18 @@ const Login = () => {
         pauseOnHover
       /> 
       <div className='flex drop-shadow-md'>
-      <div className='bg-white block px-32 py-12'>
+      <div className='bg-white block md:px-32 py-2 md:py-12'>
       <div className="max-w-md  w-full space-y-6">
         <div>
           <img
-            className="mx-auto h-20 w-auto"
+            className="mx-auto h-10 md:h-20 w-auto"
             src="/logo.jpeg"
             alt="Workflow"
           />
-          <h2 className="mt-4 text-center px-4 text-3xl font-extrabold text-gray-800">Sign in to Sketch Art</h2>
+          <h2 className="mt-4 text-center px-4 md:text-3xl font-extrabold text-gray-800">Sign in to Sketch Art<br></br>  Or <a className='text-sm font-normal underline decoration-yellow-300 decoration-2 underline-offset-4 ' href='/Signup'>SIGN UP</a></h2>
+        
         </div>
-        <form onSubmit={handleSubmit} className="mt-8  space-y-6" method="POST">
+        <form onSubmit={handleSubmit} className="mt-8 scale-90 md:scale-100 space-y-6" method="POST">
           <div className=" shadow-sm">
             <div>
               <label htmlFor="email" className="sr-only">
@@ -189,7 +193,7 @@ const Login = () => {
             <div className=''>Or</div>
             <div className='border-b border-gray-800 my-3 w-32'></div>
           </div>
-          <div className='text-center'><GoogleOAuthProvider clientId="390204161646-6noec67uc8qleni584kq3ojnbbebeo1i.apps.googleusercontent.com"><GoogleLogin
+          <div className='md:text-center'><GoogleOAuthProvider clientId="390204161646-6noec67uc8qleni584kq3ojnbbebeo1i.apps.googleusercontent.com"><GoogleLogin
   onSuccess={res=> auth(res)}
   onError={() => {
     console.log('Login Failed');
@@ -200,11 +204,11 @@ const Login = () => {
        </form>
       </div>
     </div>
-    <div style={{backgroundColor:"yellow"}} className='text-center font-medium flex flex-col items-center justify-center w-80 space-y-5'>
+   {sw &&<div style={{backgroundColor:"yellow"}} className='text-center font-medium flex flex-col items-center justify-center w-80 space-y-5'>
 <h1 className='text-3xl font-semibold  '>Hello, Friend!</h1>
 <p>Enter your personal details <br></br>and start journey with us</p>
 <button style={{backgroundColor:"yellow",border:"1px solid black"}} className= 'px-8 hover:shadow-lg shadow-black py-1 drop-shadow-md '><a href='/Signup'>SIGN UP</a></button>
-    </div>
+    </div>}
     </div>
     </div>
 

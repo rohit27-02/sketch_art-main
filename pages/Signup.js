@@ -14,10 +14,14 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [sw, setsw] = useState(false);
 
   useEffect(() => {
     if(localStorage.getItem("token"))
-    Router.push("/")
+   { Router.push("/")}
+   if (screen.width > 500) {
+    setsw(true)
+}
     }, []);
   const handleChange = (e) => {
     if (e.target.name == "name") {
@@ -94,11 +98,11 @@ const Signup = () => {
   return (
     <div className="min-h-full flex items-center justify-center bg-yellow-100">
       <div className='flex pt-8 pb-32 drop-shadow-md'>
-       <div style={{backgroundColor:"yellow"}} className='text-center font-medium flex flex-col items-center justify-center w-80 space-y-5'>
+      {sw&& <div style={{backgroundColor:"yellow"}} className='text-center font-medium flex flex-col items-center justify-center w-80 space-y-5'>
 <h1 className='text-3xl font-semibold  '>Welcome back</h1>
 <p>To keep connected with us please <br></br>login with your personal info</p>
 <button style={{backgroundColor:"yellow",border:"1px solid black"}} className= 'px-8 hover:shadow-lg shadow-black py-1 drop-shadow-md '><a href='/Login'>SIGN IN</a></button>
-    </div>
+    </div>}
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -110,18 +114,18 @@ const Signup = () => {
         draggable
         pauseOnHover
       />
-      <div className='bg-white px-32 py-12'>
+      <div className='bg-white md:px-32 py-2 md:py-12'>
       <div className="max-w-md w-full space-y-8 ">
         <div>
           <img
-            className="mx-auto h-20 w-auto"
+            className="mx-auto h-10 md:h-20 w-auto"
             src="/logo.jpeg"
             alt="Workflow"
           />
-          <h2 className="mt-6 text-center text-3xl px-4 font-extrabold text-gray-900">Sign up your Sketch Art</h2>
+          <h2 className="mt-6 text-center md:text-3xl px-4 font-extrabold text-gray-900">Sign up your Sketch Art<br></br> or <a className='underline underline-offset-4 decoration-2 decoration-yellow-300 text-sm font-normal' href='/Login'>SIGN IN</a></h2>
          
         </div>
-        <form onSubmit={handleSubmit} className="mt-8  space-y-6" method="POST">
+        <form onSubmit={handleSubmit} className="mt-8 scale-90 md:scale-100 space-y-6" method="POST">
           <input type="hidden" name="remember" defaultValue="true" />
           <div className=" shadow-sm ">
             <div>
@@ -188,7 +192,7 @@ const Signup = () => {
             <div className=''>Or</div>
             <div className='border-b border-gray-800 my-3 w-32'></div>
           </div>
-          <div className='text-center'><GoogleOAuthProvider clientId="390204161646-6noec67uc8qleni584kq3ojnbbebeo1i.apps.googleusercontent.com"><GoogleLogin
+          <div className='md:text-center'><GoogleOAuthProvider clientId="390204161646-6noec67uc8qleni584kq3ojnbbebeo1i.apps.googleusercontent.com"><GoogleLogin
           
   onSuccess={res=> auth(res)}
   onError={() => {
