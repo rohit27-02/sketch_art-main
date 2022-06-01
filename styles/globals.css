@@ -20,6 +20,9 @@ min-width: 12%;
 .explore{
     visibility: hidden;
 }
+.acctext{
+    font-size: 15px;
+}
 }
 .explore{
     margin-top:420px;
@@ -32,4 +35,24 @@ min-width: 12%;
 }
 .btn:hover{
     background-color: black;
+}
+.text{
+    font-size: 12px;
+   margin-top: 6px;
+}
+@media(min-width:1500px){
+    .text{
+        font-size: 14px;
+    }
+    .acctext{
+        font-size: 25px;
+        line-height: 40px;
+    }
+}
+.account:hover{
+border-bottom: 3px solid black;
+}
+.acctext{
+    font-size:20px ;
+    line-height:32px ;
 }

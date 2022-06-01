@@ -103,7 +103,7 @@ export default function Home() {
           <div className="w-full bg-white md:pt-10 pt-4 text-center">
             <div className='border-b border-black font-bold px-10 w-full  md:text-2xl text-black font-serif '>Our Speciality Products</div>
 
-            <Carousel className='py-4 scale-90  mx-4 md:scale-100 md:py-8 '
+            <Carousel className='py-4 scale-90  mx-4 md:scale-95 md:py-8 '
               swipeable={false}
               draggable={false}
 
@@ -121,7 +121,7 @@ export default function Home() {
 
             >
               <div className=' block mx-5'>
-                <img className='drop-shadow-lg hover:scale-110 hover:opacity-60' src='https://i.ibb.co/Fq4Bjpb/Group-156.png'></img>
+                <img className='drop-shadow-lg hover:scale-105 hover:opacity-60' src='https://i.ibb.co/Fq4Bjpb/Group-156.png'></img>
                 <legend className=' text-center  md:px-10 text-black py-4 text-sm md:text-base font-light'>Sketch Art is proud to offer the largest
                   collection of wooden venetian blinds in India.
                   With more than 80 shades that are spread
@@ -138,7 +138,7 @@ export default function Home() {
                 <span className=' border-b-2   border-black'>dfghjkldfghjkl;fghjkl;fghjfgha</span>
               </div>
               <div className=' block mx-5'>
-                <img className='drop-shadow-lg  hover:scale-110 hover:opacity-60' src="https://i.ibb.co/JzwQ74j/Group-157.png"></img>
+                <img className='drop-shadow-lg  hover:scale-105 hover:opacity-60' src="https://i.ibb.co/JzwQ74j/Group-157.png"></img>
                 <legend className=' text-center text-sm md:text-base  md:px-10 text-black py-4  font-light'>With a strong focus on style & functionality,
                   these window blinds are one of the most
                   popular window shadings product in India
@@ -155,7 +155,7 @@ export default function Home() {
                 <span className=' border-b-2   border-black'>dfghjkldfghjkl;fghjkl;fghjfgha</span>
               </div>
               <div className=' block mx-5'>
-                <img className='drop-shadow-lg   hover:scale-110 hover:opacity-60' src='https://i.ibb.co/fMrnMNb/Group-158.png'></img>
+                <img className='drop-shadow-lg   hover:scale-105 hover:opacity-60' src='https://i.ibb.co/fMrnMNb/Group-158.png'></img>
                 <legend className='text-black text-center text-sm md:text-base  md:px-10 py-4  font-light'>Create a luxurious and captivating
                   atmosphere with our aluminium venetian
                   blinds. With more than 150 colour options

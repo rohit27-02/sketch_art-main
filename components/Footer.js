@@ -41,7 +41,7 @@ const Footer = () => {
             <nav className="list-none ">
               {Object.keys(category).map((p) => {
                 return <li key={p}>
-                  <a href={`/category/${category[p]}`} className="text-black hover:text-gray">{category[p]}</a>
+                  <a href={`/category/${category[p]}`} className="text-black account leading-7 ">{category[p]}</a>
                 </li>
               })}
 
@@ -51,19 +51,19 @@ const Footer = () => {
             <h2 className="title-font font-medium w-fit text-gray tracking-widest mx-auto md:mx-0  border-b border-black pb-2 mb-3">POLICY</h2>
             <nav className="list-none ">
               <li>
-                <a href={''} className="text-black hover:text-gray">Return Policy</a>
+                <a href={''} className="text-black account leading-7">Return Policy</a>
               </li>
               <li>
-                <a href={''} className="text-black hover:text-gray">Terms Of Use</a>
+                <a href={''} className="text-black account leading-7">Terms Of Use</a>
               </li>
               <li>
-                <a href={''} className="text-black hover:text-gray">Secure Shopping</a>
+                <a href={''} className="text-black account">Secure Shopping</a>
               </li>
               <li>
-                <a href={''} className="text-black hover:text-gray">Privacy</a>
+                <a href={''} className="text-black account leading-7">Privacy</a>
               </li>
               <li>
-                <a href={''} className="text-black hover:text-gray">Security</a>
+                <a href={''} className="text-black account leading-7">Security</a>
               </li>
             </nav>
           </div>
@@ -71,11 +71,11 @@ const Footer = () => {
             <h2 className="title-font font-medium w-fit text-gray tracking-widest mx-auto md:mx-0  border-b border-black pb-2 mb-3">ABOUT US</h2>
             <nav className="list-none ">
               <li>
-                <a href={''} className="text-black hover:text-gray">Who We Are</a>
+                <a href={''} className="text-black account leading-7">Who We Are</a>
               </li>
 
               <li>
-                <a href={'contact '} className="text-black hover:text-gray">Contact Us</a>
+                <a href={'contact '} className="text-black account leading-7">Contact Us</a>
               </li>
             </nav>
           </div>
@@ -83,17 +83,17 @@ const Footer = () => {
             <h2 className="title-font font-medium w-fit text-gray tracking-widest mx-auto md:mx-0  border-b border-black pb-2 mb-3">LETS HELP YOU</h2>
             <nav className="list-none ">
               <li>
-                <a href={''} className="text-black hover:text-gray">Your Account</a>
+                <a href={''} className="text-black account leading-7">Your Account</a>
               </li>
 
               <li>
-                <a href={'contact '} className="text-black hover:text-gray">100% Purchase Protection</a>
+                <a href={'contact '} className="text-black account leading-7">100% Purchase Protection</a>
               </li>
               <li>
-                <a href={'contact '} className="text-black hover:text-gray">Return Center</a>
+                <a href={'contact '} className="text-black account leading-7">Return Center</a>
               </li>
               <li>
-                <a href={'contact '} className="text-black hover:text-gray">Help</a>
+                <a href={'contact '} className="text-black account leading-7">Help</a>
               </li>
 
             </nav>
