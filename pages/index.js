@@ -1,236 +1,79 @@
+/* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useState,useEffect } from 'react';
+import Zoom from 'react-reveal/Zoom';
+import { Bounce, Slide } from 'react-reveal';
+import VisibilitySensor from 'react-visibility-sensor';
 export default function Home() {
   const [sw, setsw] = useState(false);
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 600 },
-      items: 1,
-      slidesToSlide: 1
-    },
-    mobile: {
-      breakpoint: { max: 600, min: 200 },
-      items: 1,
-      slidesToSlide: 1
-    }
-  };
-  const responsive2 = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 4,
-      slidesToSlide: 1,
-      // optional, default to 1.
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-      slidesToSlide: 3,
-      // optional, default to 1.
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1,
-      // optional, default to 1.
-    }
-  };
-  const responsive3 = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 1,
-      // optional, default to 1.
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-      slidesToSlide: 3,
-      // optional, default to 1.
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1,
-      // optional, default to 1.
-    }
-  };
-  useEffect(() => {
-    if (screen.width > 768) {
-      setsw(true)
-  }
-  }, []);
   
   return (
     
     <div >
       <Head>
+      <link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@300&display=swap" rel="stylesheet"/>
         <title>Sketch Art</title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='animate-fade-in-down  ' >
-        <button className='bg-yellow-300 md:p-2 p-1 hover:bg-transparent border-yellow-300 border-2 hover:text-yellow-400  cursor-pointer explore md:font-semibold absolute  right-60 z-20'>EXPLORE NOW</button>
-        <button className='border-2 text-yellow-300 hover:bg-yellow-300 hover:text-black  border-yellow-300 md:p-2 p-1 cursor-pointer explore md:font-semibold absolute  right-20 z-20'><a href={'/contact'}>CONTACT US</a></button>
-        <Carousel
-          className=' carosuel'
-          autoPlay={true}
-          swipeable={false}
-          draggable={false}
-          showDots={true}
-          responsive={responsive}
-          ssr={true} // means to render carousel on server-side.
-          infinite={true}
-          autoPlaySpeed={3000}
-          keyBoardControl={true}
-          transitionDuration={2200}
-          containerClass="carousel-container"
-          removeArrowOnDeviceType={["tablet", "mobile"]}
-          dotListClass="custom-dot-list-style"
-        >
-          <div className='  w-full bg-gray-700  h-full  '><img className=' ' src='https://i.ibb.co/CWjMC5L/Group-162.png'></img>
-          </div>
-          <div className='  w-full bg-gray-700  h-full  '><img className=' ' src='https://i.ibb.co/CWjMC5L/Group-162.png'></img>
-          </div>
-        </Carousel>
-      </div>
-      <section className="text-white  bg-gray-900 body-font">
-        <div className="w-full  mx-auto ">
-          <div className="w-full bg-white md:pt-10 pt-4 text-center">
-            <div className='border-b border-black font-bold px-10 w-full  md:text-2xl text-black font-serif '>Our Speciality Products</div>
-
-            <Carousel className='py-4 scale-90  mx-4 md:scale-95 md:py-8 '
-              swipeable={false}
-              draggable={false}
-
-              responsive={responsive3}
-              ssr={true} // means to render carousel on server-side.
-              infinite={true}
-              autoPlay={true}
-              autoPlaySpeed={4000}
-              keyBoardControl={true}
-              transitionDuration={500}
-              containerClass="carousel-container"
-              removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
-              dotListClass="custom-dot-list-style"
-
-
-            >
-              <div className=' block mx-5'>
-                <img className='drop-shadow-lg hover:scale-105 hover:opacity-60' src='https://i.ibb.co/Fq4Bjpb/Group-156.png'></img>
-                <legend className=' text-center  md:px-10 text-black py-4 text-sm md:text-base font-light'>Sketch Art is proud to offer the largest
-                  collection of wooden venetian blinds in India.
-                  With more than 80 shades that are spread
-                  across 11 collections, our wooden venetian
-                  blinds in Mumbai promise to create a look
-                  that is uniquely yours. The wood collection
-                  includes slats in various materials like faux
-                  wood & basswood. This blind type is offered
-                  in ladder string and tape options which are
-                  available in more than 30 colors. For more
-                  information on wooden blinds, please
-                  contact Sketch Art office in Mumbai or
-                  explore our wooden blinds page online.</legend>
-                <span className=' border-b-2   border-black'>dfghjkldfghjkl;fghjkl;fghjfgha</span>
-              </div>
-              <div className=' block mx-5'>
-                <img className='drop-shadow-lg  hover:scale-105 hover:opacity-60' src="https://i.ibb.co/JzwQ74j/Group-157.png"></img>
-                <legend className=' text-center text-sm md:text-base  md:px-10 text-black py-4  font-light'>With a strong focus on style & functionality,
-                  these window blinds are one of the most
-                  popular window shadings product in India
-                  and the world. Roller blinds are not only a
-                  perfect choice for your commercial space but
-                  also for your bedroom and drawing-room.
-                  The roller blind fabric collections include
-                  translucent, blackout & light filtering and are
-                  available in extensive fabric options with a
-                  wide range of colors, qualities & designs.
-                  Do not miss out on exploring our motorised
-                  roller blinds for windows that are super easy
-                  operate</legend>
-                <span className=' border-b-2   border-black'>dfghjkldfghjkl;fghjkl;fghjfgha</span>
-              </div>
-              <div className=' block mx-5'>
-                <img className='drop-shadow-lg   hover:scale-105 hover:opacity-60' src='https://i.ibb.co/fMrnMNb/Group-158.png'></img>
-                <legend className='text-black text-center text-sm md:text-base  md:px-10 py-4  font-light'>Create a luxurious and captivating
-                  atmosphere with our aluminium venetian
-                  blinds. With more than 150 colour options
-                  spread across three collections, these blinds
-                  offer the maximum colour choice for your
-                  windows. With the largest window blinds
-                  online collection in India, Mac promises to be
-                  the inspiration for tomorrow is trends. These
-                  metal venetian blinds are offered in various
-                  slat width options of 25mm and 50mm, and
-                  promise to be an eye-catching window
-                  covering. As a leading venetian blinds
-                  manutacturer based in Delhi, you can count
-                  on us to offer you unique solutions.</legend>
-                <span className=' border-b-2   border-black'>dfghjkldfghjkl;fghjkl;fghjfgha</span>
-              </div>
-
-            </Carousel>
-
-            <div className='md:py-7  bg-yellow-100' ><div className='md:h-32 md:w-96 flex flex-col items-end px-10 py-1 justify-center relative md:-mb-96 -mb-32 float-right md:mt-24 mt-16 bg-gray-900 bg-opacity-80'>
-              <h1 style={{borderBottom:" 3px solid yellow"}} className='md:text-4xl  float-right border-b-2 font-semibold  font-sans'>BLINDS GALLERY</h1>
-              <h1 style={{color:"yellow"}} className='float-right'>INSPIRED BY SKETCH ART</h1>
-            </div>
-              <div className='md:h-96 w-full scrollbar-hide overflow-y-scroll'>
-                <img className=' ' src="https://i.ibb.co/RSBJK54/Home-page-Screen-1-1-image6.jpg"></img>
-
-              </div>
-            </div>
-          </div>
-
+      <div className='content'>
+      <div className=' bg-yellow-300 absolute top-24 w-full md:h-2/3  z-30'></div>
+        <div className='sticky top-0 ' >
+          <video style={{ filter: "contrast(150%)" }} className='' width="full" loop autoPlay muted>
+            <source src="/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
-      </section>
-      <div className='bg-gray-900'>
-        <div className="h-20 font-serif text-white text-center py-6 mb-10 border-white border-b md:text-2xl ">Shop like a local at home</div>
-        <Carousel className='bg-black  '
-          swipeable={false}
-          draggable={false}
-
-          responsive={responsive2}
-          ssr={true} // means to render carousel on server-side.
-          infinite={true}
-          autoPlay={true}
-          autoPlaySpeed={4000}
-          keyBoardControl={true}
-          transitionDuration={500}
-          containerClass="carousel-container"
-          removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
-          dotListClass="custom-dot-list-style"
-         
-
-        >
-
-          <div className=' rounded-xl  h-72 md:scale-100 scale-75 mt-4'>
-            <img className='rounded-xl hover:scale-110 h-full hover:opacity-60  ' src='https://i.ibb.co/Fq4Bjpb/Group-156.png'></img>
-
-          </div>
-          <div >
-            <div className='m-4 rounded-xl h-72 md:scale-100 scale-75 mt-4'>
-              <img className='rounded-xl hover:scale-110 h-full hover:opacity-60  ' src="https://i.ibb.co/fMrnMNb/Group-158.png"></img>
-
-            </div></div>
-          <div >
-            <div className='m-4 rounded-xl  h-72 md:scale-100 scale-75'>
-              <img className='rounded-xl hover:scale-110 h-full hover:opacity-60  ' src='https://i.ibb.co/smN0BVt/Group-147.png'></img>
-
-            </div></div>
-          <div >
-            <div className='m-4 rounded-xl  h-72 md:scale-100 scale-75'>
-              <img className='rounded-xl hover:scale-110 h-full hover:opacity-60  ' src="https://i.ibb.co/JzwQ74j/Group-157.png" />
-
-            </div></div>
-        </Carousel>
-        { sw ? <div><img className='md:p-10 p-2' src='https://i.ibb.co/QYky3cJ/Group-160.png'></img></div>:""}
       </div>
-      
+
+      <div style={{fontFamily:"'Montserrat', sans-serif"}} className='bg-black'>
+      <section className="text-white">
+  <div className="container mx-auto flex px-5 md:px-8 2xl:px-10 pt-36 md:pt-40  md:flex-row flex-col items-center">
+    <div className='overflow-hidden'>
+           <div className=" hover:transition-transform ease-in duration-500  hover:scale-125 md:max-w-xl 2xl:max-w-2xl w-full mb-10  md:mb-0">
+      <Slide left> <img  className="object-cover object-center" alt="hero" src="/1.jpg"/></Slide>
+    </div>
+    </div>
+    <div className="lg:flex-grow md:w-7/12 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left">
+     <Slide bottom> <h1 style={{ fontFamily: "'Lato', sans-serif"}} className=" md:text-6xl 2xl:text-7xl text-3xl mb-4 md:mb-6 2xl:mb-10  font- ">Before they sold out
+        <br className="hidden lg:inline-block"/>readymade gluten
+      </h1></Slide>
+      <Slide bottom><p className="mb-8 md:text-base text-sm 2xl:text-lg ">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
+      <div className="flex items-start">
+        <button className="inline-flex text-black bg-gray-100 font-semibold  border-0 py-2 px-6 focus:outline-none hover:bg-gray-400  text-lg">Learn More</button>
+      </div>
+      </Slide>
+    </div>
+  </div>
+</section>
+<section className="text-white">
+  <div className="container mx-auto flex px-5 md:px-8 2xl:px-10 pt-8 md:py-24 md:flex-row flex-col-reverse items-center">
+    <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16   flex flex-col md:items-start md:text-left mb-16 md:mb-0 ">
+    <Slide bottom> <h1 style={{ fontFamily: "'Lato', sans-serif"}} className=" md:text-6xl 2xl:text-7xl text-3xl mb-4 md:mb-6 2xl:mb-10  font- ">Before they sold out
+        <br className="hidden lg:inline-block"/>readymade gluten
+      </h1></Slide>
+      <Slide bottom><p  className="mb-8   md:text-base text-sm 2xl:text-lg ">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
+      <div className="flex justify-start">
+        <button className=" inline-flex text-black bg-gray-100 font-semibold border-0 py-2 px-6 focus:outline-none hover:bg-white text-lg">Learn More</button>
+      </div>
+      </Slide>
+    </div>
+    <div className="overflow-hidden">
+    <div className="hover:transition-transform ease-in duration-500  hover:scale-125 flex justify-end mb-10 md:mb-0  md:max-w-xl 2xl:max-w-2xl w-full">
+     <Slide right> <img className="object-cover object-center" alt="hero" src="/2.jpg"/></Slide>
+    </div>
+    </div>
+  </div>
+</section>
+      </div>
+
+
     </div>
   )
 }

@@ -6,7 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingBar from 'react-top-loading-bar'
 import Navbar from '../components/Navbar';
-
  
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});

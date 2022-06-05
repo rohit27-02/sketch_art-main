@@ -24,7 +24,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <div><footer style={{ backgroundColor: "yellow" }} className="">
+    <div><footer className="bg-yellow-300">
       <div className=' border-b border-black text-center w-full'><a href='#' className='cursor-pointer ease-in-out hover:font-semibold'>Back to top</a></div>
       <div className="container  py-4 mx-auto flex items-center  md:flex-row   flex-col">
         <div className="w-80 flex flex-col justify-center items-center mx-auto flex-wrap   md:text-left">

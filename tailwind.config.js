@@ -10,11 +10,15 @@ module.exports = {
       textUnderlineOffset: {
         8: '20px',
       },
+      lineHeight: {
+        'extra-loose': '2.5',
+        '12': '4rem',
+      },
       keyframes: {
         'fade-in-down': {
             '0%': {
                 opacity: '0',
-                transform: 'translateY(-20px)'
+                transform: 'translateY(10px)'
             },
             '100%': {
                 opacity: '1',
@@ -23,7 +27,7 @@ module.exports = {
         }
     },
     animation: {
-        'fade-in-down': 'fade-in-down 1.5s ease-out'
+        'fade-in-down': 'fade-in-down 1s ease-in-out'
     }
     },
   },
