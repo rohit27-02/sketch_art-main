@@ -5,15 +5,14 @@
 import Head from 'next/head'
 import "react-multi-carousel/lib/styles.css";
 import { useState,useEffect } from 'react';
-import Zoom from 'react-reveal/Zoom';
-import { Bounce, Slide } from 'react-reveal';
-import VisibilitySensor from 'react-visibility-sensor';
+import { Bounce, Fade, Slide } from 'react-reveal';
 import {FaFacebookF,FaTwitter,FaInstagram} from "react-icons/fa"
+import Pulse from 'react-reveal/Pulse';
+import RubberBand from 'react-reveal/RubberBand';
 import {BsPinterest} from "react-icons/bs"
 import {VscGear} from "react-icons/vsc"
 import {VscTools} from "react-icons/vsc"
 import {MdLocalParking} from "react-icons/md"
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 
@@ -33,15 +32,15 @@ export default function Home() {
       </Head>
 
       <div className='-my-24 '>
-        <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5}} className='absolute my-52  w-full text-white mx-10 text-7xl drop-shadow-2xl'>A Bright Window is<br></br> a Right Window.</h1>
-        <img style={{height:"100vh"}} src="/main.png" alt="" />
+       <Fade bottom> <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5,textShadow:"1px 1px black"}} className='absolute my-52 z-20 w-full text-white mx-10 text-7xl drop-shadow-2xl'>A Bright Window is<br></br> a Right Window.</h1></Fade>
+        <Pulse><img style={{height:"100vh"}} src="/main.png" alt="" /></Pulse>
       </div>
 
       <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=''>
       <section className="text-white">
   <div className="container mx-auto flex px-5 md:px-8 2xl:px-10 pt-36 md:pt-40  md:flex-row flex-col items-center">
     <div className='overflow-hidden'>
-           <div className=" hover:transition-transform ease-in duration-500  hover:scale-125 md:max-w-xl 2xl:max-w-2xl w-full mb-10  md:mb-0">
+           <div  className=" hover:transition-transform ease-in duration-500  hover:scale-125 md:max-w-xl 2xl:max-w-2xl w-full mb-10  md:mb-0">
       <Slide left> <img  className="object-cover object-center" alt="hero" src="/1.jpg"/></Slide>
     </div>
     </div>
@@ -78,25 +77,26 @@ export default function Home() {
 </section>
       </div>
 
-      <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#ebeaeb",minHeight:100,height:"50vh"}} className='w-full flex  justify-center '>
-        <div  className='flex flex-col items-start my-auto space-y-8' >
-          <h1 style={{ fontFamily: "'Lato', sans-serif"}} className='md:text-xl text-gray-800 2xl:text-3xl'>BENEFITS OF BEING ASSOCIATED WITH SKETCH ART</h1>
-          <div className='flex md:text-sm 2xl:text-lg font-semibold text-gray-600 '><VscGear className='md:text-3xl md:mr-8 2xl:mr-10 2xl:text-4xl'/>Access to the best automation solutions for solar protection <br></br>and tertiary access.</div>
-          <div className='flex md:text-sm 2xl:text-lg font-semibold text-gray-600 '><MdLocalParking className='md:text-3xl md:mr-8 2xl:mr-10 2xl:text-4xl'/>Advice on motor and controller choice.Product training and <br></br>installion training support electrial requirements.</div>
-          <div className='flex md:text-sm 2xl:text-lg font-semibold text-gray-600 '><VscTools className='md:text-3xl md:mr-8 2xl:mr-10 2xl:text-4xl'/>On site engineering support, Marketing support, <br></br>Troubleshooting And After sales services.</div>
-         
+      <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#ebeaeb",minHeight:100,height:"50vh"}} className='w-full justify-center  flex '>
+        <div  className='flex flex-col  my-auto text-center space-y-16 w-full' >
+          <h1 style={{ fontFamily: "'Lato', sans-serif"}} className='md:text-2xl text-gray-800 2xl:text-3xl'>BENEFITS OF BEING ASSOCIATED WITH SKETCH ART</h1>
+          <div className='flex '>
+         <div className='flex md:text-sm 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2  border-r-2 border-gray-500 '><RubberBand><VscGear className='md:text-6xl md:mx-4 2xl:mx-6 mb-5 2xl:text-5xl'/></RubberBand>Access to the best automation solutions for solar protection and tertiary access.</div>
+          <div className='flex md:text-sm 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2  border-r-2 border-gray-500 '><RubberBand><MdLocalParking className='md:text-6xl md:mx-4  2xl:mx-6 mb-5 2xl:text-5xl'/></RubberBand>Advice on motor and controller choice.Product training and installion training support electrial requirements.</div>
+          <div className='flex md:text-sm 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2   '><RubberBand><VscTools className='md:text-6xl md:mx-4  2xl:mx-6 mb-5 2xl:text-5xl'/></RubberBand>On site engineering support, Marketing support, Troubleshooting And After sales services.</div>
+          </div>
         </div>
       </div>
 
       <div style={{height:"61vh"}} className='bg-white w-full flex justify-center items-center '>
-        <div className='space-y-10 text-center text-lg'>
+        <Pulse><div className='space-y-10 text-center text-lg'>
           <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5}} className="2xl:text-6xl md:text-5xl text-center ">"If a window of oppourtunity appears,<br></br> don't pull down the shade."</h1>
           <p>—Tom Peters</p>
-        </div>
+        </div></Pulse>
       </div>
 
       <div style={{height:"102vh"}} className='w-full overflow-hidden '>
-        <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5}} className='absolute my-10  w-full text-center text-white text-5xl'>The difference between style <br></br>and fashion is quality</h1>
+        <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5,textShadow:"1px 1px black"}} className='absolute my-10  w-full text-center text-white text-5xl'>The difference between style <br></br>and fashion is quality.</h1>
         <img className='w-full' src='/contact.png'></img>
 
       </div>

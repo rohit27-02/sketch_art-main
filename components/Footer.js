@@ -36,8 +36,8 @@ const Footer = () => {
      <div style={{fontFamily: "'Poppins', sans-serif"}} className='grid md:grid-flow-col 2xl:py-10 2xl:px-24 md:py-8 md:px-20 px-7  w-full h-full'>
        <div className='col-span-11  flex justify-evenly flex-col '>
          <p>SKETCH ART BY DEVELOPER INFOTECH</p>
-         <h1 style={{fontWeight:'bolder',fontSize:"2em"}} className=''>You belong here. ♡</h1>
-         <p>MADE WITH LOVE</p>
+         <h1 style={{fontWeight:'bolder',fontSize:"2em"}} className=''>You belong here. </h1>
+         <p>MADE WITH LOVE <span className='font-bold text-xl ml-2'>♡</span></p>
        </div>
        <div className='col-span-1 flex flex-col py-6 space-y-4'>
          <div className='underline underline-offset-4'>YOU</div>
