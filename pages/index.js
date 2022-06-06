@@ -7,6 +7,8 @@ import { useState,useEffect } from 'react';
 import Zoom from 'react-reveal/Zoom';
 import { Bounce, Slide } from 'react-reveal';
 import VisibilitySensor from 'react-visibility-sensor';
+import {FaFacebookF,FaTwitter,FaInstagram} from "react-icons/fa"
+import {BsPinterest} from "react-icons/bs"
 export default function Home() {
   const [sw, setsw] = useState(false);
   
@@ -22,17 +24,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='content'>
-      <div className=' bg-yellow-300 absolute top-24 w-full md:h-2/3  z-30'></div>
-        <div className='sticky top-0 ' >
-          <video style={{ filter: "contrast(150%)" }} className='' width="full" loop autoPlay muted>
-            <source src="/video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+      <div className='-my-24'>
+        <img src="/main.png" alt="" />
       </div>
 
-      <div style={{fontFamily:"'Montserrat', sans-serif"}} className='bg-black'>
+      <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=''>
       <section className="text-white">
   <div className="container mx-auto flex px-5 md:px-8 2xl:px-10 pt-36 md:pt-40  md:flex-row flex-col items-center">
     <div className='overflow-hidden'>
@@ -46,7 +42,7 @@ export default function Home() {
       </h1></Slide>
       <Slide bottom><p className="mb-8 md:text-base text-sm 2xl:text-lg ">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
       <div className="flex items-start">
-        <button className="inline-flex text-black bg-gray-100 font-semibold  border-0 py-2 px-6 focus:outline-none hover:bg-gray-400  text-lg">Learn More</button>
+        <button style={{color:"#bfb1c4"}}  className="inline-flex  bg-gray-100 font-semibold  border-0 py-2 px-6 focus:outline-none hover:opacity-90  text-lg">Learn More</button>
       </div>
       </Slide>
     </div>
@@ -60,7 +56,7 @@ export default function Home() {
       </h1></Slide>
       <Slide bottom><p  className="mb-8   md:text-base text-sm 2xl:text-lg ">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
       <div className="flex justify-start">
-        <button className=" inline-flex text-black bg-gray-100 font-semibold border-0 py-2 px-6 focus:outline-none hover:bg-white text-lg">Learn More</button>
+        <button  style={{color:"#bfb1c4"}} className=" inline-flex  bg-gray-100 font-semibold border-0 py-2 px-6 focus:outline-none hover:bopacity-90t-lg">Learn More</button>
       </div>
       </Slide>
     </div>
@@ -73,6 +69,30 @@ export default function Home() {
 </section>
       </div>
 
+      <div style={{backgroundColor:"#ebeaeb",minHeight:100,height:"41vh"}} className='w-full '>
+        <div className='flex'>
+        </div>
+      </div>
+
+      <div style={{height:"61vh"}} className='bg-white w-full '></div>
+
+      <div style={{height:"102vh"}} className='w-full bg-black'></div>
+
+      <div style={{backgroundColor:"#bfb1c4",height:"56vh"}} className="w-full grid grid-flow-col">
+        <div className='col-span-4'>
+          <h1>CONNECT WITH US</h1>
+          <FaFacebookF/>
+          <FaTwitter/>
+          <BsPinterest/>
+          <FaInstagram/>
+        </div>
+        <div className='col-span-8'>
+          <h1>Contact Us</h1>
+          <p>Sign up with your email to contact us</p>
+          <form></form>
+          <p>We respect your privacy</p>
+        </div>
+      </div>
 
     </div>
   )

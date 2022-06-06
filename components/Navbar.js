@@ -108,7 +108,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                     Object.keys(data).map((p) => {
                         return (
                             <div key={p} className=" group flex ">
-                                <a id={data[p]} onClick={function (e) { getData(e); setlistd(!listd) }} className=' px-4 py-2 hover:bg-yellow-400 hover:text-black  font-thin ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}</a>
+                                <a id={data[p]} onClick={function (e) { getData(e); setlistd(!listd) }} className=' px-4 py-2 hover:bg-yellow-400 hover:text-white  font-thin ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}</a>
                             </div>
                         )
 
@@ -128,7 +128,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                 {admin == "true" && <a className=' text-center font-bold' href={"/adminpanel"}><li className='px-2 account'>Admin Panel</li></a>}
             </ul>
         </div>}
-        <div ref={ref} className="sidebar scrollbar-hide opacity-95 text-lg md:text-xl 2xl:text-2xl  fixed right-0 top-0 bg-gray-800 flex  items-center flex-col p-10 2xl:w-96 transform transition-transform delay-300 ease-in-out  translate-x-full z-50 text-white shadow-xl overflow-y-scroll h-full">
+        <div ref={ref} style={{backgroundColor:"#bfb1c4"}} className="sidebar scrollbar-hide opacity-95 text-lg md:text-xl 2xl:text-2xl  fixed right-0 top-0 flex  items-center flex-col p-10 2xl:w-96 transform transition-transform delay-300 ease-in-out  translate-x-full z-50 text-white shadow-xl overflow-y-scroll h-full">
             <h2 className='font-bold text-xl  lg:text-3xl'>Shopping Cart</h2>
             <AiOutlineClose onClick={toggleCart} className='hover:text-yellow-300  cart fixed top-4 left-4 cursor-pointer  text-white' />
             <div onChange={toggleCart}>
@@ -153,39 +153,39 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
 
         {/**main nav**/}
-        <nav id='nav' className=" z-40 sticky bg-yellow-300">
+        <nav id='nav' className=" z-40 sticky ">
             <div className=" px-4">
                 <div className="flex justify-between">
                     <div className="flex space-x-7">
                         <div>
 
                             <a href="#" className="flex items-center py-4 ">
-                                <img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16   w-auto mr-2" />
+                                <img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 invert  w-auto mr-2" />
                             </a>
                         </div>
 
                         <div className="hidden md:flex items-center  2xl:text-2xl text-xl space-x-1">
-                            <a href="/" className="py-4 px-2  font-semibold  hover:font-bold  hover:border-b-4 border-white">Home</a>
-                            <a onClick={toggleproducts} className="py-4 cursor-pointer px-2   font-semibold  hover:font-bold transition duration-300 hover:border-b-4 border-white">Products</a>
-                            <a href="/about" className="py-4 px-2   font-semibold  hover:font-bold transition duration-300 hover:border-b-4 border-white">About</a>
-                            <a href="/contact" className="py-4 px-2   font-semibold  hover:font-bold transition duration-300 hover:border-b-4 border-white">Contact Us</a>
+                            <a href="/" className="py-4 px-2 text-white  font-semibold  hover:font-bold  hover:border-b-4 border-white">Home</a>
+                            <a onClick={toggleproducts} className="py-4 cursor-pointer px-2 text-white   font-semibold  hover:font-bold transition duration-300 hover:border-b-4 border-white">Products</a>
+                            <a href="/about" className="py-4 px-2 text-white   font-semibold  hover:font-bold transition duration-300 hover:border-b-4 border-white">About</a>
+                            <a href="/contact" className="py-4 px-2 text-white   font-semibold  hover:font-bold transition duration-300 hover:border-b-4 border-white">Contact Us</a>
                         </div>
                     </div>
 
                     <div className="hidden md:flex items-center space-x-6 ">
-                        {!user.value && <a href="/Login" className=" font-bold text-xl 2x:text-2xl text-black px-4 py-2 hover:bg-yellow-300 hover:text-white transition duration-300">Log In</a>}
-                        {user.value && <MdAccountCircle className=" font-medium text-black hover:text-white cursor-pointer transition duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
-                        <HiShoppingCart onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart  cursor-pointer  text-black md:text-3xl 2xl:text-4xl ' />
+                        {!user.value && <a href="/Login" className=" font-bold text-xl 2x:text-2xl text-white px-4 py-2 hover:bg-yellow-300 hover:text-white transition duration-300">Log In</a>}
+                        {user.value && <MdAccountCircle className=" font-medium text-white hover:text-white cursor-pointer transition duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
+                        <HiShoppingCart onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart  cursor-pointer  text-white md:text-3xl 2xl:text-4xl ' />
                     </div>
 
                     <div className="md:hidden flex space-x-5 items-center">
 
-                        {!user.value && <a href="/Login" className=" text-black transition duration-300">Log In</a>}
-                        {user.value && <MdAccountCircle className="  text-black text-xl  cursor-pointer transition duration-300 " onClick={() => setdropDown(!dropDown)} />}
-                        <HiShoppingCart onMouseOver={toggleCart} onMouseEnter={() => setdropDown(false)} className='  cart  cursor-pointer text-xl text-black  ' />
+                        {!user.value && <a href="/Login" className=" text-white transition duration-300">Log In</a>}
+                        {user.value && <MdAccountCircle className="  text-white text-xl  cursor-pointer transition duration-300 " onClick={() => setdropDown(!dropDown)} />}
+                        <HiShoppingCart onMouseOver={toggleCart} onMouseEnter={() => setdropDown(false)} className='  cart  cursor-pointer text-xl text-white  ' />
 
                         <button onClick={(e) => bar(e)} className="outline-none  mobile-menu-button">
-                            <svg className=" w-5 h-5 hover:text-black text-black "
+                            <svg className=" w-5 h-5 hover:text-white text-white "
                                 x-show="!showMenu"
                                 fill="none"
                                 strokeLinecap="round"
