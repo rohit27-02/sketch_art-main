@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
@@ -9,6 +10,13 @@ import { Bounce, Slide } from 'react-reveal';
 import VisibilitySensor from 'react-visibility-sensor';
 import {FaFacebookF,FaTwitter,FaInstagram} from "react-icons/fa"
 import {BsPinterest} from "react-icons/bs"
+import {VscGear} from "react-icons/vsc"
+import {VscTools} from "react-icons/vsc"
+import {MdLocalParking} from "react-icons/md"
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
+
 export default function Home() {
   const [sw, setsw] = useState(false);
   
@@ -18,14 +26,14 @@ export default function Home() {
       <Head>
       <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@300&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@300&family=Poppins:wght@500&display=swap" rel="stylesheet"/>
         <title>Sketch Art</title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='-my-24'>
-        <img src="/main.png" alt="" />
+      <div className='-my-24 '>
+        <img src="/main.jpg" alt="" />
       </div>
 
       <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=''>
@@ -69,23 +77,37 @@ export default function Home() {
 </section>
       </div>
 
-      <div style={{backgroundColor:"#ebeaeb",minHeight:100,height:"41vh"}} className='w-full '>
-        <div className='flex'>
+      <div style={{backgroundColor:"#ebeaeb",minHeight:100,height:"41vh"}} className='w-full flex justify-center '>
+        <div className='flex flex-col' >
+          <h1>BENEFITS OF BEING ASSOCIATED WITH SKETCH ART</h1>
+          <div className='flex'><VscGear/>Access to the best automation solutions for solar protection and tertiary access.</div>
+          <div className='flex'><MdLocalParking/>Advice on motor and controller choice.Product training and installion training support electrial requirements.</div>
+          <div className='flex'><VscTools/>On site engineering support, Marketing support, Troubleshooting And After sales services.</div>
+         
         </div>
       </div>
 
-      <div style={{height:"61vh"}} className='bg-white w-full '></div>
+      <div style={{height:"61vh"}} className='bg-white w-full flex justify-center items-center '>
+        <div className='space-y-10 text-center text-lg'>
+          <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5}} className="2xl:text-5xl text-center ">"If a window of oppourtunity appears,<br></br> don't pull down the shade."</h1>
+          <p>—Tom Peters</p>
+        </div>
+      </div>
 
-      <div style={{height:"102vh"}} className='w-full bg-black'></div>
+      <div style={{height:"102vh"}} className='w-full overflow-hidden '>
+        <img className='w-full' src='/contact.png'></img>
+
+      </div>
 
       <div style={{backgroundColor:"#bfb1c4",height:"56vh"}} className="w-full grid grid-flow-col">
-        <div className='col-span-4'>
-          <h1>CONNECT WITH US</h1>
-          <FaFacebookF/>
-          <FaTwitter/>
-          <BsPinterest/>
-          <FaInstagram/>
+        <div className='col-span-4 flex justify-center items-center'>
+         <div className='flex flex-col text-center justify-center items-center border-r-2 space-y-10 '>
+          <h1 style={{fontFamily:"'Montserrat', sans-serif"}} className='font-semibold 2xl:text-2xl px-10'>CONNECT  WITH  US</h1>
+          <div className='font-thin flex w-full justify-around'><div className=' w-1/2 flex flex-col justify-center items-center'><FaFacebookF className='text-2xl'/>Facebook</div><div className='w-1/2 flex flex-col justify-center items-center'><FaTwitter className='text-2xl'/>Twitter</div></div>
+          <div className='font-thin flex w-full justify-around'><div className=' w-1/2 flex flex-col justify-center items-center'><BsPinterest className='text-2xl'/>Pinterest</div><div className='w-1/2 flex flex-col justify-center items-center'><FaInstagram className='text-2xl'/>Instagram</div></div>
         </div>
+          </div>
+       
         <div className='col-span-8'>
           <h1>Contact Us</h1>
           <p>Sign up with your email to contact us</p>
