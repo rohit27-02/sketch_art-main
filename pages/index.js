@@ -33,7 +33,8 @@ export default function Home() {
       </Head>
 
       <div className='-my-24 '>
-        <img src="/main.jpg" alt="" />
+        <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5}} className='absolute my-52  w-full text-white mx-10 text-7xl drop-shadow-2xl'>A Bright Window is<br></br> a Right Window.</h1>
+        <img style={{height:"100vh"}} src="/main.png" alt="" />
       </div>
 
       <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=''>
@@ -77,24 +78,25 @@ export default function Home() {
 </section>
       </div>
 
-      <div style={{backgroundColor:"#ebeaeb",minHeight:100,height:"41vh"}} className='w-full flex justify-center '>
-        <div className='flex flex-col' >
-          <h1>BENEFITS OF BEING ASSOCIATED WITH SKETCH ART</h1>
-          <div className='flex'><VscGear/>Access to the best automation solutions for solar protection and tertiary access.</div>
-          <div className='flex'><MdLocalParking/>Advice on motor and controller choice.Product training and installion training support electrial requirements.</div>
-          <div className='flex'><VscTools/>On site engineering support, Marketing support, Troubleshooting And After sales services.</div>
+      <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#ebeaeb",minHeight:100,height:"50vh"}} className='w-full flex  justify-center '>
+        <div  className='flex flex-col items-start my-auto space-y-8' >
+          <h1 style={{ fontFamily: "'Lato', sans-serif"}} className='md:text-xl text-gray-800 2xl:text-3xl'>BENEFITS OF BEING ASSOCIATED WITH SKETCH ART</h1>
+          <div className='flex md:text-sm 2xl:text-lg font-semibold text-gray-600 '><VscGear className='md:text-3xl md:mr-8 2xl:mr-10 2xl:text-4xl'/>Access to the best automation solutions for solar protection <br></br>and tertiary access.</div>
+          <div className='flex md:text-sm 2xl:text-lg font-semibold text-gray-600 '><MdLocalParking className='md:text-3xl md:mr-8 2xl:mr-10 2xl:text-4xl'/>Advice on motor and controller choice.Product training and <br></br>installion training support electrial requirements.</div>
+          <div className='flex md:text-sm 2xl:text-lg font-semibold text-gray-600 '><VscTools className='md:text-3xl md:mr-8 2xl:mr-10 2xl:text-4xl'/>On site engineering support, Marketing support, <br></br>Troubleshooting And After sales services.</div>
          
         </div>
       </div>
 
       <div style={{height:"61vh"}} className='bg-white w-full flex justify-center items-center '>
         <div className='space-y-10 text-center text-lg'>
-          <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5}} className="2xl:text-5xl text-center ">"If a window of oppourtunity appears,<br></br> don't pull down the shade."</h1>
+          <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5}} className="2xl:text-6xl md:text-5xl text-center ">"If a window of oppourtunity appears,<br></br> don't pull down the shade."</h1>
           <p>—Tom Peters</p>
         </div>
       </div>
 
       <div style={{height:"102vh"}} className='w-full overflow-hidden '>
+        <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5}} className='absolute my-10  w-full text-center text-white text-5xl'>The difference between style <br></br>and fashion is quality</h1>
         <img className='w-full' src='/contact.png'></img>
 
       </div>
@@ -108,10 +110,24 @@ export default function Home() {
         </div>
           </div>
        
-        <div className='col-span-8'>
-          <h1>Contact Us</h1>
+        <div style={{fontFamily:"'Montserrat', sans-serif"}} className='col-span-8 flex justify-center items-center space-y-5 flex-col text-white md:text-sm 2xl:text-base'>
+          <h1 className='md:text-2xl 2xl:text-3xl font-bold'>Contact Us</h1>
           <p>Sign up with your email to contact us</p>
-          <form></form>
+          <section className="text-gray-600 body-font relative">
+  <div className="container px-5  mx-auto flex ">
+    <div className=" bg-white rounded-lg p-8 flex flex-row items-center space-x-5 md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
+      <div className="relative mb-4">
+        <label htmlFor="Full Name" className="leading-7 text-sm text-gray-600">Full Name</label>
+        <input id="Full Name" name="Full Name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200  text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></input>
+      </div>
+      <div className="relative mb-4">
+        <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
+        <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+      </div>
+      <button className="text-white bg-black border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 rounded text-lg">Send</button>
+    </div>
+  </div>
+</section>
           <p>We respect your privacy</p>
         </div>
       </div>
