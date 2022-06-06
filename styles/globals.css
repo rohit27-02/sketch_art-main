@@ -60,7 +60,5 @@ background-color: yellow;
 }
 
 @media(min-width:768px){
-    .content{
-        height:167vh;
-    }
+  
 }
