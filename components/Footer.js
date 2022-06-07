@@ -35,7 +35,7 @@ const Footer = () => {
 </Head>
 
    <div style={{height:"40vh"}} className="w-full bg-white">
-     <div style={{fontFamily: "'Poppins', sans-serif"}} className='grid md:grid-flow-col 2xl:py-10 2xl:px-24 md:py-8 md:px-20 px-7  w-full h-full'>
+     <div style={{fontFamily: "'Poppins', sans-serif"}} className='grid md:grid-flow-col py-6 2xl:py-10 2xl:px-24 md:py-8 md:px-20 px-7  w-full h-full'>
        <div className='col-span-11  flex justify-evenly flex-col '>
          <p>SKETCH ART BY DEVELOPER INFOTECH</p>
          <h1 style={{fontWeight:'bolder',fontSize:"2em"}} className=''>You belong here. </h1>

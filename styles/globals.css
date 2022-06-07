@@ -72,11 +72,8 @@ min-width: 12%;
     line-height:32px ;
 }
 
-@media(min-width:768px){
+@media(max-width:768px){
   .content{
-      height:100vh;
+      min-height:550px;
   }
-}
-.content{
-    height:auto;
 }

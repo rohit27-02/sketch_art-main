@@ -126,7 +126,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
 
         </div>
-        {dropDown && <div onMouseLeave={() => setdropDown(false)} className='absolute animate-fade-in-down right-16 md:right-2 2xl:text-2xl md:text-xl bg-white shadow-black shadow-md text-center z-50 top-16  text-sm md:px-4 py-3  md:acctext '>
+        {dropDown && <div onMouseLeave={() => setdropDown(false)} className='absolute animate-fade-in-down right-14 md:right-2 2xl:text-2xl md:text-xl bg-white shadow-black shadow-md text-center z-50 top-16 px-5  text-lg md:px-4 py-3  md:acctext '>
             <ul>
                 <a className='  font-bold' href={"/myaccount"}><li className='px-2 account'>Account</li></a>
                 <a className='  font-bold' href={'/orders'}><li className='px-2 account'>Orders</li></a>
