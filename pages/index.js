@@ -31,9 +31,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='-my-24 '>
-       <Fade bottom> <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5,textShadow:"1px 1px black"}} className='absolute my-52 z-20 w-full text-white mx-10 text-7xl drop-shadow-2xl'>A Bright Window is<br></br> a Right Window.</h1></Fade>
-        <Pulse><img style={{height:"100vh"}} src="/main.png" alt="" /></Pulse>
+      <div className='-my-24 overflow-hidden bg-black w-full'>
+       <Fade bottom> <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5,textShadow:"0.5px 0.5px black"}} className='absolute 2xl:my-64 md:my-52 my-44 text-6xl z-20 w-full text-white mx-10 2xl:text-8xl md:text-7xl drop-shadow-2xl'>A Bright Window is<br></br> a Right Window.</h1></Fade>
+        <Pulse><img style={{height:"100vh"}} className=" object-cover object-left content" src="/main.png" alt="" /></Pulse>
       </div>
 
       <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=''>
@@ -78,53 +78,53 @@ export default function Home() {
       </div>
 
       <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#ebeaeb",minHeight:100,height:"50vh"}} className='w-full justify-center  flex '>
-        <div  className='flex flex-col  my-auto text-center space-y-16 w-full' >
+        <div  className='flex flex-col  my-auto text-center space-y-8 md:space-y-16 w-full' >
           <h1 style={{ fontFamily: "'Lato', sans-serif"}} className='md:text-2xl text-gray-800 2xl:text-3xl'>BENEFITS OF BEING ASSOCIATED WITH SKETCH ART</h1>
-          <div className='flex '>
-         <div className='flex md:text-sm 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2  border-r-2 border-gray-500 '><RubberBand><VscGear className='md:text-6xl md:mx-4 2xl:mx-6 mb-5 2xl:text-5xl'/></RubberBand>Access to the best automation solutions for solar protection and tertiary access.</div>
-          <div className='flex md:text-sm 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2  border-r-2 border-gray-500 '><RubberBand><MdLocalParking className='md:text-6xl md:mx-4  2xl:mx-6 mb-5 2xl:text-5xl'/></RubberBand>Advice on motor and controller choice.Product training and installion training support electrial requirements.</div>
-          <div className='flex md:text-sm 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2   '><RubberBand><VscTools className='md:text-6xl md:mx-4  2xl:mx-6 mb-5 2xl:text-5xl'/></RubberBand>On site engineering support, Marketing support, Troubleshooting And After sales services.</div>
+          <div className='flex flex-col md:flex-row'>
+         <div className='flex md:text-sm text-xs 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2  border-r-2 border-gray-500 '><RubberBand><VscGear className='md:text-6xl md:mx-4 2xl:mx-6 mb-5 2xl:text-7xl text-3xl'/></RubberBand>Access to the best automation solutions for solar protection and tertiary access.</div>
+          <div className='flex md:text-sm text-xs 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2  border-r-2 border-gray-500 '><RubberBand><MdLocalParking className='md:text-6xl md:mx-4  2xl:mx-6 mb-5 2xl:text-7xl text-3xl'/></RubberBand>Advice on motor and controller choice.Product training and installion training support electrial requirements.</div>
+          <div className='flex md:text-sm text-xs 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2   '><RubberBand><VscTools className='md:text-6xl md:mx-4  2xl:mx-6 mb-5 2xl:text-7xl text-3xl'/></RubberBand>On site engineering support, Marketing support, Troubleshooting And After sales services.</div>
           </div>
         </div>
       </div>
 
       <div style={{height:"61vh"}} className='bg-white w-full flex justify-center items-center '>
         <Pulse><div className='space-y-10 text-center text-lg'>
-          <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5}} className="2xl:text-6xl md:text-5xl text-center ">"If a window of oppourtunity appears,<br></br> don't pull down the shade."</h1>
+          <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5}} className="2xl:text-6xl md:text-5xl text-4xl text-center ">"If a window of oppourtunity appears,<br></br> don't pull down the shade."</h1>
           <p>—Tom Peters</p>
         </div></Pulse>
       </div>
 
-      <div style={{height:"102vh"}} className='w-full overflow-hidden '>
-        <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5,textShadow:"1px 1px black"}} className='absolute my-10  w-full text-center text-white text-5xl'>The difference between style <br></br>and fashion is quality.</h1>
-        <img className='w-full' src='/contact.png'></img>
+      <Slide bottom><div  className='w-full content overflow-hidden '>
+        <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5,textShadow:"0.5px 0.5px black"}} className='absolute my-10 z-20  w-full text-center text-white text-5xl md:text-6xl 2xl:text-7xl'>The difference between style <br></br>and fashion is quality.</h1>
+        <img style={{height:"102vh"}} className='w-full object-cover' src='/contact.png'></img>
 
-      </div>
+      </div></Slide>
 
-      <div style={{backgroundColor:"#bfb1c4",height:"56vh"}} className="w-full grid grid-flow-col">
-        <div className='col-span-4 flex justify-center items-center'>
-         <div className='flex flex-col text-center justify-center items-center border-r-2 space-y-10 '>
+      <div style={{backgroundColor:"#bfb1c4",height:"56vh"}} className="w-full grid  md:grid-flow-col">
+        <div className='md:col-span-4 flex justify-center  items-center'>
+         <div className='flex flex-col text-center border-b-2 pb-3 md:pb-0 md:border-none justify-center items-center md:border-r-2 space-y-6 md:space-y-10 '>
           <h1 style={{fontFamily:"'Montserrat', sans-serif"}} className='font-semibold 2xl:text-2xl px-10'>CONNECT  WITH  US</h1>
-          <div className='font-thin flex w-full justify-around'><div className=' w-1/2 flex flex-col justify-center items-center'><FaFacebookF className='text-2xl'/>Facebook</div><div className='w-1/2 flex flex-col justify-center items-center'><FaTwitter className='text-2xl'/>Twitter</div></div>
-          <div className='font-thin flex w-full justify-around'><div className=' w-1/2 flex flex-col justify-center items-center'><BsPinterest className='text-2xl'/>Pinterest</div><div className='w-1/2 flex flex-col justify-center items-center'><FaInstagram className='text-2xl'/>Instagram</div></div>
+          <div className='font-thin flex w-full justify-around'><div className=' w-1/2 flex flex-col justify-center items-center '><FaFacebookF className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer'/>Facebook</div><div className='w-1/2 flex flex-col justify-center items-center '><FaTwitter className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer'/>Twitter</div></div>
+          <div className='font-thin flex w-full justify-around '><div className=' w-1/2 flex flex-col justify-center items-center '><BsPinterest className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer'/>Pinterest</div><div className='w-1/2 flex flex-col justify-center items-center '><FaInstagram className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer'/>Instagram</div></div>
         </div>
           </div>
        
-        <div style={{fontFamily:"'Montserrat', sans-serif"}} className='col-span-8 flex justify-center items-center space-y-5 flex-col text-white md:text-sm 2xl:text-base'>
-          <h1 className='md:text-2xl 2xl:text-3xl font-bold'>Contact Us</h1>
+        <div style={{fontFamily:"'Montserrat', sans-serif"}} className='md:col-span-8 flex justify-center items-center md:space-y-5 space-y-2 flex-col text-white text-xs md:text-sm 2xl:text-base'>
+          <h1 className='md:text-2xl 2xl:text-3xl text-xl font-bold'>Contact Us</h1>
           <p>Sign up with your email to contact us</p>
           <section className="text-gray-600 body-font relative">
   <div className="container px-5  mx-auto flex ">
-    <div className=" bg-white rounded-lg p-8 flex flex-row items-center space-x-5 md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
+    <div className=" md:bg-white rounded-lg md:p-8 flex flex-col md:flex-row  items-center md:space-x-5 md:ml-auto w-full relative z-10 md:shadow-md">
       <div className="relative mb-4">
-        <label htmlFor="Full Name" className="leading-7 text-sm text-gray-600">Full Name</label>
-        <input id="Full Name" name="Full Name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200  text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></input>
+        <label htmlFor="Full Name" className="leading-7 text-sm text-gray-600">Name</label>
+        <input id="Full Name" name="Full Name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-sm md:text-base outline-none text-gray-700 py-1 px-3 md:leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <div className="relative mb-4">
         <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-        <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-sm md:text-base outline-none text-gray-700 py-1 px-3 md:leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
-      <button className="text-white bg-black border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 rounded text-lg">Send</button>
+      <button className="text-white bg-black border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 rounded text-sm md:text-lg">Send</button>
     </div>
   </div>
 </section>

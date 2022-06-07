@@ -15,6 +15,8 @@ import { IoIosMail } from "react-icons/io"
 import { BsFillTelephoneFill } from "react-icons/bs"
 import { Fade, Slide } from 'react-reveal';
 import Tada from 'react-reveal/Tada';
+import { Squash as Hamburger } from 'hamburger-react'
+
 
 
 
@@ -27,6 +29,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     const [sw, setsw] = useState(false);
     const [subcategory, setsubcategory] = useState();
     const [info, setinfo] = useState({});
+    const [isOpen, setOpen] = useState(false)
 
 
 
@@ -96,15 +99,15 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
         }
 
     }
-    const bar = (e) => {
-        document.getElementById("mv").classList.toggle("hidden")
-    }
+   useEffect(() => {
+    document.getElementById("nav").classList.toggle("bg-white")
+   }, [isOpen]);
 
     const ref = useRef();
     const menu = useRef();
     return (<>
 
-        <div ref={menu} style={{ minWidth: 180 }} className='text-lg md:text-xl 2xl:text-2xl transform transition-transform delay-300 ease-in-out  -translate-x-full  shadow-xl overflow-y-hidden  left-0 py-4 top-0 h-full md:bg-opacity-50 bg-black text-white fixed  z-50 ' >
+        <div ref={menu} className='text-lg md:text-xl 2xl:text-2xl transform transition-transform delay-300 ease-in-out  -translate-x-full  shadow-xl overflow-y-hidden  left-0 py-4 top-0 h-full md:bg-opacity-50 bg-black text-white fixed  z-50 ' >
             <AiOutlineClose className='float-right mx-3 cursor-pointer ' onClick={toggleproducts} />
             <div className="mt-16 flex justify-center flex-col flex-wrap ">
                 {
@@ -163,7 +166,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                         <div>
 
                             <a href="#" className="flex items-center py-4 ">
-                                <Tada><img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 invert  w-auto mr-2" /></Tada>
+                                <Tada><img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 md:invert  w-auto mr-2" /></Tada>
                             </a>
                         </div>
 
@@ -181,37 +184,27 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                         <HiShoppingCart onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart  cursor-pointer  text-black md:text-3xl 2xl:text-4xl ' />
                     </div>
 
-                    <div className="md:hidden flex space-x-5 items-center">
+                    <div id='mnav' className="md:hidden flex space-x-5 items-center">
 
-                        {!user.value && <a href="/Login" className=" text-white transition duration-300">Log In</a>}
-                        {user.value && <MdAccountCircle className="  text-white text-xl  cursor-pointer transition duration-300 " onClick={() => setdropDown(!dropDown)} />}
-                        <HiShoppingCart onMouseOver={toggleCart} onMouseEnter={() => setdropDown(false)} className='  cart  cursor-pointer text-xl text-white  ' />
+                        {!user.value && <a href="/Login" className=" text-black transition duration-300">Log In</a>}
+                        {user.value && <MdAccountCircle className="  text-black text-xl  cursor-pointer transition duration-300 " onClick={() => setdropDown(!dropDown)} />}
+                        <HiShoppingCart onMouseOver={toggleCart} onMouseEnter={() => setdropDown(false)} className='  cart  cursor-pointer text-xl text-black  ' />
 
-                        <button onClick={(e) => bar(e)} className="outline-none  mobile-menu-button">
-                            <svg className=" w-5 h-5 hover:text-white text-white "
-                                x-show="!showMenu"
-                                fill="none"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path d="M4 6h16M4 12h16M4 18h16"></path>
-                            </svg>
-                        </button>
+                      
+                        <Hamburger size={20} toggled={isOpen} toggle={setOpen} className=" mobile-menu-button" />
+                        
                     </div>
                 </div>
             </div>
 
-            <div id='mv' className="hidden mobile-menu">
+            {isOpen&&<div id='mv' className=" mobile-menu absolute w-full animate-fade-in-down ">
                 <ul className="bg-white text-center">
                     <li className="active"><a href="/" className="block text-sm px-2 pb-4  hover:bg-yellow-300 ">Home</a></li>
                     <li><a onClick={toggleproducts} className="block text-sm px-2 py-4 hover:bg-yellow-300 transition duration-300">Products</a></li>
                     <li><a href="/about" className="block text-sm px-2 py-4 hover:bg-yellow-300 transition duration-300">About</a></li>
                     <li><a href="/contact" className="block text-sm px-2 py-4 hover:bg-yellow-300 transition duration-300">Contact Us</a></li>
                 </ul>
-            </div>
+            </div>}
 
 
 
