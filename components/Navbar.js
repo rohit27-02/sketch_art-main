@@ -100,7 +100,9 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
     }
    useEffect(() => {
+   if(sw){
     document.getElementById("nav").classList.toggle("bg-white")
+   }
    }, [isOpen]);
 
     const ref = useRef();
