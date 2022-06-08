@@ -16,6 +16,7 @@ import { BsFillTelephoneFill } from "react-icons/bs"
 import { Fade, Slide } from 'react-reveal';
 import Tada from 'react-reveal/Tada';
 import { Squash as Hamburger } from 'hamburger-react'
+import  Router  from 'next/router';
 
 
 
@@ -71,6 +72,11 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
         if (screen.width > 768) {
             setsw(true)
         }
+        if(Router.pathname=="/"){
+            document.getElementById("navtext").classList.add("text-white")
+            document.getElementById("img").classList.add("md:invert")
+        }
+      
 
     }, []);
     useEffect(() => {
@@ -109,14 +115,15 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     const menu = useRef();
     return (<>
 
-        <div ref={menu} className='text-lg md:text-xl 2xl:text-2xl transform transition-transform delay-300 ease-in-out  -translate-x-full  shadow-xl overflow-y-hidden  left-0 py-4 top-0 h-full md:bg-opacity-50 bg-black text-white fixed  z-50 ' >
+        <div ref={menu} className='text-lg md:text-xl 2xl:text-2xl transform transition-transform duration-300  ease-in-out  -translate-x-full  shadow-xl overflow-y-hidden  left-0 py-4 top-0 h-full md:bg-opacity-90 bg-black text-white fixed  z-50 ' >
             <AiOutlineClose className='float-right mx-3 cursor-pointer ' onClick={toggleproducts} />
-            <div className="mt-16 flex justify-center flex-col flex-wrap ">
+            <div style={{ fontFamily: "'Montserrat', sans-serif"}} className="mt-16 flex justify-center flex-col flex-wrap ">
                 {
                     Object.keys(data).map((p) => {
                         return (
                             <div key={p} className=" group flex ">
-                                <a id={data[p]} onClick={function (e) { getData(e); setlistd(!listd) }} className=' px-4 py-2 hover:bg-yellow-400 hover:text-white  font-thin ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}</a>
+                                <a id={data[p]} onMouseEnter={function (e) { getData(e); setlistd(!listd) }} className=' px-4 py-2 phover w-full  ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}</a>
+                               
                             </div>
                         )
 
@@ -136,7 +143,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                 {admin == "true" && <a className=' text-center font-bold' href={"/adminpanel"}><li className='px-2 account'>Admin Panel</li></a>}
             </ul>
         </div>}
-        <div ref={ref} style={{backgroundColor:"#ebeaeb"}} className="sidebar scrollbar-hide text-lg md:text-xl 2xl:text-2xl  fixed right-0 top-0 flex  items-center flex-col p-10 2xl:w-96 transform transition-transform delay-300 ease-in-out  translate-x-full z-50 text-black shadow-xl overflow-y-scroll h-full">
+        <div ref={ref} style={{backgroundColor:"#ebeaeb"}} className="sidebar scrollbar-hide text-lg md:text-xl 2xl:text-2xl  fixed right-0 top-0 flex  items-center flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 text-black shadow-xl overflow-y-scroll h-full">
             <h2 className='font-bold text-xl  lg:text-3xl'>Shopping Cart</h2>
             <AiOutlineClose onClick={toggleCart} className='hover:bg-black hover:text-white  cart fixed top-4 left-4 cursor-pointer  text-black' />
             <div onChange={toggleCart}>
@@ -155,35 +162,35 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                 </ol>
             </div>
             <div className='font-bold mt-10'>Total: ₹ {subTotal}</div>
-            <a href={"/Checkout"}><button  style={{backgroundColor:"#bfb1c4"}} className="flex text-white hover:opacity-80   border-0 py-2 px-4 my-7 mr-3 focus:outline-none hover:bg-yellow-600 rounded "><BsFillBagCheckFill className='my-auto mr-1' />Check out</button></a>
-            <button onClick={clearCart} style={{backgroundColor:"#bfb1c4"}}  className="flex text-white   hover:opacity-80 border-0 py-2 px-4  mr-3 focus:outline-none hover:bg-yellow-600 rounded "><CgTrashEmpty className='my-auto mr-1' />Empty cart</button>
+            <a href={"/Checkout"}><button  style={{backgroundColor:"#bfb1c4"}} className="flex text-white hover:opacity-80   border-0 py-2 px-4 my-7 mr-3 focus:outline-none  rounded "><BsFillBagCheckFill className='my-auto mr-1' />Check out</button></a>
+            <button onClick={clearCart} style={{backgroundColor:"#bfb1c4"}}  className="flex text-white   hover:opacity-80 border-0 py-2 px-4  mr-3 focus:outline-none  rounded "><CgTrashEmpty className='my-auto mr-1' />Empty cart</button>
         </div>
 
 
         {/**main nav**/}
         <nav id='nav' className=" z-40 sticky ">
+            
             <div className=" px-4">
                 <div className="flex justify-between">
                     <div className="flex space-x-7">
-                        <div>
+                    <div>
 
-                            <a href="#" className="flex items-center py-4 ">
-                                <Tada><img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 md:invert  w-auto mr-2" /></Tada>
-                            </a>
-                        </div>
-
-                        <div className="hidden md:flex items-center  2xl:text-2xl text-xl space-x-1">
-                            <Fade><a href="/" className="py-4 px-2 text-white  font-semibold    hover:border-b-4 border-white">Home</a></Fade>
-                            <Fade><a onClick={toggleproducts} className="py-4 cursor-pointer px-2 text-white   font-semibold   transition duration-300 hover:border-b-4 border-white">Products</a></Fade>
-                            <Fade><a href="/about" className="py-4 px-2 text-white   font-semibold   transition duration-300 hover:border-b-4 border-white">About</a></Fade>
-                            <Fade><a href="/contact" className="py-4 px-2 text-white   font-semibold   transition duration-300 hover:border-b-4 border-white">Contact Us</a></Fade>
-                        </div>
+<a href="/" className="flex  items-center py-4 ">
+    <Tada><img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16   w-auto " /></Tada>
+</a>
+</div>
                     </div>
 
                     <div className="hidden md:flex items-center space-x-6 ">
-                        {!user.value && <a href="/Login" className=" font-bold text-xl 2x:text-2xl text-black px-4 py-2 hover:bg-yellow-300 hover:text-white transition duration-300">Log In</a>}
+                    <div id='navtext' className="hidden md:flex items-center  2xl:text-2xl text-xl space-x-1">
+                            <Fade><a href="/" className="py-4 px-2   font-semibold    hover:border-b-4 border-white">Home</a></Fade>
+                            <Fade><a onClick={toggleproducts} className="py-4 cursor-pointer px-2    font-semibold   transition duration-300 hover:border-b-4 border-white">Products</a></Fade>
+                            <Fade><a href="/about" className="py-4 px-2    font-semibold   transition duration-300 hover:border-b-4 border-white">About</a></Fade>
+                            <Fade><a href="/contact" className="py-4 px-2    font-semibold   transition duration-300 hover:border-b-4 border-white">Contact Us</a></Fade>
+                        </div>
+                        {!user.value && <a style={{backgroundColor:"#bfb1c4"}} href="/Login" className=" font-bold text-xl 2x:text-2xl text-black px-4 py-2  hover:text-white transition duration-300">Log In</a>}
                         {user.value && <MdAccountCircle style={{color:"black"}} className=" font-medium  hover:text-white cursor-pointer transition duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
-                        <HiShoppingCart onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart  cursor-pointer  text-black md:text-3xl 2xl:text-4xl ' />
+                        <HiShoppingCart  onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart  cursor-pointer  text-black md:text-3xl 2xl:text-4xl ' />
                     </div>
 
                     <div id='mnav' className="md:hidden flex space-x-5 items-center">

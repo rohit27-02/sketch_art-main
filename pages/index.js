@@ -33,7 +33,7 @@ export default function Home() {
 
       <div className='-my-24 overflow-hidden bg-black w-full'>
        <Fade bottom> <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5,textShadow:"0.5px 0.5px black"}} className='absolute 2xl:my-64 md:my-52 my-44 text-6xl z-20 w-full text-white mx-10 2xl:text-8xl md:text-7xl drop-shadow-2xl'>A Bright Window is<br></br> a Right Window.</h1></Fade>
-        <Pulse><img style={{height:"100vh"}} className=" object-cover object-left " src="/main.png" alt="" /></Pulse>
+        <Pulse><img style={{height:"100vh"}} className=" object-cover object-left w-full" src="/Blinds.jpg" alt="" /></Pulse>
       </div>
 
       <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=''>
@@ -77,16 +77,7 @@ export default function Home() {
 </section>
       </div>
 
-      <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#ebeaeb",minHeight:100,height:"50vh"}} className='w-full justify-center  flex '>
-        <div  className='flex flex-col  my-auto text-center space-y-8 md:space-y-16 w-full' >
-          <h1 style={{ fontFamily: "'Lato', sans-serif"}} className='md:text-2xl mx-2 text-gray-800 2xl:text-3xl'>BENEFITS OF BEING ASSOCIATED WITH SKETCH ART</h1>
-          <div className='flex flex-col md:flex-row'>
-         <div className='flex md:text-sm text-xs 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2  border-r-2 border-gray-500 '><RubberBand><VscGear className='md:text-6xl md:mx-4 2xl:mx-6 mb-5 2xl:text-7xl text-3xl'/></RubberBand>Access to the best automation solutions for solar protection and tertiary access.</div>
-          <div className='flex md:text-sm text-xs 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2  border-r-2 border-gray-500 '><RubberBand><MdLocalParking className='md:text-6xl md:mx-4  2xl:mx-6 mb-5 2xl:text-7xl text-3xl'/></RubberBand>Advice on motor and controller choice.Product training and installion training support electrial requirements.</div>
-          <div className='flex md:text-sm text-xs 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2   '><RubberBand><VscTools className='md:text-6xl md:mx-4  2xl:mx-6 mb-5 2xl:text-7xl text-3xl'/></RubberBand>On site engineering support, Marketing support, Troubleshooting And After sales services.</div>
-          </div>
-        </div>
-      </div>
+     
 
       <div style={{height:"61vh"}} className='bg-white w-full flex justify-center items-center '>
         <Pulse><div className='space-y-10 text-center text-lg'>
@@ -100,6 +91,16 @@ export default function Home() {
         <img style={{height:"102vh"}} className='w-full object-cover' src='/contact.png'></img>
 
       </div></Slide>
+      <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#ebeaeb",minHeight:100,height:"50vh"}} className='w-full justify-center  flex '>
+        <div  className='flex flex-col  my-auto text-center space-y-8 md:space-y-16 w-full' >
+          <h1 style={{ fontFamily: "'Lato', sans-serif"}} className='md:text-2xl mx-2 text-gray-800 2xl:text-3xl'>BENEFITS OF BEING ASSOCIATED WITH SKETCH ART</h1>
+          <div className='flex flex-col md:flex-row'>
+         <div className='flex md:text-sm text-xs 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2  border-r-2 border-gray-500 '><RubberBand><VscGear className='md:text-6xl md:mx-4 2xl:mx-6 mb-5 2xl:text-7xl text-3xl'/></RubberBand>Access to the best automation solutions for solar protection and tertiary access.</div>
+          <div className='flex md:text-sm text-xs 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2  border-r-2 border-gray-500 '><RubberBand><MdLocalParking className='md:text-6xl md:mx-4  2xl:mx-6 mb-5 2xl:text-7xl text-3xl'/></RubberBand>Advice on motor and controller choice.Product training and installion training support electrial requirements.</div>
+          <div className='flex md:text-sm text-xs 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2   '><RubberBand><VscTools className='md:text-6xl md:mx-4  2xl:mx-6 mb-5 2xl:text-7xl text-3xl'/></RubberBand>On site engineering support, Marketing support, Troubleshooting And After sales services.</div>
+          </div>
+        </div>
+      </div>
 
       <div style={{backgroundColor:"#bfb1c4",height:"56vh"}} className="w-full grid content md:grid-flow-col">
         <div className='md:col-span-4 flex justify-center  items-center'>

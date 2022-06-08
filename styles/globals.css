@@ -77,3 +77,8 @@ min-width: 12%;
       min-height:550px;
   }
 }
+.phover:hover{
+    background-color: #bfb1c4;
+    color:black;
+    font-weight: 400;
+}
