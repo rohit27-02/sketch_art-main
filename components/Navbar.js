@@ -73,7 +73,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
             setsw(true)
         }
         if(Router.pathname=="/"){
-            document.getElementById("navtext").classList.add("text-black")
+         
           
         }
       
@@ -143,7 +143,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                 {admin == "true" && <a className=' text-center font-bold' href={"/adminpanel"}><li className='px-2 account'>Admin Panel</li></a>}
             </ul>
         </div>}
-        <div ref={ref} style={{ fontFamily: "'Poppins', sans-serif"}} className="sidebar scrollbar-hide text-lg md:text-xl 2xl:text-2xl bg-black opacity-90 fixed right-0 top-0 flex  items-center flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 text-white shadow-xl overflow-y-scroll h-full">
+        <div ref={ref} style={{ fontFamily: "'Poppins', sans-serif"}} className="sidebar scrollbar-hide text-lg md:text-xl 2xl:text-2xl bg-black bg-opacity-80 fixed right-0 top-0 flex  items-center flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 text-white shadow-xl overflow-y-scroll h-full">
             <h2 className='font-bold text-xl  lg:text-3xl'>Shopping Cart</h2>
             <AiOutlineClose onClick={toggleCart} className='hover:bg-black hover:text-white  cart fixed top-4 left-4 cursor-pointer  text-white' />
             <div onChange={toggleCart}>
@@ -182,15 +182,15 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                     </div>
 
                     <div className="hidden md:flex items-center space-x-6 ">
-                    <div style={{ fontFamily: "'Poppins', sans-serif"}} id='navtext' className="hidden md:flex items-center text-black 2xl:text-2xl text-xl space-x-1">
+                    <div style={{ fontFamily: "'Poppins', sans-serif"}} id='navtext' className="hidden md:flex items-center text-gray-700 2xl:text-2xl text-xl space-x-1">
                             <Fade><a href="/" className="py-4 px-2   font-semibold    phover">Home</a></Fade>
-                            <Fade><a onClick={toggleproducts} className="py-4 cursor-pointer px-2    font-semibold   transition duration-300 phover">Products</a></Fade>
+                            <Fade><a onClick={toggleproducts} className="py-4 cursor-pointer px-2   font-semibold   transition duration-300 phover">Products</a></Fade>
                             <Fade><a href="/about" className="py-4 px-2    font-semibold   transition duration-300 phover">About</a></Fade>
                             <Fade><a href="/contact" className="py-4 px-2    font-semibold   transition duration-300 phover">Contact Us</a></Fade>
                         </div>
-                        {!user.value && <a style={{backgroundColor:"#bfb1c4"}} href="/Login" className=" font-bold text-xl 2x:text-2xl text-black px-4 py-2  hover:text-white transition duration-300">Log In</a>}
-                        {user.value && <MdAccountCircle style={{color:"black"}} className=" font-medium  hover:text-white cursor-pointer transition duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
-                        <HiShoppingCart  onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart  cursor-pointer  text-black md:text-3xl 2xl:text-4xl ' />
+                        {!user.value && <a style={{backgroundColor:"#bfb1c4"}} href="/Login" className=" font-bold text-xl 2x:text-2xl text-gray-700 px-4 py-2  hover:text-black transition duration-300">Log In</a>}
+                        {user.value && <MdAccountCircle style={{color:"black"}} className=" font-medium  hover:text-black cursor-pointer transition duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
+                        <HiShoppingCart  onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-black cart  cursor-pointer  text-gray-700 md:text-3xl 2xl:text-4xl ' />
                     </div>
 
                     <div id='mnav' className="md:hidden flex space-x-5 items-center">
