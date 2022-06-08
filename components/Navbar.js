@@ -105,12 +105,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
         }
 
     }
-   useEffect(() => {
-   if(sw){
-    document.getElementById("nav").classList.toggle("bg-white")
-   }
-   }, [isOpen]);
-
+  
     const ref = useRef();
     const menu = useRef();
     return (<>
@@ -176,21 +171,21 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                     <div>
 
 <a href="/" className="flex  items-center py-4 ">
-    <Tada><img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16   w-auto " /></Tada>
+    <Tada><img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 invert  w-auto " /></Tada>
 </a>
 </div>
                     </div>
 
                     <div className="hidden md:flex items-center space-x-6 ">
-                    <div style={{ fontFamily: "'Montserrat', sans-serif"}} id='navtext' className="hidden md:flex items-center text-gray-700 2xl:text-lg text-base space-x-1">
-                            <Fade><a href="/" className="py-4 px-2   font-semibold hover:underline underline-offset-8 hover:text-black decoration-2   ">Home</a></Fade>
-                            <Fade><a onClick={toggleproducts} className="py-4 cursor-pointer px-2   font-semibold hover:underline underline-offset-8 hover:text-black decoration-2  transition duration-300 ">Products</a></Fade>
-                            <Fade><a href="/about" className="py-4 px-2    font-semibold hover:underline underline-offset-8 hover:text-black decoration-2  transition duration-300 ">About</a></Fade>
-                            <Fade><a href="/contact" className="py-4 px-2    font-semibold hover:underline underline-offset-8 hover:text-black decoration-2  transition duration-300 ">Contact Us</a></Fade>
+                    <div style={{ fontFamily: "'Montserrat', sans-serif"}} id='navtext' className="hidden md:flex items-center text-gray-300 2xl:text-lg text-base space-x-1">
+                            <Fade><a href="/" className="py-4 px-2   font-semibold hover:underline underline-offset-8 hover:text-white decoration-2   ">Home</a></Fade>
+                            <Fade><a onClick={toggleproducts} className="py-4 cursor-pointer px-2   font-semibold hover:underline underline-offset-8 hover:text-white decoration-2  transition duration-300 ">Products</a></Fade>
+                            <Fade><a href="/about" className="py-4 px-2    font-semibold hover:underline underline-offset-8 hover:text-white decoration-2  transition duration-300 ">About</a></Fade>
+                            <Fade><a href="/contact" className="py-4 px-2    font-semibold hover:underline underline-offset-8 hover:text-white decoration-2  transition duration-300 ">Contact Us</a></Fade>
                         </div>
-                        {!user.value && <a style={{backgroundColor:"#bfb1c4"}} href="/Login" className=" font-base text-lg 2x:text-xl hover:opacity-80 text-gray-700 px-4 py-2  hover:text-black transition duration-300">Log In</a>}
+                        {!user.value && <a style={{backgroundColor:"#406b6e"}} href="/Login" className=" font-base text-lg 2x:text-xl hover:opacity-80 text-gray-300 px-4 py-2  hover:text-white transition duration-300">Log In</a>}
                         {user.value && <MdAccountCircle style={{color:"black"}} className=" font-medium  hover:text-black cursor-pointer transition duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
-                        <HiShoppingCart  onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-black cart  cursor-pointer  text-gray-700 md:text-3xl 2xl:text-4xl ' />
+                        <HiShoppingCart  onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart  cursor-pointer  text-gray-300 md:text-3xl 2xl:text-4xl ' />
                     </div>
 
                     <div id='mnav' className="md:hidden flex space-x-5 items-center">

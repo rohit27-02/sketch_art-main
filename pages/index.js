@@ -35,12 +35,12 @@ export default function Home() {
 
       <div className='overflow-hidden sticky top-0 bg-black w-full'>
   
-        <Pulse><video style={{height:"100vh"}} className=" object-cover object-center md:object-fill w-full" src="/main.mp4" autoPlay muted loop /></Pulse>
+        <Pulse><video style={{height:"100vh"}} className=" object-cover object-center md:object-fill w-full" src="/main2.mp4" autoPlay muted loop /></Pulse>
       </div>
-      <div style={{height:"70vh",backgroundColor:'#bfb1c4'}} className="absolute top-0  w-full">
-        <p  className='animate-charcter text-6xl leading-relaxed text-center mt-32 text-white  font-extrabold'><i>" IF A <span className='text-slate-500'>WINDOW</span> OF "</i></p>
-        <p  className='animate-charcter text-6xl leading-relaxed text-center text-white  font-extrabold'><i><span className='text-slate-500'> OPPURTUNITY</span> APPEARS, DON'T </i> </p>
-        <p  className='animate-charcter text-6xl leading-relaxed text-center  text-white  font-extrabold'><i> PULL DOWN THE <span className='text-slate-500'>SHADES</span></i></p>
+      <div style={{height:"70vh",backgroundColor:"#003c3c"}} className="absolute  top-0  w-full">
+        <p  className=' text-6xl leading-relaxed text-center mt-32 text-white  font-extrabold'><i>" IF A <span style={{color:"#406b6e"}}>WINDOW</span> OF "</i></p>
+        <p  className=' text-6xl leading-relaxed text-center text-white  font-extrabold'><i><span style={{color:"#406b6e"}}> OPPURTUNITY</span> APPEARS, DON'T </i> </p>
+        <p  className=' text-6xl leading-relaxed text-center  text-white  font-extrabold'><i> PULL DOWN THE <span style={{color:"#406b6e"}}>SHADES</span></i></p>
       </div>
     </div>
 
