@@ -31,10 +31,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='-my-24 overflow-hidden bg-black w-full'>
-       <Fade bottom> <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5,textShadow:"0.5px 0.5px black"}} className='absolute 2xl:my-64 md:my-96 my-44 text-6xl z-20 w-full text-white  mx-10 2xl:text-8xl md:text-7xl drop-shadow-2xl'>A Bright Window is<br></br> a Right Window.</h1></Fade>
+    <div style={{height:"170vh"}}>
+
+      <div className='overflow-hidden sticky top-0 bg-black w-full'>
+       <Fade bottom> <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5,textShadow:"-4px 3px gray"}} className='absolute 2xl:my-64 md:my-96 my-44 text-6xl z-20 w-full text-white  mx-10 2xl:text-8xl md:text-7xl drop-shadow-2xl'>A Bright Window is<br></br> a Right Window.</h1></Fade>
         <Pulse><img style={{height:"100vh"}} className=" object-cover object-center md:object-fill w-full" src="/new.jpg" alt="" /></Pulse>
       </div>
+      <div style={{height:"70vh",backgroundColor:'#bfb1c4'}} className="absolute top-0  w-full">
+        <p  className=' text-6xl leading-relaxed text-center mt-32 text-white  font-extrabold'><i>" IF A <span className='text-slate-500'>WINDOW</span> OF "</i></p>
+        <p  className='text-6xl leading-relaxed text-center text-white  font-extrabold'><i><span className='text-slate-500'> OPPURTUNITY</span> APPEARS, DON'T </i> </p>
+        <p  className='text-6xl leading-relaxed text-center  text-white  font-extrabold'><i> PULL DOWN THE <span className='text-slate-500'>SHADES</span></i></p>
+      </div>
+    </div>
 
       <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=''>
       <section className="text-white">
