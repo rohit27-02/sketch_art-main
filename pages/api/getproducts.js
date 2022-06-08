@@ -5,7 +5,9 @@ import connectDb from "../../middleware/mongoose"
 const handler = async (req,res)=>{
 
     let products = await Product.distinct("category")
- 
+    for(let i=0;i<products.length;i++){
+        
+    }
  
     res.status(200).json( products )
 }
