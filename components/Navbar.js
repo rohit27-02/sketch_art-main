@@ -73,8 +73,8 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
             setsw(true)
         }
         if(Router.pathname=="/"){
-            document.getElementById("navtext").classList.add("text-white")
-            document.getElementById("img").classList.add("md:invert")
+            document.getElementById("navtext").classList.add("text-black")
+          
         }
       
 
@@ -182,7 +182,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                     </div>
 
                     <div className="hidden md:flex items-center space-x-6 ">
-                    <div id='navtext' className="hidden md:flex items-center  2xl:text-2xl text-xl space-x-1">
+                    <div id='navtext' className="hidden md:flex items-center text-black 2xl:text-2xl text-xl space-x-1">
                             <Fade><a href="/" className="py-4 px-2   font-semibold    hover:border-b-4 border-white">Home</a></Fade>
                             <Fade><a onClick={toggleproducts} className="py-4 cursor-pointer px-2    font-semibold   transition duration-300 hover:border-b-4 border-white">Products</a></Fade>
                             <Fade><a href="/about" className="py-4 px-2    font-semibold   transition duration-300 hover:border-b-4 border-white">About</a></Fade>
