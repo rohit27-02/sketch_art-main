@@ -33,7 +33,7 @@ export default function Home() {
 
       <div className='-my-24 overflow-hidden bg-black w-full'>
        <Fade bottom> <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5,textShadow:"0.5px 0.5px black"}} className='absolute 2xl:my-64 md:my-52 my-44 text-6xl z-20 w-full text-white mx-10 2xl:text-8xl md:text-7xl drop-shadow-2xl'>A Bright Window is<br></br> a Right Window.</h1></Fade>
-        <Pulse><img style={{height:"100vh"}} className="  w-full" src="/new.jpg" alt="" /></Pulse>
+        <Pulse><img style={{height:"100vh"}} className=" object-cover object-top w-full" src="/new.jpg" alt="" /></Pulse>
       </div>
 
       <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=''>
