@@ -155,7 +155,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                         return <li key={k}>
                             <div className='flex my-2'>
                                 <div className='ml-2 w-2/3'>{cart[k].name} ({cart[k].size}/{cart[k].variant})</div>
-                                <div className='w-2/3 flex items-center justify-between '><AiOutlineMinusCircle onClick={() => { removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant); }} className='fill-yellow-300 cursor-pointer' />{cart[k].qty}<AiOutlinePlusCircle onClick={() => { addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant); }} className='fill-yellow-300 cursor-pointer' /></div>
+                                <div className='w-2/3 flex items-center justify-between '><AiOutlineMinusCircle onClick={() => { removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant); }} className=' cursor-pointer' />{cart[k].qty}<AiOutlinePlusCircle onClick={() => { addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant); }} className=' cursor-pointer' /></div>
                             </div>
                         </li>;
                     })}
@@ -182,13 +182,13 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                     </div>
 
                     <div className="hidden md:flex items-center space-x-6 ">
-                    <div style={{ fontFamily: "'Poppins', sans-serif"}} id='navtext' className="hidden md:flex items-center text-gray-700 2xl:text-2xl text-xl space-x-1">
-                            <Fade><a href="/" className="py-4 px-2   font-semibold    phover">Home</a></Fade>
-                            <Fade><a onClick={toggleproducts} className="py-4 cursor-pointer px-2   font-semibold   transition duration-300 phover">Products</a></Fade>
-                            <Fade><a href="/about" className="py-4 px-2    font-semibold   transition duration-300 phover">About</a></Fade>
-                            <Fade><a href="/contact" className="py-4 px-2    font-semibold   transition duration-300 phover">Contact Us</a></Fade>
+                    <div style={{ fontFamily: "'Montserrat', sans-serif"}} id='navtext' className="hidden md:flex items-center text-gray-700 2xl:text-2xl text-lg space-x-1">
+                            <Fade><a href="/" className="py-4 px-2   font-semibold hover:underline underline-offset-8    ">Home</a></Fade>
+                            <Fade><a onClick={toggleproducts} className="py-4 cursor-pointer px-2   font-semibold hover:underline underline-offset-8   transition duration-300 ">Products</a></Fade>
+                            <Fade><a href="/about" className="py-4 px-2    font-semibold hover:underline underline-offset-8   transition duration-300 ">About</a></Fade>
+                            <Fade><a href="/contact" className="py-4 px-2    font-semibold hover:underline underline-offset-8   transition duration-300 ">Contact Us</a></Fade>
                         </div>
-                        {!user.value && <a style={{backgroundColor:"#bfb1c4"}} href="/Login" className=" font-bold text-xl 2x:text-2xl text-gray-700 px-4 py-2  hover:text-black transition duration-300">Log In</a>}
+                        {!user.value && <a style={{backgroundColor:"#bfb1c4"}} href="/Login" className=" font-base text-xl 2x:text-2xl text-gray-700 px-4 py-2  hover:text-black transition duration-300">Log In</a>}
                         {user.value && <MdAccountCircle style={{color:"black"}} className=" font-medium  hover:text-black cursor-pointer transition duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
                         <HiShoppingCart  onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-black cart  cursor-pointer  text-gray-700 md:text-3xl 2xl:text-4xl ' />
                     </div>
@@ -208,10 +208,10 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
             {isOpen&&<div id='mv' className=" mobile-menu absolute w-full animate-fade-in-down ">
                 <ul className="bg-white text-center">
-                    <li className="active"><a href="/" className="block text-sm px-2 pb-4  hover:bg-yellow-300 ">Home</a></li>
-                    <li><a onClick={toggleproducts} className="block text-sm px-2 py-4 hover:bg-yellow-300 transition duration-300">Products</a></li>
-                    <li><a href="/about" className="block text-sm px-2 py-4 hover:bg-yellow-300 transition duration-300">About</a></li>
-                    <li><a href="/contact" className="block text-sm px-2 py-4 hover:bg-yellow-300 transition duration-300">Contact Us</a></li>
+                    <li className="active"><a href="/" className="block text-sm px-2 pb-4  phover ">Home</a></li>
+                    <li><a onClick={toggleproducts} className="block text-sm px-2 py-4 phover transition duration-300">Products</a></li>
+                    <li><a href="/about" className="block text-sm px-2 py-4 phover transition duration-300">About</a></li>
+                    <li><a href="/contact" className="block text-sm px-2 py-4 phover transition duration-300">Contact Us</a></li>
                 </ul>
             </div>}
 
