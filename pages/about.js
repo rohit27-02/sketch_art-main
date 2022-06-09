@@ -54,7 +54,7 @@ genuine and experienced vendors after an in-depth research.</p></Slide>
       
       <div  style={{fontFamily:"'poppins', sans-serif"}} className='text-center md:py-20 py-8 px-10  text-slate-700 bg-slate-50 md:flex-row flex flex-col justify-center items-center '>
        <div> <h1 className='text-2xl font-bold'>Global Leading Manufacturer</h1>
-        <p className=' py-7 px-7 text-2xl font-thin'><i className='text-3xl font-bold mr-4'>"</i> With an industry experience of over 25 years, sketch arts private limited is the leading manufacturer and importer of Window Blinds and Accessories, Motorized Blinds and Interior Flims in the country catering to clients across the globe. It is also the marketing partner for sketch arts based in China. Keen on widening its portfolio, sketch arts is open to expanding its imports and exports as and when opportunities present themselves. <i className='text-3xl font-bold mr-4'>"</i></p>
+        <p className=' py-7 px-7 text-2xl font-thin'><i className='text-3xl font-bold mr-4'>&#34;</i> With an industry experience of over 25 years, sketch arts private limited is the leading manufacturer and importer of Window Blinds and Accessories, Motorized Blinds and Interior Flims in the country catering to clients across the globe. It is also the marketing partner for sketch arts based in China. Keen on widening its portfolio, sketch arts is open to expanding its imports and exports as and when opportunities present themselves. <i className='text-3xl font-bold mr-4'>&#34;</i></p>
 <button style={{backgroundColor:"#bfb1c4"}} className='text-xl hover:opacity-80 p-5 font-bold'>Contact Us</button>
 </div>
 
