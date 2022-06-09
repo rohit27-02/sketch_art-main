@@ -11,6 +11,7 @@ import Pulse from 'react-reveal/Pulse';
 import RubberBand from 'react-reveal/RubberBand';
 import {BsPinterest} from "react-icons/bs"
 import {VscGear} from "react-icons/vsc"
+import {FaWhatsappSquare} from "react-icons/fa"
 import {VscTools} from "react-icons/vsc"
 import {MdLocalParking} from "react-icons/md"
 import "react-multi-carousel/lib/styles.css";
@@ -30,7 +31,7 @@ export default function Home() {
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+<FaWhatsappSquare className='text-green-500 fixed right-10 z-50 text-5xl bottom-10'/>
     <div style={{height:"100vh"}}>
 
       <div className='overflow-hidden sticky top-0 bg-black w-full'>
@@ -51,17 +52,20 @@ export default function Home() {
 
       <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=''>
       <section className="text-white">
-  <div className="container mx-auto flex px-5 md:px-8 2xl:px-10 pt-36 md:pt-40  md:flex-row flex-col items-center">
+  <div className="container mx-auto flex px-5  2xl:px-10 pt-36 md:pt-40  md:flex-row flex-col items-center">
     <div className='overflow-hidden'>
            <div  className=" hover:transition-transform ease-in duration-500  hover:scale-125 md:max-w-xl 2xl:max-w-2xl w-full mb-10  md:mb-0">
       <Slide left> <img  className="object-cover object-center" alt="hero" src="/1.jpg"/></Slide>
     </div>
     </div>
     <div className="lg:flex-grow md:w-7/12 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left">
-     <Slide bottom> <h1 style={{ fontFamily: "'Lato', sans-serif"}} className=" md:text-6xl 2xl:text-7xl text-3xl mb-4 md:mb-6 2xl:mb-10  font- ">Before they sold out
-        <br className="hidden lg:inline-block"/>readymade gluten
+     <Slide bottom> <h1 style={{ fontFamily: "'Lato', sans-serif"}} className=" md:text-6xl 2xl:text-7xl text-3xl mb-4 md:mb-6 2xl:mb-10  font- ">Benefits of motorized
+         window blinds
       </h1></Slide>
-      <Slide bottom><p className="mb-8 md:text-base text-sm 2xl:text-lg ">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
+      <Slide bottom><p className="mb-8 md:text-base text-sm 2xl:text-lg ">Window blinds are a common choice for homeowners that want to cover their window to block light or protect privacy. They are sleek in appearance, easy to maintain and quite durable - making them ideal for modern homes.
+But shouldn't you expect your window treatments to do more than just open and close?
+Motorized window blinds perform the same purpose of traditional window blinds. These blinds have added functions that make them a valuable addition to your home's interior design.
+</p>
       <div className="flex items-start">
         <button style={{color:"#bfb1c4"}}  className="inline-flex  bg-gray-100 font-semibold  border-0 py-2 px-6 focus:outline-none hover:opacity-90  text-lg">Learn More</button>
       </div>
