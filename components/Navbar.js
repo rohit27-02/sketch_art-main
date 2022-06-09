@@ -168,7 +168,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                     <div className="flex space-x-7">
                     <div>
 
-<a href="/" className="flex  items-center py-4 ">
+<a href="/" className="flex  items-center py-1 ">
    <img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16   w-auto " />
 </a>
 </div>
