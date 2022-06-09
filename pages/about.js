@@ -5,7 +5,7 @@ import React from 'react'
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
 import Head from 'next/head'
-import { Fade, LightSpeed, Slide } from 'react-reveal';
+import { Fade, LightSpeed, Slide, Zoom } from 'react-reveal';
 const About = () => {
   
   return (
@@ -19,7 +19,7 @@ const About = () => {
 
       <div style={{height:"130vh"}} className='w-full flex justify-evenly flex-col  items-center'>
         <h1 style={{fontFamily:"'poppins',sans-serif"}} className='text-4xl font-bold'>How our journey began</h1>
-<img style={{height:"70vh",width:"auto"}} className='overflow-hidden  relative top-0' src='/b.jpg'></img>
+       <Slide bottom><img style={{height:"80vh",width:"70vw"}} className='overflow-hidden  relative top-0' src='/b.jpg'></img></Slide >
       </div>
       <div style={{backgroundColor:"#bfb1c4",fontFamily:"'poppins', sans-serif"}} className='text-center md:py-10 py-8 px-1 bg-slate-50 md:flex-row flex flex-col justify-center items-center '>
         <div>
