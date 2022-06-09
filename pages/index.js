@@ -31,11 +31,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-    <div style={{height:"170vh"}}>
+    <div style={{height:"100vh"}}>
 
       <div className='overflow-hidden sticky top-0 bg-black w-full'>
   
-        <Pulse><video style={{height:"100vh"}} className=" object-cover object-center md:object-fill w-full" src="/main4.mp4" autoPlay muted loop /></Pulse>
+       <video style={{height:"100vh"}} className=" object-cover object-center md:object-fill w-full" src="/main5.mp4" autoPlay muted loop />
       </div>
       <div style={{height:"70vh",backgroundColor:"#ebeaeb"}} className="absolute effect2 top-0  w-full">
         <div style={{fontFamily: "'montserrat', sans-serif"}} className=' mt-20  flex flex-col'>
