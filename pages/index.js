@@ -37,14 +37,14 @@ export default function Home() {
   
         <Pulse><video style={{height:"100vh"}} className=" object-cover object-center md:object-fill w-full" src="/main2.mp4" autoPlay muted loop /></Pulse>
       </div>
-      <div style={{height:"70vh",backgroundColor:"black"}} className="absolute  top-0  w-full">
-        <div className=' mt-20  flex flex-col'>
-        <div style={{height:65,marginTop:90}} className='bg-black z-20 w-full absolute '></div>
-        <div style={{height:65,marginTop:210}} className='bg-black z-20 w-full absolute '></div>
-        <div style={{height:65,marginTop:330}} className='bg-black z-20 w-full absolute '></div>
-        <p  className=' text-6xl leading-loose effect text-center text-white  font-extrabold'><i>" IF A <span style={{color:"#bfb1c4"}}>WINDOW</span> OF "</i></p>
-        <p  className=' text-6xl leading-loose text-center text-white  font-extrabold'><i><span style={{color:"#bfb1c4"}}> OPPURTUNITY</span> APPEARS, DON'T </i> </p>
-        <p  className=' text-6xl leading-loose text-center  text-white  font-extrabold'><i> PULL DOWN THE <span style={{color:"#bfb1c4"}}>SHADES</span></i></p>
+      <div style={{height:"70vh",backgroundColor:"#ebeaeb"}} className="absolute effect2 top-0  w-full">
+        <div style={{fontFamily: "'montserrat', sans-serif"}} className=' mt-20  flex flex-col'>
+        <div style={{height:65,backgroundColor:"#ebeaeb",marginTop:90}} className=' z-20 w-full absolute '></div>
+        <div style={{height:65,backgroundColor:"#ebeaeb",marginTop:210}} className=' z-20 w-full absolute '></div>
+        <div style={{height:65,backgroundColor:"#ebeaeb",marginTop:330}} className=' z-20 w-full absolute '></div>
+        <p style={{marginTop:64}}  className=' text-6xl leading-loose effect text-center text-black  font-extrabold'>" IF A <span style={{color:"#bfb1c4"}}>WINDOW</span> OF "</p>
+        <p  className=' text-6xl leading-loose text-center text-black  font-extrabold'><span style={{color:"#bfb1c4"}}> OPPURTUNITY</span> APPEARS, DON'T </p>
+        <p  className=' text-6xl leading-loose text-center  text-black  font-extrabold'> PULL DOWN THE <span style={{color:"#bfb1c4"}}>SHADES</span></p>
       </div>
       </div>
     </div>

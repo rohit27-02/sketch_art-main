@@ -81,30 +81,34 @@ useEffect(() => {
 
         <div className='w-full shadow-lg flex-col md:flex-row flex   '>
           <div className='md:w-2/5 '><img alt="ecommerce" className=" w-full p-16 md:p-0 mx-auto " src={product.variants[selectedcolor].img} />
-            <div className='px-10 '><h1 className=' text-xl font-bold font-serif py-4'>Product Details</h1>
-              <table className=' w-full mb-8 '>
-                <tr>
-                  <td>Style</td>
-                  <td>{product.category}</td>
-                </tr>
-                <tr>
-                  <td>Height</td>
-                  <td>{selectedheight}</td>
-                </tr>
-                <tr>
-                  <td>Width</td>
-                  <td>{selectedwidth}</td>
-                </tr>
-                <tr>
-                  <td>Color</td>
-                  <td >{product.variants[selectedcolor].color}</td>
-                </tr>
-              </table>
+            <div className='px-10 '><h1 style={{fontFamily:"'poppins',sans-serif"}} className=' text-xl font-bold py-4'>Product Summary</h1>
+            <div className='w-full  grid grid-flow-col'>
+              <div style={{fontFamily:"'poppins',sans-serif"}} className=' border-r-2'>
+                <p className='leading-loose font-semibold'>Style</p>
+                <p className='leading-loose font-semibold'>Color</p>
+                <p className='leading-loose font-semibold'>Height</p>
+                <p className='leading-loose font-semibold'>Width</p>
+                <p className='leading-loose font-semibold'>Mechanism</p>
+              </div>
+              <div style={{fontFamily:"'poppins',sans-serif"}} className='ml-4'>
+                <p className='leading-loose'>{product.category}</p>
+                <p className='leading-loose'>{product.variants[selectedcolor].color}</p>
+                <p className='leading-loose'>{selectedheight}</p>
+                <p className='leading-loose'>{selectedwidth}</p>
+                <p className='leading-loose'></p>
+              </div>
+            </div>
             </div></div>
           <div  className='flex flex-col  md:w-3/5 px-2 md:px-14 bg-slate-200 '>
-            <h1 className=" text-gray-900 px-2 text-2xl md:text-3xl md:first-letter:mt-10 title-font font-bold font-serif mb-8">{product.title} </h1><span className=' lg:text-2xl font-medium p-2'>Color Selection</span>
-            <div className=" flex md:h-2/5 w-full px-8  drop-shadow-md  justify-evenly  h-80  overflow-y-scroll bg-white flex-wrap  ">
-              {Object.keys(product.variants).map((p) => { return <div  key={p} ><div id={p} onClick={(e) => { selectcolor(e) }} style={{ backgroundColor: `${product.variants[p].colorcode}` }} className="md:h-40 h-32 mt-8  cursor-pointer md:w-36 w-32"></div><span className=' font-semibold uppercase '>{product.variants[p].color}</span></div> })}
+            <h1 style={{ fontFamily: "'poppins', sans-serif"}} className=" text-gray-900 px-2 text-2xl md:text-3xl md:first-letter:mt-10 title-font font-bold  my-8">{product.title} </h1>
+            <div style={{fontFamily:"'poppins',sans-serif"}} className='space-x-4 mb-8 text-sm'>
+            <a className='cursor-pointer underline underline-offset-2 '>Products Details</a>
+            <a className='cursor-pointer underline underline-offset-2 '>Products Gallery</a>
+            </div>
+            
+            <div className="grid md:h-2/5 w-full px-8  drop-shadow-md  h-80  overflow-y-scroll bg-white  ">
+            <p className=' lg:text-2xl font-medium p-2'>Color Selection</p>
+              {Object.keys(product.variants).map((p) => { return <div  key={p} ><div id={p} onClick={(e) => { selectcolor(e) }} style={{ backgroundColor: `${product.variants[p].colorcode}` }} className=" h-32 mt-8  cursor-pointer w-32"></div><span className=' font-semibold uppercase '>{product.variants[p].color}</span></div> })}
             </div><div className="flex my-12  mx-auto  space-x-10 ">
 
               <div><span className="ml-2 text-lg lg:text-2xl font-medium">Height</span>
