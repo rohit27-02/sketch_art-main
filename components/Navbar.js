@@ -183,7 +183,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                             <Fade><a href="/about" className="py-4 px-2    font-semibold hover:underline underline-offset-8 hover:text-white decoration-2  transition duration-300 ">About</a></Fade>
                             <Fade><a href="/contact" className="py-4 px-2    font-semibold hover:underline underline-offset-8 hover:text-white decoration-2  transition duration-300 ">Contact Us</a></Fade>
                         </div>
-                        {!user.value && <a style={{backgroundColor:"#406b6e"}} href="/Login" className=" font-base text-lg 2x:text-xl hover:opacity-80 text-gray-300 px-4 py-2  hover:text-white transition duration-300">Log In</a>}
+                        {!user.value && <a style={{backgroundColor:"#bfb1c4"}} href="/Login" className=" font-base text-lg 2x:text-xl hover:opacity-80 text-black px-4 py-2  hover:text-white transition duration-300">Log In</a>}
                         {user.value && <MdAccountCircle style={{color:"black"}} className=" font-medium  hover:text-black cursor-pointer transition duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
                         <HiShoppingCart  onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart  cursor-pointer  text-gray-300 md:text-3xl 2xl:text-4xl ' />
                     </div>

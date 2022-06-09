@@ -37,10 +37,15 @@ export default function Home() {
   
         <Pulse><video style={{height:"100vh"}} className=" object-cover object-center md:object-fill w-full" src="/main2.mp4" autoPlay muted loop /></Pulse>
       </div>
-      <div style={{height:"70vh",backgroundColor:"#003c3c"}} className="absolute  top-0  w-full">
-        <p  className=' text-6xl leading-relaxed text-center mt-32 text-white  font-extrabold'><i>" IF A <span style={{color:"#406b6e"}}>WINDOW</span> OF "</i></p>
-        <p  className=' text-6xl leading-relaxed text-center text-white  font-extrabold'><i><span style={{color:"#406b6e"}}> OPPURTUNITY</span> APPEARS, DON'T </i> </p>
-        <p  className=' text-6xl leading-relaxed text-center  text-white  font-extrabold'><i> PULL DOWN THE <span style={{color:"#406b6e"}}>SHADES</span></i></p>
+      <div style={{height:"70vh",backgroundColor:"black"}} className="absolute  top-0  w-full">
+        <div className=' mt-20  flex flex-col'>
+        <div style={{height:65,marginTop:90}} className='bg-black z-20 w-full absolute '></div>
+        <div style={{height:65,marginTop:210}} className='bg-black z-20 w-full absolute '></div>
+        <div style={{height:65,marginTop:330}} className='bg-black z-20 w-full absolute '></div>
+        <p  className=' text-6xl leading-loose effect text-center text-white  font-extrabold'><i>" IF A <span style={{color:"#bfb1c4"}}>WINDOW</span> OF "</i></p>
+        <p  className=' text-6xl leading-loose text-center text-white  font-extrabold'><i><span style={{color:"#bfb1c4"}}> OPPURTUNITY</span> APPEARS, DON'T </i> </p>
+        <p  className=' text-6xl leading-loose text-center  text-white  font-extrabold'><i> PULL DOWN THE <span style={{color:"#bfb1c4"}}>SHADES</span></i></p>
+      </div>
       </div>
     </div>
 
