@@ -52,7 +52,7 @@ export default function Home() {
 
       <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=''>
       <section className="text-white">
-  <div className="container mx-auto flex px-5  2xl:px-10 pt-36 md:pt-40  md:flex-row flex-col items-center">
+  <div className="container mx-auto flex px-5  2xl:px-10 pt-36 md:pt-20  md:flex-row flex-col items-center">
     <div className='overflow-hidden'>
            <div  className=" hover:transition-transform ease-in duration-500  hover:scale-125 md:max-w-xl 2xl:max-w-2xl w-full mb-10  md:mb-0">
       <Slide left> <img  className="object-cover object-center" alt="hero" src="/1.jpg"/></Slide>
