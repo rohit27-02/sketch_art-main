@@ -128,7 +128,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
 
         </div>
-        {dropDown && <div onMouseLeave={() => setdropDown(false)} className='absolute animate-fade-in-down right-14 md:right-2 2xl:text-2xl md:text-xl bg-white shadow-black shadow-md text-center z-50 top-16 px-5  text-lg md:px-4 py-3  md:acctext '>
+        {dropDown && <div onMouseLeave={() => setdropDown(false)} style={{ fontFamily: "'Montserrat', sans-serif"}} className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white shadow-black shadow-sm text-center z-50 top-16 px-5  text-lg md:px-0 py-3  md:acctext '>
             <ul>
                 <a className='  font-bold' href={"/myaccount"}><li className='px-2 account'>Account</li></a>
                 <a className='  font-bold' href={'/orders'}><li className='px-2 account'>Orders</li></a>
@@ -176,10 +176,10 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
                     <div className="hidden md:flex items-center space-x-6 ">
                     <div style={{ fontFamily: "'Montserrat', sans-serif"}} id='navtext' className="hidden md:flex items-center text-black 2xl:text-lg text-base space-x-1">
-                           <a href="/" className="py-4 px-2   font-semibold  hover:underline underline-offset-8  decoration-2   ">Home</a>
-                           <a onClick={toggleproducts} className="py-4 cursor-pointer px-2   font-semibold   hover:underline underline-offset-8  decoration-2   ">Products</a>
-                           <a href="/about" className="py-4 px-2    font-semibold   hover:underline underline-offset-8  decoration-2   ">About</a>
-                           <a href="/contact" className="py-4 px-2    font-semibold   hover:underline underline-offset-8  decoration-2   ">Contact Us</a>
+                           <a style={{textUnderlineOffset:8}} href="/" className="py-4 px-2   font-semibold  hover:underline  decoration-2   ">Home</a>
+                           <a style={{textUnderlineOffset:8}} onClick={toggleproducts} className="py-4 cursor-pointer px-2   font-semibold   hover:underline  decoration-2   ">Products</a>
+                           <a style={{textUnderlineOffset:8}} href="/about" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">About</a>
+                           <a style={{textUnderlineOffset:8}} href="/contact" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">Contact Us</a>
                         </div>
                         {!user.value && <a style={{backgroundColor:"#bfb1c4"}} href="/Login" className=" font-base text-lg 2x:text-xl hover:opacity-80 text-black px-4 py-2  hover:text-white transition duration-300">Log In</a>}
                         {user.value && <MdAccountCircle style={{color:"black"}} className=" font-medium  hover:text-black cursor-pointer transition duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}

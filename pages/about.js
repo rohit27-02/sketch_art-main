@@ -21,9 +21,9 @@ const About = () => {
         <h1 style={{fontFamily:"'poppins',sans-serif"}} className='text-4xl font-bold'>How our journey began</h1>
        <Slide bottom><img style={{height:"80vh",width:"70vw"}} className='overflow-hidden  relative top-0' src='/b.jpg'></img></Slide >
       </div>
-      <div style={{backgroundColor:"#bfb1c4",fontFamily:"'poppins', sans-serif"}} className='text-center md:py-10 py-8 px-1 bg-slate-50 md:flex-row flex flex-col justify-center items-center '>
+      <div  style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className='text-center md:py-10 py-8 px-1 text-white md:flex-row flex flex-col justify-center items-center '>
         <div>
-         <Slide bottom> <h1 style={{fontFamily:"'poppins', sans-serif"}} className='text-3xl  font-bold'>How we do it</h1></Slide>
+         <Slide bottom> <h1 style={{ fontFamily: "'Lato', sans-serif"}} className='text-3xl text-slate-600 font-bold'>How we do it</h1></Slide>
          <Slide bottom><p className='  py-7 px-7 font-thin text-xl'>A systemised process ensures that we deliver only the best.
 In the commitment of importing top-notch quality products
 from authentic vendors only, we have employed a distinguished
@@ -35,8 +35,8 @@ genuine and experienced vendors after an in-depth research.</p></Slide>
       </div>
       <div style={{fontFamily:"'poppins', sans-serif"}} className='flex flex-col md:flex-row bg-white justify-around items-center leading-10  '>
 <img style={{height:600}} className='w-5/12  my-10' src='https://www.lvtron.com/wp-content/uploads/2019/09/1591582913-5.jpg'></img>
-<div><h1 className='font-bold text-3xl'>Our Capabilities</h1>
-<ul className='list-disc text-xl space-y-4  my-16'>
+<div className=''><h1 className='font-bold text-center text-3xl'>Our Capabilities</h1>
+<ul className='list-disc text-xl space-y-4  my-12'>
   <LightSpeed><li>Team of expert inspectors</li></LightSpeed>
   <LightSpeed><li>Team of experienced procurement agents</li></LightSpeed>
   <LightSpeed><li>Reliable vendor base</li></LightSpeed>
