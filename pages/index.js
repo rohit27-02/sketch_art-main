@@ -35,7 +35,7 @@ export default function Home() {
 
       <div className='overflow-hidden sticky top-0 bg-black w-full'>
   
-        <Pulse><video style={{height:"100vh"}} className=" object-cover object-center md:object-fill w-full" src="/main2.mp4" autoPlay muted loop /></Pulse>
+        <Pulse><video style={{height:"100vh"}} className=" object-cover object-center md:object-fill w-full" src="/main4.mp4" autoPlay muted loop /></Pulse>
       </div>
       <div style={{height:"70vh",backgroundColor:"#ebeaeb"}} className="absolute effect2 top-0  w-full">
         <div style={{fontFamily: "'montserrat', sans-serif"}} className=' mt-20  flex flex-col'>
