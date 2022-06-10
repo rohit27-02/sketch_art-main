@@ -11,11 +11,14 @@ const About = () => {
   return (
   
     <div>
-        <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+       <Head>
+      <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet"/>
-        </Head>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@300&family=Poppins:wght@500&display=swap" rel="stylesheet"/>
+        <title>Sketch Art</title>
+        <meta name="description" content="" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
       <div style={{height:"130vh"}} className='w-full flex justify-evenly flex-col  items-center'>
         <h1 style={{fontFamily:"'poppins',sans-serif"}} className='text-4xl font-bold'>How our journey began</h1>

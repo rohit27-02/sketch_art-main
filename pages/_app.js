@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-page-custom-font */
+/* eslint-disable react/jsx-no-undef */
 import '../styles/globals.css'
 import Footer from '../components/Footer'
 import { useState, useEffect } from 'react';
@@ -6,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingBar from 'react-top-loading-bar'
 import Navbar from '../components/Navbar';
+import Head from 'next/head';
  
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
@@ -102,6 +105,14 @@ function MyApp({ Component, pageProps }) {
 
   const showHeader = router.pathname === '/adminpanel' ? false : true;
   return <>
+   <Head>
+      <link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@300&family=Poppins:wght@500&display=swap" rel="stylesheet"/>
+        <title>Sketch Art</title>
+        <meta name="description" content="" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
     <LoadingBar
         color='black'
         progress={progress}

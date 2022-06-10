@@ -70,11 +70,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
         if (screen.width > 768) {
             setsw(true)
         }
-        if(Router.pathname=="/"){
-         
-          
-        }
-      
+       
 
     }, []);
     useEffect(() => {
@@ -175,11 +171,11 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                     </div>
 
                     <div className="hidden md:flex items-center space-x-6 ">
-                    <div style={{ fontFamily: "'Montserrat', sans-serif"}} id='navtext' className="hidden md:flex items-center text-black 2xl:text-lg text-base space-x-1">
-                           <a style={{textUnderlineOffset:8}} href="/" className="py-4 px-2   font-semibold  hover:underline  decoration-2   ">Home</a>
-                           <a style={{textUnderlineOffset:8}} onClick={toggleproducts} className="py-4 cursor-pointer px-2   font-semibold   hover:underline  decoration-2   ">Products</a>
-                           <a style={{textUnderlineOffset:8}} href="/about" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">About</a>
-                           <a style={{textUnderlineOffset:8}} href="/contact" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">Contact Us</a>
+                    <div  id='navtext' className="hidden md:flex items-center text-black 2xl:text-lg text-base space-x-1">
+                           <a style={{textUnderlineOffset:8,fontFamily: "'Montserrat', sans-serif"}} href="/" className="py-4 px-2   font-semibold  hover:underline  decoration-2   ">Home</a>
+                           <a style={{textUnderlineOffset:8,fontFamily: "'Montserrat', sans-serif"}} onClick={toggleproducts} className="py-4 cursor-pointer px-2   font-semibold   hover:underline  decoration-2   ">Products</a>
+                           <a style={{textUnderlineOffset:8,fontFamily: "'Montserrat', sans-serif"}} href="/about" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">About</a>
+                           <a style={{textUnderlineOffset:8,fontFamily: "'Montserrat', sans-serif"}} href="/contact" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">Contact Us</a>
                         </div>
                         {!user.value && <a style={{backgroundColor:"#bfb1c4"}} href="/Login" className=" font-base text-lg 2x:text-xl hover:opacity-80 text-black px-4 py-2  hover:text-white transition duration-300">Log In</a>}
                         {user.value && <MdAccountCircle style={{color:"black"}} className=" font-medium  hover:text-black cursor-pointer transition duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
