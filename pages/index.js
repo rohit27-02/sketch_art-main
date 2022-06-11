@@ -9,10 +9,12 @@ import { Bounce, Fade, Slide } from 'react-reveal';
 import {FaFacebookF,FaTwitter,FaInstagram} from "react-icons/fa"
 import Pulse from 'react-reveal/Pulse';
 import RubberBand from 'react-reveal/RubberBand';
-import {BsPinterest} from "react-icons/bs"
+
 import {VscGear} from "react-icons/vsc"
-import {FaWhatsappSquare} from "react-icons/fa"
+
 import {VscTools} from "react-icons/vsc"
+import {BsWhatsapp} from "react-icons/bs"
+import {CgMail} from "react-icons/cg"
 import {MdLocalParking} from "react-icons/md"
 import "react-multi-carousel/lib/styles.css";
 import { auto } from '@popperjs/core';
@@ -21,6 +23,14 @@ import { auto } from '@popperjs/core';
 
 export default function Home() {
   const [sw, setsw] = useState(false);
+  const [whatsapp, setwhatsapp] = useState(false);
+
+  const slidelogo=()=>{
+    setwhatsapp(true)
+  }
+  const off=()=>{
+    setwhatsapp(false)
+  }
  
   
   return (
@@ -37,9 +47,11 @@ export default function Home() {
       </Head>
 
      
+<div className='whatsapp flex items-center space-x-6 rounded-full duration-700 pl-5 pr-2 py-3 transition-transform hover:w-40 text-right bg-green-500 z-50 fixed right-10 bottom-10 '>
+{whatsapp && <div className='text-white mr-12'>9920 223462</div>}
+<BsWhatsapp onMouseEnter={slidelogo} onMouseLeave={off} className='text-white absolute right-0 cursor-pointer bg-green-500 p-2 rounded-3xl z-50 text-5xl '/>
+</div>
 
-
-<FaWhatsappSquare className='text-green-500 fixed right-10 z-50 text-5xl bottom-10'/>
     <div style={{height:"100vh"}}>
 
       <div style={{height:"120vh"}} className='overflow-hidden absolute z-10  top-0 bg-black w-full'>
@@ -105,7 +117,7 @@ Motorized window blinds perform the same purpose of traditional window blinds. T
       </div>
 
       <Slide bottom><div  className='w-full  overflow-hidden '>
-        <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5,textShadow:"0.5px 0.5px black"}} className='absolute my-10 z-20  w-full ml-4 md:text-center text-white text-5xl md:text-6xl 2xl:text-7xl'>The difference between style <br></br>and fashion is quality.</h1>
+       {/**  <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5,textShadow:"0.5px 0.5px black"}} className='absolute my-10 z-20  w-full ml-4 md:text-center text-white text-5xl md:text-6xl 2xl:text-7xl'>You imagine <br></br>We create.</h1>**/}
         <img style={{height:"102vh"}} className='w-full object-cover' src='/contact.png'></img>
 
       </div></Slide>
@@ -124,8 +136,8 @@ Motorized window blinds perform the same purpose of traditional window blinds. T
         <div className='md:col-span-4 flex justify-center  items-center'>
          <div className='flex flex-col text-center border-b-2 pb-8 md:pb-0 md:border-none justify-center items-center md:border-r-2 space-y-6 md:space-y-10 '>
           <h1 style={{fontFamily:"'Montserrat', sans-serif"}} className='font-semibold 2xl:text-2xl text-lg px-10'>CONNECT  WITH  US</h1>
-          <div className='font-thin flex w-full justify-around'><div className=' w-1/2 flex flex-col justify-center items-center '><FaFacebookF className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer'/>Facebook</div><div className='w-1/2 flex flex-col justify-center items-center '><FaTwitter className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer'/>Twitter</div></div>
-          <div className='font-thin flex w-full justify-around '><div className=' w-1/2 flex flex-col justify-center items-center '><BsPinterest className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer'/>Pinterest</div><div className='w-1/2 flex flex-col justify-center items-center '><FaInstagram className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer'/>Instagram</div></div>
+          <div className='font-thin flex w-full justify-around'><div className=' w-1/2 flex flex-col justify-center items-center '><FaFacebookF className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer'/>Facebook</div><div className='w-1/2 flex flex-col justify-center items-center '><CgMail className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer'/>Gmail</div></div>
+          <div className='font-thin flex w-full justify-around '><div className=' w-1/2 flex flex-col justify-center items-center '><BsWhatsapp className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer'/>Whatsapp</div><div className='w-1/2 flex flex-col justify-center items-center '><FaInstagram className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer'/>Instagram</div></div>
         </div>
           </div>
        
