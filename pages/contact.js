@@ -83,13 +83,13 @@ const Contact = ({ info }) => {
   </div>
 
 <section  style={{ fontFamily: "'Poppins', sans-serif" }} className="text-gray-600 body-font relative">
-  <div className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
+  <div className=" px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
     <div className="lg:w-1/2 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
       
      
     </div>
     <div className="lg:w-1/2 md:w-1/2 bg-white flex space-y-8 flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
-      <h2 className="text-gray-900 text-3xl mb-1 font-medium title-font">Leave a comment</h2>
+      <h2 className="text-gray-900 md:text-xl 2xl:text-3xl mb-1 font-medium title-font">Leave a comment</h2>
       
       <div className="flex space-x-5 relative mb-4">
       <div >
@@ -116,7 +116,7 @@ const Contact = ({ info }) => {
         <textarea id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
       </div>
      
-      <button className="text-white mx-72 bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">SUMBIT</button>
+      <button className="text-white mx-60 absolute bottom-8 2xl:mx-72 bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-sm 2xl:text-lg">SUMBIT</button>
     </div>
   </div>
 </section>

@@ -59,7 +59,7 @@ export default function Home() {
        <img  className=" object-cover h-full  w-full" src="/pexels-cottonbro-8571684.jpg"  />
       </div>
       <div className='flex justify-end '>
-     <h1 style={{fontFamily:"'Montserrat'"}} className="text-7xl absolute z-20 my-52 bg-black opacity-70 text-gray-200 font-bold ">Luxury is in each detail.</h1>
+     <h1 style={{fontFamily:"'Montserrat'"}} className="2xl:text-7xl md:text-5xl absolute z-20 2xl:my-52 md:my-36 bg-black opacity-70 text-gray-200 font-bold ">Luxury is in each detail.</h1>
      </div>
     </div>
 

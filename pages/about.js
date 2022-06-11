@@ -22,7 +22,7 @@ const About = () => {
 
       <div style={{height:"80vh"}}>
       <div style={{height:"90vh"}} className='w-full overflow-hidden top-0 absolute '>
-      <h1 className='text-8xl font-bold w-full text-center absolute my-52 z-50 text-gray-200  '>You imagine, we create.</h1>
+      <h1 className='2xl:text-8xl text-6xl font-bold w-full text-center absolute 2xl:my-52 md:my-40 z-50 text-gray-200  '>You imagine, we create.</h1>
        <Slide bottom><img  className='object-cover h-full  w-full ' src='/pexels-curtis-adams-3773571 (1).jpg'></img></Slide >
       
       </div>
@@ -62,7 +62,7 @@ genuine and experienced vendors after an in-depth research.</p></Slide>
       
       <div  style={{fontFamily:"'poppins', sans-serif"}} className='text-center md:py-20 py-8 px-10  text-slate-700 bg-slate-50 md:flex-row flex flex-col justify-center items-center '>
        <div> <h1 className='text-2xl font-bold'>Global Leading Manufacturer</h1>
-        <p className=' py-7 px-7 text-xl leading-relaxed font-thin'>With an industry experience of over 25 years, Dooya private limited is the leading manufacturer and importer of Window Blinds and Accessories, Motorized Blinds and Interior Flims in the country catering to clients across the globe. It is also the marketing partner for Dooya Motors based in China. Keen on widening its portfolio, Dooya is open to expanding its imports and exports as and when opportunities present themselves.
+        <p className=' py-7 px-7 md:text-base 2xl:text-xl leading-relaxed font-thin'>With an industry experience of over 25 years, Dooya private limited is the leading manufacturer and importer of Window Blinds and Accessories, Motorized Blinds and Interior Flims in the country catering to clients across the globe. It is also the marketing partner for Dooya Motors based in China. Keen on widening its portfolio, Dooya is open to expanding its imports and exports as and when opportunities present themselves.
 
 Dooya strives for excellence by providing customized solutions. An expansive range of world-class home fashion products while providing premium customer services that include global sourcing, quality assurance, logistics and finance.</p>
 <button style={{backgroundColor:"#bfb1c4"}} className='text-base hover:opacity-80 p-2 font-bold'>Contact Us</button>
