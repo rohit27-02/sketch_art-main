@@ -96,3 +96,12 @@ min-width: 12%;
 .effect2{
     animation: fadein 1s ease-in-out 3s forwards;
 }
+
+.whatsapp:hover{
+    animation: slide 9s ease-in-out ;
+}
+@keyframes slide{
+    0%{width:auto;}
+    
+    100%{width:60px;}
+}

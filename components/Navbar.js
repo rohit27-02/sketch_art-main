@@ -43,6 +43,12 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     if (screen.width > 500) {
       setsw(true)
     }
+    if(Router.pathname =="/"){
+      document.getElementById("navtext").classList.add("text-white")
+      document.getElementById("img").classList.add("invert")
+      document.getElementById("login").classList.add("text-white")
+      document.getElementById("cart").classList.add("text-white")
+    }
   }, []);
   const handleChange = (e) => {
 
@@ -210,6 +216,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
   }
 
+
   const ref = useRef();
   const menu = useRef();
   return (<>
@@ -367,21 +374,21 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
             <div>
 
               <a href="/" className="flex  items-center py-1 ">
-                <img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 invert  w-auto " />
+                <img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16  w-auto " />
               </a>
             </div>
           </div>
 
           <div className="hidden md:flex items-center space-x-6 ">
-            <div id='navtext' className="hidden md:flex items-center text-white 2xl:text-lg text-base space-x-1">
+            <div id='navtext' className="hidden md:flex items-center  2xl:text-lg text-base space-x-1">
               <a style={{ textUnderlineOffset: 8, fontFamily: "'Montserrat', sans-serif" }} href="/" className="py-4 px-2   font-semibold  hover:underline  decoration-2   ">Home</a>
-              <a style={{ textUnderlineOffset: 8, fontFamily: "'Montserrat', sans-serif" }} onClick={toggleproducts} className="py-4 cursor-pointer px-2   font-semibold   hover:underline  decoration-2   ">Products</a>
-              <a style={{ textUnderlineOffset: 8, fontFamily: "'Montserrat', sans-serif" }} href="/about" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">About</a>
+              <a style={{ textUnderlineOffset: 8, fontFamily: "'Montserrat', sans-serif" }} onClick={toggleproducts} className="py-4 cursor-pointer px-2   font-semibold   hover:underline  decoration-2 ">Products</a>
+              <a style={{ textUnderlineOffset: 8, fontFamily: "'Montserrat', sans-serif" }} href="/about" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">About Us</a>
               <a style={{ textUnderlineOffset: 8, fontFamily: "'Montserrat', sans-serif" }} href="/contact" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">Contact Us</a>
             </div>
-            {!user.value && <a  onClick={() => setlogin(true)} style={{fontFamily: "'Montserrat', sans-serif"}} className=" font-bold  text-lg cursor-pointer 2x:text-xl hover:opacity-80 text-white hover:text-white transition duration-300">Log In</a>}
+            {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontFamily: "'Montserrat', sans-serif"}} className=" font-bold  text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}
             {user.value && <MdAccountCircle style={{ color: "black" }} className=" font-medium  hover:text-black cursor-pointer transition duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
-            <HiShoppingCart onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart  cursor-pointer  text-white md:text-3xl 2xl:text-4xl ' />
+            <HiShoppingCart id="cart" onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart  cursor-pointer md:text-3xl 2xl:text-4xl ' />
           </div>
 
           <div id='mnav' className="md:hidden flex space-x-5 items-center">
