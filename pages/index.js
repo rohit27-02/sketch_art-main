@@ -42,20 +42,13 @@ export default function Home() {
 <FaWhatsappSquare className='text-green-500 fixed right-10 z-50 text-5xl bottom-10'/>
     <div style={{height:"100vh"}}>
 
-      <div className='overflow-hidden sticky top-0 bg-black w-full'>
+      <div style={{height:"120vh"}} className='overflow-hidden absolute z-10  top-0 bg-black w-full'>
   
-       <video style={{height:"100vh"}} className=" object-cover object-center md:object-fill w-full" src="/main5.mp4" autoPlay muted loop />
+       <img  className=" object-cover h-full  w-full" src="/pexels-cottonbro-8571684.jpg"  />
       </div>
-      <div style={{height:"70vh",backgroundColor:"#ebeaeb"}} className="absolute effect2 top-0  w-full">
-        <div style={{fontFamily: "'montserrat', sans-serif"}} className=' mt-20  flex flex-col'>
-        <div style={{height:65,backgroundColor:"#ebeaeb",marginTop:90}} className=' z-20 w-full absolute '></div>
-        <div style={{height:65,backgroundColor:"#ebeaeb",marginTop:210}} className=' z-20 w-full absolute '></div>
-        <div style={{height:65,backgroundColor:"#ebeaeb",marginTop:330}} className=' z-20 w-full absolute '></div>
-        <p style={{marginTop:64}}  className=' text-6xl leading-loose effect text-center text-black  font-extrabold'>" IF A <span style={{color:"#bfb1c4"}}>WINDOW</span> OF "</p>
-        <p  className=' text-6xl leading-loose text-center text-black  font-extrabold'><span style={{color:"#bfb1c4"}}> OPPURTUNITY</span> APPEARS, DON'T </p>
-        <p  className=' text-6xl leading-loose text-center  text-black  font-extrabold'> PULL DOWN THE <span style={{color:"#bfb1c4"}}>SHADES</span></p>
-      </div>
-      </div>
+      <div className='flex justify-end '>
+     <h1 style={{fontFamily:"'Montserrat'"}} className="text-7xl absolute z-20 my-52 bg-black opacity-70 text-gray-200 font-bold ">Luxury is in each detail.</h1>
+     </div>
     </div>
 
       <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=''>
