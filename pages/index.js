@@ -15,14 +15,18 @@ import {FaWhatsappSquare} from "react-icons/fa"
 import {VscTools} from "react-icons/vsc"
 import {MdLocalParking} from "react-icons/md"
 import "react-multi-carousel/lib/styles.css";
+import { auto } from '@popperjs/core';
+
 
 
 export default function Home() {
   const [sw, setsw] = useState(false);
+ 
   
   return (
     
     <div >
+     
       <Head>
       <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
@@ -31,6 +35,10 @@ export default function Home() {
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+     
+
+
 <FaWhatsappSquare className='text-green-500 fixed right-10 z-50 text-5xl bottom-10'/>
     <div style={{height:"100vh"}}>
 
@@ -76,10 +84,10 @@ Motorized window blinds perform the same purpose of traditional window blinds. T
 <section className="text-white">
   <div className="container mx-auto flex px-5 md:px-8 2xl:px-10 pt-8 md:py-24 md:flex-row flex-col-reverse items-center">
     <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16   flex flex-col md:items-start md:text-left mb-16 md:mb-0 ">
-    <Slide bottom> <h1 style={{ fontFamily: "'Lato', sans-serif"}} className=" md:text-6xl 2xl:text-7xl text-3xl mb-4 md:mb-6 2xl:mb-10  font- ">Before they sold out
-        <br className="hidden lg:inline-block"/>readymade gluten
+    <Slide bottom> <h1 style={{ fontFamily: "'Lato', sans-serif"}} className=" md:text-6xl 2xl:text-7xl text-3xl mb-4 md:mb-6 2xl:mb-10  font- ">How to choose
+        <br className="hidden lg:inline-block"/> your blinds?
       </h1></Slide>
-      <Slide bottom><p  className="mb-8   md:text-base text-sm 2xl:text-lg ">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
+      <Slide bottom><p  className="mb-8   md:text-base text-sm 2xl:text-lg "> Selecting window treatments for a specific room is all about assessing the way the space functions. </p>
       <div className="flex justify-start">
         <button  style={{color:"#bfb1c4"}} className=" inline-flex  bg-gray-100 font-semibold border-0 py-2 px-6 focus:outline-none hover:bopacity-90t-lg">Learn More</button>
       </div>

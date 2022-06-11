@@ -15,7 +15,12 @@ import { IoIosMail } from "react-icons/io"
 import { BsFillTelephoneFill } from "react-icons/bs"
 import { Squash as Hamburger } from 'hamburger-react'
 import  Router  from 'next/router';
-
+import { Dialog } from '@headlessui/react'
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
+import jwtDecode from 'jwt-decode';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -29,6 +34,111 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     const [subcategory, setsubcategory] = useState();
     const [info, setinfo] = useState({});
     const [isOpen, setOpen] = useState(false)
+    const [login, setlogin] = useState(false)
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+  
+    useEffect(() => {
+    
+    if (screen.width > 500) {
+      setsw(true)
+  }
+    }, []);
+    const handleChange = (e) => {
+  
+      if (e.target.name == "email") {
+        setEmail(e.target.value)
+      }
+      if (e.target.name == "password") {
+        setPassword(e.target.value)
+      }
+    }
+    const handleSubmit = async (e) => {
+      e.preventDefault()
+      const data = { email, password}
+      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }, body: JSON.stringify(data)
+      })
+      let response = await res.json()
+      setEmail("")
+      setPassword("")
+      if(response.admin){
+        localStorage.setItem("admin",response.admin)
+      }
+      if (response.success) {
+        localStorage.setItem("token",response.token)
+        toast.success('congratulation your are logged in', {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setTimeout(() => {
+          Router.push(process.env.NEXT_PUBLIC_HOST)
+        }, 2000);
+      }
+      else {
+        toast.error(response.error, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+  
+      }
+  
+    }
+    function assign(obj){
+      return {email:obj.email}
+    }
+    const auth= async(res)=>{
+         const obj = await jwtDecode(res.credential)
+         setEmail(obj.email)
+         const data=await assign(obj)
+         let response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/auth`,{
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          }, body: JSON.stringify(data)
+        })
+         let status = await response.json()
+         setEmail("")
+         if (status.success) {
+          localStorage.setItem("token",status.token)
+          toast.success('congratulation your are logged in', {
+            position: "top-center",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          setTimeout(() => {
+            Router.push(process.env.NEXT_PUBLIC_HOST)
+          }, 2000);
+        }
+        else {
+          toast.warning(status.error, {
+            position: "top-center",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+    }
 
 
 
@@ -104,6 +214,98 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     const menu = useRef();
     return (<>
 
+<Dialog style={{width:"100vw",height:"100vh"}} className="fixed  flex justify-center items-center top-0 bg-black  bg-opacity-60 z-50" open={login} onClose={() => setlogin(false)}>
+      <Dialog.Panel >
+      
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      /> 
+      <div style={{fontFamily:"'Montserrat', sans-serif"}} className='flex drop-shadow-md rounded-xl'>
+      <div className='bg-white block px-10 py-2  rounded-md'>
+      <div className="max-w-md  w-full space-y-6">
+      
+        <form onSubmit={handleSubmit} className="mt-8 scale-90 w-full md:scale-100 space-y-6" method="POST">
+            <h1 className='text-2xl font-bold text-center text-gray-600'>Welcome to sketchart</h1>
+          <div className=" shadow-sm">
+            <div>
+              <label htmlFor="email" className="sr-only">
+                 Email address
+              </label>
+              <input
+                onChange={handleChange}
+                id="email"
+                name="email"
+                type="email"
+                value={email}
+                autoComplete="email"
+                required
+                
+                className="appearance-nonerelative block w-full px-3  py-2 border mb-2 bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 text-lg"
+                placeholder="Email"
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
+              <input
+                onChange={handleChange}
+                value={password}
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="password"
+                required
+                className="appearance-none  relative block w-96 px-3 py-2 border bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 text-lg"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+          <div className=''> 
+            <button
+              type="submit"
+              style={{backgroundColor:"#3e3e3e"}} className="group drop-shadow-sm relative w-full flex justify-center py-2 px-4 border hover:shadow-lg text-white text-sm font-bold  "
+            >
+
+              Sign in
+            </button>
+            <div className="text-sm space-x-4 mt-2 flex font-medium text-gray-800 justify-center">
+              <a className='hover:text-gray-600' href="/Forgot" >
+                Forgot password?
+              </a>
+              <p className='hover:text-gray-600'>Create account</p>
+            </div>
+          </div>
+          <div className='flex justify-center space-x-2 '>
+            <div className='border-b border-gray-800 my-3 w-32'></div>
+            <div className=''>Or</div>
+            <div className='border-b border-gray-800 my-3 w-32'></div>
+          </div>
+          <div className='md:text-center'><GoogleOAuthProvider clientId="390204161646-6noec67uc8qleni584kq3ojnbbebeo1i.apps.googleusercontent.com"><GoogleLogin
+  onSuccess={res=> auth(res)}
+  onError={() => {
+    console.log('Login Failed');
+  }}
+  auto_select
+  useOneTap
+/></GoogleOAuthProvider></div>
+       </form>
+      </div>
+    </div>
+   
+    </div>
+   
+      </Dialog.Panel>
+    </Dialog>
+
         <div ref={menu} className='text-lg md:text-xl 2xl:text-2xl transform transition-transform duration-300  ease-in-out  -translate-x-full  shadow-xl overflow-y-hidden  left-0 py-4 top-0 h-full md:bg-opacity-90 bg-black text-white fixed  z-50 ' >
             <AiOutlineClose className='float-right mx-3 cursor-pointer ' onClick={toggleproducts} />
             <div style={{ fontFamily: "'Montserrat', sans-serif"}} className="mt-16 flex justify-center flex-col flex-wrap ">
@@ -177,7 +379,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                            <a style={{textUnderlineOffset:8,fontFamily: "'Montserrat', sans-serif"}} href="/about" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">About</a>
                            <a style={{textUnderlineOffset:8,fontFamily: "'Montserrat', sans-serif"}} href="/contact" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">Contact Us</a>
                         </div>
-                        {!user.value && <a style={{backgroundColor:"#bfb1c4"}} href="/Login" className=" font-base text-lg 2x:text-xl hover:opacity-80 text-black px-4 py-2  hover:text-white transition duration-300">Log In</a>}
+                        {!user.value && <a style={{backgroundColor:"#bfb1c4"}}  onClick={() => setlogin(true)} className=" font-base text-lg 2x:text-xl hover:opacity-80 text-black px-4 py-2  hover:text-white transition duration-300">Log In</a>}
                         {user.value && <MdAccountCircle style={{color:"black"}} className=" font-medium  hover:text-black cursor-pointer transition duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
                         <HiShoppingCart  onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart  cursor-pointer  text-black md:text-3xl 2xl:text-4xl ' />
                     </div>
