@@ -10,11 +10,16 @@ import {GrMapLocation} from "react-icons/gr"
 import {AiOutlineFlag} from "react-icons/ai"
 import {IoIosPhonePortrait} from "react-icons/io"
 import Router from 'next/router';
+import { Loader } from '@googlemaps/js-api-loader';
+
+
 
 const Contact = ({ info }) => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [message, setmessage] = useState("");
+  const [company, setcompany] = useState("");
+  const [number, setnumber] = useState("");
 
   function handleChange(e) {
     if (e.target.id == "name") {
@@ -23,12 +28,18 @@ const Contact = ({ info }) => {
     else if (e.target.id == "email") {
       setemail(e.target.value)
     }
-    if (e.target.id == "message") {
+    else if (e.target.id == "message") {
       setmessage(e.target.value)
+    }
+    else if (e.target.id == "company") {
+      setcompany(e.target.value)
+    }
+    else if (e.target.id == "number") {
+      setnumber(e.target.value)
     }
   }
   async function submit(e) {
-    const data = { name, email, message }
+    const data = { name, email, message,number,company }
     let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/feedback`, {
       method: "POST",
       headers: {
@@ -55,7 +66,54 @@ const Contact = ({ info }) => {
       }, 3000);
     }
   }
+
+  const loader = new Loader({
+    apiKey: "AIzaSyB9-EbfHmRL48vGnmDpeITVl_QtA9wg9So",
+    version: "weekly",
+    libraries: ["places"]
+  });
+  
+  const mapOptions = {
+    center: {
+      lat: 19.161515,
+      lng: 72.8526362
+    },
+    zoom: 20,
+   
+  };
+  loader
+  .load()
+  .then((google) => {
+    new google.maps.Map(document.getElementById("map"), mapOptions);
+    new google.maps.Marker({
+      position: {lat: 19.161515,
+        lng: 72.8526362},
+     
+      title:"hello",
+    })
+   ;
+  })
+  .catch(e => {
+    // do something
+  });
+
+  
+
   return (<>
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9-EbfHmRL48vGnmDpeITVl_QtA9wg9So">
+</script>
+<ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
   
   <div style={{height:"70vh"}} className="overflow-hidden absolute z-10  top-0 bg-black w-full">
     <img src='/pexels-angela-roma-7319189.jpg' className='object-cover h-full w-full'></img>
@@ -63,17 +121,17 @@ const Contact = ({ info }) => {
   <div style={{height:"100vh"}}>
   <div style={{height:"170vh"}} className="flex items-center w-full">
     <div className='flex justify-evenly px-28 w-full'>
-       <div className='text-center  flex space-y-5 flex-col justify-center items-center w-1/3'> 
+       <div className='text-center  flex space-y-5 flex-col items-center w-1/3'> 
         <GrMapLocation className='text-5xl'/>
         <h1>Our address</h1>
         <p>{info[0].address}</p>
       </div>
-       <div className='text-center  flex space-y-5 flex-col justify-center items-center w-1/3'> 
+       <div className='text-center  flex space-y-5 flex-col items-center w-1/3'> 
         <AiOutlineFlag className='text-5xl'/>
         <h1>Our email</h1>
         <p>{info[0].email}</p>
       </div>
-       <div className='text-center  flex space-y-5 flex-col justify-center items-center w-1/3'>
+       <div className='text-center  flex space-y-5 flex-col items-center w-1/3'>
         <IoIosPhonePortrait className='text-5xl'/>
         <h1>Call us</h1>
         <p>{info[0].phone}</p>
@@ -84,8 +142,8 @@ const Contact = ({ info }) => {
 
 <section  style={{ fontFamily: "'Poppins', sans-serif" }} className="text-gray-600 body-font relative">
   <div className=" px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
-    <div className="lg:w-1/2 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
-      
+    <div id='map' className="lg:w-1/2 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+   
      
     </div>
     <div className="lg:w-1/2 md:w-1/2 bg-white flex space-y-8 flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
@@ -94,29 +152,29 @@ const Contact = ({ info }) => {
       <div className="flex space-x-5 relative mb-4">
       <div >
         <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
-        <input type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input required onChange={(e)=>handleChange(e)} type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <div >
         <label htmlFor="company" className="leading-7 text-sm text-gray-600">company</label>
-        <input type="text" id="company" name="company" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input required onChange={(e)=>handleChange(e)} type="text" id="company" name="company" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       </div>
       <div className="flex space-x-5 relative mb-4">
       <div >
         <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-        <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input required onChange={(e)=>handleChange(e)} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <div >
         <label htmlFor="number" className="leading-7 text-sm text-gray-600">number</label>
-        <input type="tel" id="number" name="number" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input required onChange={(e)=>handleChange(e)} type="tel" id="number" name="number" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       </div>
       <div className="relative mb-4">
         <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
-        <textarea id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+        <textarea required onChange={(e)=>handleChange(e)} id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
       </div>
      
-      <button className="text-white mx-60 absolute bottom-8 2xl:mx-72 bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-sm 2xl:text-lg">SUMBIT</button>
+      <button onClick={(e)=>submit(e)} className="text-white mx-60 absolute bottom-8 2xl:mx-72 bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-sm 2xl:text-lg">SUMBIT</button>
     </div>
   </div>
 </section>

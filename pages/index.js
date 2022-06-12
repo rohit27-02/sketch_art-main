@@ -2,16 +2,17 @@
 /* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-import Head from 'next/head'
+
 import "react-multi-carousel/lib/styles.css";
 import { useState,useEffect } from 'react';
 import { Bounce, Fade, Slide } from 'react-reveal';
 import {FaFacebookF,FaTwitter,FaInstagram} from "react-icons/fa"
 import Pulse from 'react-reveal/Pulse';
 import RubberBand from 'react-reveal/RubberBand';
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import {VscGear} from "react-icons/vsc"
-
+import VisibilitySensor from 'react-visibility-sensor';
 import {VscTools} from "react-icons/vsc"
 import {BsWhatsapp} from "react-icons/bs"
 import {CgMail} from "react-icons/cg"
@@ -22,8 +23,17 @@ import { auto } from '@popperjs/core';
 
 
 export default function Home() {
+
   const [sw, setsw] = useState(false);
   const [whatsapp, setwhatsapp] = useState(false);
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 400 },
+      items: 1,
+      slidesToSlide: 1
+    }
+  };
 
   const slidelogo=()=>{
     setwhatsapp(true)
@@ -37,31 +47,75 @@ export default function Home() {
     
     <div >
      
-      <Head>
-      <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@300&family=Poppins:wght@500&display=swap" rel="stylesheet"/>
-        <title>Sketch Art</title>
-        <meta name="description" content="" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-     
 <div className='whatsapp flex items-center space-x-6 rounded-full duration-700 pl-5 pr-2 py-3 transition-transform hover:w-40 text-right bg-green-500 z-50 fixed right-10 bottom-10 '>
 {whatsapp && <div className='text-white mr-12'>9920 223462</div>}
 <BsWhatsapp onMouseEnter={slidelogo} onMouseLeave={off} className='text-white absolute right-0 cursor-pointer bg-green-500 p-2 rounded-3xl z-50 text-5xl '/>
 </div>
 
-    <div style={{height:"100vh"}}>
 
-      <div style={{height:"120vh"}} className='overflow-hidden absolute z-10  top-0 bg-black w-full'>
-  
-       <img  className=" object-cover h-full  w-full" src="/pexels-cottonbro-8571684.jpg"  />
+<div style={{height:"85vh"}} className='animate-fade-in-down -my-20'>
+        <Carousel
+      
+        className='container '
+        autoPlay={true}
+          swipeable={false}
+          draggable={false}
+          showDots={true}
+          responsive={responsive}
+          ssr={true} // means to render carousel on server-side.
+          infinite={true}
+          autoPlaySpeed={3000}
+          keyBoardControl={true}
+          transitionDuration={2200}
+          containerClass="carousel-container"
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+          dotListClass="custom-dot-list-style"
+        >
+          <VisibilitySensor partialVisibility  >
+        {({ isVisible }) => (<div   style={{height:"90vh"}} className=' object-cover   relative overflow-hidden   '><img  src='/pexels-cottonbro-8571684.jpg'></img>
+        {isVisible ?<Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold text-2xl md:text-7xl text-white '>Luxury is in each detail.</div></Slide>:null}
+          </div>)}</VisibilitySensor>
+          <VisibilitySensor partialVisibility  >
+          {({ isVisible }) => (<div   style={{height:"90vh"}} className=' object-cover   relative overflow-hidden   '><img  src='/pexels-max-vakhtbovych-6980665.jpg'></img>
+          {isVisible ?<Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold text-2xl md:text-7xl text-white '>Take Control Of Your Home</div></Slide>:null}
+          </div>)}</VisibilitySensor>
+          <VisibilitySensor partialVisibility  >
+          {({ isVisible }) => (<div   style={{height:"90vh"}} className=' object-cover   relative overflow-hidden   '><img  src='/pexels-marta-6043975.jpg'></img>
+          {isVisible ?<Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold text-2xl md:text-7xl text-white '>Pushing Limits <br></br> For Your Luxuries</div></Slide>:null}
+          </div>)}</VisibilitySensor>
+         
+        </Carousel>
+        <Carousel
+      
+        className='container '
+        autoPlay={true}
+          swipeable={false}
+          draggable={false}
+          showDots={true}
+          responsive={responsive}
+          ssr={true} // means to render carousel on server-side.
+          infinite={true}
+          autoPlaySpeed={3000}
+          keyBoardControl={true}
+          transitionDuration={2200}
+          containerClass="carousel-container"
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+          dotListClass="custom-dot-list-style"
+        >
+          
+     <div className='absolute md:top-56 top-28 text-center w-full font-extrabold text-2xl md:text-7xl text-white '>Luxury is in each detail.</div>
+         
+        
+       <div className='absolute md:top-56 top-28 text-center w-full font-extrabold text-2xl md:text-7xl text-white '>Take Control Of Your Home</div>
+         
+       
+      <div className='absolute md:top-56 top-28 text-center w-full font-extrabold text-2xl md:text-7xl text-white '>Pushing Limits <br></br> For Your Luxuries</div>
+         
+         
+        </Carousel>
       </div>
-      <div className='flex justify-end '>
-     <h1 style={{fontFamily:"'Montserrat'"}} className="2xl:text-7xl md:text-5xl absolute z-20 2xl:my-52 md:my-36 bg-black opacity-70 text-gray-200 font-bold ">Luxury is in each detail.</h1>
-     </div>
-    </div>
+
+   
 
       <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=''>
       <section className="text-white">

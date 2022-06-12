@@ -6,7 +6,7 @@ const handler = async (req, res) => {
     console.log(req.body)
     if (req.method == "POST") { 
        
-            let f = new Feed({name:req.body.name,email:req.body.email,message:req.body.message})
+            let f = new Feed({name:req.body.name,email:req.body.email,message:req.body.message,company:req.body.company,number:req.body.number})
             await f.save()
             res.status(200).json({ success: "success" })
         }
