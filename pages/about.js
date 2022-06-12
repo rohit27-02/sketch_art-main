@@ -14,8 +14,8 @@ const About = () => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 8,
-      slidesToSlide: 3 // optional, default to 1.
+      items: 7,
+      slidesToSlide: 1 // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -135,9 +135,11 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
         )}
       </VisibilitySensor>
 
-      <div style={{height:"25vh"}}  className='flex flex-col justify-center items-center space-y-8 text-white text-3xl font-bold text-center py-5  bg-black'>
+      <div   className=' space-y-8 text-black mt-8 px-32 text-3xl font-bold text-center py-5  bg-white'>
         <h1>OUR PRESTIGIOUS CLIENTS</h1>
-        <Carousel
+     
+
+      <Carousel
   swipeable={false}
   draggable={false}
   showDots={false}
@@ -145,32 +147,30 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
   ssr={true} // means to render carousel on server-side.
   infinite={true}
   autoPlay={true}
-  autoPlaySpeed={1000}
+  autoPlaySpeed={2500}
   keyBoardControl={true}
-  transitionDuration={500}
+  transitionDuration={1000}
   containerClass="carousel-container"
   removeArrowOnDeviceType={["tablet", "mobile","desktop"]}
   dotListClass="custom-dot-list-style"
   itemClass="carousel-item-padding-40-px"
 >
-  <div  className='h-40 w-40 '> <img src='/c1.jpeg'></img></div>
-  <div  className='h-40 w-40 '> <img src='/c2.jpeg'></img></div>
-  <div  className='h-40 w-40 '> <img src='/c3.jpeg'></img></div>
-  <div  className='h-40 w-40 '> <img src='/c4.jpeg'></img></div>
-  <div  className='h-40 w-40 '> <img src='/c5.jpeg'></img></div>
-  <div  className='h-40 w-40 '> <img src='/c6.jpeg'></img></div>
-  <div  className='h-40 w-40 '> <img src='/c7.jpeg'></img></div>
-  <div  className='h-40 w-40 '> <img src='/c8.jpeg'></img></div>
-  <div  className='h-40 w-40 '> <img src='/c9.jpeg'></img></div>
-  <div  className='h-40 w-40 '> <img src='/c10.jpeg'></img></div>
-  <div  className='h-40 w-40 '> <img src='/c11.jpeg'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c1.jpeg'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c2.jpeg'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c3.jpeg'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c4.jpeg'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c5.jpeg'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c6.jpeg'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c7.jpeg'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c8.jpeg'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c9.jpeg'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c10.jpeg'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c11.jpeg'></img></div>
   
 </Carousel>
-
-     
+</div>
       </div>
-     
-      </div>
+      
   )
 }
 
