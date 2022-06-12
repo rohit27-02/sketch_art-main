@@ -53,10 +53,10 @@ export default function Home() {
 </div>
 
 
-<div style={{height:"85vh"}} className='animate-fade-in-down -my-20'>
+<div style={{height:"85vh",width:"100vw"}} className='animate-fade-in-down  -my-20'>
         <Carousel
       
-        className='container '
+        className='  bg-black '
         autoPlay={true}
           swipeable={false}
           draggable={false}
@@ -64,24 +64,24 @@ export default function Home() {
           responsive={responsive}
           ssr={true} // means to render carousel on server-side.
           infinite={true}
-          autoPlaySpeed={3000}
+          autoPlaySpeed={10000}
           keyBoardControl={true}
-          transitionDuration={2200}
+          transitionDuration={5000}
           containerClass="carousel-container"
           removeArrowOnDeviceType={["tablet", "mobile"]}
           dotListClass="custom-dot-list-style"
         >
           <VisibilitySensor partialVisibility  >
-        {({ isVisible }) => (<div   style={{height:"90vh"}} className=' object-cover   relative overflow-hidden   '><img  src='/pexels-cottonbro-8571684.jpg'></img>
-        {isVisible ?<Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold text-2xl md:text-7xl text-white '>Luxury is in each detail.</div></Slide>:null}
+        {({ isVisible }) => (<div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div className="bg-black absolute z-40 w-full h-full opacity-40 top-0"></div><img  src='/pexels-cottonbro-8571684.jpg'></img>
+        {isVisible ?<Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white z-50 '>Luxury is in each detail.</div></Slide>:null}
           </div>)}</VisibilitySensor>
           <VisibilitySensor partialVisibility  >
-          {({ isVisible }) => (<div   style={{height:"90vh"}} className=' object-cover   relative overflow-hidden   '><img  src='/pexels-max-vakhtbovych-6980665.jpg'></img>
-          {isVisible ?<Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold text-2xl md:text-7xl text-white '>Take Control Of Your Home</div></Slide>:null}
+          {({ isVisible }) => (<div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div className="bg-black absolute z-40 w-full h-full opacity-40 top-0"></div><img  src='/pexels-max-vakhtbovych-6980665.jpg'></img>
+          {isVisible ?<Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white z-50 '>Take Control Of Your Home</div></Slide>:null}
           </div>)}</VisibilitySensor>
           <VisibilitySensor partialVisibility  >
-          {({ isVisible }) => (<div   style={{height:"90vh"}} className=' object-cover   relative overflow-hidden   '><img  src='/pexels-marta-6043975.jpg'></img>
-          {isVisible ?<Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold text-2xl md:text-7xl text-white '>Pushing Limits <br></br> For Your Luxuries</div></Slide>:null}
+          {({ isVisible }) => (<div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div className="bg-black absolute z-40 w-full h-full opacity-40 top-0"></div><img  src='/pexels-marta-6043975.jpg'></img>
+          {isVisible ?<Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white z-50 '>Pushing Limits <br></br> For Your Luxuries</div></Slide>:null}
           </div>)}</VisibilitySensor>
          
         </Carousel>

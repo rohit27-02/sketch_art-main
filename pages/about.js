@@ -44,12 +44,12 @@ const About = () => {
 
       <div style={{fontFamily:"'Montserrat', sans-serif"}}  className='text-center md:py-40 py-8 px-1  md:flex-row flex flex-col justify-center items-center '>
       <div  style={{fontFamily:"'poppins', sans-serif"}} className='text-left px-10  text-slate-700  md:flex-row flex flex-col justify-center items-center '>
-       <div > <h1 className='text-4xl text-center font-bold'>Global Leading Manufacturer</h1>
+      <Slide left> <div > <h1 className='text-4xl text-center font-bold'>Global Leading Manufacturer</h1>
         <p style={{lineHeight:2}} className=' py-7 px-7 md:text-base 2xl:text-xl  font-thin'>With an industry experience of over 25 years, Dooya private limited is the leading manufacturer and importer of Window Blinds and Accessories, Motorized Blinds and Interior Flims in the country catering to clients across the globe. It is also the marketing partner for Dooya Motors based in China. Keen on widening its portfolio, Dooya is open to expanding its imports and exports as and when opportunities present themselves.
 
 Dooya strives for excellence by providing customized solutions. An expansive range of world-class home fashion products while providing premium customer services that include global sourcing, quality assurance, logistics and finance.</p>
 <div className='w-full flex justify-center '><button style={{backgroundColor:"#bfb1c4"}} className='text-base  hover:opacity-80  p-2 font-bold'>Contact Us</button></div>
-</div>
+</div></Slide>
       </div>
         <Slide right><img width={500} height={500} className="p-8" src='https://media.istockphoto.com/photos/little-boy-opening-the-roller-blinds-in-the-morning-picture-id1178700357?k=20&m=1178700357&s=612x612&w=0&h=zZMixHxDvjJj4ce_fEjPEFE9ReFw5xabNAPh3Rypdxo='></img></Slide>
       </div>
@@ -67,7 +67,7 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
       </div>
 
       <div style={{height:"50vh"}} className="flex mt-20 justify-center">
-      <video className=" w-11/12 object-cover" src="/main2.mp4" autoPlay muted loop />
+      <video className=" w-11/12 object-cover" src="/main4.mp4" autoPlay muted loop />
       <h1 style={{fontFamily:"'poppins', sans-serif",textShadow:"1px 1px black"}} className='absolute text-white text-5xl text-center px-40 my-20'>Sketch arts strives for excellence by providing customized solutions.</h1>
       </div>
 
