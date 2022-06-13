@@ -36,7 +36,10 @@ export default function Home() {
 
  
  const show=()=>{
-  setwhatsapp(!whatsapp)
+  setwhatsapp(true)
+ }
+ const off=()=>{
+  setwhatsapp(false)
  }
   
   return (
@@ -46,7 +49,7 @@ export default function Home() {
 
 
 
-<div onMouseLeave={show} onMouseEnter={show} className=" fixed bottom-8 right-12  cursor-pointer text-white bg-green-500 rounded-full transition-transform  w-auto hover:w-52 duration-300 items-center  flex justify-end">{whatsapp && <a className="px-3 font-semibold" href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+91 992 022 3462</a>}<BsWhatsapp  className='text-white p-2 rounded-3xl z-50 text-5xl '/></div>
+<div onMouseLeave={off} onMouseEnter={show} className=" fixed bottom-8 right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full transition transform  w-auto hover:w-52 duration-1000 delay-500 items-center  flex justify-end">{whatsapp && <a className="px-3 font-semibold" href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+91 992 022 3462</a>}<BsWhatsapp  className='text-white p-2 rounded-3xl z-50 text-5xl '/></div>
 
 
 
@@ -55,7 +58,7 @@ export default function Home() {
       
       
           <div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div style={{height:"82.7vh"}}  className="bg-black absolute  w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen 3PNG.png'></img>
-          <Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white z-50 '>Pushing Limits <br></br> For Your Luxuries</div></Slide>
+          <Slide right><div style={{fontFamily:"'poppins', sans-serif"}} className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white z-50 '>Pushing Limits <br></br> For Your Luxuries</div></Slide>
           </div>
          
        
@@ -95,7 +98,7 @@ Motorized window blinds perform the same purpose of traditional window blinds. T
       </h1></Slide>
       <Slide bottom><p  className="mb-8   md:text-base text-sm 2xl:text-lg "> Selecting window treatments for a specific room is all about assessing the way the space functions. </p>
       <div className="flex justify-start">
-        <button  style={{color:"#bfb1c4"}} className=" inline-flex  bg-gray-100 font-semibold border-0 py-2 px-6 focus:outline-none hover:bopacity-90t-lg">Learn More</button>
+        <button  style={{color:"#bfb1c4"}} className=" inline-flex  bg-gray-100 font-semibold border-0 py-2 px-6 focus:outline-none hover:opacity-90 text-lg">Learn More</button>
       </div>
       </Slide>
     </div>
