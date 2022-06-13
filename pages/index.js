@@ -4,7 +4,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import "react-multi-carousel/lib/styles.css";
-import { useState,useEffect } from 'react';
+import { useState,useEffect, useRef } from 'react';
 import { Bounce, Fade, Slide } from 'react-reveal';
 import {FaFacebookF,FaTwitter,FaInstagram} from "react-icons/fa"
 import Pulse from 'react-reveal/Pulse';
@@ -12,7 +12,6 @@ import RubberBand from 'react-reveal/RubberBand';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import {VscGear} from "react-icons/vsc"
-import VisibilitySensor from 'react-visibility-sensor';
 import {VscTools} from "react-icons/vsc"
 import {BsWhatsapp} from "react-icons/bs"
 import {CgMail} from "react-icons/cg"
@@ -35,28 +34,31 @@ export default function Home() {
     }
   };
 
-  const slidelogo=()=>{
-    setwhatsapp(true)
-  }
-  const off=()=>{
-    setwhatsapp(false)
-  }
- 
+  const togglewhatsapp = () => {
+    if (ref.current.classList.contains("translate-x-64")) {
+      ref.current.classList.replace("translate-x-64", "translate-x-0");
+    }
+    else if (!ref.current.classList.contains("translate-x-64")) {
+      ref.current.classList.replace("translate-x-0", "translate-x-64");
+    }
+  };
+ const ref = useRef();
   
   return (
     
     <div >
      
-<div className='whatsapp flex items-center space-x-6 rounded-full duration-700 pl-5 pr-2 py-3 transition-transform hover:w-40 text-right bg-green-500 z-50 fixed right-10 bottom-10 '>
-{whatsapp && <div className='text-white mr-12'>9920 223462</div>}
-<BsWhatsapp onMouseEnter={slidelogo} onMouseLeave={off} className='text-white absolute right-0 cursor-pointer bg-green-500 p-2 rounded-3xl z-50 text-5xl '/>
-</div>
+
+<div ref={ref} onMouseLeave={togglewhatsapp} className='text-white whatsapp fixed bottom-8 z-50 right-12 py-3 pr-6 text-center font-semibold w-52 transform transition-transform duration-300  ease-in-out  translate-x-64 rounded-full bg-green-500'><a href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+91 992 022 3462</a></div>
+<BsWhatsapp onPointerEnter={togglewhatsapp}  className='text-white fixed bottom-8 right-12  cursor-pointer bg-green-500 p-2 rounded-3xl z-50 text-5xl '/>
+
+
 
 
 <div style={{height:"85vh",width:"100vw"}} className='animate-fade-in-down  -my-20'>
         <Carousel
       
-        className='  bg-black '
+        className=''
         autoPlay={true}
           swipeable={false}
           draggable={false}

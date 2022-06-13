@@ -98,10 +98,9 @@ min-width: 12%;
 }
 
 .whatsapp:hover{
-    animation: slide 9s ease-in-out ;
+    animation: slide 4s ease-in-out ;
 }
 @keyframes slide{
-    0%{width:auto;}
-    
-    100%{width:60px;}
+    0%{transform: translateX(60);}
+    100%{transform: translateX(0);}
 }
