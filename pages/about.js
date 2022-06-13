@@ -74,16 +74,16 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
       
     
 
-      <div style={{height:"50vh"}}>
-        <div className=' flex items-center px-4 my-16'>
-          <div className='absolute pt-12 '><img src="/Assest for Sketch Art-09.png"></img></div>
-          <div ><Slide bottom><img src="/Assest for Sketch Art-08.png"></img></Slide></div>
-          <div ><Slide top><img src="/Assest for Sketch Art-07.png"></img></Slide></div>
-          <div ><Slide bottom><img src="/Assest for Sketch Art-06.png"></img></Slide></div>
-          <div ><Slide top><img src="/Assest for Sketch Art-05.png"></img></Slide></div>
-          <div ><Slide bottom><img src="/Assest for Sketch Art-04.png"></img></Slide></div>
-          <div ><Slide top><img src="/Assest for Sketch Art-03.png"></img></Slide></div>
-          <div ><Slide bottom><img src="/Assest for Sketch Art-02.png"></img></Slide></div>
+      <div style={{height:"40vh"}}>
+        <div className=' flex items-center px-3 my-8 '>
+          <div className='absolute  pt-12 '><img src="/Assest for Sketch Art-09.png"></img></div>
+          <div className='scale-75 ml-6'><Slide bottom><img className='object-scale-down' src="/Assest for Sketch Art-08.png"></img></Slide></div>
+          <div className='scale-75'><Slide top><img className='object-scale-down' src="/Assest for Sketch Art-07.png"></img></Slide></div>
+          <div className='scale-75'><Slide bottom><img className='object-scale-down' src="/Assest for Sketch Art-06.png"></img></Slide></div>
+          <div className='scale-75'><Slide top><img className='object-scale-down' src="/Assest for Sketch Art-05.png"></img></Slide></div>
+          <div className='scale-75'><Slide bottom><img className='object-scale-down' src="/Assest for Sketch Art-04.png"></img></Slide></div>
+          <div className='scale-75'><Slide top><img className='object-scale-down' src="/Assest for Sketch Art-03.png"></img></Slide></div>
+          <div className='scale-75'><Slide bottom><img className='object-scale-down' src="/Assest for Sketch Art-02.png"></img></Slide></div>
            </div>
            </div>
     
@@ -155,17 +155,17 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
   dotListClass="custom-dot-list-style"
   itemClass="carousel-item-padding-40-px"
 >
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c1.jpeg'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c2.jpeg'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c3.jpeg'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c4.jpeg'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c5.jpeg'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c6.jpeg'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c7.jpeg'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c8.jpeg'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c9.jpeg'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c10.jpeg'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/c11.jpeg'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Aditya Birla Group.png'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Barbeque.png'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Hindustani.png'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/intelent impact.png'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-scale-down scale-75' src='/jio.png'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/kalpa Taru.png'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain scale-95' src='/podar.png'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Raymond.png'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Rustomjee.png'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/citi bank.png'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Essel.png'></img></div>
   
 </Carousel>
 </div>
