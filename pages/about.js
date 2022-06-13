@@ -160,7 +160,7 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
   <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Hindustani.png'></img></div>
   <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/intelent impact.png'></img></div>
   <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-scale-down scale-75' src='/jio.png'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/kalpa Taru.png'></img></div>
+  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Kalpa Taru.png'></img></div>
   <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain scale-95' src='/podar.png'></img></div>
   <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Raymond.png'></img></div>
   <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Rustomjee.png'></img></div>

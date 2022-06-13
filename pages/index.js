@@ -62,7 +62,7 @@ export default function Home() {
         autoPlay={true}
           swipeable={false}
           draggable={false}
-          showDots={true}
+          
           responsive={responsive}
           ssr={true} // means to render carousel on server-side.
           infinite={true}
@@ -74,15 +74,15 @@ export default function Home() {
           dotListClass="custom-dot-list-style"
         >
           
-        <div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div style={{height:"82.7ovh"}} className="bg-black absolute  w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen 2 PNG.png'></img>
+        <div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div  className="bg-black absolute  w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen 2 PNG.png'></img>
         <Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white z-50 '>Luxury is in each detail.</div></Slide>
           </div>
           
-          <div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div style={{height:"82.7ovh"}} className="bg-black absolute  w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen PNG.png'></img>
+          <div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div  className="bg-black absolute  w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen PNG.png'></img>
           <Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white z-50 '>Take Control Of Your Home</div></Slide>
           </div>
          
-          <div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div style={{height:"82.7ovh"}} className="bg-black absolute  w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen 3PNG.png'></img>
+          <div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div  className="bg-black absolute  w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen 3PNG.png'></img>
           <Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white z-50 '>Pushing Limits <br></br> For Your Luxuries</div></Slide>
           </div>
          
