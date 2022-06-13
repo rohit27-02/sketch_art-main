@@ -152,26 +152,26 @@ const Contact = ({ info }) => {
       <div className="flex space-x-5 relative mb-4 ">
       <div >
         
-        <input placeholder='Name' required onChange={(e)=>handleChange(e)} type="text" style={{minWidth:300}} id="name" name="name" className="w-full  bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input placeholder='Name' required onChange={(e)=>handleChange(e)} type="text" style={{minWidth:300}} id="name" name="name" className="w-full  bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <div >
         
-        <input placeholder='Company' required onChange={(e)=>handleChange(e)} type="text" style={{minWidth:300}} id="company" name="company" className="w-full  bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input placeholder='Company' required onChange={(e)=>handleChange(e)} type="text" style={{minWidth:300}} id="company" name="company" className="w-full  bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       </div>
       <div className="flex space-x-5 relative mb-4 ">
       <div >
       
-        <input placeholder='Email' required onChange={(e)=>handleChange(e)} type="email" id="email" style={{minWidth:300}} name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input placeholder='Email' required onChange={(e)=>handleChange(e)} type="email" id="email" style={{minWidth:300}} name="email" className="w-full bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <div >
         
-        <input placeholder='Number ' required onChange={(e)=>handleChange(e)} type="tel" id="number" style={{minWidth:300}} name="number" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input placeholder='Number ' required onChange={(e)=>handleChange(e)} type="tel" id="number" style={{minWidth:300}} name="number" className="w-full bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       </div>
       <div className="flex relative mb-4">
        
-        <textarea style={{minWidth:"38.8em"}} placeholder='Write your message here ' required onChange={(e)=>handleChange(e)} id="message" name="message" className=" bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+        <textarea style={{minWidth:"38.8em"}} placeholder='Write your message here ' required onChange={(e)=>handleChange(e)} id="message" name="message" className=" bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
       </div>
       <div><button style={{backgroundColor:"#bfb1c4"}} onClick={(e)=>submit(e)} className="text-white   bottom-8 float-left mt-1  border-0 py-2 px-6  text-sm 2xl:text-lg">Submit</button></div>
      
