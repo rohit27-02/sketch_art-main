@@ -8,11 +8,8 @@ import { AiOutlineClose, AiOutlinePlusCircle, AiOutlineMinusCircle, AiOutlineMen
 import { BsFillBagCheckFill } from 'react-icons/bs';
 import { CgTrashEmpty } from 'react-icons/cg';
 import { MdAccountCircle } from 'react-icons/md';
-import { RiArrowDownSFill } from 'react-icons/ri';
 import { useRef, useState, useEffect } from 'react';
 import { HiShoppingCart } from "react-icons/hi"
-import { IoIosMail } from "react-icons/io"
-import { BsFillTelephoneFill } from "react-icons/bs"
 import { Squash as Hamburger } from 'hamburger-react'
 import Router from 'next/router';
 import { Dialog } from '@headlessui/react'
@@ -21,8 +18,6 @@ import { GoogleLogin } from '@react-oauth/google';
 import jwtDecode from 'jwt-decode';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-
-
 
 function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subTotal, products }) {
   const [dropDown, setdropDown] = useState(false);
@@ -313,7 +308,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
       </Dialog.Panel>
     </Dialog>
 
-    <div ref={menu} className='text-lg md:text-xl 2xl:text-2xl transform transition-transform duration-300  ease-in-out  -translate-x-full  shadow-xl overflow-y-hidden  left-0 py-4 top-0 h-full md:bg-opacity-90 bg-black text-white fixed  z-50 ' >
+    <div ref={menu} className='text-lg  md:text-xl 2xl:text-2xl transform transition-transform duration-300  ease-in-out  -translate-x-full  shadow-xl overflow-y-hidden  left-0 py-4 top-0 h-full md:bg-opacity-90 bg-black text-white fixed  z-50 ' >
       <AiOutlineClose className='float-right mx-3 cursor-pointer ' onClick={toggleproducts} />
       <div style={{ fontFamily: "'Montserrat', sans-serif" }} className="mt-16 flex justify-center flex-col flex-wrap ">
         {
