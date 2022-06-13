@@ -173,7 +173,7 @@ const Contact = ({ info }) => {
        
         <textarea style={{minWidth:"38.8em"}} placeholder='Write your message here ' required onChange={(e)=>handleChange(e)} id="message" name="message" className=" bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
       </div>
-      <button style={{backgroundColor:"#bfb1c4"}} onClick={(e)=>submit(e)} className="text-white mx-60  bottom-8 2xl:mx-72  border-0 py-2 px-6  text-sm 2xl:text-lg">Submit</button>
+      <div><button style={{backgroundColor:"#bfb1c4"}} onClick={(e)=>submit(e)} className="text-white   bottom-8 float-left   border-0 py-2 px-6  text-sm 2xl:text-lg">Submit</button></div>
      
     </div>
   </div>
