@@ -116,9 +116,9 @@ const Contact = ({ info }) => {
       />
   
   <div style={{height:"70vh"}} className="overflow-hidden absolute z-10  top-0  w-full"><div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div>
-    <img src='/pexels-angela-roma-7319189.jpg' className='object-cover h-full w-full'></img>
+    <img src='/contact us image.png' className='object-cover h-full w-full'></img>
   </div>
-  <div style={{height:"100vh"}}>
+  <div style={{height:"100vh",fontFamily:"'poppins', sans-serif"}}>
   <div style={{height:"170vh"}} className="flex items-center w-full">
     <div className='flex justify-evenly px-28 w-full'>
        <div className='text-center  flex space-y-5 flex-col items-center w-1/3'> 
@@ -140,41 +140,41 @@ const Contact = ({ info }) => {
   </div>
   </div>
 
-<section  style={{ fontFamily: "'Poppins', sans-serif" }} className="text-gray-600 body-font relative">
+<section  style={{ fontFamily: "'Poppins', sans-serif",backgroundColor:"#ebeaeb" }} className="text-gray-600 body-font relative">
   <div className=" px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
-    <div id='map' className="lg:w-1/2 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+    <div id='map' className="lg:w-1/2 md:w-1/2 bg-gray-300  overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
    
      
     </div>
-    <div className="lg:w-1/2 md:w-1/2 bg-white flex space-y-8 flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
+    <div style={{backgroundColor:"#ebeaeb"}} className=" md:w-1/2 bg-white flex space-y-8 flex-col md:ml-auto w-full">
       <h2 className="text-gray-900 md:text-xl 2xl:text-3xl mb-1 font-medium title-font">Leave a comment</h2>
       
-      <div className="flex space-x-5 relative mb-4">
+      <div className="flex space-x-5 relative mb-4 ">
       <div >
-        <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
-        <input required onChange={(e)=>handleChange(e)} type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
-      </div>
-      <div >
-        <label htmlFor="company" className="leading-7 text-sm text-gray-600">company</label>
-        <input required onChange={(e)=>handleChange(e)} type="text" id="company" name="company" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
-      </div>
-      </div>
-      <div className="flex space-x-5 relative mb-4">
-      <div >
-        <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-        <input required onChange={(e)=>handleChange(e)} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        
+        <input placeholder='Name' required onChange={(e)=>handleChange(e)} type="text" style={{minWidth:300}} id="name" name="name" className="w-full  bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <div >
-        <label htmlFor="number" className="leading-7 text-sm text-gray-600">number</label>
-        <input required onChange={(e)=>handleChange(e)} type="tel" id="number" name="number" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        
+        <input placeholder='Company' required onChange={(e)=>handleChange(e)} type="text" style={{minWidth:300}} id="company" name="company" className="w-full  bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       </div>
-      <div className="relative mb-4">
-        <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
-        <textarea required onChange={(e)=>handleChange(e)} id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+      <div className="flex space-x-5 relative mb-4 ">
+      <div >
+      
+        <input placeholder='Email' required onChange={(e)=>handleChange(e)} type="email" id="email" style={{minWidth:300}} name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
+      <div >
+        
+        <input placeholder='Number ' required onChange={(e)=>handleChange(e)} type="tel" id="number" style={{minWidth:300}} name="number" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+      </div>
+      </div>
+      <div className="flex relative mb-4">
+       
+        <textarea style={{minWidth:"38.8em"}} placeholder='Write your message here ' required onChange={(e)=>handleChange(e)} id="message" name="message" className=" bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+      </div>
+      <button style={{backgroundColor:"#bfb1c4"}} onClick={(e)=>submit(e)} className="text-white mx-60  bottom-8 2xl:mx-72  border-0 py-2 px-6  text-sm 2xl:text-lg">Submit</button>
      
-      <button onClick={(e)=>submit(e)} className="text-white mx-60 absolute bottom-8 2xl:mx-72 bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-sm 2xl:text-lg">SUMBIT</button>
     </div>
   </div>
 </section>
