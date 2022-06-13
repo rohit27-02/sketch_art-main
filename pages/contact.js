@@ -115,11 +115,11 @@ const Contact = ({ info }) => {
         pauseOnHover
       />
   
-  <div style={{height:"70vh"}} className="overflow-hidden absolute z-10  top-0  w-full"><div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div>
+  <div style={{height:"80vh"}} className="overflow-hidden absolute z-10  top-0  w-full"><div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div>
     <img src='/contact us image.png' className='object-cover h-full w-full'></img>
   </div>
   <div style={{height:"100vh",fontFamily:"'poppins', sans-serif"}}>
-  <div style={{height:"170vh"}} className="flex items-center w-full">
+  <div style={{height:"165vh"}} className="flex my-10 items-center w-full">
     <div className='flex justify-evenly px-28 w-full'>
        <div className='text-center  flex space-y-5 flex-col items-center w-1/3'> 
         <GrMapLocation className='text-5xl'/>
