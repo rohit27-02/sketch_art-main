@@ -119,7 +119,7 @@ const Contact = ({ info }) => {
     <img src='/contact us image.png' className='object-cover h-full w-full'></img>
   </div>
   <div style={{height:"100vh",fontFamily:"'poppins', sans-serif"}}>
-  <div style={{height:"165vh"}} className="flex my-10 items-center w-full">
+  <div style={{height:"160vh"}} className="flex my-20 items-center w-full">
     <div className='flex justify-evenly px-28 w-full'>
        <div className='text-center  flex space-y-5 flex-col items-center w-1/3'> 
         <GrMapLocation className='text-5xl'/>
