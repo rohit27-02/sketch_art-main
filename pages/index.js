@@ -34,59 +34,31 @@ export default function Home() {
     }
   };
 
-  const togglewhatsapp = () => {
-    if (ref.current.classList.contains("translate-x-64")) {
-      ref.current.classList.replace("translate-x-64", "translate-x-0");
-    }
-    else if (!ref.current.classList.contains("translate-x-64")) {
-      ref.current.classList.replace("translate-x-0", "translate-x-64");
-    }
-  };
- const ref = useRef();
+ 
+ const show=()=>{
+  setwhatsapp(!whatsapp)
+ }
   
   return (
     
     <div >
      
 
-<div ref={ref} onMouseLeave={togglewhatsapp} className='text-white whatsapp fixed bottom-8 z-50 right-12 py-3 pr-6 text-center font-semibold w-52 transform transition-transform duration-300  ease-in-out  translate-x-64 rounded-full bg-green-500'><a href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+91 992 022 3462</a></div>
-<BsWhatsapp onPointerEnter={togglewhatsapp}  className='text-white fixed bottom-8 right-12  cursor-pointer bg-green-500 p-2 rounded-3xl z-50 text-5xl '/>
+
+
+<div onMouseLeave={show} onMouseEnter={show} className=" fixed bottom-8 right-12  cursor-pointer text-white bg-green-500 rounded-full transition-transform  w-auto hover:w-52 duration-300 items-center  flex justify-end">{whatsapp && <a className="px-3 font-semibold" href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+91 992 022 3462</a>}<BsWhatsapp  className='text-white p-2 rounded-3xl z-50 text-5xl '/></div>
 
 
 
 
 <div style={{height:"85vh",width:"100vw"}} className='animate-fade-in-down  -my-20'>
-        <Carousel
       
-        className=''
-        autoPlay={true}
-          swipeable={false}
-          draggable={false}
-          
-          responsive={responsive}
-          ssr={true} // means to render carousel on server-side.
-          infinite={true}
-          autoPlaySpeed={5000}
-          keyBoardControl={true}
-          transitionDuration={3000}
-          containerClass="carousel-container"
-          removeArrowOnDeviceType={["tablet", "mobile"]}
-          dotListClass="custom-dot-list-style"
-        >
-          
-        <div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div  className="bg-black absolute  w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen 2 PNG.png'></img>
-        <Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white z-50 '>Luxury is in each detail.</div></Slide>
-          </div>
-          
-          <div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div  className="bg-black absolute  w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen PNG.png'></img>
-          <Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white z-50 '>Take Control Of Your Home</div></Slide>
-          </div>
-         
-          <div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div  className="bg-black absolute  w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen 3PNG.png'></img>
+      
+          <div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div style={{height:"82.7vh"}}  className="bg-black absolute  w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen 3PNG.png'></img>
           <Slide right><div className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white z-50 '>Pushing Limits <br></br> For Your Luxuries</div></Slide>
           </div>
          
-        </Carousel>
+       
         
       </div>
 
