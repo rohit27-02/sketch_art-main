@@ -115,7 +115,7 @@ const Contact = ({ info }) => {
         pauseOnHover
       />
   
-  <div style={{height:"70vh"}} className="overflow-hidden absolute z-10  top-0 bg-black w-full">
+  <div style={{height:"70vh"}} className="overflow-hidden absolute z-10  top-0  w-full"><div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div>
     <img src='/pexels-angela-roma-7319189.jpg' className='object-cover h-full w-full'></img>
   </div>
   <div style={{height:"100vh"}}>

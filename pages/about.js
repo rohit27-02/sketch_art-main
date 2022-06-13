@@ -33,16 +33,16 @@ const About = () => {
   
     <div>
      
-      <div style={{height:"80vh"}}>
-      <div style={{height:"90vh"}} className='w-full overflow-hidden top-0 absolute '>
+      <div style={{height:"85vh"}}>
+      <div style={{height:"90vh"}} className='w-full overflow-hidden object-cover top-0 absolute '>
       <h1 style={{fontFamily:"'poppins', sans-serif"}} className='2xl:text-8xl text-6xl font-bold w-full text-center absolute 2xl:my-52 md:my-40 z-40 text-gray-200  '>You imagine, we create.</h1>
-       <Slide bottom><div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div><img  className='object-cover h-full  w-full ' src='/pexels-curtis-adams-3773571 (1).jpg'></img></Slide >
+       <Slide bottom><div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div><img  className='h-full ' src='/About us image.png'></img></Slide >
       
       </div>
         </div>
 
 
-      <div style={{fontFamily:"'Montserrat', sans-serif"}}  className='text-center md:py-40 py-8 px-1  md:flex-row flex flex-col justify-center items-center '>
+      <div style={{fontFamily:"'Montserrat', sans-serif"}}  className='text-center md:py-40 py-8 px-1 md:flex-row flex flex-col justify-center items-center '>
       <div  style={{fontFamily:"'poppins', sans-serif"}} className='text-left px-10  text-slate-700  md:flex-row flex flex-col justify-center items-center '>
       <Slide left> <div > <h1 className='text-4xl  font-bold'>Global Leading Manufacturer</h1>
         <p style={{lineHeight:2}} className=' py-7  md:text-base 2xl:text-xl  font-thin'>With an industry experience of over 25 years, Dooya private limited is the leading manufacturer and importer of Window Blinds and Accessories, Motorized Blinds and Interior Flims in the country catering to clients across the globe. It is also the marketing partner for Dooya Motors based in China. Keen on widening its portfolio, Dooya is open to expanding its imports and exports as and when opportunities present themselves.
