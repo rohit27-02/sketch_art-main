@@ -121,7 +121,7 @@ const Contact = ({ info }) => {
     <Slide bottom><img src='/contact us image.png' className='object-cover h-full w-full'></img></Slide>
   </div>
   </div>
-  <div style={{height:"74vh"}} className='bg-white w-full'></div>
+  <div  className='bg-white w-full'></div>
   <div style={{fontFamily:"'poppins', sans-serif",backgroundColor:"#ebeaeb"}}>
   <div  className="flex mt-20 py-14 items-center w-full">
     <div className='flex justify-evenly px-28 w-full'>
