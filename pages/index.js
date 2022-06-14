@@ -58,7 +58,7 @@ export default function Home() {
       
       
           <div   style={{height:"79vh"}} className=' object-cover  relative overflow-hidden   '><div  className="bg-black absolute h-full z-20 w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen 3PNG.png'></img>
-          <Slide right><div style={{fontFamily:"'poppins', sans-serif"}} className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white  '>Pushing Limits <br></br> For Your Luxuries</div></Slide>
+          <Slide right><h1 style={{fontFamily:"'poppins', sans-serif"}} className='absolute md:top-56 top-28 text-center w-full font-extrabold z-20 2xl:text-7xl md:text-6xl text-gray-200  '>Pushing Limits <br></br> For Your Luxuries</h1></Slide>
           </div>
          
        
