@@ -33,10 +33,11 @@ const About = () => {
   
     <div>
      
-      <div style={{height:"85vh"}}>
+      <div style={{height:"85vh"}} className="w-full">
       <div style={{height:"90vh"}} className='w-full overflow-hidden object-cover top-0 absolute '>
+      <div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div>
       <h1 style={{fontFamily:"'poppins', sans-serif"}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute 2xl:my-52 md:my-40 z-40 text-gray-200  '>You imagine, we create.</h1>
-       <Slide bottom><div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div><img  className='h-full ' src='/About us image.png'></img></Slide >
+       <Slide bottom><img  className='h-full w-full object-cover' src='/About us image.png'></img></Slide >
       
       </div>
         </div>
