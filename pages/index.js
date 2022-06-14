@@ -54,11 +54,11 @@ export default function Home() {
 
 
 
-<div style={{height:"85vh"}} className='animate-fade-in-down '>
+<div style={{height:"85vh"}} className=' '>
           <div   style={{height:"90vh"}} className=' w-full overflow-hidden object-cover top-0 absolute '>
 
-          <Slide right><h1 style={{fontFamily:"'poppins', sans-serif"}} className='absolute md:top-56 top-28 text-center w-full font-extrabold z-20 2xl:text-7xl md:text-6xl text-gray-200  '>Pushing Limits <br></br> For Your Luxuries</h1></Slide>
-            <div  className="bg-black w-full h-full absolute top-0 bg-opacity-40 z-10"></div><img className="h-full"  src='/Image for Sketch Art Home screen 3PNG.png'></img>
+         <h1 style={{fontFamily:"'poppins', sans-serif"}} className='absolute md:top-56 top-28 text-center w-full font-extrabold z-20 2xl:text-7xl md:text-6xl text-gray-200  '>Pushing Limits <br></br> For Your Luxuries</h1>
+         <Slide bottom><div  className="bg-black w-full h-full absolute top-0 bg-opacity-40 z-10"></div><img className="h-full"  src='/Image for Sketch Art Home screen 3PNG.png'></img></Slide>
           </div>
          
       </div>
