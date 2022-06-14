@@ -57,8 +57,8 @@ export default function Home() {
 <div style={{height:"85vh",width:"100vw"}} className='animate-fade-in-down  -my-20'>
       
       
-          <div   style={{height:"90vh"}} className=' object-cover  relative overflow-hidden   '><div style={{height:"82.7vh"}}  className="bg-black absolute  w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen 3PNG.png'></img>
-          <Slide right><div style={{fontFamily:"'poppins', sans-serif"}} className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white z-50 '>Pushing Limits <br></br> For Your Luxuries</div></Slide>
+          <div   style={{height:"79vh"}} className=' object-cover  relative overflow-hidden   '><div  className="bg-black absolute h-full z-20 w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen 3PNG.png'></img>
+          <Slide right><div style={{fontFamily:"'poppins', sans-serif"}} className='absolute md:top-56 top-28 text-center w-full font-extrabold  2xl:text-7xl md:text-6xl text-white  '>Pushing Limits <br></br> For Your Luxuries</div></Slide>
           </div>
          
        

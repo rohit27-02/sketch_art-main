@@ -116,7 +116,7 @@ const Contact = ({ info }) => {
       />
   
   <div style={{height:"80vh"}} className="overflow-hidden absolute z-10  top-0  w-full"><div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div>
-    <h1 style={{fontFamily:"'poppins', sans-serif"}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute 2xl:my-64 md:my-40 z-50 text-gray-200  '>Contact us</h1>
+    <h1 style={{fontFamily:"'poppins', sans-serif"}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute 2xl:my-72  md:my-64 z-50 text-gray-200  '>Contact us</h1>
     <img src='/contact us image.png' className='object-cover h-full w-full'></img>
   </div>
   <div style={{height:"74vh"}} className='bg-white w-full'></div>
