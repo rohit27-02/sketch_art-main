@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-page-custom-font */
+/* eslint-disable react/jsx-no-undef */
 import '../styles/globals.css'
 import Footer from '../components/Footer'
 import { useState, useEffect } from 'react';
@@ -6,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingBar from 'react-top-loading-bar'
 import Navbar from '../components/Navbar';
+import Head from 'next/head';
  
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
@@ -102,6 +105,9 @@ function MyApp({ Component, pageProps }) {
 
   const showHeader = router.pathname === '/adminpanel' ? false : true;
   return <>
+   <Head>
+   <title>Sketch Art</title>
+      </Head>
     <LoadingBar
         color='black'
         progress={progress}
