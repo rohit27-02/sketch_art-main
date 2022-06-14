@@ -116,23 +116,27 @@ const Contact = ({ info }) => {
       />
   
   <div style={{height:"80vh"}} className="overflow-hidden absolute z-10  top-0  w-full"><div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div>
+    <h1 style={{fontFamily:"'poppins', sans-serif"}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute 2xl:my-64 md:my-40 z-50 text-gray-200  '>Contact us</h1>
     <img src='/contact us image.png' className='object-cover h-full w-full'></img>
   </div>
-  <div style={{height:"100vh",fontFamily:"'poppins', sans-serif"}}>
-  <div style={{height:"160vh"}} className="flex my-20 items-center w-full">
+  <div style={{height:"74vh"}} className='bg-white w-full'></div>
+  <div style={{fontFamily:"'poppins', sans-serif",backgroundColor:"#ebeaeb"}}>
+  <div  className="flex mt-20 py-14 items-center w-full">
     <div className='flex justify-evenly px-28 w-full'>
-       <div className='text-center  flex space-y-5 flex-col items-center w-1/3'> 
-        <GrMapLocation className='text-5xl'/>
-        <h1>Our address</h1>
-        <p>{info[0].address}</p>
-      </div>
-       <div className='text-center  flex space-y-5 flex-col items-center w-1/3'> 
-        <AiOutlineFlag className='text-5xl'/>
+
+    <div className='text-center  flex space-y-5 flex-col items-center w-1/3'> 
+        <AiOutlineFlag style={{}} className='text-5xl'/>
         <h1>Our email</h1>
         <p>{info[0].email}</p>
       </div>
+       <div className='text-center  flex space-y-5 flex-col items-center w-1/3'> 
+        <GrMapLocation style={{}} className='text-5xl'/>
+        <h1>Our address</h1>
+        <p>{info[0].address}</p>
+      </div>
+     
        <div className='text-center  flex space-y-5 flex-col items-center w-1/3'>
-        <IoIosPhonePortrait className='text-5xl'/>
+        <IoIosPhonePortrait style={{}} className='text-5xl'/>
         <h1>Call us</h1>
         <p>{info[0].phone}</p>
         </div>
@@ -140,13 +144,13 @@ const Contact = ({ info }) => {
   </div>
   </div>
 
-<section  style={{ fontFamily: "'Poppins', sans-serif",backgroundColor:"#ebeaeb" }} className="text-gray-600 body-font relative">
+<section  style={{ fontFamily: "'Poppins', sans-serif",backgroundColor:"#bfb1c4" }} className="text-gray-600 body-font relative">
   <div className=" px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
     <div id='map' className="lg:w-1/2 md:w-1/2 bg-gray-300  overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
    
      
     </div>
-    <div style={{backgroundColor:"#ebeaeb"}} className=" md:w-1/2 bg-white flex space-y-8 flex-col md:ml-auto w-full">
+    <div style={{backgroundColor:"#bfb1c4"}} className=" md:w-1/2 bg-white flex space-y-8 flex-col md:ml-auto w-full">
       <h2 className="text-gray-900 md:text-xl 2xl:text-3xl mb-1 font-medium title-font">Leave a comment</h2>
       
       <div className="flex space-x-5 relative mb-4 ">
@@ -173,7 +177,7 @@ const Contact = ({ info }) => {
        
         <textarea style={{minWidth:"38.8em"}} placeholder='Write your message here ' required onChange={(e)=>handleChange(e)} id="message" name="message" className=" bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
       </div>
-      <div><button style={{backgroundColor:"#bfb1c4"}} onClick={(e)=>submit(e)} className="text-white   bottom-8 float-left mt-1  border-0 py-2 px-6  text-sm 2xl:text-lg">Submit</button></div>
+      <div><button style={{color:"#bfb1c4"}} onClick={(e)=>submit(e)} className="bg-white   bottom-8 float-left mt-1  border-0 py-2 px-6  text-sm 2xl:text-lg">Submit</button></div>
      
     </div>
   </div>
