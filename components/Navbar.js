@@ -38,12 +38,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     if (screen.width > 500) {
       setsw(true)
     }
-    if(Router.pathname =="/"){
-      document.getElementById("navtext").classList.add("text-white")
-      document.getElementById("img").classList.add("invert")
-      document.getElementById("login").classList.add("text-white")
-      document.getElementById("cart").classList.add("text-white")
-    }
+   
   }, []);
   const handleChange = (e) => {
 
@@ -382,7 +377,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
               <a style={{ textUnderlineOffset: 8, fontFamily: "'Montserrat', sans-serif" }} href="/contact" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">Contact Us</a>
             </div>
             {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontFamily: "'Montserrat', sans-serif"}} className=" font-bold text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}
-            {user.value && <MdAccountCircle style={{ color: "black" }} className=" font-medium  hover:text-black cursor-pointer transition text-white duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
+            {user.value && <MdAccountCircle  className=" font-medium  cursor-pointer transition text-white duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
             <HiShoppingCart id="cart" onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart text-white cursor-pointer md:text-3xl 2xl:text-4xl ' />
           </div>
 
