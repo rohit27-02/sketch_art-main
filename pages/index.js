@@ -54,22 +54,20 @@ export default function Home() {
 
 
 
-<div style={{height:"85vh",width:"100vw"}} className='animate-fade-in-down  -my-20'>
-      
-      
-          <div   style={{height:"79vh"}} className=' object-cover  relative overflow-hidden   '><div  className="bg-black absolute h-full z-20 w-full  opacity-40 top-0"></div><img className=""  src='/Image for Sketch Art Home screen 3PNG.png'></img>
+<div style={{height:"85vh"}} className='animate-fade-in-down '>
+          <div   style={{height:"90vh"}} className=' w-full overflow-hidden object-cover top-0 absolute '>
+
           <Slide right><h1 style={{fontFamily:"'poppins', sans-serif"}} className='absolute md:top-56 top-28 text-center w-full font-extrabold z-20 2xl:text-7xl md:text-6xl text-gray-200  '>Pushing Limits <br></br> For Your Luxuries</h1></Slide>
+            <div  className="bg-black w-full h-full absolute top-0 bg-opacity-40 z-10"></div><img className="h-full"  src='/Image for Sketch Art Home screen 3PNG.png'></img>
           </div>
          
-       
-        
       </div>
 
    
 
-      <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=''>
+      <div style={{fontFamily:"'Montserrat', sans-serif",backgroundColor:"#bfb1c4"}} className=' md:-mt-12 2xl:-mt-10'>
       <section className="text-white">
-  <div className="container mx-auto flex px-5  2xl:px-10 pt-36 md:pt-40  md:flex-row flex-col items-center">
+  <div className="container mx-auto flex px-5  2xl:px-10 pt-36 md:pt-40 top-0 md:flex-row flex-col items-center">
     <div className='overflow-hidden'>
            <div  className=" hover:transition-transform ease-in duration-500  hover:scale-125 md:max-w-xl 2xl:max-w-2xl w-full mb-10  md:mb-0">
       <Slide left> <img  className="object-cover object-center" alt="hero" src="/1.jpg"/></Slide>
