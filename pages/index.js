@@ -17,7 +17,6 @@ import {CgMail} from "react-icons/cg"
 import {MdLocalParking} from "react-icons/md"
 import "react-multi-carousel/lib/styles.css";
 import { auto } from '@popperjs/core';
-import Link from "next/link";
 
 
 
@@ -82,7 +81,7 @@ But shouldn't you expect your window treatments to do more than just open and cl
 Motorized window blinds perform the same purpose of traditional window blinds. These blinds have added functions that make them a valuable addition to your home's interior design.
 </p>
       <div className="flex items-start">
-        <Link style={{color:"#bfb1c4"}}  className="inline-flex  bg-gray-100 font-semibold  border-0 py-2 px-6 focus:outline-none hover:opacity-90  text-lg" href="/motorizedblinds">Learn More</Link>
+        <button style={{color:"#bfb1c4"}}  className="inline-flex  bg-gray-100 font-semibold  border-0 py-2 px-6 focus:outline-none hover:opacity-90  text-lg"><a href="/motorizedblinds">Learn More</a></button>
       </div>
       </Slide>
     </div>
@@ -96,7 +95,7 @@ Motorized window blinds perform the same purpose of traditional window blinds. T
       </h1></Slide>
       <Slide bottom><p  className="mb-8   md:text-base text-sm 2xl:text-lg "> Selecting window treatments for a specific room is all about assessing the way the space functions. </p>
       <div className="flex justify-start">
-        <Link  style={{color:"#bfb1c4"}} className=" inline-flex  bg-gray-100 font-semibold border-0 py-2 px-6 focus:outline-none hover:opacity-90 text-lg" href="/motorizedblinds#second">Learn More</Link>
+        <button  style={{color:"#bfb1c4"}} className=" inline-flex  bg-gray-100 font-semibold border-0 py-2 px-6 focus:outline-none hover:opacity-90 text-lg"><a href="/motorizedblinds#second">Learn More</a></button>
       </div>
       </Slide>
     </div>
