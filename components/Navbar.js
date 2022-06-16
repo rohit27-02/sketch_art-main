@@ -38,6 +38,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     if (screen.width > 500) {
       setsw(true)
     }
+  
    
   }, []);
   const handleChange = (e) => {
@@ -310,7 +311,8 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
           Object.keys(data).map((p) => {
             return (
               <div key={p} className=" group flex ">
-                <a id={data[p]} onMouseEnter={function (e) { getData(e); setlistd(!listd) }} className=' px-4 py-2 phover w-full  ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}</a>
+                <a id={data[p]} onMouseEnter={function (e) { getData(e); setlistd(!listd) }} className=' px-4 py-2 phover w-full  ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}{}</a>
+
 
               </div>
             )

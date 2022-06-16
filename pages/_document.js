@@ -5,7 +5,7 @@ export default function Document() {
     <Html>
       <Head>
       <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"/>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@300&family=Poppins:wght@500&display=swap" rel="stylesheet"/>
         
         <meta name="description" content="" />

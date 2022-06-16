@@ -42,9 +42,12 @@ const Footer = () => {
          <p>MADE WITH LOVE <RubberBand><span className='font-bold text-xl ml-2'>♡</span></RubberBand></p>
        </div>
        <div className='col-span-1 flex flex-col py-6 space-y-4'>
-         <div className='underline underline-offset-4'>YOU</div>
-         <div className='underline underline-offset-4'>ABOUT</div>
-         <div className='underline underline-offset-4'>GET STARTED</div>
+        
+         <div className='underline underline-offset-4'>HOME</div>
+         <div className='underline underline-offset-4'>ABOUT US</div>
+         <div className='underline underline-offset-4'>PRODUCT</div>
+         <div className='underline underline-offset-4'>CONTACT</div>
+        
        </div>
      </div>
    </div>

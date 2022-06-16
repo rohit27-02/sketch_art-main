@@ -500,7 +500,7 @@ if(response.success){
                           <input  onChange={(e)=>uploadposter(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="poster" type="file" />
                         </div>
                       </div>
-                      <div className="md:flex md:items-center mb-6">
+                     {/* <div className="md:flex md:items-center mb-6">
                         <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="height">
                             height
@@ -521,14 +521,14 @@ if(response.success){
                           <input value={w} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="width" type="text" />
                         </div>
                         <AiOutlinePlus onClick={addwidth} className='cursor-pointer hover:bg-yellow-400 '/>
-                      </div>
+                    </div>*/}
                       <div className='grid grid-flow-row grid-cols-2 bg-slate-100 pt-6'>
                       <div className="md:flex md:items-center mb-6">
                         <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="color">
                             Color
                           </label>
-                        </div>
+                    </div>
                         <div className="md:w-20">
                           <input value={color} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="color" type="text" />
                           
@@ -620,9 +620,9 @@ if(response.success){
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                         subcategory
                       </th>
-                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                    {/*  <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                         sizes
-                      </th>
+                  </th>*/}
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                         Color
                       </th>
@@ -657,10 +657,10 @@ if(response.success){
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                           {products[p].subcategory}
                         </td>
-                        <td className="text-sm grid grid-flow-col  text-gray-900 font-light px-6 py-4 space-x-1 whitespace-nowrap">
+                      {/*  <td className="text-sm grid grid-flow-col  text-gray-900 font-light px-6 py-4 space-x-1 whitespace-nowrap">
                          <div>{products[p].height.map((i)=>{ return <div key={i}>{i} x </div>}) }</div>
                          <div>{products[p].width.map((i)=>{ return <div key={i}>{i}  </div>}) }</div>
-                        </td>
+                  </td>*/}
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                           <div>{products[p].variants.map((i)=>{return <div key={i}>{i.color}</div>})}</div>
                         </td>
