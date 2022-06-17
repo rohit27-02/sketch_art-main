@@ -19,11 +19,12 @@ import { GoogleLogin } from '@react-oauth/google';
 import jwtDecode from 'jwt-decode';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import { Fade, LightSpeed, Slide } from 'react-reveal';
 
 function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subTotal, products }) {
   const [dropDown, setdropDown] = useState(false);
   const [admin, setadmin] = useState(false);
-  const [listd, setlistd] = useState();
+  const [listd, setlistd] = useState(false);
   const [nav, setnav] = useState(false);
   const [data, setdata] = useState([]);
   const [sw, setsw] = useState(false);
@@ -169,7 +170,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
       .then((res) => res.json())
       .then((data) => {
         setdata(data.products)
-        console.log(data.idea)
+        
         setsub(data.idea)
       })
     fetch(`${process.env.NEXT_PUBLIC_HOST}/api/info`)
@@ -185,7 +186,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
   }, []);
   useEffect(() => {
-    setlistd(true)
+   
   }, [subcategory]);
   function list() {
 
@@ -313,12 +314,14 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
       <div style={{ fontFamily: "'Montserrat', sans-serif" }} className="mt-16 flex justify-center flex-col flex-wrap ">
         {
           Object.keys(data).map((p) => {
-            return (
+            return (<>
               <div key={p} className=" group flex ">
-                <a id={data[p]} onMouseEnter={function (e) { getData(e); setlistd(!listd) }} className=' px-4 py-2 phover w-full  ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}{sub[p]&&<IoIosArrowDown/>}</a>
-
-
+                <li  className='flex items-center  px-4 py-2 phover w-full  '  ><a href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`}>{data[p]}</a>{sub[p]&&<IoIosArrowDown id={data[p]} onClick={function(e){getData(e);setlistd(!listd)}} className='ml-4 cursor-pointer'/>}</li>
               </div>
+              <div className='  w-full flex flex-col'>
+                {listd && sub[p] && Object.keys(subcategory).map((s)=>{return(<Slide key={s} left><a style={{backgroundColor:"#bfb1c4"}} className='hover:border-2 px-4 py-2 text-sm cursor-pointer' >{subcategory[s]}</a></Slide>)})}
+                </div>
+                </>
             )
 
 
