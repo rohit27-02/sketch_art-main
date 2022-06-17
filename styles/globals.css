@@ -19,7 +19,7 @@ html{
     width: 100%;
     height: 100%;
     overflow-x:hidden;
-    scroll-behavior: smooth;
+    scroll-behavior:smooth;
   
 }
 
@@ -48,11 +48,10 @@ min-width: 12%;
 .category:hover{
     background-color: yellow;
 }
-.btn{
-    background-color: yellow;
-}
-.btn:hover{
-    background-color: black;
+
+.btn:focus{
+    background-color: #bfb1c4;
+    color:white;
 }
 .text{
     font-size: 12px;

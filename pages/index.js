@@ -18,6 +18,7 @@ import {CgMail} from "react-icons/cg"
 import {MdLocalParking} from "react-icons/md"
 import "react-multi-carousel/lib/styles.css";
 import { auto } from '@popperjs/core';
+import Link from "next/link";
 
 
 
