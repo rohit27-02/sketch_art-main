@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 const Tshirts = ({products}) => {
   return (
     <div>
+      <div style={{ backgroundColor: "#bfb1c4" }} className='w-full h-20 absolute top-0'></div>
       <img className='' src="https://i.ibb.co/B2xYb9w/Group-39.png"></img>
       <section className="text-gray-600 body-font ">
   <div className="container px-5 py-20  mx-auto ">

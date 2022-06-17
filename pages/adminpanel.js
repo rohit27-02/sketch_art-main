@@ -28,7 +28,7 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [price, setprice] = useState(0);
   const [availableQty, setavailableQty] = useState(0);
   const [category, setcategory] = useState("");
-  const [subcategory, setsubcategory] = useState();
+  const [subcategory, setsubcategory] = useState(null);
   const [height, setheight] = useState([]);
   const [width, setwidth] = useState([]);
   const [variants, setvariants] = useState([]);
@@ -173,7 +173,12 @@ const selectedproduct= (event)=>{
     });}
     else{
     if(index !=null && ready){
-      const data = [{ title, desc, variants,width,poster, category, height, price, availableQty,subcategory, slug }]
+      
+        var sub = false;
+        if(subcategory !==null){
+          sub=true
+        }
+      const data = [{ title, desc, variants,width,poster, category, height, price,sub, availableQty,subcategory, slug }]
    
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
         method: "POST",

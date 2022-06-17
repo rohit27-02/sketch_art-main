@@ -10,6 +10,7 @@ import { CgTrashEmpty } from 'react-icons/cg';
 import { MdAccountCircle } from 'react-icons/md';
 import { useRef, useState, useEffect } from 'react';
 import { HiShoppingCart } from "react-icons/hi"
+import { IoIosArrowDown } from "react-icons/io"
 import { Squash as Hamburger } from 'hamburger-react'
 import Router from 'next/router';
 import { Dialog } from '@headlessui/react'
@@ -26,12 +27,13 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
   const [nav, setnav] = useState(false);
   const [data, setdata] = useState([]);
   const [sw, setsw] = useState(false);
-  const [subcategory, setsubcategory] = useState();
+  const [subcategory, setsubcategory] = useState([]);
   const [info, setinfo] = useState({});
   const [isOpen, setOpen] = useState(false)
   const [login, setlogin] = useState(false)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [sub, setsub] = useState([]);
 
   useEffect(() => {
 
@@ -166,7 +168,9 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getproducts`)
       .then((res) => res.json())
       .then((data) => {
-        setdata(data)
+        setdata(data.products)
+        console.log(data.idea)
+        setsub(data.idea)
       })
     fetch(`${process.env.NEXT_PUBLIC_HOST}/api/info`)
       .then((res) => res.json())
@@ -311,7 +315,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
           Object.keys(data).map((p) => {
             return (
               <div key={p} className=" group flex ">
-                <a id={data[p]} onMouseEnter={function (e) { getData(e); setlistd(!listd) }} className=' px-4 py-2 phover w-full  ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}{}</a>
+                <a id={data[p]} onMouseEnter={function (e) { getData(e); setlistd(!listd) }} className=' px-4 py-2 phover w-full  ' href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`} >{data[p]}{sub[p]&&<IoIosArrowDown/>}</a>
 
 
               </div>

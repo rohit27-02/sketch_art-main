@@ -4,6 +4,7 @@ import connectDb from "../../middleware/mongoose"
 
 const handler = async (req, res) => {
     if (req.method == "POST") {
+        
       
         console.log(req.body)
             let p= await Product.findOneAndReplace({_id:req.body.pid},req.body.data[0])

@@ -13,7 +13,7 @@ import { BsImages } from "react-icons/bs"
 
 
 const Post = ({ buyNow, addToCart, product }) => {
-  const [selectedheight, setselectedheight] = useState(16);
+  const [selectedheight, setselectedheight] = useState(6);
   const [selectedwidth, setselectedwidth] = useState(16);
   const [selectedexactwidth, setselectedexactwidth] = useState();
   const [selectedexactheight, setselectedexactheight] = useState();
@@ -88,17 +88,17 @@ const Post = ({ buyNow, addToCart, product }) => {
   function selectcolor(e) {
     setselectedcolor(e.target.id)
 
-    document.getElementById(e.target.id).classList.add("border-4")
+    document.getElementById(e.target.id).classList.add("border-2")
 
 
   }
   useEffect(() => {
-    document.getElementById(prevcolor).classList.remove("border-4")
+    document.getElementById(prevcolor).classList.remove("border-2")
     setprevcolor(selectedcolor)
   }, [selectedcolor]);
   useEffect(() => {
     console.log(product)
-    document.getElementById(0).classList.add("border-4")
+    document.getElementById(0).classList.add("border-2")
   }, []);
 
   const measuringguide = () => {
@@ -124,12 +124,14 @@ const Post = ({ buyNow, addToCart, product }) => {
         draggable
         pauseOnHover
       />
-      <div style={{ width: "90vw" }} className=" md:py-20">
+      <div style={{ width: "91.41vw" }} className=" md:py-12">
 
         <div className='w-full  flex-col md:flex-row flex   '>
-          <div style={{ width: "44vw" }} className=' '><img alt="ecommerce" className=" w-full p-16 md:p-0  " src={product.variants[selectedcolor].img} />
-            <div className=' '><h1 style={{ fontFamily: "'lato',sans-serif" }} className='text-black text-lg font-bold py-4'>Product Summary</h1>
-              <div className='w-full  grid grid-flow-col pr-10'>
+          <div style={{ width: "39.5vw" }} className=''>
+            <img alt="ecommerce" style={{height:"90vh"}} className=" w-full p-16 md:p-0  " src={product.variants[selectedcolor].img} />
+            <div className='w-full '>
+              <h1 style={{ fontFamily: "'lato',sans-serif" }} className='text-black text-xl font-bold pb-4 pt-10'>Product Summary</h1>
+              <div className='w-full  grid grid-flow-col '>
                 <div style={{ fontFamily: "'lato',sans-serif" }} className='text-black border-r border-gray-300'>
                   <p className='leading-loose font-semibold'>Style</p>
                   <p className='leading-loose font-semibold'>Color</p>
@@ -137,7 +139,7 @@ const Post = ({ buyNow, addToCart, product }) => {
                   <p className='leading-loose font-semibold'>Width</p>
                   <p className='leading-loose font-semibold'>Mechanism</p>
                 </div>
-                <div style={{ fontFamily: "'lato',sans-serif" }} className='ml-8 '>
+                <div style={{ fontFamily: "'montstrrat',sans-serif" }} className='ml-8 '>
                   <p className='leading-loose '>{product.category}</p>
                   <p className='leading-loose '>{product.variants[selectedcolor].color}</p>
                   <p className='leading-loose '>{selectedheight}{selectedexactheight} inches</p>
@@ -145,51 +147,56 @@ const Post = ({ buyNow, addToCart, product }) => {
                   <p className='leading-loose '>{mechanism}</p>
                 </div>
               </div>
-            </div></div>
-          <div style={{ width: "55vw", backgroundColor: "#ebeaeb" }} className='flex flex-col  px-2 md:px-14 '>
-            <h1 className=" text-gray-900  text-2xl md:text-3xl md:first-letter:mt-10 title-font font-bold  mt-14 mb-8">{product.title} </h1>
-            <div style={{ fontFamily: "'poppins',sans-serif" }} className='space-x-6 flex mb-8 text-sm'>
+            </div>
+            </div>
+
+            <div style={{ width: "49.7vw", backgroundColor: "#ebeaeb" }} className='pt-16 px-10 '>
+          <div  className='flex flex-col '>
+            <span style={{fontFamily: "'Playfair Display', serif",fontSize:40}} className=" text-gray-900   ">{product.title} </span>
+            <div  className='space-x-6 flex py-10 text-base'>
               <a href='#details' className='cursor-pointer flex items-center  space-x-3 border-r-2 pr-4 border-black underline underline-offset-2 '><BsInfoCircleFill /><span>Products Details</span></a>
               <a className='cursor-pointer underline flex items-center space-x-3 underline-offset-2 '><BsImages /><span>Products Gallery</span></a>
             </div>
 
-            <div  className="  w-full px-8   h-80 mb-8 overflow-y-scroll bg-white  ">
-              <p className='  font-medium pt-2 '>COLOR SELECTION</p>
+            <div  className="  w-full px-5 mb-7  h-80  overflow-y-scroll bg-white  ">
+              <p className='  font-medium pt-4 '>COLOR SELECTION</p>
               <div className='grid grid-flow-row grid-cols-3'>
                 {
 
-                  Object.keys(product.variants).map((p) => { return <div key={p} ><div id={p} onClick={(e) => { selectcolor(e) }} style={{ backgroundColor: `${product.variants[p].colorcode}`, borderColor: "#bfb1c4", borderBlockColor: "#ebeaeb" }} className=" h-32 mt-8  cursor-pointer w-32"></div><span className='text-sm  '>{product.variants[p].color}</span></div> })}
+                  Object.keys(product.variants).map((p) => { return <div key={p} ><div id={p} onClick={(e) => { selectcolor(e) }} style={{ backgroundColor: `${product.variants[p].colorcode}`, borderColor: "red"}} className=" h-32 mt-8  cursor-pointer w-32"></div><span className='text-sm  '>{product.variants[p].color}</span></div> })}
               </div>
             </div>
-
+            </div>
 
 
             <div className='flex flex-col'>
 
-              <Disclosure>
+              <Disclosure className="">
                 {({ open }) => (
                   <>
-                    <Disclosure.Button className="flex w-full justify-between items-center bg-white px-4 py-4 text-left text-sm font-medium   focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                    <Disclosure.Button className="flex w-full items-center bg-white px-6  text-left text-sm font-medium   focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                     <div className='flex justify-between w-full py-6'>
                       <span className='text-lg 2xl:text-xl'>Product measurement</span>
                       <IoIosArrowDown
                         className={`${open ? 'rotate-180 transform' : ''
                           } h-5 w-5 `}
                       />
+                      </div>
                     </Disclosure.Button>
-                    <Disclosure.Panel className="px-4 pt-4 pb-6 text-sm bg-white text-gray-900">
+                    <Disclosure.Panel className="px-6  pt-4 pb-6 text-sm bg-white text-gray-900">
                       <h1>PROVIDE EXACT MEASUREMENTS. WE WILL DEDUCT FOR INSIDE MOUNT.
                       </h1>
                       <div className="flex my-10  mx-auto  space-x-10 ">
 
                         <div className='flex items-center'><span className="">Height</span>
 
-                          <select id='h' onChange={(e) => selecth(e)} className='w-16  border ml-2  text-xs 2xl:text-base md:text-sm '>
+                          <select id='h' onChange={(e) => selecth(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 border ml-2  text-xs 2xl:text-base md:text-lg  h-11'>
                             {/* {product.height.map((i) => { return <option className='text-lg font-semibold ' key={i}>{i}  </option> })} */}
                             {height.map((i) => { return <option className=' ' key={i}>{i}  </option> })}
                           </select>
 
 
-                          <select id='exactheight' onChange={(e) => selecteh(e)} className='w-16  border ml-2  text-xs 2xl:text-base md:text-sm '>
+                          <select id='exactheight' onChange={(e) => selecteh(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 h-11  border ml-2  text-xs 2xl:text-base md:text-lg  '>
                             {/* {product.height.map((i) => { return <option className=' ' key={i}>{i}  </option> })} */}
                             {exactHeightOrWidth.map((i) => { return <option className=' ' key={i}>{i}  </option> })}
                           </select>
@@ -198,20 +205,20 @@ const Post = ({ buyNow, addToCart, product }) => {
 
                         <div className='flex items-center'><span className="">Width</span>
 
-                          <select id='w' onChange={(e) => selectw(e)} className='w-16  border ml-2  text-xs 2xl:text-base md:text-sm'>
+                          <select id='w' onChange={(e) => selectw(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 h-11  border ml-2  text-xs 2xl:text-base md:text-lg '>
                             {/* {product.width.map((i) => { return <option className='' key={i}>{i}  </option> })} */}
                             {width.map((i) => { return <option className='' key={i}>{i}  </option> })}
                           </select>
 
 
-                          <select id='exactwidth' onChange={(e) => selectew(e)} className='w-16 border ml-2  text-xs 2xl:text-base md:text-sm '>
+                          <select id='exactwidth' onChange={(e) => selectew(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 h-11 border ml-2  text-xs 2xl:text-base md:text-lg  '>
                             {/* {product.height.map((i) => { return <option className=' ' key={i}>{i}  </option> })} */}
                             {exactHeightOrWidth.map((i) => { return <option className=' ' key={i}>{i}  </option> })}
                           </select>
                         </div>
 
                       </div>
-                      <div onClick={measuringguide} className='underline underline-offset-4  cursor-pointer '>Measuring Guide</div>
+                      <div onClick={measuringguide} className='underline underline-offset-4 cursor-pointer '>Measuring Guide</div>
                       <Dialog style={{ width: "100vw", height: "100vh" }} className="fixed  flex justify-center items-center top-0 bg-black  bg-opacity-60 z-50" open={isenable} onClose={() => setisenable(false)}>
                         <Dialog.Panel > 
                           <MdOutlineCancel onClick={measuringguide} className="text-2xl  cursor-pointer 2xl:text-4xl absolute right-44 top-8" />
@@ -230,15 +237,17 @@ const Post = ({ buyNow, addToCart, product }) => {
                   </>
                 )}
               </Disclosure>
-              <Disclosure as="div" className="mt-2">
+              <Disclosure as="div" className="">
                 {({ open }) => (
                   <>
-                    <Disclosure.Button className="flex w-full justify-between  bg-white px-4 py-4 text-left text-sm font-medium  items-center focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                    <Disclosure.Button className="flex w-full justify-between  bg-white px-6 text-left text-sm font-medium  items-center focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                    <div className='flex justify-between border-t-2 w-full py-6'>
                       <span className='text-lg 2xl:text-xl'>Select Mechanism</span>
                       <IoIosArrowDown
                         className={`${open ? 'rotate-180 transform' : ''
                           } h-5 w-5 `}
                       />
+                      </div>
                     </Disclosure.Button>
                     <Disclosure.Panel className="px-4 pt-2 pb-8 text-sm  text-gray-500 flex justify-evenly bg-white">
                       <button id="Manual"  onClick={(e)=>mechanismtype(e)} style={{borderColor:"#bfb1c4"}} className='btn  border-2  py-2 px-6'>Manual</button>
@@ -250,22 +259,22 @@ const Post = ({ buyNow, addToCart, product }) => {
 
             </div>
 
-            <div style={{ fontFamily: "'Montserrat', sans-serif" }} className="flex justify-center items-center space-x-6 my-6 pt-10">
-              <div> Your Price</div>
-              <span className="title-font font-medium  text-2xl text-gray-900">₹ {product.price}</span>
+            <div  className="flex justify-end items-center space-x-6 my-6 pt-10">
+              <div className='text-sm'> Your Price</div>
+              <span className="title-font text-xl text-gray-900">₹ {product.price}</span>
               <button style={{ backgroundColor: "#bfb1c4" }} className="flex   font-semibold border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none text-white " onClick={() => { buyNow(product.slug, product.price, product.title, height, width, product.variants[selectedcolor].color) }}>Buy now</button>
               <button style={{ backgroundColor: "#bfb1c4" }} onClick={() => { addToCart(product.slug, 1, product.price, product.title, height, width, product.variants[selectedcolor].color) }} className="flex   border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none text-white font-semibold ">Add to cart</button>
 
             </div></div></div>
 
-        <div className='grid grid-flow-row md:grid-flow-col mt-20'>
-          <div>
+        <div style={{ fontFamily: "'Montserrat', sans-serif" }} className='grid grid-flow-row mr-12 mt-20'>
+          <div >
             <div id='details' className='text-xl lg:text-3xl text-center md:text-left '>Product Details
-              <p className="leading-relaxed text-base lg:text-xl font-normal md:pr-60 mt-10">{product.desc}</p>
+              <p className="leading-loose text-base    mt-10">{product.desc}</p>
             </div>
 
             <div className='text-xl lg:text-3xl text-center md:text-left mt-20'>Care & Cleaning
-              <p className="leading-relaxed text-base lg:text-xl font-normal md:pr-60 mt-10">{product.desc}</p>
+              <p className="leading-loose text-base    mt-10">{product.desc}</p>
             </div>
           </div>
 

@@ -3,10 +3,15 @@ import Product from "../../models/Product"
 import connectDb from "../../middleware/mongoose"
  
 const handler = async (req,res)=>{
-
+var idea = [];
     let products = await Product.distinct("category")
-    
-    res.status(200).json( products )
+    for(let i=0;i<products.length;i++){
+        let sub = await Product.find({category:products[i]})
+        idea.push(sub.sub)
+        console.log(sub)
+    }
+    console.log(idea)
+    res.status(200).json( {products ,idea})
 }
 export default connectDb(handler);
   
