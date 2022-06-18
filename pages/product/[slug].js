@@ -10,7 +10,7 @@ import { IoIosArrowDown } from "react-icons/io"
 import { MdOutlineCancel } from "react-icons/md"
 import { BsInfoCircleFill } from "react-icons/bs"
 import { BsImages } from "react-icons/bs"
-
+import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai';
 
 const Post = ({ buyNow, addToCart, product }) => {
   const [selectedheight, setselectedheight] = useState(6);
@@ -23,6 +23,7 @@ const Post = ({ buyNow, addToCart, product }) => {
   const [service, setService] = useState();
   const [isenable, setisenable] = useState(false);
   const [mechanism, setmechanism] = useState("");
+  const [qty, setqty] = useState(1);
 
   const height = []
   const width = []
@@ -110,7 +111,7 @@ const Post = ({ buyNow, addToCart, product }) => {
 
 
   return <>
-    <div style={{ backgroundColor: "#bfb1c4" }} className='w-full h-20 absolute top-0'></div>
+    <div style={{height:"80vh"}}  className='w-full -my-20'><img className='h-full w-full' alt='img' src='/pic-4.jpg'></img></div>
 
     <section style={{ fontFamily: "'lato', sans-serif" }} className="text-gray-900 flex justify-center  body-font overflow-hidden">
       <ToastContainer
@@ -124,15 +125,16 @@ const Post = ({ buyNow, addToCart, product }) => {
         draggable
         pauseOnHover
       />
-      <div style={{ width: "91.41vw" }} className=" md:py-12">
+      <div style={{ width: "91.41vw" }} className=" md:py-12 mt-20">
 
-        <div className='w-full  flex-col md:flex-row flex   '>
+        <div className='w-full  flex-col md:flex-row flex '>
           <div style={{ width: "39.5vw" }} className=''>
-            <img alt="ecommerce" style={{height:"90vh"}} className=" w-full p-16 md:p-0  " src={product.variants[selectedcolor].img} />
-            <div className='w-full '>
-              <h1 style={{ fontFamily: "'lato',sans-serif" }} className='text-black text-xl font-bold pb-4 pt-10'>Product Summary</h1>
-              <div className='w-full  grid grid-flow-col '>
-                <div style={{ fontFamily: "'lato',sans-serif" }} className='text-black border-r border-gray-300'>
+            <img alt="ecommerce" style={{height:"100vh"}} className=" w-full" src={product.variants[selectedcolor].img} />
+            <div style={{ backgroundColor: "#ebeaeb"}} className='w-full px-6'>
+              
+              <div style={{ fontFamily: "'lato',sans-serif" }} className='text-black flex items-center text-xl font-bold pb-4 pt-8'><p style={{backgroundColor: "#bfb1c4"}} className='w-5 -ml-6 absolute h-3'></p>Product Summary</div>
+              <div className='w-full  grid grid-flow-col h-80 '>
+                <div style={{ fontFamily: "'lato',sans-serif" }} className='text-black border-r mb-4 border-gray-300'>
                   <p className='leading-loose font-semibold'>Style</p>
                   <p className='leading-loose font-semibold'>Color</p>
                   <p className='leading-loose font-semibold'>Height</p>
@@ -150,21 +152,40 @@ const Post = ({ buyNow, addToCart, product }) => {
             </div>
             </div>
 
-            <div style={{ width: "49.7vw", backgroundColor: "#ebeaeb" }} className='pt-16 px-10 '>
+            <div style={{ width: "49.7vw", backgroundColor: "#bfb1c4" }} className='pt-16  px-10 '>
           <div  className='flex flex-col '>
-            <span style={{fontFamily: "'Playfair Display', serif",fontSize:40}} className=" text-gray-900   ">{product.title} </span>
+            <span style={{fontFamily: "'Fjalla One', sans-serif"}} className=" text-white text-5xl ">{product.title} </span>
             <div  className='space-x-6 flex py-10 text-base'>
-              <a href='#details' className='cursor-pointer flex items-center  space-x-3 border-r-2 pr-4 border-black underline underline-offset-2 '><BsInfoCircleFill /><span>Products Details</span></a>
-              <a className='cursor-pointer underline flex items-center space-x-3 underline-offset-2 '><BsImages /><span>Products Gallery</span></a>
+              <a href='#details' className='cursor-pointer flex items-center text-white  space-x-3  pr-4 border-black underline underline-offset-2 '><BsInfoCircleFill /><span>Products Details</span></a>
+              <a className='cursor-pointer underline flex items-center text-white  space-x-3 underline-offset-2 '><BsImages /><span>Products Gallery</span></a>
             </div>
-
-            <div  className="  w-full px-5 mb-7  h-80  overflow-y-scroll bg-white  ">
-              <p className='  font-medium pt-4 '>COLOR SELECTION</p>
-              <div className='grid grid-flow-row grid-cols-3'>
+           
+            <div  className="  w-full px-8 mb-7    bg-white  ">
+              <div className='  font-medium mt-4  flex items-center'><p style={{backgroundColor: "#bfb1c4"}} className='w-8 -ml-10 absolute h-3'></p>COLOR SELECTION</div>
+              <div className='overflow-y-scroll max-h-96'>
+              <div className='grid grid-flow-row  grid-cols-3'>
                 {
 
                   Object.keys(product.variants).map((p) => { return <div key={p} ><div id={p} onClick={(e) => { selectcolor(e) }} style={{ backgroundColor: `${product.variants[p].colorcode}`, borderColor: "red"}} className=" h-32 mt-8  cursor-pointer w-32"></div><span className='text-sm  '>{product.variants[p].color}</span></div> })}
               </div>
+              </div>
+
+              <div className='mt-8 flex space-x-8 items-center justify-start '>
+                <span>Quantity</span>
+                <div className='flex items-center  border border-black '>
+                <AiOutlineMinus onClick={() => {qty>1?setqty(qty-1):setqty(qty)}} className=' cursor-pointer mx-2' />
+                <span className='h-full border-x  border-black px-4'>{qty}</span>
+                <AiOutlinePlus onClick={() => { setqty(qty+1)}} className=' cursor-pointer mx-2' />
+                </div>
+                </div>
+             
+              <div  className="flex justify-between items-center space-x-6 my-6 pt-10">
+              <div className='text-sm'> Your Price
+              <span className="title-font ml-4  text-xl text-gray-900">₹ {product.price}</span></div>
+              <button style={{ backgroundColor: "#bfb1c4" }} className="flex    border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none text-white " onClick={() => { buyNow(product.slug,qty, product.price, product.title, height, width, product.variants[selectedcolor].color) }}>Buy now</button>
+              <button style={{ backgroundColor: "#bfb1c4" }} onClick={() => { addToCart(product.slug, qty, product.price, product.title, height, width, product.variants[selectedcolor].color) }} className="flex   border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none text-white  ">Add to cart</button>
+
+            </div>
             </div>
             </div>
 
@@ -174,7 +195,8 @@ const Post = ({ buyNow, addToCart, product }) => {
               <Disclosure className="">
                 {({ open }) => (
                   <>
-                    <Disclosure.Button className="flex w-full items-center bg-white px-6  text-left text-sm font-medium   focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                    <Disclosure.Button className="flex w-full items-center bg-white px-7  text-left text-sm font-medium   focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                    <p style={{backgroundColor: "#bfb1c4"}} className='w-8 -ml-10 absolute h-3'></p>
                      <div className='flex justify-between w-full py-6'>
                       <span className='text-lg 2xl:text-xl'>Product measurement</span>
                       <IoIosArrowDown
@@ -237,10 +259,11 @@ const Post = ({ buyNow, addToCart, product }) => {
                   </>
                 )}
               </Disclosure>
-              <Disclosure as="div" className="">
+              <Disclosure as="div" className="mb-10">
                 {({ open }) => (
                   <>
-                    <Disclosure.Button className="flex w-full justify-between  bg-white px-6 text-left text-sm font-medium  items-center focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                    <Disclosure.Button className="flex w-full justify-between  bg-white px-7 text-left text-sm font-medium  items-center focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                    <p style={{backgroundColor: "#bfb1c4"}} className='w-8 -ml-10 absolute h-3'></p>
                     <div className='flex justify-between border-t-2 w-full py-6'>
                       <span className='text-lg 2xl:text-xl'>Select Mechanism</span>
                       <IoIosArrowDown
@@ -259,22 +282,21 @@ const Post = ({ buyNow, addToCart, product }) => {
 
             </div>
 
-            <div  className="flex justify-end items-center space-x-6 my-6 pt-10">
-              <div className='text-sm'> Your Price</div>
-              <span className="title-font text-xl text-gray-900">₹ {product.price}</span>
-              <button style={{ backgroundColor: "#bfb1c4" }} className="flex   font-semibold border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none text-white " onClick={() => { buyNow(product.slug, product.price, product.title, height, width, product.variants[selectedcolor].color) }}>Buy now</button>
-              <button style={{ backgroundColor: "#bfb1c4" }} onClick={() => { addToCart(product.slug, 1, product.price, product.title, height, width, product.variants[selectedcolor].color) }} className="flex   border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none text-white font-semibold ">Add to cart</button>
-
-            </div></div></div>
-
-        <div style={{ fontFamily: "'Montserrat', sans-serif" }} className='grid grid-flow-row mr-12 mt-20'>
-          <div >
-            <div id='details' className='text-xl lg:text-3xl text-center md:text-left '>Product Details
-              <p className="leading-loose text-base    mt-10">{product.desc}</p>
+           
+            </div>
             </div>
 
-            <div className='text-xl lg:text-3xl text-center md:text-left mt-20'>Care & Cleaning
-              <p className="leading-loose text-base    mt-10">{product.desc}</p>
+        <div style={{ fontFamily: "'Montserrat', sans-serif" }} className='grid grid-flow-row mr-12 mt-20'>
+          <div className='flex'>
+            
+            <div id='details' className='text-xl  w-9/12 mr-10 lg:text-3xl text-center md:text-left '>
+            <div style={{backgroundColor: "#bfb1c4"}} className='w-10   h-3'></div>Product Details
+              <p className="leading-loose text-xs    mt-7 ">{product.desc}</p>
+            </div>
+
+            <div className='text-xl lg:text-3xl w-11/12 text-center md:text-left '>
+            <p style={{backgroundColor: "#bfb1c4"}} className='w-10 h-3'></p><span className=''>Care & Cleaning</span>
+              <p className="leading-loose text-xs    mt-7  2">{product.desc}</p>
             </div>
           </div>
 
