@@ -127,7 +127,7 @@ const Post = ({ buyNow, addToCart, product }) => {
       />
       <div style={{ width: "91.41vw" }} className=" md:py-12 mt-20">
 
-        <div className='w-full  flex-col md:flex-row flex '>
+        <div className='w-full  flex-col justify-center md:flex-row flex '>
           <div style={{ width: "39.5vw" }} className=''>
             <img alt="ecommerce" style={{height:"100vh"}} className=" w-full" src={product.variants[selectedcolor].img} />
             <div style={{ backgroundColor: "#ebeaeb"}} className='w-full px-6'>

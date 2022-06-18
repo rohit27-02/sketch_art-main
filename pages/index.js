@@ -38,9 +38,16 @@ export default function Home() {
  
  const show=()=>{
   setwhatsapp(true)
+  document.getElementById("what").classList.add("hovered")
+  setTimeout(() => {
+    document.getElementById("what").classList.remove("hidden")
+  }, 830);
+
  }
  const off=()=>{
   setwhatsapp(false)
+  document.getElementById("what").classList.remove("hovered")
+  document.getElementById("what").classList.add("hidden")
  }
   
   return (
@@ -50,7 +57,8 @@ export default function Home() {
 
 
 
-<div onMouseLeave={off} onMouseEnter={show} className=" fixed bottom-8 right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full transition transform  w-auto hover:w-52 duration-1000 delay-500 items-center  flex justify-end">{whatsapp && <a className="px-3 font-semibold" href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+91 992 022 3462</a>}<BsWhatsapp  className='text-white p-2 rounded-3xl z-50 text-5xl '/></div>
+<div  style={{width:auto}} onMouseLeave={off} onMouseOver={show} className=" fixed bottom-8  right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full  items-center whatsapp flex justify-end"><a    id="what"  className="px-3 w-0 hidden font-semibold" href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+919920223462</a><BsWhatsapp  className='text-white p-2 rounded-3xl z-50 text-5xl '/></div>
+<BsWhatsapp   className='text-white cursor-pointer fixed bottom-8 bg-green-500 p-2 right-12 rounded-3xl z-40 text-5xl '/>
 
 
 
