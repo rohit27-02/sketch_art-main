@@ -53,6 +53,8 @@ const Contact = ({ info }) => {
       setemail("")
       setname("")
       setmessage("")
+      setcompany("")
+      setnumber("")
       toast.success('Your feedback has been submitted', {
         position: "top-center",
         autoClose: 1000,
