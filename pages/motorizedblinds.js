@@ -47,7 +47,7 @@ const motorizedblinds = () => {
       </Slide>
 
       <div id='second' className='space-x-6 space-y-6 text-center' style={{ fontFamily: "'Roboto Slab', serif" }} >
-        <h1 style={{ fontFamily: "'Fjalla One', sans-serif" }} className='text-center text-5xl  '>How to choose your blinds?</h1>
+        <h1 style={{ fontFamily: "'Fjalla One', sans-serif" }} className='text-center text-5xl  '>HOW TO CHOOSE YOUR BLINDS ?</h1>
         <p className='pb-5'>Selecting window treatments for a specific room is all about assessing the way the space functions. </p>
         <a href='#living' className='underline underline-offset-4'>LIVING AREA</a>
         <a href='#bedroom' className='underline underline-offset-4'>BEDROOM</a>
