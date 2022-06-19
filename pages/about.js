@@ -74,7 +74,7 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
 
       <div style={{height:"50vh"}} className="flex mt-20 justify-center">
       <video className=" w-11/12 object-cover" src="/main4.mp4" autoPlay muted loop />
-      <h1  style={{fontFamily: "'Fjalla One', sans-serif",textShadow:"1px 1px black"}} className='absolute text-white text-5xl text-center px-40 my-20'>Sketch arts strives for excellence by providing customized solutions.</h1>
+      <h1  style={{fontFamily: "'Fjalla One', sans-serif",textShadow:"1px 1px black"}} className='absolute text-white text-5xl text-center leading-12 uppercase px-40 my-24'>Sketch arts strives for excellence by providing customized solutions.</h1>
       </div>
 
       
@@ -141,7 +141,7 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
         )}
       </VisibilitySensor>
 
-      <div   className=' space-y-14 text-black mt-20 px-32 text-4xl font-bold text-center py-5  bg-white'>
+      <div   className=' space-y-14 text-black mt-12 px-32 text-4xl font-bold text-center py-5  bg-white'>
         <h1  style={{fontFamily: "'Fjalla One', sans-serif"}} className="text-gray-700">OUR PRESTIGIOUS CLIENTS</h1>
      
 
