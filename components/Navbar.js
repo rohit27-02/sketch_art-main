@@ -529,10 +529,10 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
           <div className="hidden md:flex items-center space-x-6 ">
             <div id='navtext' className="hidden md:flex items-center text-white  2xl:text-lg text-base space-x-1">
-              <a style={{ textUnderlineOffset: 8, fontFamily: "'Montserrat', sans-serif" }} href="/" className="py-4 px-2   font-semibold  hover:underline  decoration-2   ">Home</a>
-              <a style={{ textUnderlineOffset: 8, fontFamily: "'Montserrat', sans-serif" }} onClick={toggleproducts} className="py-4 cursor-pointer px-2   font-semibold   hover:underline  decoration-2 ">Products</a>
-              <a style={{ textUnderlineOffset: 8, fontFamily: "'Montserrat', sans-serif" }} href="/about" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">About Us</a>
-              <a style={{ textUnderlineOffset: 8, fontFamily: "'Montserrat', sans-serif" }} href="/contact" className="py-4 px-2    font-semibold   hover:underline  decoration-2   ">Contact Us</a>
+              <a style={{ textUnderlineOffset: 8, fontFamily: "'poppins', sans-serif" }} href="/" className="py-4 px-2   hover:underline  decoration-2   ">Home</a>
+              <a style={{ textUnderlineOffset: 8, fontFamily: "'poppins', sans-serif" }} onClick={toggleproducts} className="py-4 cursor-pointer px-2    hover:underline  decoration-2 ">Products</a>
+              <a style={{ textUnderlineOffset: 8, fontFamily: "'poppins', sans-serif" }} href="/about" className="py-4 px-2     hover:underline  decoration-2   ">About Us</a>
+              <a style={{ textUnderlineOffset: 8, fontFamily: "'poppins', sans-serif" }} href="/contact" className="py-4 px-2     hover:underline  decoration-2   ">Contact Us</a>
             </div>
             {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontFamily: "'Montserrat', sans-serif"}} className=" font-bold text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}
             {user.value && <MdAccountCircle  className=" font-medium  cursor-pointer transition text-white duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
