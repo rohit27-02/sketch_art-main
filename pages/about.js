@@ -41,7 +41,7 @@ const About = () => {
       <div style={{height:"85vh"}} className="w-full">
       <div style={{height:"90vh"}} className='w-full overflow-hidden object-cover top-0 absolute '>
       <div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div>
-      <h1 style={{fontFamily: "'Fjalla One', sans-serif"}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute 2xl:my-52 md:my-40 z-40 text-gray-200  '>You imagine, we create.</h1>
+      <h1 style={{fontFamily: "'Fjalla One', sans-serif"}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute 2xl:my-52 md:my-40 z-40 text-gray-200  '>YOU IMAGINE, WE CREATE.</h1>
        <Slide bottom><img  className='h-full w-full object-cover' src='/About us image.png'></img></Slide >
       
       </div>
@@ -59,10 +59,10 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
       </div>
         <Slide right><img width={500} height={500} className="mx-8 p-3" src='https://media.istockphoto.com/photos/little-boy-opening-the-roller-blinds-in-the-morning-picture-id1178700357?k=20&m=1178700357&s=612x612&w=0&h=zZMixHxDvjJj4ce_fEjPEFE9ReFw5xabNAPh3Rypdxo='></img></Slide>
       </div>
-      <div style={{backgroundColor:"#bfb1c4"}} className='flex flex-col md:flex-row text-white justify-around items-center leading-10  '>
-<img style={{height:600}} className='w-5/12  my-10' src='/pexels-max-vakhtbovych-6980665.jpg'></img>
+      <div style={{backgroundColor:"#bfb1c4"}} className='flex flex-col md:flex-row text-white py-10 justify-around items-center leading-10  '>
+<img className='w-6/12  ' src='/pexels-max-vakhtbovych-6980665.jpg'></img>
 <div className=''><h1  style={{fontFamily: "'Fjalla One', sans-serif"}} className='font-bold  text-4xl'>OUR CAPABILITIES</h1>
-<ul className='list-disc text-xl space-y-4  my-12'>
+<ul className='list-disc text-xl space-y-4  my-12 '>
   <LightSpeed><li>Team of expert inspectors</li></LightSpeed>
   <LightSpeed><li>Team of experienced procurement agents</li></LightSpeed>
   <LightSpeed><li>Reliable vendor base</li></LightSpeed>
