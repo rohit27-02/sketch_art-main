@@ -19,8 +19,6 @@ const Post = ({ buyNow, addToCart, product }) => {
   const [selectedexactheight, setselectedexactheight] = useState();
   const [selectedcolor, setselectedcolor] = useState(0);
   const [prevcolor, setprevcolor] = useState(0);
-  const [pin, setPin] = useState();
-  const [service, setService] = useState();
   const [isenable, setisenable] = useState(false);
   const [mechanism, setmechanism] = useState("");
   const [qty, setqty] = useState(1);
@@ -36,37 +34,7 @@ const Post = ({ buyNow, addToCart, product }) => {
     width.push(i)
   }
 
-  const checkServiceablilty = async () => {
-    let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`)
-    let pinJson = await pins.json()
-    if (pinJson.includes(parseInt(pin))) {
-      setService(true)
-      toast.success('Yay! your area is serviceable', {
-        position: "bottom-center",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-    else {
-      setService(false)
-      toast.error('sorry, your area is not serviceable', {
-        position: "bottom-center",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-  }
-  const onChangePin = (e) => {
-    setPin(e.target.value)
-  }
+ 
   function selecth(e) {
     setselectedheight(e.target.value)
   }
@@ -300,14 +268,7 @@ const Post = ({ buyNow, addToCart, product }) => {
             </div>
           </div>
 
-          <div>
-            <div className='flex mt-12 mb-20 '>
-              <input onChange={onChangePin} className='text-sm md:text-lg px-2 border-2 border-gray-400 -md' type="text" placeholder='Enter your pin'></input>
-              <button style={{ backgroundColor: "#bfb1c4" }} onClick={checkServiceablilty} className='ml-2 text-white btn border-0 py-2 px-4  focus:outline-none  '>Check</button>
-            </div>
-          </div>
-          {!service && service != null && <div className='text-red-600 mt-3 '>sorry! we are not available in your area</div>}
-          {service && service != null && <div className='text-green-600 mt-3 '>Yay! we are available at your area</div>}
+        
         </div>
       </div>
 

@@ -32,9 +32,11 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
   const [info, setinfo] = useState({});
   const [isOpen, setOpen] = useState(false)
   const [login, setlogin] = useState(false)
-  const [email, setEmail] = useState("");
+  const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
   const [sub, setsub] = useState([]);
+  const [method, setmethod] = useState("login");
+  const [name, setname] = useState("");
 
   useEffect(() => {
 
@@ -47,10 +49,13 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
   const handleChange = (e) => {
 
     if (e.target.name == "email") {
-      setEmail(e.target.value)
+      setemail(e.target.value)
     }
     if (e.target.name == "password") {
       setPassword(e.target.value)
+    }
+    if(e.target.name=="name"){
+      setname(e.target.value)
     }
   }
   const handleSubmit = async (e) => {
@@ -63,7 +68,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
       }, body: JSON.stringify(data)
     })
     let response = await res.json()
-    setEmail("")
+    setemail("")
     setPassword("")
     if (response.admin) {
       localStorage.setItem("admin", response.admin)
@@ -102,7 +107,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
   }
   const auth = async (res) => {
     const obj = await jwtDecode(res.credential)
-    setEmail(obj.email)
+    setemail(obj.email)
     const data = await assign(obj)
     let response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/auth`, {
       method: "POST",
@@ -111,7 +116,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
       }, body: JSON.stringify(data)
     })
     let status = await response.json()
-    setEmail("")
+    setemail("")
     if (status.success) {
       localStorage.setItem("token", status.token)
       toast.success('congratulation your are logged in', {
@@ -139,12 +144,72 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
       });
     }
   }
-
-
-
-  const navbar = () => {
-    setnav(true)
+  const handleSubmit2 = async (e) => {
+    e.preventDefault()
+    const data = { name, email, password }
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }, body: JSON.stringify(data)
+    })
+    let response = await res.json()
+    if(response.success){
+    setemail("")
+    setname("")
+    setPassword("")
+    toast.success('congratulation your account is signed up', {
+      position: "top-center",
+      autoClose: 1200,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    
+    setTimeout(() => {
+      setmethod("login")
+    }, 2000);
+   
   }
+  }
+  const assign2=(obj)=>{
+    return { name:obj.name, email:obj.email, password:obj.email}
+  }
+  const auth2 = async (e) => {
+    let obj= await jwtDecode(e.credential)
+    const data = await assign2(obj)
+
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }, body: JSON.stringify(data)
+    })
+    let response = await res.json()
+    setemail("")
+    setname("")
+    setpassword("")
+    if(response.success){
+    toast.success('congratulation your account is signed up', {
+      position: "top-center",
+      autoClose: 1200,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    setTimeout(() => {
+      Router.push("/Login")
+    }, 2000);
+  }
+  }
+  
+
+
+ 
 
   const toggleCart = () => {
     if (ref.current.classList.contains("translate-x-full")) {
@@ -188,10 +253,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
   useEffect(() => {
    
   }, [subcategory]);
-  function list() {
-
-    setlistd(!listd)
-  }
+ 
   async function getData(e) {
     const data = e.target.id
 
@@ -211,16 +273,17 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     }
 
   }
+  const show=(e)=>{
+    setmethod(e.target.id)
+  }
 
 
   const ref = useRef();
   const menu = useRef();
   return (<>
 
-    <Dialog style={{ width: "100vw", height: "100vh" }} className="fixed  flex justify-center items-center top-0 bg-black  bg-opacity-60 z-50" open={login} onClose={() => setlogin(false)}>
-      <Dialog.Panel >
 
-        <ToastContainer
+<ToastContainer
           position="top-center"
           autoClose={2000}
           hideProgressBar={false}
@@ -231,7 +294,9 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
           draggable
           pauseOnHover
         />
-        <div style={{ fontFamily: "'Montserrat', sans-serif" }} className='flex drop-shadow-md rounded-xl'>
+    <Dialog style={{ width: "100vw", height: "100vh" }} className="fixed  flex justify-center items-center top-0 bg-black  bg-opacity-60 z-50" open={login} onClose={() => setlogin(false)}>
+      <Dialog.Panel >
+        {method =="login" && <div style={{ fontFamily: "'Montserrat', sans-serif" }} className='flex drop-shadow-md rounded-xl'>
           <div className='bg-white block px-10 py-2  rounded-md'>
             <div className="max-w-md  w-full space-y-6">
 
@@ -240,7 +305,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                 <div className=" shadow-sm">
                   <div>
                     <label htmlFor="email" className="sr-only">
-                      Email address
+                      email address
                     </label>
                     <input
                       onChange={handleChange}
@@ -252,7 +317,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                       required
 
                       className="appearance-nonerelative block w-full px-3  py-2 border mb-2 bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 text-lg"
-                      placeholder="Email"
+                      placeholder="email"
                     />
                   </div>
                   <div>
@@ -275,16 +340,16 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                 <div className=''>
                   <button
                     type="submit"
-                    style={{ backgroundColor: "#3e3e3e" }} className="group drop-shadow-sm relative w-full flex justify-center py-2 px-4 border hover:shadow-lg text-white text-sm font-bold  "
+                    style={{ backgroundColor: "#bfb1c4" }} className="group drop-shadow-sm relative w-full flex justify-center py-2 px-4 border hover:shadow-lg text-white text-sm font-bold  "
                   >
 
                     Sign in
                   </button>
                   <div className="text-sm space-x-4 mt-2 flex font-medium text-gray-800 justify-center">
-                    <a className='hover:text-black cursor-pointer' href="/Forgot" >
+                    <a id='forgot' onClick={(e)=>{show(e)}} className='hover:text-black cursor-pointer' href="/Forgot" >
                       Forgot password?
                     </a>
-                    <p className='hover:text-black cursor-pointer'>Create account</p>
+                    <p id='signup' onClick={(e)=>{show(e)}} className='hover:text-black cursor-pointer'>Create account</p>
                   </div>
                 </div>
                 <div className='flex justify-center space-x-2 '>
@@ -292,7 +357,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                   <div className=''>Or</div>
                   <div className='border-b border-gray-800 my-3 w-32'></div>
                 </div>
-                <div className='md:text-center'><GoogleOAuthProvider clientId="390204161646-6noec67uc8qleni584kq3ojnbbebeo1i.apps.googleusercontent.com"><GoogleLogin
+                <div className='pb-8 text-center'><GoogleOAuthProvider clientId="390204161646-6noec67uc8qleni584kq3ojnbbebeo1i.apps.googleusercontent.com"><GoogleLogin
                   onSuccess={res => auth(res)}
                   onError={() => {
                     console.log('Login Failed');
@@ -304,7 +369,91 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
             </div>
           </div>
 
-        </div>
+        </div>}
+
+        {method =="signup" && <div style={{ fontFamily: "'Montserrat', sans-serif" }} className='flex drop-shadow-md rounded-xl'>
+          <div className='bg-white block px-10 py-2  rounded-md'>
+            <div className="max-w-md  w-full space-y-6">
+
+              <form onSubmit={handleSubmit2} className="mt-8 scale-90 w-full md:scale-100 space-y-6" method="POST">
+                <h1 className='text-2xl font-bold text-center text-gray-600'>Welcome to sketchart</h1>
+                <div className=" shadow-sm">
+                  <div>
+                   
+                    <input
+                      onChange={handleChange}
+                      id="name"
+                      name="name"
+                      type="text"
+                      value={name}
+                      autoComplete="name"
+                      required
+
+                      className="appearance-nonerelative block w-full px-3  py-2 border mb-2 bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 text-lg"
+                      placeholder="Name"
+                    />
+                  </div>
+                  <div>
+                   
+                    <input
+                      onChange={handleChange}
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={email}
+                      autoComplete="email"
+                      required
+
+                      className="appearance-nonerelative block w-full px-3  py-2 border mb-2 bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 text-lg"
+                      placeholder="email"
+                    />
+                  </div>
+                  <div>
+                   
+                    <input
+                      onChange={handleChange}
+                      value={password}
+                      id="password"
+                      name="password"
+                      type="password"
+                      autoComplete="password"
+                      required
+                      className="appearance-none  relative block w-96 px-3 py-2 border bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 text-lg"
+                      placeholder="Password"
+                    />
+                  </div>
+                </div>
+                <div className=''>
+                  <button
+                    type="submit"
+                    style={{ backgroundColor: "#bfb1c4" }} className="group drop-shadow-sm relative w-full flex justify-center py-2 px-4 border hover:shadow-lg text-white text-sm font-bold  "
+                  >
+
+                    Sign up
+                  </button>
+                  <div className="text-sm space-x-4 mt-2 flex font-medium text-gray-800 justify-center">
+                   
+                    <p id='login' onClick={(e)=>{show(e)}} className='hover:text-black cursor-pointer pt-2 '>Already have an account ?</p>
+                  </div>
+                </div>
+                <div className='flex justify-center space-x-2 '>
+                  <div className='border-b border-gray-800 my-3 w-32'></div>
+                  <div className=''>Or</div>
+                  <div className='border-b border-gray-800 my-3 w-32'></div>
+                </div>
+                <div className='pb-8 text-center'><GoogleOAuthProvider clientId="390204161646-6noec67uc8qleni584kq3ojnbbebeo1i.apps.googleusercontent.com"><GoogleLogin
+                  onSuccess={res => auth2(res)}
+                  onError={() => {
+                    console.log('Login Failed');
+                  }}
+                  auto_select
+                  useOneTap
+                /></GoogleOAuthProvider></div>
+              </form>
+            </div>
+          </div>
+
+        </div>}
 
       </Dialog.Panel>
     </Dialog>

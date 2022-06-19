@@ -109,7 +109,7 @@ function MyApp({ Component, pageProps }) {
    <title>Sketch Art</title>
       </Head>
     <LoadingBar
-        color='black'
+        color='#bfb1c4'
         progress={progress}
         waitingTime={400}
         height={4}
