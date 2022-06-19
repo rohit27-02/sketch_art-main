@@ -36,32 +36,32 @@ const About = () => {
   
   return (
   
-    <div>
+    <div style={{fontFamily: "'Roboto Slab', serif"}}>
      
       <div style={{height:"85vh"}} className="w-full">
       <div style={{height:"90vh"}} className='w-full overflow-hidden object-cover top-0 absolute '>
       <div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div>
-      <h1 style={{fontFamily:"'poppins', sans-serif"}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute 2xl:my-52 md:my-40 z-40 text-gray-200  '>You imagine, we create.</h1>
+      <h1 style={{fontFamily: "'Fjalla One', sans-serif"}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute 2xl:my-52 md:my-40 z-40 text-gray-200  '>You imagine, we create.</h1>
        <Slide bottom><img  className='h-full w-full object-cover' src='/About us image.png'></img></Slide >
       
       </div>
         </div>
 
 
-      <div style={{fontFamily:"'Montserrat', sans-serif"}}  className='text-center md:py-14 py-8 mb-6 px-1 md:flex-row flex flex-col justify-center items-center '>
-      <div  style={{fontFamily:"'poppins', sans-serif"}} className='text-left px-10  text-slate-700  md:flex-row flex flex-col justify-center items-center '>
-      <Slide left> <div > <h1 className='text-4xl  font-bold'>Global Leading Manufacturer</h1>
-        <p style={{lineHeight:2}} className=' py-7  md:text-base 2xl:text-xl  font-thin'>With an industry experience of over 25 years, Dooya private limited is the leading manufacturer and importer of Window Blinds and Accessories, Motorized Blinds and Interior Flims in the country catering to clients across the globe. It is also the marketing partner for Dooya Motors based in China. Keen on widening its portfolio, Dooya is open to expanding its imports and exports as and when opportunities present themselves.
+      <div  className='text-center md:py-14 py-8 mb-6 px-8 md:flex-row flex flex-col justify-center items-center '>
+      <div   className='text-left ml-10  text-slate-700  md:flex-row flex flex-col justify-center items-center '>
+      <Slide left> <div  > <h1 style={{fontFamily: "'Fjalla One', sans-serif"}} className='text-4xl  font-bold'>GLOBAL LEADING MANUFACTURER</h1>
+        <p  className=' py-7 leading-relaxed mr-12  md:text-base 2xl:text-xl  font-thin'>With an industry experience of over 25 years, Dooya private limited is the leading manufacturer and importer of Window Blinds and Accessories, Motorized Blinds and Interior Flims in the country catering to clients across the globe. It is also the marketing partner for Dooya Motors based in China. Keen on widening its portfolio, Dooya is open to expanding its imports and exports as and when opportunities present themselves.
 
 Dooya strives for excellence by providing customized solutions. An expansive range of world-class home fashion products while providing premium customer services that include global sourcing, quality assurance, logistics and finance.</p>
 <div className=' '><a href={"/contact"} style={{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`}} className='text-lg   hover:opacity-80  py-2 px-6  text-white'>Contact Us</a></div>
 </div></Slide>
       </div>
-        <Slide right><img width={500} height={500} className="p-8" src='https://media.istockphoto.com/photos/little-boy-opening-the-roller-blinds-in-the-morning-picture-id1178700357?k=20&m=1178700357&s=612x612&w=0&h=zZMixHxDvjJj4ce_fEjPEFE9ReFw5xabNAPh3Rypdxo='></img></Slide>
+        <Slide right><img width={500} height={500} className="mx-8 p-3" src='https://media.istockphoto.com/photos/little-boy-opening-the-roller-blinds-in-the-morning-picture-id1178700357?k=20&m=1178700357&s=612x612&w=0&h=zZMixHxDvjJj4ce_fEjPEFE9ReFw5xabNAPh3Rypdxo='></img></Slide>
       </div>
-      <div style={{fontFamily:"'poppins', sans-serif",backgroundColor:"#bfb1c4"}} className='flex flex-col md:flex-row text-white justify-around items-center leading-10  '>
+      <div style={{backgroundColor:"#bfb1c4"}} className='flex flex-col md:flex-row text-white justify-around items-center leading-10  '>
 <img style={{height:600}} className='w-5/12  my-10' src='/pexels-max-vakhtbovych-6980665.jpg'></img>
-<div className=''><h1 className='font-bold  text-4xl'>Our Capabilities</h1>
+<div className=''><h1  style={{fontFamily: "'Fjalla One', sans-serif"}} className='font-bold  text-4xl'>OUR CAPABILITIES</h1>
 <ul className='list-disc text-xl space-y-4  my-12'>
   <LightSpeed><li>Team of expert inspectors</li></LightSpeed>
   <LightSpeed><li>Team of experienced procurement agents</li></LightSpeed>
@@ -74,7 +74,7 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
 
       <div style={{height:"50vh"}} className="flex mt-20 justify-center">
       <video className=" w-11/12 object-cover" src="/main4.mp4" autoPlay muted loop />
-      <h1 style={{fontFamily:"'poppins', sans-serif",textShadow:"1px 1px black"}} className='absolute text-white text-5xl text-center px-40 my-20'>Sketch arts strives for excellence by providing customized solutions.</h1>
+      <h1  style={{fontFamily: "'Fjalla One', sans-serif",textShadow:"1px 1px black"}} className='absolute text-white text-5xl text-center px-40 my-20'>Sketch arts strives for excellence by providing customized solutions.</h1>
       </div>
 
       
@@ -97,7 +97,7 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
       <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
         {({ isVisible }) => (
            <div style={{backgroundColor:"#ebeaeb"}} className='w-full md:h-52 mt-16 h-96 '>
-           {isVisible ?<div style={{fontFamily:"'poppins', sans-serif",backgroundColor:"#bfb1c4"}} className='h-full flex flex-col md:flex-row  text-black items-center justify-evenly'> <CountUp
+           {isVisible ?<div style={{backgroundColor:"#bfb1c4",fontFamily: "'poppins', sans-serif"}} className='h-full flex flex-col md:flex-row  text-white items-center justify-evenly'> <CountUp
            className='text-4xl font-bold  py-5'
        start={0}
        end={20}
@@ -141,8 +141,8 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
         )}
       </VisibilitySensor>
 
-      <div  style={{fontFamily:"'poppins', sans-serif"}}  className=' space-y-14 text-black mt-20 px-32 text-4xl font-bold text-center py-5  bg-white'>
-        <h1>OUR PRESTIGIOUS CLIENTS</h1>
+      <div   className=' space-y-14 text-black mt-20 px-32 text-4xl font-bold text-center py-5  bg-white'>
+        <h1  style={{fontFamily: "'Fjalla One', sans-serif"}} className="text-gray-700">OUR PRESTIGIOUS CLIENTS</h1>
      
 
       <Carousel
