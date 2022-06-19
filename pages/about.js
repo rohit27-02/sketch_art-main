@@ -13,9 +13,14 @@ const About = () => {
 
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 1300 },
       items: 7,
       slidesToSlide: 1 // optional, default to 1.
+    },
+    14:{
+      breakpoint: { max: 1300, min: 1024 },
+      items: 6,
+      slidesToSlide: 1 
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -49,13 +54,13 @@ const About = () => {
         <p style={{lineHeight:2}} className=' py-7  md:text-base 2xl:text-xl  font-thin'>With an industry experience of over 25 years, Dooya private limited is the leading manufacturer and importer of Window Blinds and Accessories, Motorized Blinds and Interior Flims in the country catering to clients across the globe. It is also the marketing partner for Dooya Motors based in China. Keen on widening its portfolio, Dooya is open to expanding its imports and exports as and when opportunities present themselves.
 
 Dooya strives for excellence by providing customized solutions. An expansive range of world-class home fashion products while providing premium customer services that include global sourcing, quality assurance, logistics and finance.</p>
-<div className=' '><button style={{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`}} className='text-lg   hover:opacity-80  py-2 px-6  text-white'>Contact Us</button></div>
+<div className=' '><a href={"/contact"} style={{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`}} className='text-lg   hover:opacity-80  py-2 px-6  text-white'>Contact Us</a></div>
 </div></Slide>
       </div>
         <Slide right><img width={500} height={500} className="p-8" src='https://media.istockphoto.com/photos/little-boy-opening-the-roller-blinds-in-the-morning-picture-id1178700357?k=20&m=1178700357&s=612x612&w=0&h=zZMixHxDvjJj4ce_fEjPEFE9ReFw5xabNAPh3Rypdxo='></img></Slide>
       </div>
       <div style={{fontFamily:"'poppins', sans-serif",backgroundColor:"#bfb1c4"}} className='flex flex-col md:flex-row text-white justify-around items-center leading-10  '>
-<img style={{height:600}} className='w-5/12  my-10' src='https://www.lvtron.com/wp-content/uploads/2019/09/1591582913-5.jpg'></img>
+<img style={{height:600}} className='w-5/12  my-10' src='/pexels-max-vakhtbovych-6980665.jpg'></img>
 <div className=''><h1 className='font-bold  text-4xl'>Our Capabilities</h1>
 <ul className='list-disc text-xl space-y-4  my-12'>
   <LightSpeed><li>Team of expert inspectors</li></LightSpeed>
@@ -75,10 +80,10 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
       
     
 
-      <div style={{height:"40vh"}}>
+      <div style={{height:"40vh"}} >
         <div className=' flex items-center px-3 my-8 '>
-          <div className='absolute  pt-12 '><img src="/Assest for Sketch Art-09.png"></img></div>
-          <div className='scale-75 ml-6'><Slide bottom><img className='object-scale-down' src="/Assest for Sketch Art-08.png"></img></Slide></div>
+          <div className='absolute  pt-12 mr-3'><img src="/Assest for Sketch Art-09.png"></img></div>
+          <div className='scale-75 ml-4'><Slide bottom><img className='object-scale-down' src="/Assest for Sketch Art-08.png"></img></Slide></div>
           <div className='scale-75'><Slide top><img className='object-scale-down' src="/Assest for Sketch Art-07.png"></img></Slide></div>
           <div className='scale-75'><Slide bottom><img className='object-scale-down' src="/Assest for Sketch Art-06.png"></img></Slide></div>
           <div className='scale-75'><Slide top><img className='object-scale-down' src="/Assest for Sketch Art-05.png"></img></Slide></div>
@@ -152,21 +157,21 @@ Dooya strives for excellence by providing customized solutions. An expansive ran
   keyBoardControl={true}
   transitionDuration={1000}
   containerClass="carousel-container"
-  removeArrowOnDeviceType={["tablet", "mobile","desktop"]}
+  removeArrowOnDeviceType={["tablet", "mobile","desktop","14"]}
   dotListClass="custom-dot-list-style"
   itemClass="carousel-item-padding-40-px"
 >
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Aditya Birla Group.png'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Barbeque.png'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Hindustani.png'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/intelent impact.png'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-scale-down scale-75' src='/jio.png'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Kalpa Taru.png'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain scale-95' src='/podar.png'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Raymond.png'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Rustomjee.png'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/citi bank.png'></img></div>
-  <div   className='flex justify-center items-center  mx-6 w-32 h-24'> <img className='object-contain' src='/Essel.png'></img></div>
+  <div   className='flex justify-center items-center mx-6 w-32 h-24'> <img className='object-contain' src='/Aditya Birla Group.png'></img></div>
+  <div   className='flex justify-center items-center mx-6 w-32 h-24'> <img className='object-contain' src='/Barbeque.png'></img></div>
+  <div   className='flex justify-center items-center mx-6 w-32 h-24'> <img className='object-contain' src='/Hindustani.png'></img></div>
+  <div   className='flex justify-center items-center mx-6 w-32 h-24'> <img className='object-contain' src='/intelent impact.png'></img></div>
+  <div   className='flex justify-center items-center mx-6 w-32 h-24'> <img className='object-scale-down scale-75' src='/jio.png'></img></div>
+  <div   className='flex justify-center items-center mx-6 w-32 h-24'> <img className='object-contain' src='/Kalpa Taru.png'></img></div>
+  <div   className='flex justify-center items-center mx-6 w-32 h-24'> <img className='object-contain scale-95' src='/podar.png'></img></div>
+  <div   className='flex justify-center items-center mx-6 w-32 h-24'> <img className='object-contain' src='/Raymond.png'></img></div>
+  <div   className='flex justify-center items-center mx-6 w-32 h-24'> <img className='object-contain' src='/Rustomjee.png'></img></div>
+  <div   className='flex justify-center items-center mx-6 w-32 h-24'> <img className='object-contain' src='/citi bank.png'></img></div>
+  <div   className='flex justify-center items-center mx-6 w-32 h-24'> <img className='object-contain' src='/Essel.png'></img></div>
   
 </Carousel>
 </div>

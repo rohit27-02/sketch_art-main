@@ -89,7 +89,7 @@ export default function Home() {
         draggable
         pauseOnHover
       />
-      <div className=" fixed overflow-hidden bottom-8 h-12 min-w-fit right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full  items-center whatsapp flex justify-end"><a id="what" className="absolute right-48 bottom-3 w-0  font-semibold" href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+919920223462</a><BsWhatsapp className='text-white p-2 rounded-3xl z-50 text-5xl ' /></div>
+      <div className=" fixed overflow-hidden bottom-8 h-12 min-w-fit right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full  items-center whatsapp flex justify-end"><a style={{ fontFamily: "'lato', sans-serif"}} id="what" className="absolute  right-44 bottom-3 w-0  " href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+919920223462</a><BsWhatsapp className='text-white p-2 rounded-3xl z-50 text-5xl ' /></div>
       <div style={{ height: "85vh" }} className=''>
         <div style={{ height: "90vh" }} className=' w-full overflow-hidden object-cover top-0 fixed -z-10 '>
 
