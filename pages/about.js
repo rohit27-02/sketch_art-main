@@ -41,7 +41,7 @@ const About = () => {
       <div style={{height:"85vh"}} className="w-full">
       <div style={{height:"90vh"}} className='w-full overflow-hidden object-cover top-0 absolute '>
       <div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div>
-      <h1 style={{fontFamily: "'Fjalla One', sans-serif"}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute 2xl:my-52 md:my-40 z-40 text-gray-200  '>YOU IMAGINE, WE CREATE.</h1>
+      <h1 style={{fontFamily: "'Fjalla One', sans-serif"}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute 2xl:my-52 md:my-40 z-40 text-gray-200  '>YOU IMAGINE, WE CREATE</h1>
        <Slide bottom><img  className='h-full w-full object-cover' src='/About us image.png'></img></Slide >
       
       </div>

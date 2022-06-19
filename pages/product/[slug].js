@@ -20,7 +20,7 @@ const Post = ({ buyNow, addToCart, product }) => {
   const [selectedcolor, setselectedcolor] = useState(0);
   const [prevcolor, setprevcolor] = useState(0);
   const [isenable, setisenable] = useState(false);
-  const [mechanism, setmechanism] = useState("");
+  const [mechanism, setmechanism] = useState("Manual");
   const [qty, setqty] = useState(1);
 
   const height = []
@@ -79,9 +79,9 @@ const Post = ({ buyNow, addToCart, product }) => {
 
 
   return <>
-    <div style={{height:"80vh"}}  className='w-full -my-20'><img className='h-full w-full' alt='img' src='/pic-4.jpg'></img></div>
+    <div style={{height:"90vh"}}  className='w-full -my-20'><img className='h-full  w-full' alt='img' src='/pic-4.jpg'></img></div>
 
-    <section style={{ fontFamily: "'lato', sans-serif" }} className="text-gray-900 flex justify-center  body-font overflow-hidden">
+    <section style={{  fontFamily: "'poppins', sans-serif"}} className="text-gray-900 flex justify-center  body-font overflow-hidden">
       <ToastContainer
         position="top-right"
         autoClose={1000}
@@ -98,47 +98,56 @@ const Post = ({ buyNow, addToCart, product }) => {
         <div className='w-full  flex-col justify-center md:flex-row flex '>
           <div style={{ width: "39.5vw" }} className=''>
             <img alt="ecommerce" style={{height:"100vh"}} className=" w-full" src={product.variants[selectedcolor].img} />
-            <div style={{ backgroundColor: "#ebeaeb"}} className='w-full px-6'>
+            <div style={{ backgroundColor: "#ebeaeb"}} className='w-full px-6  pb-4'>
               
-              <div style={{ fontFamily: "'lato',sans-serif" }} className='text-black flex items-center text-xl font-bold pb-4 pt-8'><p style={{backgroundColor: "#bfb1c4"}} className='w-5 -ml-6 absolute h-3'></p>Product Summary</div>
-              <div className='w-full  grid grid-flow-col h-80 '>
-                <div style={{ fontFamily: "'lato',sans-serif" }} className='text-black border-r mb-4 border-gray-300'>
-                  <p className='leading-loose font-semibold'>Style</p>
-                  <p className='leading-loose font-semibold'>Color</p>
-                  <p className='leading-loose font-semibold'>Height</p>
-                  <p className='leading-loose font-semibold'>Width</p>
-                  <p className='leading-loose font-semibold'>Mechanism</p>
+              <div  className='text-gray-800 flex items-center text-base  pb-2 pt-6'><p style={{backgroundColor: "#bfb1c4"}} className='w-5 -ml-6 absolute h-3'></p>Product Summary</div>
+              <div className='w-full  grid grid-flow-col  '>
+                <div  className='text-gray-800 border-r text-sm  border-gray-300'>
+                  <p className='leading-loose '>Style</p>
+                  <p className='leading-loose '>Color</p>
+                  <p className='leading-loose '>Height</p>
+                  <p className='leading-loose '>Width</p>
+                  <p className='leading-loose '>Mechanism</p>
+                  <p className='leading-loose '>Mount Type</p>
+                  <p className='leading-loose '>Cordlock Position</p>
+                  <p className='leading-loose '>Valance Options</p>
+                  <p className='leading-loose '>Ladder Type</p>
+                  
                 </div>
-                <div style={{ fontFamily: "'montstrrat',sans-serif" }} className='ml-8 '>
+                <div  className='ml-8 text-sm'>
                   <p className='leading-loose '>{product.category}</p>
                   <p className='leading-loose '>{product.variants[selectedcolor].color}</p>
                   <p className='leading-loose '>{selectedheight}{selectedexactheight} inches</p>
                   <p className='leading-loose '>{selectedwidth}{selectedexactwidth} inches</p>
                   <p className='leading-loose '>{mechanism}</p>
+                  <p className='leading-loose '>Unkonwn</p>
+                  <p className='leading-loose '>Unkonwn</p>
+                  <p className='leading-loose '>Unkonwn</p>
+                  <p className='leading-loose '>Unkonwn</p>
                 </div>
               </div>
             </div>
             </div>
 
-            <div style={{ width: "49.7vw", backgroundColor: "#bfb1c4" }} className='pt-16  px-10 '>
+            <div style={{ width: "49.7vw", backgroundColor: "#bfb1c4" }} className='py-12  px-10 '>
           <div  className='flex flex-col '>
-            <span style={{fontFamily: "'Fjalla One', sans-serif"}} className=" text-white text-5xl ">{product.title} </span>
-            <div  className='space-x-6 flex py-10 text-base'>
+            <span style={{fontFamily: "'Fjalla One', sans-serif"}} className=" text-white text-5xl uppercase ">{product.title} </span>
+            <div  className='space-x-6 flex py-6  text-base'>
               <a href='#details' className='cursor-pointer flex items-center text-white  space-x-3  pr-4 border-black underline underline-offset-2 '><BsInfoCircleFill /><span>Products Details</span></a>
               <a className='cursor-pointer underline flex items-center text-white  space-x-3 underline-offset-2 '><BsImages /><span>Products Gallery</span></a>
             </div>
            
-            <div  className="  w-full px-8 mb-7    bg-white  ">
-              <div className='  font-medium mt-4  flex items-center'><p style={{backgroundColor: "#bfb1c4"}} className='w-8 -ml-10 absolute h-3'></p>COLOR SELECTION</div>
+            <div  className="  w-full px-8 mb-6    bg-white  ">
+              <div className='  font-medium mt-4  flex items-center'><p style={{backgroundColor: "#bfb1c4", fontFamily: "'poppins', sans-serif"}}  className='w-8 -ml-10 absolute h-3'></p>Color Selection</div>
               <div className='overflow-y-scroll max-h-96'>
               <div className='grid grid-flow-row  grid-cols-3'>
                 {
 
-                  Object.keys(product.variants).map((p) => { return <div key={p} ><div id={p} onClick={(e) => { selectcolor(e) }} style={{ backgroundColor: `${product.variants[p].colorcode}`, borderColor: "red"}} className=" h-32 mt-8  cursor-pointer w-32"></div><span className='text-sm  '>{product.variants[p].color}</span></div> })}
+                  Object.keys(product.variants).map((p) => { return <div key={p} ><div id={p} onClick={(e) => { selectcolor(e) }} style={{ backgroundColor: `${product.variants[p].colorcode}`, borderColor: "red"}} className=" h-32 mt-8  cursor-pointer w-32"></div><span className='text-sm'>{product.variants[p].color}</span></div> })}
               </div>
               </div>
 
-              <div className='mt-8 flex space-x-8 items-center justify-start '>
+              <div className='mt-12 flex space-x-8 items-center justify-start '>
                 <span>Quantity</span>
                 <div className='flex items-center  border border-black '>
                 <AiOutlineMinus onClick={() => {qty>1?setqty(qty-1):setqty(qty)}} className=' cursor-pointer mx-2' />
@@ -147,12 +156,13 @@ const Post = ({ buyNow, addToCart, product }) => {
                 </div>
                 </div>
              
-              <div  className="flex justify-between items-center space-x-6 my-6 pt-10">
+              <div  className="flex justify-between items-center my-6 pt-5">
               <div className='text-sm'> Your Price
-              <span className="title-font ml-4  text-xl text-gray-900">₹ {product.price}</span></div>
-              <button style={{ backgroundColor: "#bfb1c4" }} className="flex    border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none text-white " onClick={() => { buyNow(product.slug,qty, product.price, product.title, height, width, product.variants[selectedcolor].color) }}>Buy now</button>
-              <button style={{ backgroundColor: "#bfb1c4" }} onClick={() => { addToCart(product.slug, qty, product.price, product.title, height, width, product.variants[selectedcolor].color) }} className="flex   border-0 md:py-2 py-1 px-1 md:px-6 focus:outline-none text-white  ">Add to cart</button>
-
+              <span style={{fontFamily: "'Fjalla One', sans-serif"}} className="title-font ml-4  text-xl text-gray-900">₹ {product.price}</span></div>
+              <div className='flex space-x-4'>
+              <button style={{ backgroundColor: "#bfb1c4" }} className="flex text-sm   border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white " onClick={() => { buyNow(product.slug,qty, product.price, product.title, height, width, product.variants[selectedcolor].color) }}>Buy now</button>
+              <button style={{ backgroundColor: "#bfb1c4" }} onClick={() => { addToCart(product.slug, qty, product.price, product.title, height, width, product.variants[selectedcolor].color) }} className="flex text-sm   border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white  ">Add to cart</button>
+              </div>
             </div>
             </div>
             </div>
@@ -166,7 +176,7 @@ const Post = ({ buyNow, addToCart, product }) => {
                     <Disclosure.Button className="flex w-full items-center bg-white px-7  text-left text-sm font-medium   focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
                     <p style={{backgroundColor: "#bfb1c4"}} className='w-8 -ml-10 absolute h-3'></p>
                      <div className='flex justify-between w-full py-6'>
-                      <span className='text-lg 2xl:text-xl'>Product measurement</span>
+                      <span className='text-base 2xl:text-lg'>Product measurement</span>
                       <IoIosArrowDown
                         className={`${open ? 'rotate-180 transform' : ''
                           } h-5 w-5 `}
@@ -227,22 +237,22 @@ const Post = ({ buyNow, addToCart, product }) => {
                   </>
                 )}
               </Disclosure>
-              <Disclosure as="div" className="mb-10">
+              <Disclosure as="div" className="">
                 {({ open }) => (
                   <>
                     <Disclosure.Button className="flex w-full justify-between  bg-white px-7 text-left text-sm font-medium  items-center focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
                     <p style={{backgroundColor: "#bfb1c4"}} className='w-8 -ml-10 absolute h-3'></p>
                     <div className='flex justify-between border-t-2 w-full py-6'>
-                      <span className='text-lg 2xl:text-xl'>Select Mechanism</span>
+                      <span className='text-base 2xl:text-lg'>Select Mechanism</span>
                       <IoIosArrowDown
                         className={`${open ? 'rotate-180 transform' : ''
                           } h-5 w-5 `}
                       />
                       </div>
                     </Disclosure.Button>
-                    <Disclosure.Panel className="px-4 pt-2 pb-8 text-sm  text-gray-500 flex justify-evenly bg-white">
-                      <button id="Manual"  onClick={(e)=>mechanismtype(e)} style={{borderColor:"#bfb1c4"}} className='btn  border-2  py-2 px-6'>Manual</button>
-                      <button style={{borderColor:"#bfb1c4"}} className='btn  border-2 py-2 px-6'>Motorized</button>
+                    <Disclosure.Panel className=" pt-2 pb-8 text-sm  text-gray-500 flex justify-start px-7 bg-white">
+                      <button id="Manual"  onClick={(e)=>mechanismtype(e)} style={{borderColor:"#bfb1c4"}} className='btn  border-2  py-2 w-32 flex justify-center '>Manual</button>
+                      <button style={{borderColor:"#bfb1c4"}} className='btn  border-2 ml-6 py-2 w-32 flex justify-center'>Motorized</button>
                     </Disclosure.Panel>
                   </>
                 )}
@@ -254,17 +264,17 @@ const Post = ({ buyNow, addToCart, product }) => {
             </div>
             </div>
 
-        <div style={{ fontFamily: "'Montserrat', sans-serif" }} className='grid grid-flow-row mr-12 mt-20'>
+        <div style={{fontFamily: "'Roboto Slab', serif"}} className='grid grid-flow-row  px-4 mt-14'>
           <div className='flex'>
             
-            <div id='details' className='text-xl  w-9/12 mr-10 lg:text-3xl text-center md:text-left '>
-            <div style={{backgroundColor: "#bfb1c4"}} className='w-10   h-3'></div>Product Details
-              <p className="leading-loose text-xs    mt-7 ">{product.desc}</p>
+            <div id='details' className='text-xl mr-11 w-8/12  lg:text-base text-center md:text-left '>
+            <div style={{backgroundColor: "#bfb1c4"}} className='w-10 mb-2  h-3'></div><span  style={{fontFamily: "'poppins', sans-serif"}}>Product Details</span>
+              <p className="leading-relaxed text-sm    mt-7 ">{product.desc}</p>
             </div>
 
-            <div className='text-xl lg:text-3xl w-11/12 text-center md:text-left '>
-            <p style={{backgroundColor: "#bfb1c4"}} className='w-10 h-3'></p><span className=''>Care & Cleaning</span>
-              <p className="leading-loose text-xs    mt-7  2">{product.desc}</p>
+            <div className='text-xl lg:text-base w-11/12 text-center md:text-left '>
+            <p style={{backgroundColor: "#bfb1c4"}} className='w-10 h-3 mb-2'></p><span style={{fontFamily: "'poppins', sans-serif"}}>Care & Cleaning</span>
+              <p className="leading-relaxed text-sm    mt-7  ">{product.desc}</p>
             </div>
           </div>
 
