@@ -47,7 +47,6 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [w, setw] = useState("");
   const [h, seth] = useState("");
   const [img, setimg] = useState("");
-  const [poster, setposter] = useState("");
 
 
 useEffect(() => {
@@ -72,7 +71,6 @@ useEffect(() => {
   setslug(products[index].slug)
   setcategory(products[index].category)
   setsubcategory(products[index].subcategory)
-  setposter(products[index].poster)
  }
 
 }, [index]);
@@ -110,9 +108,6 @@ function rm(e){
     else if (e.target.id == "color") {
       setcolor(e.target.value)
     }
-    else if (e.target.id == "colorcode") {
-      setcolorcode(e.target.value)
-    }
     else if (e.target.id == "slug") {
       setslug(e.target.value)
     }
@@ -123,8 +118,8 @@ function rm(e){
     settitle("")
     setdesc("")
     setprice(0)
-    setheight([])
-    setwidth([])
+   // setheight([])
+   // setwidth([])
     setavailableQty(0)
     setvariants([])
     setcategory("")
@@ -133,7 +128,7 @@ function rm(e){
     setcolor("")
     setcolorcode("")
     setimg("")
-    setposter("")
+
    
   }
 const selectedproduct= (event)=>{
@@ -154,7 +149,7 @@ const selectedproduct= (event)=>{
    
     e.preventDefault()
     if(au){
-      const data = [{ title, desc, variants,poster, category, height,width, price, availableQty, slug,subcategory }]
+      const data = [{ title, desc, variants, category, price, availableQty, slug,subcategory }]
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addproducts`, {
         method: "POST",
       headers: {
@@ -178,7 +173,7 @@ const selectedproduct= (event)=>{
         if(subcategory !==null){
           sub=true
         }
-      const data = [{ title, desc, variants,width,poster, category, height, price,sub, availableQty,subcategory, slug }]
+      const data = [{ title, desc, variants,width, category, height, price,sub, availableQty,subcategory, slug }]
    
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
         method: "POST",
@@ -312,16 +307,16 @@ if(response.success){
 }
  
   }
- async function uploadposter(e){
+ async function uploadposter(){
    
-  var file = document.getElementById('poster');
+  var file = document.getElementById('colorcode');
   var form = new FormData();
   form.append("image", file.files[0])
   let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`,{
     method:"POST",body:form,
   })
   let response = await res.json()
-  setposter(response.data.url)
+  setcolorcode(response.data.url)
 if(response.success){
   toast.success('Image uploaded', {
     position: "top-center",
@@ -396,8 +391,8 @@ if(response.success){
               <div className="fixed inset-0 bg-black bg-opacity-25" />
             </Transition.Child>
 
-            <div className="fixed inset-0 overflow-y-auto">
-              <div className="flex min-h-full items-center justify-center p-4 text-center">
+            <div  className="fixed inset-0 overflow-y-auto">
+              <div  className="flex min-h-full  w-full items-center justify-center p-4 text-center">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-out duration-300"
@@ -407,7 +402,7 @@ if(response.success){
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="w-full  max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Panel className=" max-w-6xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <button onClick={closeModal} className='text-2xl hover:text-yellow-400'><MdCancel/></button>
                     {au ? <Dialog.Title
                       
@@ -495,16 +490,7 @@ if(response.success){
                           <input  value={availableQty} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="quantity" type="number" />
                         </div>
                       </div>
-                      <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-2/6">
-                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="poster">
-                            Poster
-                          </label>
-                        </div>
-                        <div className="md:w-4/6">
-                          <input  onChange={(e)=>uploadposter(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="poster" type="file" />
-                        </div>
-                      </div>
+                    
                      {/* <div className="md:flex md:items-center mb-6">
                         <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="height">
@@ -534,7 +520,7 @@ if(response.success){
                             Color
                           </label>
                     </div>
-                        <div className="md:w-20">
+                        <div className="md:w-40">
                           <input value={color} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="color" type="text" />
                           
                         </div>
@@ -546,11 +532,11 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-20">
-                        <input value={colorcode} onChange={(e) => handleChange(e)} className="" id="colorcode" type="color" />
+                        <input value={colorcode}  onChange={uploadposter} className="" id="colorcode" type="file" accept='image/*' />
                           
                         </div>
                       </div>
-                      <div className="md:flex md:items-center ml-2 mb-6">
+                      <div className="md:flex md:items-center  mb-6">
                         <div className="md:w-20">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="img">
                             Image

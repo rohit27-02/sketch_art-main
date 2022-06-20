@@ -143,7 +143,7 @@ const Post = ({ buyNow, addToCart, product }) => {
               <div className='grid grid-flow-row  grid-cols-3'>
                 {
 
-                  Object.keys(product.variants).map((p) => { return <div key={p} ><div id={p} onClick={(e) => { selectcolor(e) }} style={{ backgroundColor: `${product.variants[p].colorcode}`, borderColor: "red"}} className=" h-32 mt-8  cursor-pointer w-32"></div><span className='text-sm'>{product.variants[p].color}</span></div> })}
+                  Object.keys(product.variants).map((p) => { return <div key={p} ><div id={p} onClick={(e) => { selectcolor(e) }} style={{ backgroundImage: `url(${product.variants[p].colorcode})`, borderColor: "red"}} className=" h-32 mt-8  cursor-pointer w-32"></div><span className='text-sm'>{product.variants[p].color}</span></div> })}
               </div>
               </div>
 

@@ -465,10 +465,10 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
           Object.keys(data).map((p) => {
             return (<>
               <div key={p} className=" group flex ">
-                <li  className='flex items-center  px-4 py-2 phover w-full  '  ><a href={`${process.env.NEXT_PUBLIC_HOST}/category/${data[p]}`}>{data[p]}</a>{sub[p]&&<IoIosArrowDown  id={data[p]} onClick={function(e){getData(e);setlistd(!listd)}} className={`${listd ? 'rotate-180 transform ml-4  cursor-pointer' : 'ml-4  cursor-pointer'} `} />}</li>
+                <li  className='flex items-center  px-4 py-2 phover w-full  '  ><a href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}>{data[p]}</a>{sub[p]&&<IoIosArrowDown  id={data[p]} onClick={function(e){getData(e);setlistd(!listd)}} className={`${listd ? 'rotate-180 transform ml-4  cursor-pointer' : 'ml-4  cursor-pointer'} `} />}</li>
               </div>
               <div className='  w-full flex flex-col'>
-                {listd && sub[p] && Object.keys(subcategory).map((s)=>{return(<Slide key={s} left><a style={{backgroundColor:"#bfb1c4"}} className='hover:border-2 px-4 py-2 text-sm cursor-pointer' >{subcategory[s]}</a></Slide>)})}
+                {listd && sub[p] && Object.keys(subcategory).map((s)=>{return(<Slide key={s} left><a style={{backgroundColor:"#bfb1c4"}} href={`${process.env.NEXT_PUBLIC_HOST}/product/${subcategory[s]}`} className='hover:border-2 px-4 py-2 text-sm cursor-pointer' >{subcategory[s]}</a></Slide>)})}
                 </div>
                 </>
             )
