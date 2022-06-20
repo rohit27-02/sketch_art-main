@@ -13,8 +13,8 @@ import { BsImages } from "react-icons/bs"
 import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai';
 
 const Post = ({ buyNow, addToCart, product }) => {
-  const [selectedheight, setselectedheight] = useState(6);
-  const [selectedwidth, setselectedwidth] = useState(16);
+  const [selectedheight, setselectedheight] = useState(6 +'  "');
+  const [selectedwidth, setselectedwidth] = useState(16 +'  "');
   const [selectedexactwidth, setselectedexactwidth] = useState();
   const [selectedexactheight, setselectedexactheight] = useState();
   const [selectedcolor, setselectedcolor] = useState(0);
@@ -28,10 +28,10 @@ const Post = ({ buyNow, addToCart, product }) => {
   const exactHeightOrWidth = ["0", "1/8", "1/4", "3/8", "1/2", "5/8", "3/4", "7/8"]
 
   for (let i = 6; i < 121; i++) {
-    height.push(i)
+    height.push(i +'  "')
   }
   for (let i = 14; i < 97; i++) {
-    width.push(i)
+    width.push(i +'  "')
   }
 
  
