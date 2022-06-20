@@ -13,8 +13,8 @@ import { BsImages } from "react-icons/bs"
 import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai';
 
 const Post = ({ buyNow, addToCart, product }) => {
-  const [selectedheight, setselectedheight] = useState(6 +'  "');
-  const [selectedwidth, setselectedwidth] = useState(16 +'  "');
+  const [selectedheight, setselectedheight] = useState(6 );
+  const [selectedwidth, setselectedwidth] = useState(16 );
   const [selectedexactwidth, setselectedexactwidth] = useState();
   const [selectedexactheight, setselectedexactheight] = useState();
   const [selectedcolor, setselectedcolor] = useState(0);
@@ -25,7 +25,7 @@ const Post = ({ buyNow, addToCart, product }) => {
 
   const height = []
   const width = []
-  const exactHeightOrWidth = ["0", "1/8", "1/4", "3/8", "1/2", "5/8", "3/4", "7/8"]
+  const exactHeightOrWidth = ['0', '1/8', '1/4', '3/8', '1/2', '5/8', '3/4', '7/8']
 
   for (let i = 6; i < 121; i++) {
     height.push(i +'  "')
@@ -36,23 +36,27 @@ const Post = ({ buyNow, addToCart, product }) => {
 
  
   function selecth(e) {
-    setselectedheight(e.target.value)
+    let m = (e.target.value).split(" ")
+    setselectedheight(m[0])
   }
   function selecteh(e) {
-    let a= eval(e.target.value)
+    let m = (e.target.value).split(" ")
+    let a= eval(m[0])
     let b=a.toString()
     let c=b.slice(1)
     setselectedexactheight(c)
   }
   function selectew(e) {
-    let a= eval(e.target.value)
+    let m = (e.target.value).split(" ")
+    let a= eval(m[0])
     let b=a.toString()
     let c=b.slice(1)
    
     setselectedexactwidth(c)
   }
   function selectw(e) {
-    setselectedwidth(e.target.value)
+    let m = (e.target.value).split(" ")
+    setselectedwidth(m[0])
   }
   function selectcolor(e) {
     setselectedcolor(e.target.id)
@@ -98,7 +102,7 @@ const Post = ({ buyNow, addToCart, product }) => {
         <div className='w-full  flex-col justify-center md:flex-row flex '>
           <div style={{ width: "39.5vw" }} className=''>
             <img alt="ecommerce" style={{height:"100vh"}} className=" w-full" src={product.variants[selectedcolor].img} />
-            <div style={{ backgroundColor: "#ebeaeb"}} className='w-full px-6  pb-4'>
+            <div style={{ backgroundColor: "#ebeaeb"}} className='w-full pl-6  pb-4'>
               
               <div  className='text-gray-800 flex items-center text-base  pb-2 pt-6'><p style={{backgroundColor: "#bfb1c4"}} className='w-5 -ml-6 absolute h-3'></p>Product Summary</div>
               <div className='w-full  grid grid-flow-col  '>
@@ -151,13 +155,13 @@ const Post = ({ buyNow, addToCart, product }) => {
                 <span>Quantity</span>
                 <div className='flex items-center  border border-black '>
                 <AiOutlineMinus onClick={() => {qty>1?setqty(qty-1):setqty(qty)}} className=' cursor-pointer mx-2' />
-                <span className='h-full border-x  border-black px-4'>{qty}</span>
+                <span className='h-full border-x  border-black w-10 text-center'>{qty}</span>
                 <AiOutlinePlus onClick={() => { setqty(qty+1)}} className=' cursor-pointer mx-2' />
                 </div>
                 </div>
              
               <div  className="flex justify-between items-center my-6 pt-5">
-              <div className='text-sm'> Your Price
+              <div className='text-base'> Your Price
               <span style={{fontFamily: "'Fjalla One', sans-serif"}} className="title-font ml-4  text-xl text-gray-900">₹ {product.price}</span></div>
               <div className='flex space-x-4'>
               <button style={{ backgroundColor: "#bfb1c4" }} className="flex text-sm   border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white " onClick={() => { buyNow(product.slug,qty, product.price, product.title, height, width, product.variants[selectedcolor].color) }}>Buy now</button>
@@ -198,7 +202,7 @@ const Post = ({ buyNow, addToCart, product }) => {
 
                           <select id='exactheight' onChange={(e) => selecteh(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 h-11  border ml-2  text-xs 2xl:text-base md:text-lg  '>
                             {/* {product.height.map((i) => { return <option className=' ' key={i}>{i}  </option> })} */}
-                            {exactHeightOrWidth.map((i) => { return <option className=' ' key={i}>{i}  </option> })}
+                            {exactHeightOrWidth.map((i) => { return <option className=' ' key={i}>{i}  &quot;</option> })}
                           </select>
                         </div>
 
@@ -213,7 +217,7 @@ const Post = ({ buyNow, addToCart, product }) => {
 
                           <select id='exactwidth' onChange={(e) => selectew(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 h-11 border ml-2  text-xs 2xl:text-base md:text-lg  '>
                             {/* {product.height.map((i) => { return <option className=' ' key={i}>{i}  </option> })} */}
-                            {exactHeightOrWidth.map((i) => { return <option className=' ' key={i}>{i}  </option> })}
+                            {exactHeightOrWidth.map((i) => { return <option className=' ' key={i}>{i}  &quot;</option> })}
                           </select>
                         </div>
 
