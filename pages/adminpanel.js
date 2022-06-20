@@ -47,6 +47,7 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [w, setw] = useState("");
   const [h, seth] = useState("");
   const [img, setimg] = useState("");
+  const [care, setcare] = useState("");
 
 
 useEffect(() => {
@@ -71,6 +72,7 @@ useEffect(() => {
   setslug(products[index].slug)
   setcategory(products[index].category)
   setsubcategory(products[index].subcategory)
+  setcare(products[index].care)
  }
 
 }, [index]);
@@ -111,6 +113,9 @@ function rm(e){
     else if (e.target.id == "slug") {
       setslug(e.target.value)
     }
+    else if (e.target.id == "care") {
+      setcare(e.target.value)
+    }
   }
   function closeModal() {
     setIsOpen(false)
@@ -128,6 +133,7 @@ function rm(e){
     setcolor("")
     setcolorcode("")
     setimg("")
+    setcare("")
 
    
   }
@@ -149,7 +155,7 @@ const selectedproduct= (event)=>{
    
     e.preventDefault()
     if(au){
-      const data = [{ title, desc, variants, category, price, availableQty, slug,subcategory }]
+      const data = [{ title, desc, variants, category,care, price, availableQty, slug,subcategory }]
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addproducts`, {
         method: "POST",
       headers: {
@@ -173,7 +179,7 @@ const selectedproduct= (event)=>{
         if(subcategory !==null){
           sub=true
         }
-      const data = [{ title, desc, variants,width, category, height, price,sub, availableQty,subcategory, slug }]
+      const data = [{ title, desc, variants, category,care, price,sub, availableQty,subcategory, slug }]
    
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
         method: "POST",
@@ -330,17 +336,7 @@ if(response.success){
 }
  
   }
-  function add(){
-    
-    setheight(arr=>[...arr,h])
-  
-  }
- 
-  function addwidth(){
-    
-    setwidth(arr=>[...arr,w])
-  
-  }
+
  
   useEffect(() => {
     seth("")
@@ -448,6 +444,16 @@ if(response.success){
                         </div>
                         <div className="md:w-4/6">
                           <textarea value={desc} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="desc" type="text" />
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="care">
+                            Care & Cleaning
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                          <textarea value={care} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="care" type="text" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">

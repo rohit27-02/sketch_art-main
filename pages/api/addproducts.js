@@ -15,6 +15,7 @@ const handler = async (req, res) => {
                 title: req.body[i].title,
                 slug: req.body[i].slug,
                 desc: req.body[i].desc,
+                carer: req.body[i].care,
                 variants:req.body[i].variants.map((j)=>{return{color:j.color,colorcode:j.colorcode,img:j.img}}),
                 category: req.body[i].category,
                 subcategory: req.body[i].subcategory,

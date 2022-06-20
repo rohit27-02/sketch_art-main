@@ -83,7 +83,7 @@ const Post = ({ buyNow, addToCart, product }) => {
 
 
   return <>
-    <div style={{height:"90vh"}}  className='w-full -my-20'><img className='h-full  w-full' alt='img' src='/pic-4.jpg'></img></div>
+    <div style={{height:"90vh"}}  className='w-full -my-20'><img className='h-full  w-full' alt='img' src='/zebra blind.jpg'></img></div>
 
     <section style={{  fontFamily: "'poppins', sans-serif"}} className="text-gray-900 flex justify-center  body-font overflow-hidden">
       <ToastContainer
@@ -187,20 +187,20 @@ const Post = ({ buyNow, addToCart, product }) => {
                       />
                       </div>
                     </Disclosure.Button>
-                    <Disclosure.Panel className="px-6  pt-4 pb-6 text-sm bg-white text-gray-900">
-                      <h1>PROVIDE EXACT MEASUREMENTS. WE WILL DEDUCT FOR INSIDE MOUNT.
+                    <Disclosure.Panel className="px-7  pt-4 pb-6 text-sm bg-white text-gray-900">
+                      <h1>Provide exact measurements. we will deduct for inside mount.
                       </h1>
                       <div className="flex my-10  mx-auto  space-x-10 ">
 
                         <div className='flex items-center'><span className="">Height</span>
 
-                          <select id='h' onChange={(e) => selecth(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 border ml-2  text-xs 2xl:text-base md:text-lg  h-11'>
+                          <select id='h' onChange={(e) => selecth(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 border ml-2 pl-2  text-xs 2xl:text-base md:text-lg  h-11'>
                             {/* {product.height.map((i) => { return <option className='text-lg font-semibold ' key={i}>{i}  </option> })} */}
                             {height.map((i) => { return <option className=' ' key={i}>{i}  </option> })}
                           </select>
 
 
-                          <select id='exactheight' onChange={(e) => selecteh(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 h-11  border ml-2  text-xs 2xl:text-base md:text-lg  '>
+                          <select id='exactheight' onChange={(e) => selecteh(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 h-11  border ml-2 pl-2  text-xs 2xl:text-base md:text-lg  '>
                             {/* {product.height.map((i) => { return <option className=' ' key={i}>{i}  </option> })} */}
                             {exactHeightOrWidth.map((i) => { return <option className=' ' key={i}>{i}  &quot;</option> })}
                           </select>
@@ -209,13 +209,13 @@ const Post = ({ buyNow, addToCart, product }) => {
 
                         <div className='flex items-center'><span className="">Width</span>
 
-                          <select id='w' onChange={(e) => selectw(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 h-11  border ml-2  text-xs 2xl:text-base md:text-lg '>
+                          <select id='w' onChange={(e) => selectw(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 h-11  border ml-2 pl-2  text-xs 2xl:text-base md:text-lg '>
                             {/* {product.width.map((i) => { return <option className='' key={i}>{i}  </option> })} */}
                             {width.map((i) => { return <option className='' key={i}>{i}  </option> })}
                           </select>
 
 
-                          <select id='exactwidth' onChange={(e) => selectew(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 h-11 border ml-2  text-xs 2xl:text-base md:text-lg  '>
+                          <select id='exactwidth' onChange={(e) => selectew(e)} style={{fontFamily:"'montstrrat,sans-serif"}} className='w-20 h-11 border ml-2 pl-2  text-xs 2xl:text-base md:text-lg  '>
                             {/* {product.height.map((i) => { return <option className=' ' key={i}>{i}  </option> })} */}
                             {exactHeightOrWidth.map((i) => { return <option className=' ' key={i}>{i}  &quot;</option> })}
                           </select>
@@ -278,7 +278,7 @@ const Post = ({ buyNow, addToCart, product }) => {
 
             <div className='text-xl lg:text-base w-11/12 text-center md:text-left '>
             <p style={{backgroundColor: "#bfb1c4"}} className='w-10 h-3 mb-2'></p><span style={{fontFamily: "'poppins', sans-serif"}}>Care & Cleaning</span>
-              <p className="leading-relaxed text-sm    mt-7  ">{product.desc}</p>
+              <p className="leading-relaxed text-sm    mt-7  ">{product.care}</p>
             </div>
           </div>
 
