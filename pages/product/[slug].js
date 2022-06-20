@@ -273,12 +273,12 @@ const Post = ({ buyNow, addToCart, product }) => {
             
             <div id='details' className='text-xl mr-11 w-8/12  lg:text-base text-center md:text-left '>
             <div style={{backgroundColor: "#bfb1c4"}} className='w-10 mb-2  h-3'></div><span  style={{fontFamily: "'poppins', sans-serif"}}>Product Details</span>
-              <p className="leading-relaxed text-sm    mt-7 ">{product.desc}</p>
+              <p className="leading-relaxed text-sm    mt-7 ">{product.care}</p>
             </div>
 
             <div className='text-xl lg:text-base w-11/12 text-center md:text-left '>
             <p style={{backgroundColor: "#bfb1c4"}} className='w-10 h-3 mb-2'></p><span style={{fontFamily: "'poppins', sans-serif"}}>Care & Cleaning</span>
-              <p className="leading-relaxed text-sm    mt-7  ">{product.care}</p>
+              <p className="leading-relaxed text-sm    mt-7  ">{product.desc}</p>
             </div>
           </div>
 
