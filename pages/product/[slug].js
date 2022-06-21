@@ -141,7 +141,7 @@ const Post = ({ buyNow, addToCart, product }) => {
               <a className='cursor-pointer underline flex items-center text-white  space-x-3 underline-offset-2 '><BsImages /><span>Products Gallery</span></a>
             </div>
            
-            <div  className="  w-full px-8 mb-6    bg-white  ">
+            <div  className="  w-full px-8 mb-6 bg-white  ">
               <div className='  font-medium mt-4  flex items-center'><p style={{backgroundColor: "#bfb1c4", fontFamily: "'poppins', sans-serif"}}  className='w-8 -ml-10 absolute h-3'></p>Color Selection</div>
               <div className='overflow-y-scroll max-h-96'>
               <div className='grid grid-flow-row  grid-cols-3'>
@@ -272,12 +272,12 @@ const Post = ({ buyNow, addToCart, product }) => {
           <div className='flex'>
             
             <div id='details' className='text-xl mr-11 w-8/12  lg:text-base text-center md:text-left '>
-            <div style={{backgroundColor: "#bfb1c4"}} className='w-10 mb-2  h-3'></div><span  style={{fontFamily: "'poppins', sans-serif"}}>Product Details</span>
+            <div style={{backgroundColor: "#bfb1c4"}} className='w-10 mb-2  h-3'></div><span  style={{fontFamily: "'poppins', sans-serif"}}>Care & Cleaning</span>
               <p className="leading-relaxed text-sm    mt-7 ">{product.care}</p>
             </div>
 
             <div className='text-xl lg:text-base w-11/12 text-center md:text-left '>
-            <p style={{backgroundColor: "#bfb1c4"}} className='w-10 h-3 mb-2'></p><span style={{fontFamily: "'poppins', sans-serif"}}>Care & Cleaning</span>
+            <p style={{backgroundColor: "#bfb1c4"}} className='w-10 h-3 mb-2'></p><span style={{fontFamily: "'poppins', sans-serif"}}> Product Details</span>
               <p className="leading-relaxed text-sm    mt-7  ">{product.desc}</p>
             </div>
           </div>
