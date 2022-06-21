@@ -29,8 +29,6 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [availableQty, setavailableQty] = useState(0);
   const [category, setcategory] = useState("");
   const [subcategory, setsubcategory] = useState(null);
-  const [height, setheight] = useState([]);
-  const [width, setwidth] = useState([]);
   const [variants, setvariants] = useState([]);
   const [slug, setslug] = useState("");
   const [color, setcolor] = useState("");
@@ -44,8 +42,6 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [address, setaddress] = useState("");
   const [phone, setphone] = useState("");
   const [ready, setready] = useState(false);
-  const [w, setw] = useState("");
-  const [h, seth] = useState("");
   const [img, setimg] = useState("");
   const [care, setcare] = useState("");
 
@@ -65,8 +61,6 @@ useEffect(() => {
   settitle(products[index].title)
   setdesc(products[index].desc)
   setprice(products[index].price)
-  setheight(products[index].height)
-  setwidth(products[index].width)
   setavailableQty(products[index].availableQty)
   setvariants(products[index].variants)
   setslug(products[index].slug)
@@ -101,12 +95,6 @@ function rm(e){
     else if (e.target.id == "quantity") {
       setavailableQty(e.target.value)
     }
-    else if (e.target.id == "height") {
-    seth(e.target.value)
-    }
-    else if (e.target.id == "width") {
-     setw(e.target.value)
-    }
     else if (e.target.id == "color") {
       setcolor(e.target.value)
     }
@@ -123,12 +111,10 @@ function rm(e){
     settitle("")
     setdesc("")
     setprice(0)
-   // setheight([])
-   // setwidth([])
     setavailableQty(0)
     setvariants([])
     setcategory("")
-    setsubcategory()
+    setsubcategory(null)
     setslug("")
     setcolor("")
     setcolorcode("")
@@ -174,12 +160,11 @@ const selectedproduct= (event)=>{
     });}
     else{
     if(index !=null && ready){
-      
-        var sub = false;
-        if(subcategory !==null){
-          sub=true
-        }
-      const data = [{ title, desc, variants, category,care, price,sub, availableQty,subcategory, slug }]
+      var sub = false;
+      if(subcategory !==null){
+        sub=true
+      }
+      const data = [{ title, desc, variants, category,care,sub, price, availableQty,subcategory, slug }]
    
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
         method: "POST",
@@ -337,23 +322,17 @@ if(response.success){
  
   }
 
- 
-  useEffect(() => {
-    seth("")
-    
-  }, [height]);
-  useEffect(() => {
-    setw("")
-    
-  }, [width]);
+
   function addvariant(){
    
     setvariants(arr=>[...arr,{color:color,colorcode:colorcode,img:img}])
+    document.getElementById("colorcode").value=""
+    document.getElementById("img").value=""
   }
   useEffect(() => {
 
   setcolor("")
-  setcolorcode("")
+ 
   setimg("")
   }, [variants]);
  
@@ -533,12 +512,12 @@ if(response.success){
                       </div>
                       <div className="md:flex md:items-center mb-6">
                         <div className="md:w-20">
-                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="colorpic">
-                            Colorpic
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="colorcode">
+                            colorcode
                           </label>
                         </div>
                         <div className="md:w-20">
-                        <input value={colorcode}  onChange={uploadposter} className="" id="colorcode" type="file" accept='image/*' />
+                        <input onChange={uploadposter} className="" id="colorcode" type="file" accept='image/*' />
                           
                         </div>
                       </div>

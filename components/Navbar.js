@@ -20,6 +20,7 @@ import jwtDecode from 'jwt-decode';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { Fade, LightSpeed, Slide } from 'react-reveal';
+import { BsWhatsapp } from "react-icons/bs"
 
 function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subTotal, products }) {
   const [dropDown, setdropDown] = useState(false);
@@ -281,7 +282,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
   const ref = useRef();
   const menu = useRef();
   return (<>
-
+  <div className=" fixed overflow-hidden bottom-8 h-12 min-w-fit right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full  items-center whatsapp flex justify-end"><a style={{ fontFamily: "'lato', sans-serif"}} id="what" className="absolute  right-44 bottom-3 w-0  " href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+919920223462</a><BsWhatsapp className='text-white p-2 rounded-3xl z-50 text-5xl ' /></div>
 
 <ToastContainer
           position="top-center"
