@@ -297,16 +297,16 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
         />
     <Dialog style={{ width: "100vw", height: "100vh" }} className="fixed  flex justify-center items-center top-0 bg-black  bg-opacity-60 z-50" open={login} onClose={() => setlogin(false)}>
       <Dialog.Panel >
-        {method =="login" && <div style={{ fontFamily: "'Montserrat', sans-serif" }} className='flex drop-shadow-md rounded-xl'>
+        {method =="login" && <div style={{fontFamily: "'Roboto Slab', serif"}} className='flex drop-shadow-md rounded-xl'>
           <div className='bg-white block px-10 py-2  rounded-md'>
             <div className="max-w-md  w-full space-y-6">
 
-              <form onSubmit={handleSubmit} className="mt-8 scale-90 w-full md:scale-100 space-y-6" method="POST">
+              <form  onSubmit={handleSubmit} className="mt-8 scale-90 w-full md:scale-100 space-y-6" method="POST">
                 <h1 className='text-2xl font-bold text-center text-gray-600'>Welcome to sketchart</h1>
                 <div className=" shadow-sm">
                   <div>
                     <label htmlFor="email" className="sr-only">
-                      email address
+                      Email address
                     </label>
                     <input
                       onChange={handleChange}
@@ -318,7 +318,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                       required
 
                       className="appearance-nonerelative block w-full px-3  py-2 border mb-2 bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 text-lg"
-                      placeholder="email"
+                      placeholder="Email"
                     />
                   </div>
                   <div>
@@ -372,7 +372,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
         </div>}
 
-        {method =="signup" && <div style={{ fontFamily: "'Montserrat', sans-serif" }} className='flex drop-shadow-md rounded-xl'>
+        {method =="signup" && <div style={{fontFamily: "'Roboto Slab', serif"}} className='flex drop-shadow-md rounded-xl'>
           <div className='bg-white block px-10 py-2  rounded-md'>
             <div className="max-w-md  w-full space-y-6">
 
@@ -406,7 +406,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                       required
 
                       className="appearance-nonerelative block w-full px-3  py-2 border mb-2 bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 text-lg"
-                      placeholder="email"
+                      placeholder="Email"
                     />
                   </div>
                   <div>
@@ -490,11 +490,11 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
         {admin == "true" && <a className=' text-center font-bold' href={"/adminpanel"}><li className='px-2 account'>Admin Panel</li></a>}
       </ul>
     </div>}
-    <div ref={ref} style={{ fontFamily: "'Poppins', sans-serif" }} className="sidebar scrollbar-hide text-lg md:text-xl 2xl:text-2xl bg-black bg-opacity-80 fixed right-0 top-0 flex  items-center flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 text-white shadow-xl overflow-y-scroll h-full">
-      <h2 className='font-bold text-xl  lg:text-3xl'>Shopping Cart</h2>
+    <div ref={ref}  style={{fontFamily: "'Roboto Slab', serif"}} className="sidebar scrollbar-hide text-lg md:text-xl 2xl:text-2xl bg-black bg-opacity-80 fixed right-0 top-0 flex  items-center flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 text-white shadow-xl overflow-y-scroll h-full">
+      <h2 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.2,wordSpacing:2}} className='font-bold text-xl  lg:text-3xl'>CART</h2>
       <AiOutlineClose onClick={toggleCart} className='hover:bg-black hover:text-white  cart fixed top-4 left-4 cursor-pointer  text-white' />
       <div onChange={toggleCart}>
-        <ol className='list-decimal font-semibold mx-1 my-3'>
+        <ol className='list-decimal text-lg mx-1 my-3'>
           {Object.keys(cart).length == 0 && <div>
             No items in the cart
           </div>}
@@ -509,8 +509,8 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
         </ol>
       </div>
       <div className='font-bold mt-10'>Total: ₹ {subTotal}</div>
-      <a href={"/Checkout"}><button style={{ backgroundColor: "#bfb1c4" }} className="flex text-black hover:opacity-80   border-0 py-2 px-4 my-7 mr-3 focus:outline-none  rounded "><BsFillBagCheckFill className='my-auto mr-1' />Check out</button></a>
-      <button onClick={clearCart} style={{ backgroundColor: "#bfb1c4" }} className="flex text-black   hover:opacity-80 border-0 py-2 px-4  mr-3 focus:outline-none  rounded "><CgTrashEmpty className='my-auto mr-1' />Empty cart</button>
+      <a href={"/Checkout"}><button style={{ backgroundColor: "#bfb1c4" }} className="flex text-black hover:opacity-80   border-0 py-2 w-36 justify-center my-7 mr-3 focus:outline-none   "><BsFillBagCheckFill className='my-auto mr-1' />Check out</button></a>
+      <button onClick={clearCart} style={{ backgroundColor: "#bfb1c4" }} className="flex text-black   hover:opacity-80 border-0 py-2 w-36 justify-center  mr-3 focus:outline-none   "><CgTrashEmpty className='my-auto mr-1' />Empty cart</button>
     </div>
 
 

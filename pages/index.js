@@ -93,7 +93,7 @@ export default function Home() {
       <div style={{ height: "85vh" }} className=''>
         <div style={{ height: "90vh" }} className=' w-full overflow-hidden object-cover top-0 fixed -z-10 '>
 
-          <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,lineHeight:1.2}} className='absolute md:top-52 top-28 text-center w-full font-extrabold z-20 2xl:text-7xl md:text-7xl  text-gray-200  '>Pushing Limits<br></br> For Your Luxuries</h1>
+          <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,lineHeight:1.2}} className='absolute md:top-52 top-28 text-center w-full font-extrabold z-20 2xl:text-7xl md:text-7xl  text-gray-200  '>PUSHING LIMITS<br></br> FOR YOUR LUXURIES</h1>
           <Slide bottom><div className="bg-black w-full h-full absolute top-0 bg-opacity-40 z-10"></div><img className="h-full w-full object-cover" src='/Image for Sketch Art Home screen 3PNG.png'></img></Slide>
         </div>
 
@@ -110,7 +110,7 @@ export default function Home() {
               </div>
             </div>
             <div className="lg:flex-grow md:w-7/12 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left">
-              <Slide bottom> <h1 style={{fontFamily: "'Fjalla One', sans-serif"}}  className=" md:text-5xl 2xl:text-7xl text-3xl mb-4 md:mb-6 2xl:mb-10  font- ">Benefits of motorized
+              <Slide bottom> <h1 style={{fontFamily: "'Fjalla One', sans-serif",lineHeight:1.1}}  className=" md:text-5xl 2xl:text-7xl text-3xl mb-4 md:mb-6 2xl:mb-10  uppercase  ">Benefits of motorized
                 window blinds
               </h1></Slide>
               <Slide bottom><p className="mb-8 md:text-base text-sm 2xl:text-lg ">Window blinds are a common choice for homeowners that want to cover their window to block light or protect privacy. They are sleek in appearance, easy to maintain and quite durable - making them ideal for modern homes.
@@ -127,7 +127,7 @@ export default function Home() {
         <section className="text-white">
           <div className="container mx-auto flex px-5 md:px-8 2xl:px-10 pt-8 md:py-24 md:flex-row flex-col-reverse items-center">
             <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16   flex flex-col md:items-start md:text-left mb-16 md:mb-0 ">
-              <Slide bottom> <h1 style={{fontFamily: "'Fjalla One', sans-serif"}} className=" md:text-5xl 2xl:text-7xl text-3xl mb-4 md:mb-6 2xl:mb-10  font- ">How to choose
+              <Slide bottom> <h1 style={{fontFamily: "'Fjalla One', sans-serif",lineHeight:1.1}} className=" md:text-5xl 2xl:text-7xl text-3xl mb-4 md:mb-6 2xl:mb-10 uppercase font- ">How to choose
                 <br className="hidden lg:inline-block" /> your blinds?
               </h1></Slide>
               <Slide bottom><p className="mb-8   md:text-base text-sm 2xl:text-lg "> Selecting window treatments for a specific room is all about assessing the way the space functions. </p>
@@ -149,19 +149,21 @@ export default function Home() {
 
       <div style={{ height: "61vh" }} className='bg-white w-full flex justify-center items-center '>
         <Pulse><div className='space-y-10 text-center text-lg'>
-          <h1 style={{fontFamily: "'Fjalla One', sans-serif",lineHeight:1.5}}  className="2xl:text-6xl md:text-5xl font-bold text-gray-800 text-4xl text-center ">"If a window of oppourtunity appears,<br></br> don't pull down the shade."</h1>
+          <h1 style={{fontFamily: "'Fjalla One', sans-serif",lineHeight:1.5}}  className="2xl:text-6xl md:text-5xl font-bold text-gray-800 text-4xl text-center uppercase">"If a window of oppourtunity appears,<br></br> don't pull down the shade."</h1>
           <p>—Tom Peters</p>
         </div></Pulse>
       </div>
 
+<div style={{height:"102vh"}} className="bg-white">
       <Slide bottom><div className='w-full  overflow-hidden '>
+        
         {/**  <h1 style={{ fontFamily: "'Poppins', sans-serif",lineHeight:1.5,textShadow:"0.5px 0.5px black"}} className='absolute my-10 z-20  w-full ml-4 md:text-center text-white text-5xl md:text-6xl 2xl:text-7xl'>You imagine <br></br>We create.</h1>**/}
-        <img style={{ height: "102vh" }} className='w-full object-cover' src='/contact.png'></img>
+        <img style={{ height: "102vh" }} className='w-full object-cover z-10 ' src='/contact.png'></img>
 
-      </div></Slide>
+      </div></Slide></div>
       <div style={{backgroundColor: "#ebeaeb", minHeight: 100, height: "50vh" }} className='w-full justify-center  flex '>
         <div className='flex flex-col  my-auto text-center space-y-8 md:space-y-16 w-full' >
-          <h1 style={{fontFamily: "'Fjalla One', sans-serif"}}  className='md:text-2xl mx-2 text-gray-800 2xl:text-3xl'>BENEFITS OF BEING ASSOCIATED WITH SKETCH ART</h1>
+          <h1 style={{fontFamily: "'Fjalla One', sans-serif",wordSpacing:1.5}}  className='md:text-2xl mx-2 font-bold text-gray-800 2xl:text-3xl'>BENEFITS OF BEING ASSOCIATED WITH SKETCH ART</h1>
           <div className='flex flex-col md:flex-row'>
             <div className='flex md:text-sm text-xs 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2  border-r-2 border-gray-500 '><RubberBand><VscGear className='md:text-6xl md:mx-4 2xl:mx-6 mb-5 2xl:text-7xl text-3xl' /></RubberBand>Access to the best automation solutions for solar protection and tertiary access.</div>
             <div className='flex md:text-sm text-xs 2xl:text-lg font-semibold items-center flex-wrap text-gray-600 justify-center px-2  border-r-2 border-gray-500 '><RubberBand><MdLocalParking className='md:text-6xl md:mx-4  2xl:mx-6 mb-5 2xl:text-7xl text-3xl' /></RubberBand>Advice on motor and controller choice.Product training and installion training support electrial requirements.</div>
@@ -180,11 +182,11 @@ export default function Home() {
         </div>
 
         <div className='md:col-span-8 flex justify-center items-center md:space-y-5 space-y-2 flex-col text-white text-xs md:text-sm 2xl:text-base'>
-          <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5}}  className='md:text-2xl 2xl:text-3xl text-xl font-bold'>Contact Us</h1>
+          <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5}}  className='md:text-2xl 2xl:text-3xl text-xl font-bold'>CONTACT US</h1>
           <p>Sign up with your email to contact us</p>
           <section className="text-gray-600 body-font relative">
             <div className="container px-5  mx-auto flex ">
-              <div className=" md:bg-white rounded-lg md:p-8 flex flex-col md:flex-row  items-center md:space-x-5 md:ml-auto w-full relative z-10 md:shadow-md">
+              <div className=" md:bg-white md:p-8 flex flex-col md:flex-row  items-center md:space-x-5 md:ml-auto w-full relative z-10 md:shadow-md">
                 <div className="relative mb-4">
                   <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
                   <input onChange={(e)=>{handleChange(e)}} type="text" id="name" name="name"value={name} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-sm md:text-base outline-none text-gray-700 py-1 px-3 md:leading-8 transition-colors duration-200 ease-in-out" />
@@ -197,7 +199,7 @@ export default function Home() {
                   <label htmlFor="number" className="leading-7 text-sm text-gray-600">Number</label>
                   <input onChange={(e)=>{handleChange(e)}} type="tel" id="number" name="number" value={number} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-sm md:text-base outline-none text-gray-700 py-1 px-3 md:leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
-                <button onClick={submit} className="text-white bg-black border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 rounded text-sm md:text-base">Send</button>
+                <button style={{backgroundColor:"#bfb1c4"}} onClick={submit} className="text-white  border-0 py-2 px-6 focus:outline-none hover:bg-gray-700  text-sm md:text-base">Send</button>
               </div>
             </div>
           </section>

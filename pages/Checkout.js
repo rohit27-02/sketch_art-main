@@ -44,12 +44,10 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
               
     }
     return (
-        <div className='container m-auto'>
-            <Head>
-            <meta  name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
-            </Head>
-            <Script type="application/javascript" crossorigin="anonymous" src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`} />
-            <h1 className='font-bold text-xl md:text-4xl text-center py-5 md:my-10'>Checkout</h1>
+        <div style={{fontFamily: "'Roboto Slab', serif"}} className='container m-auto'>
+        <div style={{backgroundColor:"#bfb1c4"}} className='absolute top-0 w-full h-20 '></div>
+           
+            <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5}} className='font-bold text-xl md:text-4xl text-center text-gray-800 py-5 md:my-10'>CHECKOUT</h1>
             <div>
                 <h2 className='font-bold text-xl md:mx-52 md:py-10 py-6 mx-8'>1. Contact Details</h2>
             <div className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
@@ -84,7 +82,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
                     <input type="text" id="state" name="state" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
                 <div className="relative flex-grow w-full">
-                    <label forhtml="pincode" className="leading-7 text-sm text-gray-600">pincode</label>
+                    <label forhtml="pincode" className="leading-7 text-sm text-gray-600">Pincode</label>
                     <input type="number" id="pincode" name="pincode" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
             </div>
@@ -105,7 +103,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
                 </ol>
                 <div className='font-bold mt-10'>Total : ₹ {subTotal}</div>
            </div>
-                <button onClick={initiatepayment} className="flex text-white bg-yellow-500 border-0 py-1 px-2 my-7 md:mx-56 mx-12 focus:outline-none hover:bg-yellow-600 rounded md:text-lg"><MdOutlinePayment className='my-auto mr-1'/>Pay now</button>
+                <button style={{backgroundColor:"#bfb1c4"}} onClick={initiatepayment} className="flex text-white border-0 py-1 px-2 my-7 md:mx-56 mx-12 focus:outline-none  md:text-base 2xl:text-lg"><MdOutlinePayment className='my-auto mr-1'/>Pay now</button>
             </div>
         </div>
     )
