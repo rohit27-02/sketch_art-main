@@ -24,6 +24,7 @@ const Post = ({ buyNow, addToCart, product }) => {
   const [isenable, setisenable] = useState(false);
   const [mechanism, setmechanism] = useState("Manual");
   const [qty, setqty] = useState(1);
+  const [sw, setsw] = useState(false);
 
   const height = []
   const width = []
@@ -78,7 +79,9 @@ useEffect(() => {
     setprevcolor(selectedcolor)
   }, [selectedcolor]);
   useEffect(() => {
-    console.log(product)
+    if (screen.width > 768) {
+      setsw(true)
+    }
     document.getElementById(0).classList.add("border-2")
   }, []);
 
@@ -91,7 +94,7 @@ useEffect(() => {
 
 
   return <>
-    <div style={{height:"90vh"}}  className='w-full -my-20'><img className='h-full  w-full' alt='img' src='/zebra blind.jpg'></img></div>
+    {sw && <div style={{height:"90vh"}}  className='w-full -my-20'><img className='h-full  w-full' alt='img' src='/zebra blind.jpg'></img></div>}
 
     <section style={{  fontFamily: "'poppins', sans-serif"}} className="text-gray-900 flex justify-center  body-font overflow-hidden">
       <ToastContainer
@@ -105,12 +108,12 @@ useEffect(() => {
         draggable
         pauseOnHover
       />
-      <div style={{ width: "91.41vw" }} className=" md:py-12 mt-20">
+      <div  className="md:w-11/12 w-full md:py-12 mt-10 md:mt-20">
 
         <div className='w-full  flex-col justify-center md:flex-row flex '>
-          <div style={{ width: "39.5vw" }} className=''>
-            <img alt="ecommerce" style={{height:"100vh"}} className=" w-full" src="/Wall Image.png" />
-            <img alt="ecommerce" style={{height:"45vh",bottom:"-48.9vh",left:"24.5vw"}} className=" absolute " src={product.variants[selectedcolor].img} />
+          <div  className='md:w-5/12 w-full'>
+           {sw && <img alt="ecommerce" style={{height:"100vh"}} className=" w-full" src="/Wall Image.png" />}
+            <img alt="ecommerce" style={{height:"45vh",bottom:"-48.9vh",left:"24.5vw"}} className=" md:absolute mx-auto pb-10 " src={product.variants[selectedcolor].img} />
             <div style={{ backgroundColor: "#ebeaeb"}} className='w-full pl-6  pb-4'>
               
               <div  className='text-gray-800 flex items-center text-base  pb-2 pt-6'><p style={{backgroundColor: "#bfb1c4"}} className='w-5 -ml-6 absolute h-3'></p>Product Summary</div>
@@ -142,7 +145,7 @@ useEffect(() => {
             </div>
             </div>
 
-            <div style={{ width: "49.7vw", backgroundColor: "#bfb1c4" }} className='py-12  px-10 '>
+            <div style={{ backgroundColor: "#bfb1c4" }} className='py-12 md:w-1/2 w-full px-10 '>
           <div  className='flex flex-col '>
             <span style={{fontFamily: "'Fjalla One', sans-serif"}} className=" text-white text-5xl uppercase ">{product.title} </span>
             <div  className='space-x-6 flex py-6  text-base'>
@@ -153,7 +156,7 @@ useEffect(() => {
             <div  className="  w-full px-8 mb-6 bg-white  ">
               <div className='  font-medium mt-4  flex items-center'><p style={{backgroundColor: "#bfb1c4", fontFamily: "'poppins', sans-serif"}}  className='w-8 -ml-10 absolute h-3'></p>Color Selection</div>
               <div className='overflow-y-scroll max-h-96'>
-              <div className='grid grid-flow-row  grid-cols-3'>
+              <div className='grid grid-flow-row  md:grid-cols-3'>
                 {
 
                   Object.keys(product.variants).map((p) => { return <div key={p} ><div id={p} onClick={(e) => { selectcolor(e) }} style={{ backgroundImage: `url(${product.variants[p].colorcode})`, borderColor: "red"}} className=" h-32 mt-8  cursor-pointer w-32"></div><span className='text-sm'>{product.variants[p].color}</span></div> })}
@@ -169,10 +172,10 @@ useEffect(() => {
                 </div>
                 </div>
              
-              <div  className="flex justify-between items-center my-6 pt-5">
+              <div  className="flex flex-col md:flex-row justify-between items-center my-6 pt-5">
               <div className='text-base'> Your Price
               <span style={{fontFamily: "'Fjalla One', sans-serif"}} className="title-font ml-4  text-xl text-gray-900">₹ {product.price*qty}</span></div>
-              <div className='flex space-x-4'>
+              <div className='flex space-x-4 mt-4 md:mt-0'>
               <button style={{ backgroundColor: "#bfb1c4" }} className="flex text-sm   border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white " onClick={() => { buyNow(product.slug,qty, product.price, product.title, cartheight, cartwidth, product.variants[selectedcolor].color,mechanism ,product.variants[selectedcolor].img) }}>Buy now</button>
               <button style={{ backgroundColor: "#bfb1c4" }} onClick={() => { addToCart(product.slug, qty, product.price, product.title,cartheight, cartwidth, product.variants[selectedcolor].color, mechanism ,product.variants[selectedcolor].img) }} className="flex text-sm   border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white  ">Add to cart</button>
               </div>
@@ -199,7 +202,7 @@ useEffect(() => {
                     <Disclosure.Panel className="px-7  pt-4 pb-6 text-sm bg-white text-gray-900">
                       <h1>Provide exact measurements. we will deduct for inside mount.
                       </h1>
-                      <div className="flex my-10  mx-auto  space-x-10 ">
+                      <div className="flex my-10 flex-col md:flex-row mx-auto space-y-4 md:space-y-0 md:space-x-10 ">
 
                         <div className='flex items-center'><span className="">Height</span>
 
@@ -235,11 +238,11 @@ useEffect(() => {
                       <Dialog style={{ width: "100vw", height: "100vh" }} className="fixed  flex justify-center items-center top-0 bg-black  bg-opacity-60 z-50" open={isenable} onClose={() => setisenable(false)}>
                         <Dialog.Panel > 
                           <MdOutlineCancel onClick={measuringguide} className="text-2xl  cursor-pointer 2xl:text-4xl absolute right-44 top-8" />
-                          <div className='flex flex-col px-40 py-10'>
+                          <div className='flex flex-col md:px-40 md:py-10 '>
                           <img className='' alt='img' src='https://i.ibb.co/8BPV95M/IMAGE-PRODUCT-MEASUREMENTS.png'></img>
-                          <div className='bg-white p-8 grid grid-flow-col'>
-                            <h1 style={{fontFamily: "'Fjalla One', sans-serif"}} className='pr-4 text-xl 2xl:text-4xl text-gray-700 border-r-2'>HOW TO MEASURE<br></br> OUTSIDE MOUNT</h1>
-                            <p style={{fontFamily: "'Roboto Slab', serif"}} className='text-sm 2xl:text-lg pl-4'>Measure the Width(side to side) between the two outermost points of the window frame, or the area which is to be covered.
+                          <div className='bg-white p-8 grid md:grid-flow-col grid-flow-row'>
+                            <h1 style={{fontFamily: "'Fjalla One', sans-serif"}} className='md:pr-4 text-xl 2xl:text-4xl pb-4 md:pb-0 text-gray-700 md:border-r-2'>HOW TO MEASURE<br></br> OUTSIDE MOUNT</h1>
+                            <p style={{fontFamily: "'Roboto Slab', serif"}} className='text-sm 2xl:text-lg md:pl-4'>Measure the Width(side to side) between the two outermost points of the window frame, or the area which is to be covered.
                               Measure the height(top to bottom) of the outermost point of the frame to the window sill of the bottom of the frame, or from where ever you want your blind to begin to where you want it to end.</p>
                           </div>
                           </div>
@@ -277,15 +280,15 @@ useEffect(() => {
             </div>
             </div>
 
-        <div style={{fontFamily: "'Roboto Slab', serif"}} className='grid grid-flow-row  px-4 mt-14'>
-          <div className='flex'>
+        <div style={{fontFamily: "'Roboto Slab', serif"}} className='grid grid-flow-row mb-20 md:mb-0 px-12 mt-14'>
+          <div className='flex flex-col md:flex-row'>
             
-            <div id='details' className='text-xl mr-11 w-8/12  lg:text-base text-center md:text-left '>
+            <div id='details' className='text-xl mr-11 w-8/12  lg:text-base text-left '>
             <div style={{backgroundColor: "#bfb1c4"}} className='w-10 mb-2  h-3'></div><span  style={{fontFamily: "'poppins', sans-serif"}}>Care & Cleaning</span>
               <p className="leading-relaxed text-sm    mt-7 ">{product.care}</p>
             </div>
 
-            <div className='text-xl lg:text-base w-11/12 text-center md:text-left '>
+            <div className='text-xl lg:text-base w-11/12 mt-6 md:mt-0 text-left '>
             <p style={{backgroundColor: "#bfb1c4"}} className='w-10 h-3 mb-2'></p><span style={{fontFamily: "'poppins', sans-serif"}}> Product Details</span>
               <p className="leading-relaxed text-sm    mt-7  ">{product.desc}</p>
             </div>

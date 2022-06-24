@@ -460,35 +460,13 @@ setInterval(() => {
       </Dialog.Panel>
     </Dialog>
 
-   {nav && <div style={{right:"17vw"}} onMouseLeave={offproducts} className='absolute animate-fade-in-down  md:right-64 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm text-center  top-16 px-5  text-lg md:px-0   md:acctext ' >
-     
-      <div style={{ fontFamily: "'poppins', sans-serif" }} className="flex flex-col  ">
-        {
-          Object.keys(data).map((p) => {
-            return (<>
-              <div  key={p} className="flex justify-center z-50">
-                <li  id={data[p]} onMouseEnter={function(e){getData(e);}} className='flex items-center  phover  w-full py-2 px-4 '  ><a href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}>{data[p]}</a></li>
-              </div>
-              {listd && sub[p] && <div style={{left:"14.3vw"}}  className='z-50 absolute min-w-full left-44 flex flex-col'>
-              { Object.keys(subcategory).map((s)=>{return(<a key={s} style={{backgroundColor:"#bfb1c4"}} href={`${process.env.NEXT_PUBLIC_HOST}/product/${subcategory[s]}`} className='hover:border-2 px-4 py-2 text-sm cursor-pointer' >{subcategory[s]}</a>)})}
-                </div>}
-                </>
-            )
-
-
-          })
-        }
-
-      </div>
-
-
-    </div>}
-    {dropDown && <div onMouseLeave={() => setdropDown(false)} style={{ fontFamily: "'Montserrat', sans-serif" }} className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm text-center z-50 top-16 px-5  text-lg md:px-0 py-3  md:acctext '>
+  
+    {dropDown && <div onMouseLeave={() => setdropDown(false)} style={{ fontFamily: "'Fjalla One', sans-serif" }} className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm text-center z-50 top-16 px-5  text-lg md:px-0 py-3  md:acctext '>
       <ul>
-        <a className='  font-bold' href={"/myaccount"}><li className='px-2 account'>Account</li></a>
-        <a className='  font-bold' href={'/orders'}><li className='px-2 account'>Orders</li></a>
-        <li className='px-2 account font-bold cursor-pointer' onClick={logout}>Logout</li>
-        {admin == "true" && <a className=' text-center font-bold' href={"/adminpanel"}><li className='px-2 account'>Admin Panel</li></a>}
+        <a className='  ' href={"/myaccount"}><li className='px-2 account'>Account</li></a>
+        <a className='  ' href={'/orders'}><li className='px-2 account'>Orders</li></a>
+        <li className='px-2 account  cursor-pointer' onClick={logout}>Logout</li>
+        {admin == "true" && <a className=' text-center ' href={"/adminpanel"}><li className='px-2 account'>Admin Panel</li></a>}
       </ul>
     </div>}
     <div ref={ref}  style={{fontFamily: "'Roboto Slab', serif"}} className="sidebar scrollbar-hide text-lg md:text-xl 2xl:text-2xl bg-black bg-opacity-80 fixed right-0 top-0 flex  items-center flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 text-white shadow-xl overflow-y-scroll h-full">
@@ -521,29 +499,53 @@ setInterval(() => {
     <nav  id='nav' className=" z-40  sticky ">
 
       <div className=" px-4">
-        <div className="flex justify-between">
-          <div className="flex space-x-7">
+        <div className="flex ">
+         
+
+          <div className="hidden md:flex items-center justify-between w-full  ">
+          
             <div>
 
-              <a href="/" className="flex  items-center py-1 ">
+              <a href="/" className="flex  py-1 ">
                 <img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 invert w-auto " />
               </a>
-            </div>
+            
           </div>
+            <div id='navtext' className="hidden md:flex  text-white  2xl:text-lg text-base space-x-4">
+              <a style={{ textUnderlineOffset: 8,fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.1 }} href="/" className="py-4 px-2   hover:underline  decoration-2 ">HOME</a>
+              <a style={{ textUnderlineOffset: 8,fontFamily: "'Fjalla One', sans-serif"}}  className="py-4 px-2"><span style={{letterSpacing:1.1}} onMouseEnter={toggleproducts} className=' cursor-pointer  hover:underline  decoration-2'>PRODUCTS</span><div> {nav && <div onMouseLeave={offproducts} className='absolute animate-fade-in-down  md:text-base bg-white text-black  shadow-black shadow-sm  text-lg md:px-0 my-4  md:acctext ' >
+     
+     <div style={{fontFamily: "'Fjalla One', sans-serif" }} className="flex flex-col  ">
+       {
+         Object.keys(data).map((p) => {
+           return (<>
+             <div  key={p} className="flex justify-start z-50">
+               <li  id={data[p]} onMouseEnter={function(e){getData(e);}} className='flex items-center  phover  w-full py-2 px-4 '  ><a href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}>{data[p]}</a></li>
+             </div>
+             {listd && sub[p] && <div  className='z-50 left-36 absolute min-w-full  flex flex-col'>
+             { Object.keys(subcategory).map((s)=>{return(<a key={s} style={{backgroundColor:"#bfb1c4"}} href={`${process.env.NEXT_PUBLIC_HOST}/product/${subcategory[s]}`} className='hover:border-2 px-4 py-2 text-sm cursor-pointer' >{subcategory[s]}</a>)})}
+               </div>}
+               </>
+           )
 
-          <div className="hidden md:flex items-center space-x-6 ">
-            <div id='navtext' className="hidden md:flex items-center text-white  2xl:text-lg text-base space-x-1">
-              <a style={{ textUnderlineOffset: 8, fontFamily: "'poppins', sans-serif" }} href="/" className="py-4 px-2   hover:underline  decoration-2   ">Home</a>
-              <a style={{ textUnderlineOffset: 8, fontFamily: "'poppins', sans-serif" }} onMouseEnter={toggleproducts} className="py-4 cursor-pointer px-2    hover:underline  decoration-2 ">Products</a>
-              <a style={{ textUnderlineOffset: 8, fontFamily: "'poppins', sans-serif" }} href="/about" className="py-4 px-2     hover:underline  decoration-2   ">About Us</a>
-              <a style={{ textUnderlineOffset: 8, fontFamily: "'poppins', sans-serif" }} href="/contact" className="py-4 px-2     hover:underline  decoration-2   ">Contact Us</a>
+
+         })
+       }
+
+     </div>
+
+
+   </div>}</div></a>
+              <a style={{ textUnderlineOffset: 8,fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.1 }} href="/about" className="py-4 px-2     hover:underline  decoration-2   ">ABOUT US</a>
+              <a style={{ textUnderlineOffset: 8,fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.1  }} href="/contact" className="py-4 px-2     hover:underline  decoration-2   ">CONTACT US</a>
             </div>
+            <div className='flex space-x-5'>
             {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontFamily: "'Montserrat', sans-serif"}} className=" font-bold text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}
             {user.value && <MdAccountCircle  className=" font-medium  cursor-pointer transition text-white duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
             {item!=0 && <div className='text-white absolute bg-black right-3 top-2 px-2 rounded-full'>{item}</div>}
             <HiShoppingCart id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart text-white cursor-pointer md:text-3xl 2xl:text-4xl ' />
           </div>
-
+          </div>
           <div id='mnav' className="md:hidden flex space-x-5 items-center">
 
             {!user.value && <a href="/Login" className=" text-black transition duration-300">Log In</a>}
