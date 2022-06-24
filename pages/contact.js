@@ -120,7 +120,7 @@ const Contact = ({ info }) => {
   <div style={{height:"85vh"}} className="w-full">
   <div style={{height:"90vh"}} className="overflow-hidden absolute z-10  top-0  w-full">
     <div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div>
-    <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute 2xl:my-72  md:my-64 z-50 text-gray-200  '>Contact us</h1>
+    <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute 2xl:my-72  md:my-64 z-50 text-gray-200  '>CONTACT US</h1>
     <Slide bottom><img src='/contact us image.png' className='object-cover h-full w-full'></img></Slide>
   </div>
   </div>
@@ -156,7 +156,7 @@ const Contact = ({ info }) => {
      
     </div>
     <div style={{backgroundColor:"#bfb1c4"}} className=" md:w-1/2 bg-white flex space-y-8 flex-col md:ml-auto w-full">
-      <h2 style={{fontFamily: "'Fjalla One', sans-serif",wordSpacing:2}} className="text-gray-900 md:text-xl 2xl:text-3xl mb-1 font-medium title-font">Leave a comment</h2>
+      <h2 style={{fontFamily: "'Fjalla One', sans-serif",wordSpacing:2}} className="text-white md:text-2xl 2xl:text-3xl mb-1 font-medium title-font">LEAVE A COMMENT</h2>
       
       <div className="flex space-x-5 relative mb-4 ">
       <div >

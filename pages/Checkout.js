@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import { AiOutlinePlusCircle,AiOutlineMinusCircle } from 'react-icons/ai';
 import {MdOutlinePayment} from "react-icons/md"
@@ -96,8 +97,10 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
                     </div> }
                     {Object.keys(cart).map((k)=>{return <li key={k}>
                         <div className='flex my-2'>
-                        <div className='mx-4 '>{cart[k].name} ({cart[k].size}/{cart[k].variant})</div>
+
+                        <div className='mx-4 '>{cart[k].name} ({cart[k].height} x {cart[k].width}/{cart[k].variant})</div>
                         <div className='w-32 flex items-center justify-evenly '>< AiOutlineMinusCircle onClick={()=>{removeFromCart(k,1,cart[k].price,cart[k].name,cart[k].size,cart[k].variant)}} className='fill-yellow-500 cursor-pointer'/>{cart[k].qty}<AiOutlinePlusCircle onClick={()=>{addToCart(k,1,cart[k].price,cart[k].name,cart[k].size,cart[k].variant)}} className='fill-yellow-500 cursor-pointer'/></div>
+                        <div><img alt='product' height={200} width={120} src={cart[k].img}></img></div>
                         </div>
                     </li>})}   
                 </ol>

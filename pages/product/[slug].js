@@ -14,9 +14,11 @@ import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai';
 
 const Post = ({ buyNow, addToCart, product }) => {
   const [selectedheight, setselectedheight] = useState(6 );
+  const [cartheight, setcartheight] = useState(6 );
+  const [cartwidth, setcartwidth] = useState(16 );
   const [selectedwidth, setselectedwidth] = useState(16 );
-  const [selectedexactwidth, setselectedexactwidth] = useState();
-  const [selectedexactheight, setselectedexactheight] = useState();
+  const [selectedexactwidth, setselectedexactwidth] = useState(".0");
+  const [selectedexactheight, setselectedexactheight] = useState(".0");
   const [selectedcolor, setselectedcolor] = useState(0);
   const [prevcolor, setprevcolor] = useState(0);
   const [isenable, setisenable] = useState(false);
@@ -63,8 +65,14 @@ const Post = ({ buyNow, addToCart, product }) => {
 
     document.getElementById(e.target.id).classList.add("border-2")
 
-
   }
+useEffect(() => {
+ setcartheight(`${selectedheight}${selectedexactheight}`)
+}, [selectedexactheight,selectedheight]);
+useEffect(() => {
+ setcartwidth(`${selectedwidth}${selectedexactwidth}`)
+}, [selectedexactwidth,selectedwidth]);
+
   useEffect(() => {
     document.getElementById(prevcolor).classList.remove("border-2")
     setprevcolor(selectedcolor)
@@ -101,7 +109,8 @@ const Post = ({ buyNow, addToCart, product }) => {
 
         <div className='w-full  flex-col justify-center md:flex-row flex '>
           <div style={{ width: "39.5vw" }} className=''>
-            <img alt="ecommerce" style={{height:"100vh"}} className=" w-full" src={product.variants[selectedcolor].img} />
+            <img alt="ecommerce" style={{height:"100vh"}} className=" w-full" src="/Wall Image.png" />
+            <img alt="ecommerce" style={{height:"45vh",bottom:"-48.9vh",left:"24.5vw"}} className=" absolute " src={product.variants[selectedcolor].img} />
             <div style={{ backgroundColor: "#ebeaeb"}} className='w-full pl-6  pb-4'>
               
               <div  className='text-gray-800 flex items-center text-base  pb-2 pt-6'><p style={{backgroundColor: "#bfb1c4"}} className='w-5 -ml-6 absolute h-3'></p>Product Summary</div>
@@ -162,10 +171,10 @@ const Post = ({ buyNow, addToCart, product }) => {
              
               <div  className="flex justify-between items-center my-6 pt-5">
               <div className='text-base'> Your Price
-              <span style={{fontFamily: "'Fjalla One', sans-serif"}} className="title-font ml-4  text-xl text-gray-900">₹ {product.price}</span></div>
+              <span style={{fontFamily: "'Fjalla One', sans-serif"}} className="title-font ml-4  text-xl text-gray-900">₹ {product.price*qty}</span></div>
               <div className='flex space-x-4'>
-              <button style={{ backgroundColor: "#bfb1c4" }} className="flex text-sm   border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white " onClick={() => { buyNow(product.slug,qty, product.price, product.title, height, width, product.variants[selectedcolor].color) }}>Buy now</button>
-              <button style={{ backgroundColor: "#bfb1c4" }} onClick={() => { addToCart(product.slug, qty, product.price, product.title, height, width, product.variants[selectedcolor].color) }} className="flex text-sm   border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white  ">Add to cart</button>
+              <button style={{ backgroundColor: "#bfb1c4" }} className="flex text-sm   border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white " onClick={() => { buyNow(product.slug,qty, product.price, product.title, cartheight, cartwidth, product.variants[selectedcolor].color,mechanism ,product.variants[selectedcolor].img) }}>Buy now</button>
+              <button style={{ backgroundColor: "#bfb1c4" }} onClick={() => { addToCart(product.slug, qty, product.price, product.title,cartheight, cartwidth, product.variants[selectedcolor].color, mechanism ,product.variants[selectedcolor].img) }} className="flex text-sm   border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white  ">Add to cart</button>
               </div>
             </div>
             </div>

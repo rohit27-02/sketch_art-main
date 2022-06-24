@@ -38,6 +38,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
   const [sub, setsub] = useState([]);
   const [method, setmethod] = useState("login");
   const [name, setname] = useState("");
+  const [item, setitem] = useState(0);
 
   useEffect(() => {
 
@@ -221,14 +222,11 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     }
   };
   const toggleproducts = () => {
-
-    if (menu.current.classList.contains("-translate-x-full")) {
-      menu.current.classList.replace("-translate-x-full", "translate-x-0");
-    }
-    else if (!menu.current.classList.contains("-translate-x-full")) {
-      menu.current.classList.remove("translate-x-0");
-      menu.current.classList.add("-translate-x-full");
-    }
+setnav(true)
+  };
+  const offproducts = () => {
+setnav(false)
+setlistd(false)
   };
   useEffect(() => {
     setadmin(localStorage.getItem("admin"));
@@ -244,16 +242,16 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
       .then((data) => {
         setinfo(data)
       })
-    setnav(false)
+    
     if (screen.width > 768) {
       setsw(true)
     }
-
+  setitem(Object.keys(cart).length)
 
   }, []);
-  useEffect(() => {
-   
-  }, [subcategory]);
+setInterval(() => {
+  setitem(Object.keys(cart).length)
+}, 1000);
  
   async function getData(e) {
     const data = e.target.id
@@ -271,7 +269,10 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     }
     else {
       setsubcategory(response)
+      setlistd(true)
+      
     }
+   
 
   }
   const show=(e)=>{
@@ -280,7 +281,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
 
 
   const ref = useRef();
-  const menu = useRef();
+ 
   return (<>
   <div className=" fixed overflow-hidden bottom-8 h-12 min-w-fit right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full  items-center whatsapp flex justify-end"><a style={{ fontFamily: "'lato', sans-serif"}} id="what" className="absolute  right-44 bottom-3 w-0  " href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+919920223462</a><BsWhatsapp className='text-white p-2 rounded-3xl z-50 text-5xl ' /></div>
 
@@ -459,18 +460,18 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
       </Dialog.Panel>
     </Dialog>
 
-    <div ref={menu} className='text-lg  md:text-xl 2xl:text-2xl transform transition-transform duration-300  ease-in-out  -translate-x-full  shadow-xl overflow-y-hidden  left-0 py-4 top-0 h-full md:bg-opacity-90 bg-black text-white fixed  z-50 ' >
-      <AiOutlineClose className='float-right mx-3 cursor-pointer ' onClick={toggleproducts} />
-      <div style={{ fontFamily: "'Montserrat', sans-serif" }} className="mt-16 flex justify-center flex-col flex-wrap ">
+   {nav && <div style={{right:"17vw"}} onMouseLeave={offproducts} className='absolute animate-fade-in-down  md:right-64 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm text-center  top-16 px-5  text-lg md:px-0   md:acctext ' >
+     
+      <div style={{ fontFamily: "'poppins', sans-serif" }} className="flex flex-col  ">
         {
           Object.keys(data).map((p) => {
             return (<>
-              <div key={p} className=" group flex ">
-                <li  className='flex items-center  px-4 py-2 phover w-full  '  ><a href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}>{data[p]}</a>{sub[p]&&<IoIosArrowDown  id={data[p]} onClick={function(e){getData(e);setlistd(!listd)}} className={`${listd ? 'rotate-180 transform ml-4  cursor-pointer' : 'ml-4  cursor-pointer'} `} />}</li>
+              <div  key={p} className="flex justify-center z-50">
+                <li  id={data[p]} onMouseEnter={function(e){getData(e);}} className='flex items-center  phover  w-full py-2 px-4 '  ><a href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}>{data[p]}</a></li>
               </div>
-              <div className='  w-full flex flex-col'>
-                {listd && sub[p] && Object.keys(subcategory).map((s)=>{return(<Slide key={s} left><a style={{backgroundColor:"#bfb1c4"}} href={`${process.env.NEXT_PUBLIC_HOST}/product/${subcategory[s]}`} className='hover:border-2 px-4 py-2 text-sm cursor-pointer' >{subcategory[s]}</a></Slide>)})}
-                </div>
+              {listd && sub[p] && <div style={{left:"14.3vw"}}  className='z-50 absolute min-w-full left-44 flex flex-col'>
+              { Object.keys(subcategory).map((s)=>{return(<a key={s} style={{backgroundColor:"#bfb1c4"}} href={`${process.env.NEXT_PUBLIC_HOST}/product/${subcategory[s]}`} className='hover:border-2 px-4 py-2 text-sm cursor-pointer' >{subcategory[s]}</a>)})}
+                </div>}
                 </>
             )
 
@@ -481,7 +482,7 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
       </div>
 
 
-    </div>
+    </div>}
     {dropDown && <div onMouseLeave={() => setdropDown(false)} style={{ fontFamily: "'Montserrat', sans-serif" }} className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm text-center z-50 top-16 px-5  text-lg md:px-0 py-3  md:acctext '>
       <ul>
         <a className='  font-bold' href={"/myaccount"}><li className='px-2 account'>Account</li></a>
@@ -499,9 +500,11 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
             No items in the cart
           </div>}
           {Object.keys(cart).map((k) => {
+         
             return <li key={k}>
+              
               <div className='flex my-2'>
-                <div className='ml-2 w-2/3'>{cart[k].name} ({cart[k].size}/{cart[k].variant})</div>
+                <div className='ml-2 w-2/3'>{cart[k].name} ({cart[k].width} X {cart[k].height}/{cart[k].variant})</div>
                 <div className='w-2/3 flex items-center justify-between '><AiOutlineMinusCircle onClick={() => { removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant); }} className=' cursor-pointer' />{cart[k].qty}<AiOutlinePlusCircle onClick={() => { addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant); }} className=' cursor-pointer' /></div>
               </div>
             </li>;
@@ -531,13 +534,14 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
           <div className="hidden md:flex items-center space-x-6 ">
             <div id='navtext' className="hidden md:flex items-center text-white  2xl:text-lg text-base space-x-1">
               <a style={{ textUnderlineOffset: 8, fontFamily: "'poppins', sans-serif" }} href="/" className="py-4 px-2   hover:underline  decoration-2   ">Home</a>
-              <a style={{ textUnderlineOffset: 8, fontFamily: "'poppins', sans-serif" }} onClick={toggleproducts} className="py-4 cursor-pointer px-2    hover:underline  decoration-2 ">Products</a>
+              <a style={{ textUnderlineOffset: 8, fontFamily: "'poppins', sans-serif" }} onMouseEnter={toggleproducts} className="py-4 cursor-pointer px-2    hover:underline  decoration-2 ">Products</a>
               <a style={{ textUnderlineOffset: 8, fontFamily: "'poppins', sans-serif" }} href="/about" className="py-4 px-2     hover:underline  decoration-2   ">About Us</a>
               <a style={{ textUnderlineOffset: 8, fontFamily: "'poppins', sans-serif" }} href="/contact" className="py-4 px-2     hover:underline  decoration-2   ">Contact Us</a>
             </div>
             {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontFamily: "'Montserrat', sans-serif"}} className=" font-bold text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}
             {user.value && <MdAccountCircle  className=" font-medium  cursor-pointer transition text-white duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
-            <HiShoppingCart id="cart" onPointerEnter={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart text-white cursor-pointer md:text-3xl 2xl:text-4xl ' />
+            {item!=0 && <div className='text-white absolute bg-black right-3 top-2 px-2 rounded-full'>{item}</div>}
+            <HiShoppingCart id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart text-white cursor-pointer md:text-3xl 2xl:text-4xl ' />
           </div>
 
           <div id='mnav' className="md:hidden flex space-x-5 items-center">

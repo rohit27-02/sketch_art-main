@@ -45,8 +45,8 @@ const Footer = () => {
         
          <div className='underline underline-offset-4'><a href={"/"}>HOME</a></div>
          <div className='underline underline-offset-4'><a href={"/about"}>ABOUT US</a></div>
-         <div className='underline underline-offset-4'><a href=''>PRODUCT</a></div>
-         <div className='underline underline-offset-4'><a href={"/contact"}>CONTACT</a></div>
+         <div className='underline underline-offset-4'><a href=''>PRODUCTS</a></div>
+         <div className='underline underline-offset-4'><a href={"/contact"}>CONTACT US</a></div>
         
        </div>
      </div>

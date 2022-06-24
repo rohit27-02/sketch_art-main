@@ -82,8 +82,8 @@ min-width: 12%;
 }
 .phover:hover{
     background-color: #bfb1c4;
-    color:black;
-    font-weight: 600;
+    
+    font-weight: 500;
 }
 @keyframes appear {
     0%{margin-top: 64px;}

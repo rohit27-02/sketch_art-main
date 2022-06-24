@@ -172,17 +172,17 @@ export default function Home() {
         </div>
       </div>
 
-      <div style={{ backgroundColor: "#bfb1c4", height: "56vh" }} className="w-full grid content md:grid-flow-col">
+      <div style={{ backgroundColor: "#bfb1c4", height: "56vh" }} className="w-full grid content md:grid-flow-col px-8">
         <div className='md:col-span-4 flex justify-center  items-center'>
-          <div className='flex flex-col text-white text-center border-b-2 pb-8 md:pb-0 md:border-none justify-center items-center md:border-r-2 space-y-6 md:space-y-10 '>
-            <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.2,wordSpacing:1.5}}  className='font-semibold 2xl:text-2xl text-lg px-10 text-white'>CONNECT  WITH  US</h1>
+          <div className='flex flex-col text-white text-center border-b-2 pb-8 md:pb-0 md:border-none justify-start items-start md:border-r-2 space-y-6 md:space-y-10 '>
+            <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.2,wordSpacing:1.5}}  className=' 2xl:text-2xl text-2xl px-10 text-white'>CONNECT  WITH  US</h1>
             <div className='font-thin flex w-full justify-around'><div className=' w-1/2 flex flex-col justify-center items-center '><FaFacebookF className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer' />Facebook</div><div className='w-1/2 flex flex-col justify-center items-center '><CgMail className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer' />Gmail</div></div>
             <div className='font-thin flex w-full justify-around '><div className=' w-1/2 flex flex-col justify-center items-center '><BsWhatsapp className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer' />Whatsapp</div><div className='w-1/2 flex flex-col justify-center items-center '><FaInstagram className='2xl:text-3xl md:text-2xl  hover:animate-pulse cursor-pointer' />Instagram</div></div>
           </div>
         </div>
 
         <div className='md:col-span-8 flex justify-center items-center md:space-y-5 space-y-2 flex-col text-white text-xs md:text-sm 2xl:text-base'>
-          <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5}}  className='md:text-2xl 2xl:text-3xl text-xl font-bold'>CONTACT US</h1>
+          <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5}}  className='md:text-2xl 2xl:text-3xl text-xl '>CONTACT US</h1>
           <p>Sign up with your email to contact us</p>
           <section className="text-gray-600 body-font relative">
             <div className="container px-5  mx-auto flex ">
