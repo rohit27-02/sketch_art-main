@@ -549,22 +549,23 @@ setInterval(() => {
             <HiShoppingCart id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart text-white cursor-pointer md:text-3xl 2xl:text-4xl ' />
           </div>
           </div>
-          <div id='mnav' className="md:hidden flex space-x-5 items-center">
-
-            {!user.value && <a href="/Login" className=" text-black transition duration-300">Log In</a>}
-            {user.value && <MdAccountCircle className="  text-black text-xl  cursor-pointer transition duration-300 " onClick={() => setdropDown(!dropDown)} />}
-            <HiShoppingCart onMouseOver={toggleCart} onMouseEnter={() => setdropDown(false)} className='  cart  cursor-pointer text-xl text-black  ' />
-
-
+          <div id='mnav' className="md:hidden text-white justify-between w-full flex  ">
+          <div> <a href="/" className="flex  py-1 ">
+                <img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 invert w-auto " />
+              </a></div>
+              <div className='flex  items-center space-x-4'>
+            {!user.value && <a href="/Login" className="  transition duration-300">Log In</a>}
+            {user.value && <MdAccountCircle className="   text-xl  cursor-pointer transition duration-300 " onClick={() => setdropDown(!dropDown)} />}
+            <HiShoppingCart onMouseOver={toggleCart} onMouseEnter={() => setdropDown(false)} className='  cart  cursor-pointer text-xl  ' />
             <Hamburger size={20} toggled={isOpen} toggle={setOpen} className=" mobile-menu-button" />
-
+            </div>
           </div>
         </div>
       </div>
 
       {isOpen && <div id='mv' className=" mobile-menu absolute w-full animate-fade-in-down ">
         <ul className="bg-white text-center">
-          <li className="active"><a href="/" className="block text-sm px-2 pb-4  phover ">Home</a></li>
+          <li className="active"><a href="/" className="block text-sm px-2 py-4  phover ">Home</a></li>
           <li><a onClick={toggleproducts} className="block text-sm px-2 py-4 phover transition duration-300">Products</a></li>
           <li><a href="/about" className="block text-sm px-2 py-4 phover transition duration-300">About</a></li>
           <li><a href="/contact" className="block text-sm px-2 py-4 phover transition duration-300">Contact Us</a></li>
