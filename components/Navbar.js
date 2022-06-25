@@ -19,7 +19,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import jwtDecode from 'jwt-decode';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-import { Fade, LightSpeed, Slide } from 'react-reveal';
+import { Bounce, Fade, Flip, LightSpeed, Rotate, Slide, Zoom } from 'react-reveal';
 import { BsWhatsapp } from "react-icons/bs"
 
 function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subTotal, products }) {
@@ -228,6 +228,9 @@ setnav(true)
 setnav(false)
 setlistd(false)
   };
+  const off=()=>{
+    setlistd(false)
+  }
   useEffect(() => {
     setadmin(localStorage.getItem("admin"));
     fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getproducts`)
@@ -513,17 +516,17 @@ setInterval(() => {
           </div>
             <div id='navtext' className="hidden md:flex  text-white  2xl:text-lg text-base space-x-4">
               <a style={{ textUnderlineOffset: 8,fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.1 }} href="/" className="py-4 px-2   hover:underline  decoration-2 ">HOME</a>
-              <a style={{ textUnderlineOffset: 8,fontFamily: "'Fjalla One', sans-serif"}}  className="py-4 px-2"><span style={{letterSpacing:1.1}} onMouseEnter={toggleproducts} className=' cursor-pointer  hover:underline  decoration-2'>PRODUCTS</span><div> {nav && <div onMouseLeave={offproducts} className='absolute animate-fade-in-down  md:text-base bg-white text-black  shadow-black shadow-sm  text-lg md:px-0 my-4  md:acctext ' >
+              <a style={{ textUnderlineOffset: 8,fontFamily: "'Fjalla One', sans-serif"}}  className="py-4 px-2"><span style={{letterSpacing:1.1}} onMouseEnter={toggleproducts} className='flex items-center space-x-2 cursor-pointer '><span>PRODUCTS</span>< IoIosArrowDown className={`${nav ? 'rotate-180 transform' : ''} `}/></span><div> {nav && <Flip top><div onMouseLeave={offproducts} className='absolute animate-fade-in-down  md:text-base bg-black bg-opacity-70 text-white  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
      
      <div style={{fontFamily: "'Fjalla One', sans-serif" }} className="flex flex-col  ">
        {
          Object.keys(data).map((p) => {
            return (<>
              <div  key={p} className="flex justify-start z-50">
-               <li  id={data[p]} onMouseEnter={function(e){getData(e);}} className='flex items-center  phover  w-full py-2 px-4 '  ><a href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}>{data[p]}</a></li>
+               <li  id={data[p]} onMouseEnter={function(e){getData(e);}}className='flex items-center  w-full py-1 px-1 '  ><a className='flex items-center space-x-3' href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}><span>{data[p]}</span><span>{sub[p] && < IoIosArrowDown className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></a></li>
              </div>
-             {listd && sub[p] && <div  className='z-50 left-36 absolute min-w-full  flex flex-col'>
-             { Object.keys(subcategory).map((s)=>{return(<a key={s} style={{backgroundColor:"#bfb1c4"}} href={`${process.env.NEXT_PUBLIC_HOST}/product/${subcategory[s]}`} className='hover:border-2 px-4 py-2 text-sm cursor-pointer' >{subcategory[s]}</a>)})}
+             {listd && sub[p] && <div style={{left:"10.4vw",top:"4.8vh"}} className='z-50  absolute min-w-full  flex flex-col'>
+             { Object.keys(subcategory).map((s)=>{return(<a key={s}  href={`${process.env.NEXT_PUBLIC_HOST}/product/${subcategory[s]}`} className='bg-black bg-opacity-70 text-white px-4 py-2 text-sm cursor-pointer' >{subcategory[s]}</a>)})}
                </div>}
                </>
            )
@@ -535,12 +538,12 @@ setInterval(() => {
      </div>
 
 
-   </div>}</div></a>
+   </div></Flip>}</div></a>
               <a style={{ textUnderlineOffset: 8,fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.1 }} href="/about" className="py-4 px-2     hover:underline  decoration-2   ">ABOUT US</a>
               <a style={{ textUnderlineOffset: 8,fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.1  }} href="/contact" className="py-4 px-2     hover:underline  decoration-2   ">CONTACT US</a>
             </div>
             <div className='flex space-x-5'>
-            {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontFamily: "'Montserrat', sans-serif"}} className=" font-bold text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}
+            {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.1}} className=" text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}
             {user.value && <MdAccountCircle  className=" font-medium  cursor-pointer transition text-white duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
             {item!=0 && <div className='text-white absolute bg-black right-3 top-2 px-2 rounded-full'>{item}</div>}
             <HiShoppingCart id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart text-white cursor-pointer md:text-3xl 2xl:text-4xl ' />

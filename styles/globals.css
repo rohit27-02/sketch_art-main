@@ -11,6 +11,9 @@ body{
   padding: 0px !important;
   position: relative;
   scroll-behavior: smooth;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
   
 }
 html{
@@ -21,6 +24,9 @@ html{
     height: 100%;
     overflow-x:hidden;
     scroll-behavior:smooth;
+    -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
   
 }
 
@@ -109,3 +115,9 @@ min-width: 12%;
     transition: width ease-in-out 0.5s;
 }
 
+.nav{
+    width:20rem;
+    height: 10rem;;
+    transition: width ease-in-out 0.5;
+    transition: height ease-in-out 0.5;
+}
