@@ -290,7 +290,7 @@ setInterval(() => {
             <div className="max-w-md  w-full space-y-6">
 
               <form  onSubmit={handleSubmit} className="mt-8 scale-90 w-full md:scale-100 space-y-6" method="POST">
-                <h1 className='text-2xl font-bold text-center text-gray-600'>Welcome to sketchart</h1>
+                <h1 className='text-2xl font-bold text-center text-gray-600'>Welcome to SketchArt</h1>
                 <div className=" shadow-sm">
                   <div>
                     <label htmlFor="email" className="sr-only">
@@ -365,7 +365,7 @@ setInterval(() => {
             <div className="max-w-md  w-full space-y-6">
 
               <form onSubmit={handleSubmit2} className="mt-8 scale-90 w-full md:scale-100 space-y-6" method="POST">
-                <h1 className='text-2xl font-bold text-center text-gray-600'>Welcome to sketchart</h1>
+                <h1 className='text-2xl font-bold text-center text-gray-600'>Welcome to SketchArt</h1>
                 <div className=" shadow-sm">
                   <div>
                    
@@ -490,18 +490,18 @@ setInterval(() => {
         <div className="flex ">
          
 
-          <div className="hidden md:flex py-4 justify-between w-full  ">
+          <div style={{padding:"1.4vw 0vw"}} className="hidden md:flex py-4 justify-between w-full  ">
           
             <div>
 
               <a href="/" className="flex   ">
-                <img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 invert w-auto " />
+                <img style={{height:"5vw"}} id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 invert w-auto " />
               </a>
             
           </div>
-            <div id='navtext' className="hidden md:flex   text-white  2xl:text-lg text-base ">
+            <div id='navtext' style={{fontSize:"1.25vw"}} className="hidden md:flex   text-white  2xl:text-lg text-base ">
               <a style={{ textUnderlineOffset: 8,letterSpacing:1.1 }} href="/" onMouseEnter={offproducts} className="  hover:underline  decoration-2 ">HOME</a>
-              <a style={{ textUnderlineOffset: 8,}}  className=" "><span style={{letterSpacing:1.1}} onMouseEnter={toggleproducts} className='flex items-center space-x-2 justify-center px-6 cursor-pointer '><span>PRODUCTS</span>< IoIosArrowDown className={`${nav ? 'rotate-180 transform' : ''} `}/></span><div> {nav && <Flip top><div  className='  md:text-base bg-black bg-opacity-70 text-white  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
+              <a style={{ textUnderlineOffset: 8,}}  className=" "><span style={{letterSpacing:1.1,padding:"0vw 1.875vw"}} onMouseEnter={toggleproducts} className='flex items-center space-x-2 justify-center px-6 cursor-pointer '><span>PRODUCTS</span>< IoIosArrowDown className={`${nav ? 'rotate-180 transform' : ''} `}/></span><div> {nav && <Flip top><div  className='  md:text-base bg-black bg-opacity-70 text-white  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
      
      <div style={{ }} className="flex flex-col  ">
        {
@@ -526,13 +526,13 @@ setInterval(() => {
 
    </div></Flip>}</div></a>
               <a style={{ textUnderlineOffset: 8,letterSpacing:1.1 }}  href="/about" className="  hover:underline  decoration-2   ">ABOUT US</a>
-              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1  }}  onMouseEnter={offproducts} href="/contact" className="px-6     hover:underline  decoration-2   ">CONTACT US</a>
+              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1 ,padding:"0vw 1.875vw" }}  onMouseEnter={offproducts} href="/contact" className="px-6     hover:underline  decoration-2   ">CONTACT US</a>
             </div>
-            <div className='flex space-x-5'>
-            {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{letterSpacing:1.1}} className=" text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}
-            {user.value && <MdAccountCircle  className=" font-medium  cursor-pointer transition text-white duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
-            {item!=0 && <div className='text-white absolute bg-black right-3 top-2 px-2 rounded-full'>{item}</div>}
-            <HiShoppingCart id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart text-white cursor-pointer md:text-3xl 2xl:text-4xl ' />
+            <div  className='flex '>
+            {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{letterSpacing:1.1,fontSize:"1.25vw"}} className=" text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}
+            {user.value && <MdAccountCircle style={{fontSize:"2.37vw"}} className=" font-medium  cursor-pointer transition text-white duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
+            {item!=0 && <div style={{fontSize:"1.2vw",padding:"0vw 0.5vw",right:"1.9vw",top:"0.6vw"}} className='text-white absolute bg-black right-3 top-2 px-2 rounded-full'>{item}</div>}
+            <HiShoppingCart style={{fontSize:"2.37vw",margin:"0vw 2vw"}} id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart text-white cursor-pointer md:text-3xl 2xl:text-4xl ' />
           </div>
           </div>
           <div id='mnav' className="md:hidden text-white justify-between w-full flex  ">

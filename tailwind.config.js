@@ -10,6 +10,7 @@ module.exports = {
       textUnderlineOffset: {
         8: '20px',
       },
+      
       lineHeight: {
         'extra-loose': '2.5',
         '12': '4rem',
