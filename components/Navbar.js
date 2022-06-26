@@ -21,6 +21,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { Bounce, Fade, Flip, LightSpeed, Rotate, Slide, Zoom } from 'react-reveal';
 import { BsWhatsapp } from "react-icons/bs"
+import { data } from 'autoprefixer';
 
 function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subTotal, products }) {
   const [dropDown, setdropDown] = useState(false);
@@ -237,7 +238,7 @@ setlistd(false)
       .then((res) => res.json())
       .then((data) => {
         setdata(data.products)
-        
+        setsubcategory(data.subproduct)
         setsub(data.idea)
       })
     fetch(`${process.env.NEXT_PUBLIC_HOST}/api/info`)
@@ -256,30 +257,13 @@ setInterval(() => {
   setitem(Object.keys(cart).length)
 }, 1000);
  
-  async function getData(e) {
-    const data = e.target.id
-
-    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getsub`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      }, body: JSON.stringify({ data })
-    })
-    let response = await res.json()
-
-    if (response[0] == null) {
-      setsubcategory(false)
-    }
-    else {
-      setsubcategory(response)
-      setlistd(true)
-      
-    }
-   
-
-  }
+ 
   const show=(e)=>{
     setmethod(e.target.id)
+  }
+  const on=()=>{
+    setlistd(true)
+    console.log(subcategory)
   }
 
 
@@ -464,7 +448,7 @@ setInterval(() => {
     </Dialog>
 
   
-    {dropDown && <div onMouseLeave={() => setdropDown(false)} style={{ fontFamily: "'Fjalla One', sans-serif" }} className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm text-center z-50 top-16 px-5  text-lg md:px-0 py-3  md:acctext '>
+    {dropDown && <div onMouseLeave={() => setdropDown(false)}  className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm text-center z-50 top-16 px-5  text-lg md:px-0 py-3  md:acctext '>
       <ul>
         <a className='  ' href={"/myaccount"}><li className='px-2 account'>Account</li></a>
         <a className='  ' href={'/orders'}><li className='px-2 account'>Orders</li></a>
@@ -500,36 +484,37 @@ setInterval(() => {
 
 
     {/**main nav**/}
-    <nav  id='nav' className=" z-40  sticky ">
+    <nav  id='nav' onMouseLeave={offproducts} className=" z-40  absolute top-0 w-full ">
 
       <div className=" px-4">
         <div className="flex ">
          
 
-          <div className="hidden md:flex items-center justify-between w-full  ">
+          <div className="hidden md:flex py-4 justify-between w-full  ">
           
             <div>
 
-              <a href="/" className="flex  py-1 ">
+              <a href="/" className="flex   ">
                 <img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 invert w-auto " />
               </a>
             
           </div>
-            <div id='navtext' className="hidden md:flex  text-white  2xl:text-lg text-base space-x-4">
-              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1 }} href="/" className="py-4 px-2   hover:underline  decoration-2 ">HOME</a>
-              <a style={{ textUnderlineOffset: 8,}}  className="py-4 px-2"><span style={{letterSpacing:1.1}} onMouseEnter={toggleproducts} className='flex items-center space-x-2 cursor-pointer '><span>PRODUCTS</span>< IoIosArrowDown className={`${nav ? 'rotate-180 transform' : ''} `}/></span><div> {nav && <Flip top><div onMouseLeave={offproducts} className='absolute animate-fade-in-down  md:text-base bg-black bg-opacity-70 text-white  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
+            <div id='navtext' className="hidden md:flex   text-white  2xl:text-lg text-base ">
+              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1 }} href="/" onMouseEnter={offproducts} className="  hover:underline  decoration-2 ">HOME</a>
+              <a style={{ textUnderlineOffset: 8,}}  className=" "><span style={{letterSpacing:1.1}} onMouseEnter={toggleproducts} className='flex items-center space-x-2 justify-center px-6 cursor-pointer '><span>PRODUCTS</span>< IoIosArrowDown className={`${nav ? 'rotate-180 transform' : ''} `}/></span><div> {nav && <Flip top><div  className='  md:text-base bg-black bg-opacity-70 text-white  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
      
      <div style={{ }} className="flex flex-col  ">
        {
          Object.keys(data).map((p) => {
-           return (<>
-             <div  key={p} className="flex justify-start z-50">
-               <li  id={data[p]} onMouseEnter={function(e){getData(e);}}className='flex items-center  w-full py-1 px-1 '  ><a className='flex items-center space-x-3' href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}><span>{data[p]}</span><span>{sub[p] && < IoIosArrowDown className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></a></li>
+           return (<div key={p} className="flex ">
+             <div   className="flex flex-col justify-start z-50">
+               <li  id={data[p]} onMouseEnter={sub[p] ? on:off}  className='flex items-center  w-full py-1 px-1 '  ><a className='flex items-center space-x-3' href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}><span>{data[p]}</span><span>{sub[p] && < IoIosArrowDown className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></a></li>
              </div>
-             {listd && sub[p] && <div style={{left:"10.4vw",top:"4.8vh"}} className='z-50  absolute min-w-full  flex flex-col'>
-             { Object.keys(subcategory).map((s)=>{return(<a key={s}  href={`${process.env.NEXT_PUBLIC_HOST}/product/${subcategory[s]}`} className='bg-black bg-opacity-70 text-white px-4 py-2 text-sm cursor-pointer' >{subcategory[s]}</a>)})}
+             {listd && sub[p] && <div  className='z-50 absolute left-44 w-full flex flex-col'>
+             { subcategory[0].map((s)=>{return(<a key={s}  href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`} className='bg-black bg-opacity-70 text-white px-4 py-2 text-sm cursor-pointer' >{s}</a>)})}
+             
                </div>}
-               </>
+               </div>
            )
 
 
@@ -540,8 +525,8 @@ setInterval(() => {
 
 
    </div></Flip>}</div></a>
-              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1 }} href="/about" className="py-4 px-2     hover:underline  decoration-2   ">ABOUT US</a>
-              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1  }} href="/contact" className="py-4 px-2     hover:underline  decoration-2   ">CONTACT US</a>
+              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1 }}  href="/about" className="  hover:underline  decoration-2   ">ABOUT US</a>
+              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1  }}  onMouseEnter={offproducts} href="/contact" className="px-6     hover:underline  decoration-2   ">CONTACT US</a>
             </div>
             <div className='flex space-x-5'>
             {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{letterSpacing:1.1}} className=" text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}

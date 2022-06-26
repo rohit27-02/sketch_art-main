@@ -101,7 +101,7 @@ export default function Home() {
 
 
 
-      <div style={{  backgroundColor: "#bfb1c4" }} className=' md:-mt-10 2xl:-mt-10'>
+      <div style={{  backgroundColor: "#bfb1c4" }} className=' '>
         <section className="text-white">
           <div className="container mx-auto flex px-5  2xl:px-10 pt-36 md:pt-32 top-0 md:flex-row flex-col items-center">
             <div className='overflow-hidden'>

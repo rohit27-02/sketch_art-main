@@ -116,8 +116,9 @@ min-width: 12%;
 }
 
 .nav{
-    width:20rem;
-    height: 10rem;;
-    transition: width ease-in-out 0.5;
-    transition: height ease-in-out 0.5;
+ height:1.3rem;
+}
+.nav:hover{
+    height: 12rem;
+    transition: height ease-in-out 0.5s;
 }

@@ -48,7 +48,7 @@ const About = () => {
         </div>
 
 
-      <div  className='text-center md:py-14 py-8 mb-6 px-8 md:flex-row flex flex-col justify-center items-center '>
+      <div  className='text-center md:py-32 py-8 px-8 md:flex-row flex flex-col justify-center items-center '>
       <div   className='text-left ml-10  text-slate-700  md:flex-row flex flex-col justify-center items-center '>
       <Slide left> <div  > <h1 style={{fontFamily: "'Fjalla One', sans-serif"}} className='text-4xl  font-bold'>GLOBAL LEADING MANUFACTURER</h1>
         <p  className=' py-7 leading-relaxed mr-12  md:text-base 2xl:text-xl  font-thin'>With an industry experience of over 25 years, Dooya private limited is the leading manufacturer and importer of Window Blinds and Accessories, Motorized Blinds and Interior Flims in the country catering to clients across the globe. It is also the marketing partner for Dooya Motors based in China. Keen on widening its portfolio, Dooya is open to expanding its imports and exports as and when opportunities present themselves.

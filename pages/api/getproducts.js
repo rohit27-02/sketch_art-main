@@ -4,14 +4,18 @@ import connectDb from "../../middleware/mongoose"
  
 const handler = async (req,res)=>{
 var idea = [];
+var subproduct = [];
     let products = await Product.distinct("category")
     for(let i=0;i<products.length;i++){
         let sub = await Product.findOne({category:products[i]})
         idea.push(sub.sub)
-       
+        if(sub.sub == true){
+            let a = await Product.find({category:products[i]}).distinct("subcategory")
+            subproduct.push(a)
+        }   
     }
-    console.log(idea)
-    res.status(200).json( {products ,idea})
+    
+    res.status(200).json( {products ,idea,subproduct})
 }
 export default connectDb(handler);
   
