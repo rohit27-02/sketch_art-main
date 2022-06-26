@@ -90,11 +90,11 @@ export default function Home() {
         pauseOnHover
       />
     
-      <div style={{ height: "85vh" }} className=''>
+      <div style={{ height: "85vh" }} className='max-h-28 md:max-h-max'>
         <div style={{ height: "90vh" }} className=' w-full overflow-hidden object-cover top-0 fixed -z-10 '>
 
-          <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,lineHeight:1.2}} className='absolute md:top-52 top-28 text-center w-full font-extrabold z-20 2xl:text-7xl md:text-7xl  text-gray-200  '>PUSHING LIMITS<br></br> FOR YOUR LUXURIES</h1>
-          <Slide bottom><div className="bg-black w-full h-full absolute top-0 bg-opacity-40 z-10"></div><img className="h-full w-full object-cover" src='/Image for Sketch Art Home screen 3PNG.png'></img></Slide>
+          <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,lineHeight:1.2}} className='absolute md:top-52 top-14 text-center w-full font-extrabold z-20 2xl:text-7xl md:text-7xl  text-gray-200  '>PUSHING LIMITS<br></br> FOR YOUR LUXURIES</h1>
+          <Slide bottom><div className="bg-black w-full h-full absolute top-0 bg-opacity-40 z-10"></div><img className="md:h-full w-full object-cover" src='/Image for Sketch Art Home screen 3PNG.png'></img></Slide>
         </div>
 
       </div>

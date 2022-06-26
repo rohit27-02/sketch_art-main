@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
-import { AiOutlinePlusCircle,AiOutlineMinusCircle } from 'react-icons/ai';
+import { CgTrashEmpty } from 'react-icons/cg';
 import {MdOutlinePayment} from "react-icons/md"
 import Head from "next/head"
 import Script from "next/script"
@@ -95,14 +95,28 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
                     {Object.keys(cart).length ==0 && <div>
                        No items in the cart 
                     </div> }
+                    <table className='w-full'>
+   
                     {Object.keys(cart).map((k)=>{return <li key={k}>
-                        <div className='flex my-2'>
+                        
 
-                        <div className='mx-4 '>{cart[k].name} ({cart[k].height} x {cart[k].width}/{cart[k].variant})</div>
-                        <div className='w-32 flex items-center justify-evenly '>< AiOutlineMinusCircle onClick={()=>{removeFromCart(k,1,cart[k].price,cart[k].name,cart[k].size,cart[k].variant)}} className='fill-yellow-500 cursor-pointer'/>{cart[k].qty}<AiOutlinePlusCircle onClick={()=>{addToCart(k,1,cart[k].price,cart[k].name,cart[k].size,cart[k].variant)}} className='fill-yellow-500 cursor-pointer'/></div>
-                        <div><img alt='product' height={200} width={120} src={cart[k].img}></img></div>
+    <tbody className='flex flex-row justify-between w-full items-center my-4'>
+                       <td className='w-52'> <div className='mx-4 flex flex-col '>
+                      <span> style : {cart[k].name}</span>
+                      <span> width : {cart[k].width} inches</span>
+                      <span> height : {cart[k].height} inches</span>
+                      <span> color : {cart[k].variant}</span>
                         </div>
-                    </li>})}   
+                        </td>
+
+                       <td > <span>Qty : {cart[k].qty}</span></td>
+
+                        <td><CgTrashEmpty className='cursor-pointer' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/></td>
+                        
+                        <td><div><img alt='product' height={200} width={120} src={cart[k].img}></img></div></td></tbody>
+                       
+                       
+                    </li>})}    </table>
                 </ol>
                 <div className='font-bold mt-10'>Total : ₹ {subTotal}</div>
            </div>

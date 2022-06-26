@@ -286,7 +286,7 @@ setInterval(() => {
   const ref = useRef();
  
   return (<>
-  <div className=" fixed overflow-hidden bottom-8 h-12 min-w-fit right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full  items-center whatsapp flex justify-end"><a style={{ fontFamily: "'lato', sans-serif"}} id="what" className="absolute  right-44 bottom-3 w-0  " href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+919920223462</a><BsWhatsapp className='text-white p-2 rounded-3xl z-50 text-5xl ' /></div>
+  <div className=" fixed overflow-hidden bottom-8 h-12 min-w-fit right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full  items-center whatsapp flex justify-end"><a style={{ fontFamily: "'lato', sans-serif"}} id="what" className="absolute  right-44 bottom-3 w-0  " href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+919920223462</a><BsWhatsapp className=' p-2  z-50 text-5xl ' /></div>
 
 <ToastContainer
           position="top-center"
@@ -484,9 +484,10 @@ setInterval(() => {
          
             return <li key={k}>
               
-              <div className='flex my-2'>
+              <div className='flex my-2 justify-between'>
                 <div className='ml-2 w-2/3'>{cart[k].name} ({cart[k].width} X {cart[k].height}/{cart[k].variant})</div>
-                <div className='w-2/3 flex items-center justify-between '><AiOutlineMinusCircle onClick={() => { removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant); }} className=' cursor-pointer' />{cart[k].qty}<AiOutlinePlusCircle onClick={() => { addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant); }} className=' cursor-pointer' /></div>
+                <span>{cart[k].qty}</span>
+                <CgTrashEmpty className='cursor-pointer' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/>
               </div>
             </li>;
           })}
@@ -494,7 +495,7 @@ setInterval(() => {
       </div>
       <div className='font-bold mt-10'>Total: ₹ {subTotal}</div>
       <a href={"/Checkout"}><button style={{ backgroundColor: "#bfb1c4" }} className="flex text-black hover:opacity-80   border-0 py-2 w-36 justify-center my-7 mr-3 focus:outline-none   "><BsFillBagCheckFill className='my-auto mr-1' />Check out</button></a>
-      <button onClick={clearCart} style={{ backgroundColor: "#bfb1c4" }} className="flex text-black   hover:opacity-80 border-0 py-2 w-36 justify-center  mr-3 focus:outline-none   "><CgTrashEmpty className='my-auto mr-1' />Empty cart</button>
+     
     </div>
 
 
@@ -515,10 +516,10 @@ setInterval(() => {
             
           </div>
             <div id='navtext' className="hidden md:flex  text-white  2xl:text-lg text-base space-x-4">
-              <a style={{ textUnderlineOffset: 8,fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.1 }} href="/" className="py-4 px-2   hover:underline  decoration-2 ">HOME</a>
-              <a style={{ textUnderlineOffset: 8,fontFamily: "'Fjalla One', sans-serif"}}  className="py-4 px-2"><span style={{letterSpacing:1.1}} onMouseEnter={toggleproducts} className='flex items-center space-x-2 cursor-pointer '><span>PRODUCTS</span>< IoIosArrowDown className={`${nav ? 'rotate-180 transform' : ''} `}/></span><div> {nav && <Flip top><div onMouseLeave={offproducts} className='absolute animate-fade-in-down  md:text-base bg-black bg-opacity-70 text-white  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
+              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1 }} href="/" className="py-4 px-2   hover:underline  decoration-2 ">HOME</a>
+              <a style={{ textUnderlineOffset: 8,}}  className="py-4 px-2"><span style={{letterSpacing:1.1}} onMouseEnter={toggleproducts} className='flex items-center space-x-2 cursor-pointer '><span>PRODUCTS</span>< IoIosArrowDown className={`${nav ? 'rotate-180 transform' : ''} `}/></span><div> {nav && <Flip top><div onMouseLeave={offproducts} className='absolute animate-fade-in-down  md:text-base bg-black bg-opacity-70 text-white  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
      
-     <div style={{fontFamily: "'Fjalla One', sans-serif" }} className="flex flex-col  ">
+     <div style={{ }} className="flex flex-col  ">
        {
          Object.keys(data).map((p) => {
            return (<>
@@ -539,11 +540,11 @@ setInterval(() => {
 
 
    </div></Flip>}</div></a>
-              <a style={{ textUnderlineOffset: 8,fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.1 }} href="/about" className="py-4 px-2     hover:underline  decoration-2   ">ABOUT US</a>
-              <a style={{ textUnderlineOffset: 8,fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.1  }} href="/contact" className="py-4 px-2     hover:underline  decoration-2   ">CONTACT US</a>
+              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1 }} href="/about" className="py-4 px-2     hover:underline  decoration-2   ">ABOUT US</a>
+              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1  }} href="/contact" className="py-4 px-2     hover:underline  decoration-2   ">CONTACT US</a>
             </div>
             <div className='flex space-x-5'>
-            {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.1}} className=" text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}
+            {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{letterSpacing:1.1}} className=" text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}
             {user.value && <MdAccountCircle  className=" font-medium  cursor-pointer transition text-white duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
             {item!=0 && <div className='text-white absolute bg-black right-3 top-2 px-2 rounded-full'>{item}</div>}
             <HiShoppingCart id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart text-white cursor-pointer md:text-3xl 2xl:text-4xl ' />
