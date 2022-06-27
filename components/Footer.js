@@ -34,19 +34,19 @@ const Footer = () => {
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"/>
 </Head>
 
-   <div style={{height:"40vh"}} className="w-full bg-white">
-     <div style={{fontFamily: "'Poppins', sans-serif"}} className='grid md:grid-flow-col py-6 2xl:py-10 2xl:px-24 md:py-8 md:px-20 px-7  w-full h-full'>
+   <div style={{height:"40vh",fontSize:"1.25vw"}} className="w-full bg-white">
+     <div style={{fontFamily: "'Poppins', sans-serif",padding:"2.5vw 6.25vw"}} className='grid md:grid-flow-col py-6 2xl:py-10 2xl:px-24 md:py-8 md:px-20 px-7  w-full h-full'>
        <div className='col-span-11  flex justify-evenly flex-col '>
          <p>SKETCH ART BY DEVELOPER INFOTECH</p>
          <h1 style={{fontWeight:'bolder',fontSize:"2em"}} className=''>You belong here. </h1>
-         <p>MADE WITH LOVE <RubberBand><span className='font-bold text-xl ml-2'>♡</span></RubberBand></p>
+         <p>MADE WITH LOVE <RubberBand><span style={{fontSize:"1.8vw",marginLeft:"0.7vw"}} className='font-bold text-xl ml-2'>♡</span></RubberBand></p>
        </div>
-       <div className='col-span-1 flex flex-col py-6 space-y-4'>
+       <div style={{padding:"1.875vw 0vw"}} className='col-span-1 flex flex-col  '>
         
-         <div className='underline underline-offset-4'><a href={"/"}>HOME</a></div>
-         <div className='underline underline-offset-4'><a href={"/about"}>ABOUT US</a></div>
-         <div className='underline underline-offset-4'><a href=''>PRODUCTS</a></div>
-         <div className='underline underline-offset-4'><a href={"/contact"}>CONTACT US</a></div>
+         <div style={{marginTop:"1.25vw"}} className='underline underline-offset-4'><a href={"/"}>HOME</a></div>
+         <div style={{marginTop:"1.25vw"}} className='underline underline-offset-4'><a href={"/about"}>ABOUT US</a></div>
+         <div style={{marginTop:"1.25vw"}} className='underline underline-offset-4'><a href=''>PRODUCTS</a></div>
+         <div style={{marginTop:"1.25vw"}} className='underline underline-offset-4'><a href={"/contact"}>CONTACT US</a></div>
         
        </div>
      </div>
