@@ -500,7 +500,7 @@ setInterval(() => {
             
           </div>
 
-            <div id='navtext' style={{fontSize:"1.25vw",paddingTop:"1vw"}} className="hidden md:flex  absolute w-full justify-center text-white   ">
+            <div id='navtext' style={{fontSize:"1.25vw",paddingTop:"1.3vw"}} className="hidden md:flex  absolute w-full justify-center text-white   ">
               <a style={{ textUnderlineOffset: 8 }} href="/" onMouseEnter={offproducts} className="  hover:underline  decoration-2 ">HOME</a>
               <a style={{ textUnderlineOffset: 8}}  className=" "><span style={{padding:"0vw 2vw"}} onMouseEnter={toggleproducts} className='flex  justify-center px-6 cursor-pointer '>PRODUCTS< IoIosArrowDown style={{marginLeft:"1vw"}} className={`${nav ? 'rotate-180 transform ml-4 self-center' : 'ml-4 self-center'} `}/></span><div> {nav && <Flip top><div style={{fontSize:"1.25vw",marginTop:"0.4vw"}} className='  md:text-base bg-black bg-opacity-70 text-white  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
      
@@ -509,10 +509,10 @@ setInterval(() => {
          Object.keys(data).map((p) => {
            return (<div key={p} className="flex z-50">
             
-               <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"12.75vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><a className='flex items-center ' href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}><span className='w-full'>{data[p]}</span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></a></li>
+               <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><a className='flex items-center ' href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}><span className='w-full'>{data[p]}</span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></a></li>
              
-             {listd && sub[p] && <div style={{left:"13.3vw"}}  className='z-50 absolute shadow-black shadow-sm bg-black bg-opacity-70 left-44 w-full flex flex-col'>
-             { subcategory[0].map((s)=>{return(<a key={s}  href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`} style={{fontSize:"1.25vw",height:"2.85vw",width:"13vw",margin:"0.4vw"}} className=' text-white  text-sm cursor-pointer flex items-center leading-relaxed' >{s}</a>)})}
+             {listd && sub[p] && <div style={{left:"12.45vw"}}  className='z-50 absolute shadow-black shadow-sm bg-black bg-opacity-70 left-44 min-w-max flex flex-col'>
+             { subcategory[0].map((s)=>{return(<a key={s}  href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`} style={{fontSize:"1.25vw",height:"2.85vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max  text-sm cursor-pointer flex items-center' >{s}</a>)})}
              
                </div>}
                </div>
@@ -529,11 +529,11 @@ setInterval(() => {
               <a style={{ textUnderlineOffset: 8 }}  href="/about" className="  hover:underline  decoration-2   ">ABOUT US</a>
               <a style={{ textUnderlineOffset: 8 ,padding:"0vw 2vw" }}  onMouseEnter={offproducts} href="/contact" className="px-6     hover:underline  decoration-2   ">CONTACT US</a>
             </div>
-            <div style={{paddingTop:"1vw"}} className='flex '>
-            {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{letterSpacing:1.1,fontSize:"1.25vw"}} className=" text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}
-            {user.value && <MdAccountCircle style={{fontSize:"2.37vw"}} className=" font-medium  cursor-pointer transition text-white duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
-            {item!=0 && <div style={{fontSize:"1.2vw",padding:"0vw 0.6vw",right:"2.3vw",top:"1.2vw"}} className='text-white absolute bg-black right-3 top-2 px-2 rounded-full'>{item}</div>}
-            <HiShoppingCart style={{fontSize:"2.37vw",margin:"0vw 2vw"}} id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart text-white cursor-pointer md:text-3xl 2xl:text-4xl ' />
+            <div style={{marginTop:"-0.5vw"}} className='flex items-center'>
+            {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontSize:"1.25vw"}} className="z-50  text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">LOG IN</a>}
+            {user.value && <MdAccountCircle style={{fontSize:"2.37vw"}} className=" font-medium  cursor-pointer transition text-white duration-300 md:text-3xl z-50 2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
+            <HiShoppingCart style={{fontSize:"2.37vw",margin:"0vw 2vw"}} id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart text-white z-50 cursor-pointer md:text-3xl 2xl:text-4xl ' />
+            {item!=0 && <div style={{fontSize:"1.2vw",padding:"0vw 0.6vw",right:"2.3vw",top:"1.2vw"}} className='text-white z-50 absolute bg-black right-3 top-2 px-2 rounded-full'>{item}</div>}
           </div>
           </div>
           <div id='mnav' className="md:hidden text-white justify-between w-full flex  ">
@@ -541,7 +541,7 @@ setInterval(() => {
                 <img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 invert w-auto " />
               </a></div>
               <div className='flex  items-center space-x-4'>
-            {!user.value && <a href="/Login" className="  transition duration-300">Log In</a>}
+            {!user.value && <a href="/Login" className="  transition duration-300">LOG IN</a>}
             {user.value && <MdAccountCircle className="   text-xl  cursor-pointer transition duration-300 " onClick={() => setdropDown(!dropDown)} />}
             <HiShoppingCart onMouseOver={toggleCart} onMouseEnter={() => setdropDown(false)} className='  cart  cursor-pointer text-xl  ' />
             <Hamburger size={20} toggled={isOpen} toggle={setOpen} className=" mobile-menu-button" />
