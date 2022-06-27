@@ -270,7 +270,7 @@ setInterval(() => {
   const ref = useRef();
  
   return (<>
-  <div className=" fixed overflow-hidden bottom-8 h-12 min-w-fit right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full  items-center whatsapp flex justify-end"><a style={{ fontFamily: "'lato', sans-serif"}} id="what" className="absolute  right-44 bottom-3 w-0  " href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+919920223462</a><BsWhatsapp className=' p-2  z-50 text-5xl ' /></div>
+  <div style={{fontSize:"1.25vw",height:"3.75vw",right:"3.5vw",bottom:"2.6vw"}} className=" fixed overflow-hidden bottom-8 h-12 min-w-fit right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full  items-center whatsapp flex justify-end"><a style={{ fontFamily: "'lato', sans-serif",right:"14vw",bottom:"1vw"}} id="what" className="absolute  right-44 bottom-3 w-0  " href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+919920223462</a><BsWhatsapp style={{padding:"0.625vw",fontSize:"3.8vw"}} className=' p-2  z-50 text-5xl ' /></div>
 
 <ToastContainer
           position="top-center"
@@ -448,15 +448,15 @@ setInterval(() => {
     </Dialog>
 
   
-    {dropDown && <div onMouseLeave={() => setdropDown(false)}  className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm text-center z-50 top-16 px-5  text-lg md:px-0 py-3  md:acctext '>
+    {dropDown && <div onMouseLeave={() => setdropDown(false)} style={{fontSize:"1.4vw",marginRight:"2.6vw",top:"4.6vw",padding:"0.2vw"}} className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm text-center z-50 top-16 px-5  text-lg md:px-0 py-3  md:acctext '>
       <ul>
-        <a className='  ' href={"/myaccount"}><li className='px-2 account'>Account</li></a>
-        <a className='  ' href={'/orders'}><li className='px-2 account'>Orders</li></a>
-        <li className='px-2 account  cursor-pointer' onClick={logout}>Logout</li>
-        {admin == "true" && <a className=' text-center ' href={"/adminpanel"}><li className='px-2 account'>Admin Panel</li></a>}
+        <a className='  ' href={"/myaccount"}><li className=''>Account</li></a>
+        <a className='  ' href={'/orders'}><li className=''>Orders</li></a>
+        <li className='cursor-pointer' onClick={logout}>Logout</li>
+        {admin == "true" && <a className=' text-center ' href={"/adminpanel"}><li className=''>Admin Panel</li></a>}
       </ul>
     </div>}
-    <div ref={ref}  style={{fontFamily: "'Roboto Slab', serif"}} className="sidebar scrollbar-hide text-lg md:text-xl 2xl:text-2xl bg-black bg-opacity-80 fixed right-0 top-0 flex  items-center flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 text-white shadow-xl overflow-y-scroll h-full">
+    <div ref={ref}  style={{fontFamily: "'Roboto Slab', serif",width:"33vw",padding:"3.2vw"}} className="sidebar scrollbar-hide text-lg md:text-xl 2xl:text-2xl bg-black bg-opacity-80 fixed right-0 top-0 flex  items-center flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 text-white shadow-xl overflow-y-scroll h-full">
       <h2 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.2,wordSpacing:2}} className='font-bold text-xl  lg:text-3xl'>CART</h2>
       <AiOutlineClose onClick={toggleCart} className='hover:bg-black hover:text-white  cart fixed top-4 left-4 cursor-pointer  text-white' />
       <div onChange={toggleCart}>
@@ -486,11 +486,11 @@ setInterval(() => {
     {/**main nav**/}
     <nav  id='nav' onMouseLeave={offproducts} className=" z-40  absolute top-0 w-full ">
 
-      <div className=" px-4">
+      <div style={{padding:"0vw 1vw"}}>
         <div className="flex ">
          
 
-          <div style={{padding:"1.4vw 0vw"}} className="hidden md:flex py-4 justify-between w-full  ">
+          <div style={{margin:"1vw 0vw"}} className="hidden md:flex  justify-between w-full  ">
           
             <div>
 
@@ -499,19 +499,20 @@ setInterval(() => {
               </a>
             
           </div>
-            <div id='navtext' style={{fontSize:"1.25vw"}} className="hidden md:flex   text-white  2xl:text-lg text-base ">
-              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1 }} href="/" onMouseEnter={offproducts} className="  hover:underline  decoration-2 ">HOME</a>
-              <a style={{ textUnderlineOffset: 8,}}  className=" "><span style={{letterSpacing:1.1,padding:"0vw 1.875vw"}} onMouseEnter={toggleproducts} className='flex items-center space-x-2 justify-center px-6 cursor-pointer '><span>PRODUCTS</span>< IoIosArrowDown className={`${nav ? 'rotate-180 transform' : ''} `}/></span><div> {nav && <Flip top><div  className='  md:text-base bg-black bg-opacity-70 text-white  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
+
+            <div id='navtext' style={{fontSize:"1.25vw",paddingTop:"1vw"}} className="hidden md:flex  absolute w-full justify-center text-white   ">
+              <a style={{ textUnderlineOffset: 8 }} href="/" onMouseEnter={offproducts} className="  hover:underline  decoration-2 ">HOME</a>
+              <a style={{ textUnderlineOffset: 8}}  className=" "><span style={{padding:"0vw 2vw"}} onMouseEnter={toggleproducts} className='flex  justify-center px-6 cursor-pointer '>PRODUCTS< IoIosArrowDown style={{marginLeft:"1vw"}} className={`${nav ? 'rotate-180 transform ml-4 self-center' : 'ml-4 self-center'} `}/></span><div> {nav && <Flip top><div style={{fontSize:"1.25vw",marginTop:"0.4vw"}} className='  md:text-base bg-black bg-opacity-70 text-white  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
      
      <div style={{ }} className="flex flex-col  ">
        {
          Object.keys(data).map((p) => {
-           return (<div key={p} className="flex ">
-             <div   className="flex flex-col justify-start z-50">
-               <li  id={data[p]} onMouseEnter={sub[p] ? on:off}  className='flex items-center  w-full py-1 px-1 '  ><a className='flex items-center space-x-3' href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}><span>{data[p]}</span><span>{sub[p] && < IoIosArrowDown className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></a></li>
-             </div>
-             {listd && sub[p] && <div  className='z-50 absolute left-44 w-full flex flex-col'>
-             { subcategory[0].map((s)=>{return(<a key={s}  href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`} className='bg-black bg-opacity-70 text-white px-4 py-2 text-sm cursor-pointer' >{s}</a>)})}
+           return (<div key={p} className="flex z-50">
+            
+               <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"12.75vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><a className='flex items-center ' href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}><span className='w-full'>{data[p]}</span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></a></li>
+             
+             {listd && sub[p] && <div style={{left:"13.3vw"}}  className='z-50 absolute shadow-black shadow-sm bg-black bg-opacity-70 left-44 w-full flex flex-col'>
+             { subcategory[0].map((s)=>{return(<a key={s}  href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`} style={{fontSize:"1.25vw",height:"2.85vw",width:"13vw",margin:"0.4vw"}} className=' text-white  text-sm cursor-pointer flex items-center leading-relaxed' >{s}</a>)})}
              
                </div>}
                </div>
@@ -525,13 +526,13 @@ setInterval(() => {
 
 
    </div></Flip>}</div></a>
-              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1 }}  href="/about" className="  hover:underline  decoration-2   ">ABOUT US</a>
-              <a style={{ textUnderlineOffset: 8,letterSpacing:1.1 ,padding:"0vw 1.875vw" }}  onMouseEnter={offproducts} href="/contact" className="px-6     hover:underline  decoration-2   ">CONTACT US</a>
+              <a style={{ textUnderlineOffset: 8 }}  href="/about" className="  hover:underline  decoration-2   ">ABOUT US</a>
+              <a style={{ textUnderlineOffset: 8 ,padding:"0vw 2vw" }}  onMouseEnter={offproducts} href="/contact" className="px-6     hover:underline  decoration-2   ">CONTACT US</a>
             </div>
-            <div  className='flex '>
+            <div style={{paddingTop:"1vw"}} className='flex '>
             {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{letterSpacing:1.1,fontSize:"1.25vw"}} className=" text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">Log In</a>}
             {user.value && <MdAccountCircle style={{fontSize:"2.37vw"}} className=" font-medium  cursor-pointer transition text-white duration-300 md:text-3xl  2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
-            {item!=0 && <div style={{fontSize:"1.2vw",padding:"0vw 0.5vw",right:"1.9vw",top:"0.6vw"}} className='text-white absolute bg-black right-3 top-2 px-2 rounded-full'>{item}</div>}
+            {item!=0 && <div style={{fontSize:"1.2vw",padding:"0vw 0.6vw",right:"2.3vw",top:"1.2vw"}} className='text-white absolute bg-black right-3 top-2 px-2 rounded-full'>{item}</div>}
             <HiShoppingCart style={{fontSize:"2.37vw",margin:"0vw 2vw"}} id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart text-white cursor-pointer md:text-3xl 2xl:text-4xl ' />
           </div>
           </div>

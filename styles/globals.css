@@ -111,7 +111,7 @@ min-width: 12%;
 }
 .whatsapp:hover,.hovered{
     
-    width: 12rem;
+    width: 15vw;
     transition: width ease-in-out 0.5s;
 }
 
