@@ -93,7 +93,7 @@ export default function Home() {
       <div style={{ height: "90vh" }} className='max-h-28 md:max-h-full'>
         <div style={{ height: "90vh" }} className=' w-full overflow-hidden object-cover top-0 fixed -z-10 '>
 
-          <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,lineHeight:1.2,fontSize:"6vw",top:"14vw"}} className='absolute md:top-52 top-14 text-center w-full font-extrabold z-20 2xl:text-7xl md:text-7xl  text-gray-200  '>PUSHING LIMITS<br></br> FOR YOUR LUXURIES</h1>
+          <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,lineHeight:1.2,fontSize:"4.75vw",top:"15vw"}} className='absolute md:top-52 top-14 text-center w-full font-extrabold z-20 2xl:text-7xl md:text-7xl  text-gray-200  '>PUSHING LIMITS<br></br> FOR YOUR LUXURIES</h1>
           <Slide bottom><div className="bg-black w-full h-full absolute top-0 bg-opacity-40 z-10"></div><img className="md:h-full w-full object-cover" src='/Image for Sketch Art Home screen 3PNG.png'></img></Slide>
         </div>
 
@@ -103,7 +103,7 @@ export default function Home() {
 
       <div style={{  backgroundColor: "#bfb1c4" }} className=' '>
         <section className="text-white">
-          <div style={{padding:"9.45vw 1.57vw 0vw"}} className=" mx-auto flex  top-0 md:flex-row flex-col items-center">
+          <div style={{padding:"9.45vw 4vw 0vw"}} className=" mx-auto flex  top-0 md:flex-row flex-col items-center">
             <div className='overflow-hidden'>
               <div style={{width:"42.5vw"}} className=" hover:transition-transform ease-in duration-500  hover:scale-125  w-full mb-10  md:mb-0">
                 <Slide left> <img className="object-cover object-center" alt="hero" src="/1.jpg" /></Slide>
@@ -125,7 +125,7 @@ export default function Home() {
           </div>
         </section>
         <section className="text-white">
-          <div style={{padding:"7.5vw 1.57vw"}} className=" mx-auto flex px-5 md:px-8 2xl:px-10 pt-8 md:py-24 md:flex-row flex-col-reverse items-center">
+          <div style={{padding:"7.5vw 4vw"}} className=" mx-auto flex px-5 md:px-8 2xl:px-10 pt-8 md:py-24 md:flex-row flex-col-reverse items-center">
             <div style={{}} className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16   flex flex-col md:items-start md:text-left mb-16 md:mb-0 ">
               <Slide bottom> <h1 style={{fontFamily: "'Fjalla One', sans-serif",lineHeight:1.1,fontSize:"3.75vw",marginBottom:"1.875vw"}} className=" md:text-5xl 2xl:text-7xl text-3xl mb-4 md:mb-6 2xl:mb-10 uppercase font- ">How to choose
                 <br className="hidden lg:inline-block" /> your blinds?
