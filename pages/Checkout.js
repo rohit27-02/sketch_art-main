@@ -48,9 +48,9 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
         <div style={{fontFamily: "'Roboto Slab', serif"}} className='container m-auto'>
         <div style={{backgroundColor:"#bfb1c4"}} className='absolute top-0 w-full h-20 '></div>
            
-            <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5}} className='font-bold text-xl md:text-4xl text-center text-gray-800 py-5 md:my-10'>CHECKOUT</h1>
+            <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,paddingTop:"12vw",paddingBottom:"6vw"}} className='font-bold text-xl md:text-4xl text-center text-gray-800  '>CHECKOUT</h1>
             <div>
-                <h2 className='font-bold text-xl md:mx-52 md:py-10 py-6 mx-8'>1. Contact Details</h2>
+                <h2 className='font-bold text-xl md:mx-52 mx-8'>1. Contact Details</h2>
             <div className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
                 <div className="relative flex-grow w-full">
                     <label forhtml="full-name" className="leading-7 text-sm text-gray-600">Full Name</label>
