@@ -94,7 +94,8 @@ useEffect(() => {
 
 
   return <>
-    {sw && <div style={{height:"90vh"}}  className='w-full '><img className='h-full  w-full' alt='img' src='/zebra blind.jpg'></img></div>}
+  {sw && <div style={{backgroundColor:"#bfb1c4",height:"6.2vw"}} className='absolute top-0 w-full  '></div>}
+    {sw && <div style={{height:"82vh",marginTop:"10vw" ,padding:"0vw 7.5vw"}}  className='w-full '><img className='  w-full' alt='img' src='/Honeycomb blinds.png'></img></div>}
 {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
     <section style={{  fontFamily: "'poppins', sans-serif"}} className="text-gray-900 flex justify-center  body-font overflow-hidden">
       <ToastContainer
@@ -108,12 +109,12 @@ useEffect(() => {
         draggable
         pauseOnHover
       />
-      <div style={{padding:"3.75vw 0vw"}} className=" w-full md:py-12 mt-10 md:mt-20">
+      <div  className=" w-full ">
 
         <div  className='w-full  flex-col justify-center md:flex-row flex '>
           <div style={{ backgroundColor: "#ebeaeb"}} className='md:w-5/12 w-full'>
            {sw && <img alt="ecommerce" style={{height:"100vh"}} className=" w-full" src="/Wall Image.png" />}
-            <img alt="ecommerce" style={{height:"45vh",bottom:"-62vh",left:"24.5vw"}} className=" md:absolute mx-auto md:py-0 py-10 " src={product.variants[selectedcolor].img} />
+            <img alt="ecommerce" style={{height:"45vh",bottom:"-55vh",left:"24.5vw"}} className=" md:absolute mx-auto md:py-0 py-10 " src={product.variants[selectedcolor].img} />
             <div style={{fontSize:"1.1vw",paddingLeft:"1.875vw"}} className='w-full pl-6  pb-4'>
               
               <div style={{fontSize:"1.25vw",padding:"1.875vw"}} className='text-gray-800 flex items-center  pb-2 pt-6'><p style={{backgroundColor: "#bfb1c4",height:"1.1vw",width:"2vw",marginLeft:"-2.3vw"}} className='w-5 -ml-6 absolute h-3'></p>Product Summary</div>

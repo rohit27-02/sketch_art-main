@@ -134,9 +134,9 @@ const Contact = ({ info }) => {
         <h1>Our email</h1>
         <p>{info[0].email}</p>
       </div>
-       <div style={{fontSize:"1.25vw",lineHeight:"4vw"}} className='text-center  flex flex-col items-center w-1/3'> 
+       <div style={{fontSize:"1.25vw"}} className='text-center  flex flex-col items-center w-1/3'> 
         <GrMapLocation style={{fontSize:"3.75vw"}} className='text-5xl'/>
-        <h1>Our address</h1>
+        <h1 style={{margin:"1vw 0vw  1.6vw 0vw"}}>Our address</h1>
         <p>{info[0].address}</p>
       </div>
      

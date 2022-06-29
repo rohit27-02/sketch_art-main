@@ -91,6 +91,7 @@ export default function Home() {
       />
     
       <div style={{ height: "90vh" }} className='max-h-28 md:max-h-full'>
+          <div className="w-full flex justify-center  "><button style={{top:"32vw",backgroundColor: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw"}} className="absolute text-white font-lg"><a   href="/motorizedblinds">Learn More</a></button></div>
         <div style={{ height: "90vh" }} className=' w-full overflow-hidden object-cover top-0 fixed -z-10 '>
 
           <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,lineHeight:1.2,fontSize:"4.75vw",top:"15vw"}} className='absolute md:top-52 top-14 text-center w-full font-extrabold z-20 2xl:text-7xl md:text-7xl  text-gray-200  '>PUSHING LIMITS<br></br> FOR YOUR LUXURIES</h1>

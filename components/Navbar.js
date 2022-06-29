@@ -40,15 +40,15 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
   const [method, setmethod] = useState("login");
   const [name, setname] = useState("");
   const [item, setitem] = useState(0);
+  const [navqty, setnavqty] = useState([]);
+
+
 
   useEffect(() => {
-
-    if (screen.width > 500) {
-      setsw(true)
-    }
-  
    
-  }, []);
+  Object.keys(cart).map((k)=>{navqty.push(cart[k].qty)
+   console.log(navqty)})
+  }, [cart]);
   const handleChange = (e) => {
 
     if (e.target.name == "email") {
@@ -251,12 +251,30 @@ setlistd(false)
       setsw(true)
     }
   setitem(Object.keys(cart).length)
-
+  
   }, []);
+ 
 setInterval(() => {
   setitem(Object.keys(cart).length)
 }, 1000);
+ const minus=(e)=>{
+  console.log(e.target.id)
+  const item = JSON.parse(localStorage.getItem("cart"))
+if(item[e.target.id].qty >1){
+ item[e.target.id].qty=item[e.target.id].qty-1
+ localStorage.setItem("cart",JSON.stringify(item))
+}
+ }
+
+
+ const plus=(e)=>{
+  console.log(e.target.id)
+  const item = JSON.parse(localStorage.getItem("cart"))
+ item[e.target.id].qty=item[e.target.id].qty+1
+ localStorage.setItem("cart",JSON.stringify(item))
  
+
+ }
  
   const show=(e)=>{
     setmethod(e.target.id)
@@ -456,26 +474,31 @@ setInterval(() => {
         {admin == "true" && <a className=' text-center ' href={"/adminpanel"}><li className=''>Admin Panel</li></a>}
       </ul>
     </div>}
-    <div ref={ref}  style={{fontFamily: "'Roboto Slab', serif",width:"33vw",padding:"3.2vw"}} className="sidebar scrollbar-hide text-lg md:text-xl 2xl:text-2xl bg-black bg-opacity-80 fixed right-0 top-0 flex  items-center flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 text-white shadow-xl overflow-y-scroll h-full">
-      <h2 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.2,wordSpacing:2}} className='font-bold text-xl  lg:text-3xl'>CART</h2>
-      <AiOutlineClose onClick={toggleCart} className='hover:bg-black hover:text-white  cart fixed top-4 left-4 cursor-pointer  text-white' />
+    <div ref={ref}  style={{fontFamily: "'lato', sans-serif",width:"30vw",padding:"1.5vw 1.2vw",fontSize:"1vw"}} className="sidebar text-gray-800 rounded-xl scrollbar-hide text-lg md:text-xl 2xl:text-2xl fixed right-0 top-0 flex   flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 bg-white shadow-xl overflow-y-scroll h-full">
+      <h2  style={{fontSize:"2.3vw"}}>My Cart ({item})</h2>
+      <AiOutlineClose onClick={toggleCart} className='hover:bg-black hover:text-white  cart fixed top-4 right-4 cursor-pointer ' />
       <div onChange={toggleCart}>
-        <ol className='list-decimal text-lg mx-1 my-3'>
+        <ul style={{padding:"1vw 1vw",marginTop:"1vw"}} className='border-2 rounded-xl  '>
           {Object.keys(cart).length == 0 && <div>
             No items in the cart
           </div>}
           {Object.keys(cart).map((k) => {
          
-            return <li key={k}>
+            return <li className='border-b-2 last:border-none' key={k}>
               
-              <div className='flex my-2 justify-between'>
-                <div className='ml-2 w-2/3'>{cart[k].name} ({cart[k].width} X {cart[k].height}/{cart[k].variant})</div>
-                <span>{cart[k].qty}</span>
+              <div className='flex my-2 justify-between items-center'>
+                <div style={{width:"5vw",marginTop:"1.1vw"}} className="overflow-hidden self-start"><img className='object-scale-down' alt='cart' src={cart[k].img}></img></div>
+                <div style={{marginLeft:"0.5"}} className='ml-2 w-2/3'>
+                  <div style={{fontSize:"1.5vw"}}>{cart[k].name}</div>
+                <div>Size : {cart[k].width} x {cart[k].height}</div>
+                <div>Color : {cart[k].variant}</div>
+                <div><span id={k} className="cursor-pointer" onClick={(e)=>minus(e)}>-</span> {navqty[0]} <span className="cursor-pointer" id={k} onClick={(e)=>plus(e)}>+</span></div>
+                </div>
                 <CgTrashEmpty className='cursor-pointer' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/>
               </div>
             </li>;
           })}
-        </ol>
+        </ul>
       </div>
       <div className='font-bold mt-10'>Total: ₹ {subTotal}</div>
       <a href={"/Checkout"}><button style={{ backgroundColor: "#bfb1c4" }} className="flex text-black hover:opacity-80   border-0 py-2 w-36 justify-center my-7 mr-3 focus:outline-none   "><BsFillBagCheckFill className='my-auto mr-1' />Check out</button></a>
@@ -507,12 +530,12 @@ setInterval(() => {
      <div style={{ }} className="flex flex-col  ">
        {
          Object.keys(data).map((p) => {
-           return (<div key={p} className="flex z-50">
+           return (<div key={p} style={{fontSize:"1vw"}} className="flex z-50">
             
-               <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><a className='flex items-center ' href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}><span className='w-full'>{data[p]}</span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></a></li>
+               <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><a className='flex items-center ' href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}><span className='w-full uppercase'>{data[p]}</span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></a></li>
              
              {listd && sub[p] && <div style={{left:"12.45vw"}}  className='z-50 absolute shadow-black shadow-sm bg-black bg-opacity-70 left-44 min-w-max flex flex-col'>
-             { subcategory[0].map((s)=>{return(<a key={s}  href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`} style={{fontSize:"1.25vw",height:"2.85vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max  text-sm cursor-pointer flex items-center' >{s}</a>)})}
+             { subcategory[0].map((s)=>{return(<a key={s}  href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`} style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center' >{s}</a>)})}
              
                </div>}
                </div>

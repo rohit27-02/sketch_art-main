@@ -5,7 +5,7 @@ import { Slide } from 'react-reveal'
 const motorizedblinds = () => {
   return (<>
     <div id='top' style={{ backgroundColor: "#bfb1c4", }} className='w-full h-20 absolute top-0'></div>
-    <div className='px-24 space-y-10 py-10'>
+    <div className='px-24 space-y-10 pt-20 pb-10'>
       <Slide bottom> <div><img alt='img' src='https://www.mac.in/assets/site/images/product/MOTORISED-BLINDS/slider-1.jpg'></img></div></Slide>
 
       <div style={{ fontFamily: "'Fjalla One', sans-serif" }} className='text-center text-5xl  '>MOTORIZED BLINDS</div>
