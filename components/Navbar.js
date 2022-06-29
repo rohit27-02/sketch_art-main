@@ -4,7 +4,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { AiOutlineClose, AiOutlinePlusCircle, AiOutlineMinusCircle, AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus, AiOutlineMenu } from 'react-icons/ai';
 import { BsFillBagCheckFill } from 'react-icons/bs';
 import { CgTrashEmpty } from 'react-icons/cg';
 import { MdAccountCircle } from 'react-icons/md';
@@ -23,7 +23,7 @@ import { Bounce, Fade, Flip, LightSpeed, Rotate, Slide, Zoom } from 'react-revea
 import { BsWhatsapp } from "react-icons/bs"
 import { data } from 'autoprefixer';
 
-function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subTotal, products }) {
+function Navbar({ saveCart,logout, user, cart, addToCart, removeFromCart, clearCart, subTotal, products }) {
   const [dropDown, setdropDown] = useState(false);
   const [admin, setadmin] = useState(false);
   const [listd, setlistd] = useState(false);
@@ -40,15 +40,11 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
   const [method, setmethod] = useState("login");
   const [name, setname] = useState("");
   const [item, setitem] = useState(0);
-  const [navqty, setnavqty] = useState([]);
+  const [navqty, setnavqty] = useState({});
 
 
 
-  useEffect(() => {
-   
-  Object.keys(cart).map((k)=>{navqty.push(cart[k].qty)
-   console.log(navqty)})
-  }, [cart]);
+ 
   const handleChange = (e) => {
 
     if (e.target.name == "email") {
@@ -209,9 +205,6 @@ function Navbar({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
     }, 2000);
   }
   }
-  
-
-
  
 
   const toggleCart = () => {
@@ -251,18 +244,22 @@ setlistd(false)
       setsw(true)
     }
   setitem(Object.keys(cart).length)
+
   
   }, []);
  
 setInterval(() => {
   setitem(Object.keys(cart).length)
+ 
 }, 1000);
  const minus=(e)=>{
   console.log(e.target.id)
   const item = JSON.parse(localStorage.getItem("cart"))
 if(item[e.target.id].qty >1){
  item[e.target.id].qty=item[e.target.id].qty-1
+ saveCart(item)
  localStorage.setItem("cart",JSON.stringify(item))
+ cart[e.target.id].qty=item[e.target.id].qty
 }
  }
 
@@ -272,9 +269,11 @@ if(item[e.target.id].qty >1){
   const item = JSON.parse(localStorage.getItem("cart"))
  item[e.target.id].qty=item[e.target.id].qty+1
  localStorage.setItem("cart",JSON.stringify(item))
- 
+ cart[e.target.id].qty=item[e.target.id].qty
+ saveCart(item)
 
  }
+
  
   const show=(e)=>{
     setmethod(e.target.id)
@@ -474,34 +473,35 @@ if(item[e.target.id].qty >1){
         {admin == "true" && <a className=' text-center ' href={"/adminpanel"}><li className=''>Admin Panel</li></a>}
       </ul>
     </div>}
-    <div ref={ref}  style={{fontFamily: "'lato', sans-serif",width:"30vw",padding:"1.5vw 1.2vw",fontSize:"1vw"}} className="sidebar text-gray-800 rounded-xl scrollbar-hide text-lg md:text-xl 2xl:text-2xl fixed right-0 top-0 flex   flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 bg-white shadow-xl overflow-y-scroll h-full">
-      <h2  style={{fontSize:"2.3vw"}}>My Cart ({item})</h2>
-      <AiOutlineClose onClick={toggleCart} className='hover:bg-black hover:text-white  cart fixed top-4 right-4 cursor-pointer ' />
-      <div onChange={toggleCart}>
-        <ul style={{padding:"1vw 1vw",marginTop:"1vw"}} className='border-2 rounded-xl  '>
+    <div ref={ref}  style={{fontFamily: "'lato', sans-serif",width:"30vw",padding:"1.5vw 1.2vw",fontSize:"1vw"}} className="sidebar text-gray-800 rounded-xl overflow-y-scroll scrollbar-hide text-lg md:text-xl 2xl:text-2xl fixed right-0 top-0 flex   flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 bg-white shadow-xl  h-full">
+      <h2  style={{fontSize:"2.3vw",lineHeight:"3vw"}}>My Cart ({item})</h2>
+      <AiOutlineClose style={{fontSize:"2vw"}} onClick={toggleCart} className=' cart fixed top-4 right-4 cursor-pointer ' />
+      <div className='' onChange={toggleCart}>
+        <ul style={{padding:"1vw 1vw",marginTop:"1vw",height:"70vh"}} className='border-2 overflow-y-scroll scrollbar-hide  rounded-xl  '>
           {Object.keys(cart).length == 0 && <div>
             No items in the cart
           </div>}
           {Object.keys(cart).map((k) => {
          
-            return <li className='border-b-2 last:border-none' key={k}>
+            return <li style={{marginTop:"1vw",lineHeight:"1.8vw"}} className='border-t-2 first:border-none' key={k}>
               
-              <div className='flex my-2 justify-between items-center'>
-                <div style={{width:"5vw",marginTop:"1.1vw"}} className="overflow-hidden self-start"><img className='object-scale-down' alt='cart' src={cart[k].img}></img></div>
+              <div style={{}} className='flex my-2 justify-between items-center'>
+                <div style={{width:"5vw",marginTop:"1vw"}} className="overflow-hidden self-start"><img className='object-scale-down' alt='cart' src={cart[k].img}></img></div>
                 <div style={{marginLeft:"0.5"}} className='ml-2 w-2/3'>
                   <div style={{fontSize:"1.5vw"}}>{cart[k].name}</div>
-                <div>Size : {cart[k].width} x {cart[k].height}</div>
-                <div>Color : {cart[k].variant}</div>
-                <div><span id={k} className="cursor-pointer" onClick={(e)=>minus(e)}>-</span> {navqty[0]} <span className="cursor-pointer" id={k} onClick={(e)=>plus(e)}>+</span></div>
+                <div style={{margin:"0.7vw 0vw"}} className='flex'><div style={{marginRight:"1vw"}}><span className='text-gray-500'>Size</span> : <span style={{fontSize:"1.2vw"}}>{cart[k].width} x {cart[k].height}</span></div>
+                <div><span className='text-gray-500'>Color</span> :  <span style={{fontSize:"1.2vw"}}>{cart[k].variant}</span></div></div>
+                <div style={{fontSize:"1.2vw"}} className='flex items-center ' ><AiOutlineMinus style={{marginRight:"1vw"}}  className="cursor-pointer border rounded-sm" id={k} onClick={(e)=>minus(e)}/> {cart[k].qty} <AiOutlinePlus className="cursor-pointer border rounded-sm" style={{marginLeft:"1vw"}} id={k} onClick={(e)=>plus(e)}/></div>
                 </div>
-                <CgTrashEmpty className='cursor-pointer' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/>
               </div>
+               <div className='w-full flex justify-end flex-col items-end' style={{fontSize:"1.5vw"}}>₹ {cart[k].price*cart[k].qty}
+                <CgTrashEmpty  className='cursor-pointer text-gray-500 scale-90' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/></div>
             </li>;
           })}
         </ul>
       </div>
-      <div className='font-bold mt-10'>Total: ₹ {subTotal}</div>
-      <a href={"/Checkout"}><button style={{ backgroundColor: "#bfb1c4" }} className="flex text-black hover:opacity-80   border-0 py-2 w-36 justify-center my-7 mr-3 focus:outline-none   "><BsFillBagCheckFill className='my-auto mr-1' />Check out</button></a>
+      <div style={{fontSize:"1.5vw",marginTop:"2vw"}} className='font-bold mt-10'>Total : ₹ {subTotal}</div>
+      <a href={"/Checkout"}><button style={{ backgroundColor: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" ,bottom:"2vw"}} className="flex text-gray-800 hover:opacity-80  fixed   border-0  justify-center focus:outline-none   "><BsFillBagCheckFill style={{marginRight:"0.4vw"}} className='my-auto ' /><span className='my-auto'>Check out</span></button></a>
      
     </div>
 
