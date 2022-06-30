@@ -244,14 +244,21 @@ setlistd(false)
       setsw(true)
     }
   setitem(Object.keys(cart).length)
+if(Router.pathname=="/product/[slug]" || Router.pathname=="/Checkout" || Router.pathname=="/motorizedblinds"){
+document.getElementById("nav").classList.remove("text-white")
+document.getElementById("img").classList.remove("invert")
+
+}
 
   
   }, []);
- 
-setInterval(() => {
+ useEffect(() => {
   setitem(Object.keys(cart).length)
+ }, [cart]);
+
+  
  
-}, 1000);
+
  const minus=(e)=>{
   console.log(e.target.id)
   const item = JSON.parse(localStorage.getItem("cart"))
@@ -517,7 +524,7 @@ if(item[e.target.id].qty >1){
 
 
     {/**main nav**/}
-    <nav  id='nav' onMouseLeave={offproducts} className=" z-40  absolute top-0 w-full ">
+    <nav  id='nav' onMouseLeave={offproducts} className=" z-40 text-white  absolute top-0 w-full ">
 
       <div style={{padding:"0vw 1vw"}}>
         <div className="flex ">
@@ -533,11 +540,11 @@ if(item[e.target.id].qty >1){
             
           </div>
 
-            <div id='navtext' style={{fontSize:"1.25vw",paddingTop:"1.3vw"}} className="hidden md:flex  absolute w-full justify-center text-white   ">
+            <div id='navtext' style={{fontSize:"1.25vw",paddingTop:"1.3vw"}} className="hidden md:flex  absolute w-full justify-center    ">
               <a style={{ textUnderlineOffset: 8 }} href="/" onMouseEnter={offproducts} className="  hover:underline  decoration-2 ">HOME</a>
-              <a style={{ textUnderlineOffset: 8}}  className=" "><span style={{padding:"0vw 2vw"}} onMouseEnter={toggleproducts} className='flex  justify-center px-6 cursor-pointer '>PRODUCTS< IoIosArrowDown style={{marginLeft:"1vw"}} className={`${nav ? 'rotate-180 transform ml-4 self-center' : 'ml-4 self-center'} `}/></span><div> {nav && <Flip top><div style={{fontSize:"1.25vw",marginTop:"0.4vw"}} className='  md:text-base bg-black bg-opacity-70 text-white  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
+              <a style={{ textUnderlineOffset: 8}}  className=" "><span style={{padding:"0vw 2vw"}} onMouseEnter={toggleproducts} className='flex  justify-center px-6 cursor-pointer '>PRODUCTS< IoIosArrowDown style={{marginLeft:"1vw"}} className={`${nav ? 'rotate-180 transform ml-4 self-center' : 'ml-4 self-center'} `}/></span><div> {nav && <Flip top><div style={{fontSize:"1.25vw",marginTop:"0.4vw"}} className='  md:text-base bg-black bg-opacity-70  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
      
-     <div style={{ }} className="flex flex-col  ">
+     <div style={{ }} className="flex flex-col  text-white">
        {
          Object.keys(data).map((p) => {
            return (<div key={p} style={{fontSize:"1vw"}} className="flex z-50">
@@ -563,10 +570,10 @@ if(item[e.target.id].qty >1){
               <a style={{ textUnderlineOffset: 8 ,padding:"0vw 2vw" }}  onMouseEnter={offproducts} href="/contact" className="px-6     hover:underline  decoration-2   ">CONTACT US</a>
             </div>
             <div style={{marginTop:"-0.5vw"}} className='flex items-center'>
-            {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontSize:"1.25vw"}} className="z-50  text-white text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover:text-white transition duration-300">LOG IN</a>}
-            {user.value && <MdAccountCircle style={{fontSize:"2.37vw"}} className=" font-medium  cursor-pointer transition text-white duration-300 md:text-3xl z-50 2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
-            <HiShoppingCart style={{fontSize:"2.37vw",margin:"0vw 2vw"}} id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover:text-white cart text-white z-50 cursor-pointer md:text-3xl 2xl:text-4xl ' />
-            {item!=0 && <div style={{fontSize:"1.2vw",padding:"0vw 0.6vw",right:"2.3vw",top:"1.2vw"}} className='text-white z-50 absolute bg-black right-3 top-2 px-2 rounded-full'>{item}</div>}
+            {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontSize:"1.25vw"}} className="z-50   text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover: transition duration-300">LOG IN</a>}
+            {user.value && <MdAccountCircle style={{fontSize:"2.37vw"}} className=" font-medium  cursor-pointer transition  duration-300 md:text-3xl z-50 2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
+            <HiShoppingCart style={{fontSize:"2.37vw",margin:"0vw 2vw"}} id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover: cart  z-50 cursor-pointer md:text-3xl 2xl:text-4xl ' />
+            {item!=0 && <div style={{fontSize:"1.2vw",padding:"0vw 0.6vw",right:"2.3vw",top:"1.2vw"}} className=' z-50 absolute bg-black text-white right-3 top-2 px-2 rounded-full'>{item}</div>}
           </div>
           </div>
           <div id='mnav' className="md:hidden text-white justify-between w-full flex  ">

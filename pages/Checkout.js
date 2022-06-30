@@ -45,7 +45,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
               
     }
     return (<>
-            <div style={{backgroundColor:"#bfb1c4",height:"6.2vw"}} className='absolute top-0 w-full h-20 '></div>
+           <div style={{height:"6.2vw",backgroundClip:""}} className='absolute border-b  border-black  top-0 w-full  '></div>
         <div style={{fontFamily: "'Roboto Slab', serif"}} className=' m-auto'>
            
             <h1 style={{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,paddingTop:"12vw",paddingBottom:"6vw",fontSize:"3vw"}} className='font-bold text-xl md:text-4xl text-center text-gray-800  '>CHECKOUT</h1>

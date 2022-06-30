@@ -94,7 +94,7 @@ useEffect(() => {
 
 
   return <>
-  {sw && <div style={{backgroundColor:"#bfb1c4",height:"6.2vw"}} className='absolute top-0 w-full  '></div>}
+  {sw && <div style={{height:"6.2vw",backgroundClip:""}} className='absolute border-b  border-black  top-0 w-full  '></div>}
     {sw && <div style={{height:"82vh",marginTop:"10vw" ,padding:"0vw 7.5vw"}}  className='w-full '><img className='  w-full' alt='img' src='/Honeycomb blinds.png'></img></div>}
 {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
     <section style={{  fontFamily: "'poppins', sans-serif"}} className="text-gray-900 flex justify-center  body-font overflow-hidden">
