@@ -140,12 +140,12 @@ useEffect(() => {
             </div>
             </div>
 
-            <div style={{ backgroundColor: "#bfb1c4",padding:"3.75vw 3.125vw" }} className='py-12 md:w-1/2 w-full px-4 md:px-10 '>
+            <div style={{ backgroundColor: "#ebeaeb",padding:"3.75vw 3.125vw" }} className='py-12 text-gray-800 md:w-1/2 w-full px-4 md:px-10 '>
           <div  className='flex flex-col '>
-            <span style={{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vw"}} className=" text-white text-5xl uppercase ">{product.title} </span>
+            <span style={{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vw"}} className="  text-5xl uppercase ">{product.title} </span>
             <div style={{fontSize:"1.25vw",padding:"1.875vw 0vw"}} className='space-x-6 flex py-6  text-base'>
-              <a href='#details' className='cursor-pointer flex items-center text-white  space-x-3  pr-4 border-black underline underline-offset-2 '><BsInfoCircleFill /><span>Products Details</span></a>
-              <a className='cursor-pointer underline flex items-center text-white  space-x-3 underline-offset-2 '><BsImages /><span>Products Gallery</span></a>
+              <a href='#details' className='cursor-pointer flex items-center  space-x-3  pr-4 border-black underline underline-offset-2 '><BsInfoCircleFill /><span>Products Details</span></a>
+              <a className='cursor-pointer underline flex items-center   space-x-3 underline-offset-2 '><BsImages /><span>Products Gallery</span></a>
             </div>
            
             <div style={{padding:"0vw 2.5vw",marginBottom:"1.875vw"}} className="  w-full px-8 mb-6 bg-white  ">
