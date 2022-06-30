@@ -6,11 +6,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus, AiOutlineMenu } from 'react-icons/ai';
 import { BsFillBagCheckFill } from 'react-icons/bs';
-import { CgTrashEmpty } from 'react-icons/cg';
 import { MdAccountCircle } from 'react-icons/md';
 import { useRef, useState, useEffect } from 'react';
 import { HiShoppingCart } from "react-icons/hi"
-import { IoIosArrowDown } from "react-icons/io"
+import { IoIosArrowDown} from "react-icons/io"
 import { Squash as Hamburger } from 'hamburger-react'
 import Router from 'next/router';
 import { Dialog } from '@headlessui/react'
@@ -21,6 +20,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { Bounce, Fade, Flip, LightSpeed, Rotate, Slide, Zoom } from 'react-reveal';
 import { BsWhatsapp } from "react-icons/bs"
+import {ImArrowLeft2 ,ImBin2 } from "react-icons/im"
 import { data } from 'autoprefixer';
 
 function Navbar({ saveCart,logout, user, cart, addToCart, removeFromCart, clearCart, subTotal, products }) {
@@ -473,36 +473,46 @@ if(item[e.target.id].qty >1){
         {admin == "true" && <a className=' text-center ' href={"/adminpanel"}><li className=''>Admin Panel</li></a>}
       </ul>
     </div>}
-    <div ref={ref}  style={{fontFamily: "'lato', sans-serif",width:"30vw",padding:"1.5vw 1.2vw",fontSize:"1vw"}} className="sidebar text-gray-800 rounded-xl overflow-y-scroll scrollbar-hide text-lg md:text-xl 2xl:text-2xl fixed right-0 top-0 flex   flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 bg-white shadow-xl  h-full">
-      <h2  style={{fontSize:"2.3vw",lineHeight:"3vw"}}>My Cart ({item})</h2>
-      <AiOutlineClose style={{fontSize:"2vw"}} onClick={toggleCart} className=' cart fixed top-4 right-4 cursor-pointer ' />
+    <div ref={ref}  style={{fontFamily: "'lato', sans-serif",width:"35vw",padding:"1.5vw 0.5vw",fontSize:"0.8vw"}} className="sidebar text-gray-600 overflow-y-scroll scrollbar-hide text-lg md:text-xl 2xl:text-2xl fixed right-0 top-0 flex   flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 bg-white shadow-xl  h-full">
+      <h2  style={{fontFamily: "'Fjalla One', sans-serif" ,letterSpacing:"0.5vw",fontSize:"2.8vw",lineHeight:"3vw"}} className=" w-full text-center">CART</h2>
+      <ImArrowLeft2 style={{fontSize:"2vw",top:'2vw',left:"1.2vw"}} onClick={toggleCart} className=' cart fixed  left-4 cursor-pointer ' />
       <div className='' onChange={toggleCart}>
-        <ul style={{padding:"1vw 1vw",marginTop:"1vw",height:"70vh"}} className='border-2 overflow-y-scroll scrollbar-hide  rounded-xl  '>
-          {Object.keys(cart).length == 0 && <div>
-            No items in the cart
+        <ul style={{padding:"1vw 1vw",height:"70vh"}} className=' overflow-y-scroll scrollbar-hide  rounded-xl  '>
+          {Object.keys(cart).length == 0 && <div style={{fontSize:"1.2vw"}}>
+            No items in the cart 😭
           </div>}
           {Object.keys(cart).map((k) => {
          
-            return <li style={{marginTop:"1vw",lineHeight:"1.8vw"}} className='border-t-2 first:border-none' key={k}>
+            return <li style={{marginTop:"1.5vw",padding:"0vw 1vw 1vw",lineHeight:"1.3vw",backgroundColor:"#ebeaeb",height:"20vh"}} className='  ' key={k}>
               
               <div style={{}} className='flex my-2 justify-between items-center'>
-                <div style={{width:"5vw",marginTop:"1vw"}} className="overflow-hidden self-start"><img className='object-scale-down' alt='cart' src={cart[k].img}></img></div>
-                <div style={{marginLeft:"0.5"}} className='ml-2 w-2/3'>
-                  <div style={{fontSize:"1.5vw"}}>{cart[k].name}</div>
-                <div style={{margin:"0.7vw 0vw"}} className='flex'><div style={{marginRight:"1vw"}}><span className='text-gray-500'>Size</span> : <span style={{fontSize:"1.2vw"}}>{cart[k].width} x {cart[k].height}</span></div>
-                <div><span className='text-gray-500'>Color</span> :  <span style={{fontSize:"1.2vw"}}>{cart[k].variant}</span></div></div>
-                <div style={{fontSize:"1.2vw"}} className='flex items-center ' ><AiOutlineMinus style={{marginRight:"1vw"}}  className="cursor-pointer border rounded-sm" id={k} onClick={(e)=>minus(e)}/> {cart[k].qty} <AiOutlinePlus className="cursor-pointer border rounded-sm" style={{marginLeft:"1vw"}} id={k} onClick={(e)=>plus(e)}/></div>
+                <div style={{width:"5.2vw",marginRight:"1vw",marginTop:"1vw"}} className="overflow-hidden self-start"><img className='object-scale-down' alt='cart' src={cart[k].img}></img></div>
+                <div style={{marginLeft:"0.5"}} className=' w-4/5'>
+                  <div style={{fontSize:"1.5vw"}} className="flex justify-between"><span style={{marginTop:"2vw"}} className="text-gray-800">{cart[k].name}</span> <ImBin2 style={{marginTop:"1vw"}} className='cursor-pointer text-gray-500 ' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/></div>
+                <div style={{margin:"0.7vw 0vw"}} className='flex'><div style={{marginRight:"1vw"}}><span className='text-gray-500'>Size</span> : <span style={{fontSize:"1vw"}}>{cart[k].width} x {cart[k].height}</span></div>
+                <div><span className='text-gray-500'>Color</span> :  <span style={{fontSize:"1vw"}}>{cart[k].variant}</span></div></div>
+               
+               <div className='flex justify-between w-full'> <div className=' flex justify-end flex-col items-end' style={{fontSize:"1.5vw",fontFamily: "'Fjalla One', sans-serif"}}>₹ {cart[k].price*cart[k].qty}
+                </div>
+                <div style={{fontSize:"1.25vw",lineHeight:"1.6vw"}} className='flex items-center  bg-white border border-black '>
+                <AiOutlineMinus id={k} onClick={(e)=>minus(e)}className=' cursor-pointer mx-2' style={{margin:"0vw 0.5vw"}} />
+                <span style={{width:"3vw"}} className='h-full border-x  border-black w-10 text-center'>{cart[k].qty}</span>
+                <AiOutlinePlus id={k} onClick={(e)=>plus(e)} className=' cursor-pointer mx-2' style={{margin:"0vw 0.5vw"}} />
+                </div>
+                </div>
+               
                 </div>
               </div>
-               <div className='w-full flex justify-end flex-col items-end' style={{fontSize:"1.5vw"}}>₹ {cart[k].price*cart[k].qty}
-                <CgTrashEmpty  className='cursor-pointer text-gray-500 scale-90' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/></div>
+              
             </li>;
           })}
         </ul>
       </div>
-      <div style={{fontSize:"1.5vw",marginTop:"2vw"}} className='font-bold mt-10'>Total : ₹ {subTotal}</div>
-      <a href={"/Checkout"}><button style={{ backgroundColor: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" ,bottom:"2vw"}} className="flex text-gray-800 hover:opacity-80  fixed   border-0  justify-center focus:outline-none   "><BsFillBagCheckFill style={{marginRight:"0.4vw"}} className='my-auto ' /><span className='my-auto'>Check out</span></button></a>
-     
+      <div style={{fontSize:"1.5vw",marginTop:"2vw",padding:"0vw 1vw"}} className='font-bold w-full flex justify-between mt-10'>
+        <span>Total ({item} items) </span> <span>₹ {subTotal}</span></div>
+     <div style={{marginTop:"1.8vw"}} className='w-full flex justify-center'>
+      <a href={"/Checkout"}><button style={{ backgroundColor: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }} className="flex  text-white hover:opacity-80     border-0  justify-center focus:outline-none   "><span className='my-auto'>Check out</span></button></a>
+      </div>
     </div>
 
 
