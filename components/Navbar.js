@@ -252,9 +252,11 @@ document.getElementById("img").classList.remove("invert")
 
   
   }, []);
- useEffect(() => {
-  setitem(Object.keys(cart).length)
- }, [cart]);
+setInterval(() => {
+  setitem(Object.keys(JSON.parse(localStorage.getItem("cart"))).length)
+}, 1000);
+ 
+ 
 
   
  
@@ -484,7 +486,7 @@ if(item[e.target.id].qty >1){
       <h2  style={{fontFamily: "'Fjalla One', sans-serif" ,letterSpacing:"0.5vw",fontSize:"2.8vw",lineHeight:"3vw"}} className=" w-full text-center">CART</h2>
       <ImArrowLeft2 style={{fontSize:"2vw",top:'2vw',left:"1.2vw"}} onClick={toggleCart} className=' cart fixed  left-4 cursor-pointer ' />
       <div className='' onChange={toggleCart}>
-        <ul style={{padding:"1vw 1vw",height:"70vh"}} className=' overflow-y-scroll scrollbar-hide  rounded-xl  '>
+        <ul style={{padding:"1vw 1vw",height:"70vh"}} className=' overflow-y-scroll  rounded-xl  '>
           {Object.keys(cart).length == 0 && <div style={{fontSize:"1.2vw"}}>
             No items in the cart 😭
           </div>}
