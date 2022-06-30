@@ -43,7 +43,9 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [phone, setphone] = useState("");
   const [ready, setready] = useState(false);
   const [img, setimg] = useState("");
+  const [poster, setposter] = useState("");
   const [care, setcare] = useState("");
+  const [sub, setsub] = useState(false);
 
 
 useEffect(() => {
@@ -67,6 +69,7 @@ useEffect(() => {
   setcategory(products[index].category)
   setsubcategory(products[index].subcategory)
   setcare(products[index].care)
+  setposter(products[index].poster)
  }
 
 }, [index]);
@@ -91,6 +94,7 @@ function rm(e){
     }
     else if (e.target.id == "subcategory") {
       setsubcategory(e.target.value)
+      setsub(true)
     }
     else if (e.target.id == "quantity") {
       setavailableQty(e.target.value)
@@ -120,6 +124,7 @@ function rm(e){
     setcolorcode("")
     setimg("")
     setcare("")
+    setposter("")
 
    
   }
@@ -141,7 +146,7 @@ const selectedproduct= (event)=>{
    
     e.preventDefault()
     if(au){
-      const data = [{ title, desc, variants, category,care, price, availableQty, slug,subcategory }]
+      const data = [{ title, desc,poster, variants, category,care, price, availableQty, slug,subcategory }]
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addproducts`, {
         method: "POST",
       headers: {
@@ -160,11 +165,8 @@ const selectedproduct= (event)=>{
     });}
     else{
     if(index !=null && ready){
-      var sub = false;
-      if(subcategory !==null){
-        sub=true
-      }
-      const data = [{ title, desc, variants, category,care,sub, price, availableQty,subcategory, slug }]
+     
+      const data = [{ title, desc,poster, variants, category,care,sub, price, availableQty,subcategory, slug }]
    
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
         method: "POST",
@@ -298,6 +300,29 @@ if(response.success){
 }
  
   }
+ async function upload2(e){
+   
+  var file = document.getElementById('poster');
+  var form = new FormData();
+  form.append("image", file.files[0])
+  let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`,{
+    method:"POST",body:form,
+  })
+  let response = await res.json()
+  setposter(response.data.url)
+if(response.success){
+  toast.success('Image uploaded', {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+}
+ 
+  }
  async function uploadposter(){
    
   var file = document.getElementById('colorcode');
@@ -403,6 +428,17 @@ if(response.success){
                         <div className="md:w-4/6">
                         
                           <input value={title} name='title'  onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="title" type="text" ></input>
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="poster">
+                            Poster
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                        
+                        <input onChange={upload2} className="" id="poster" type="file" accept='image/*' />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
