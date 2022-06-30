@@ -249,7 +249,6 @@ document.getElementById("nav").classList.remove("text-white")
 document.getElementById("img").classList.remove("invert")
 
 }
-
   
   }, []);
 setInterval(() => {
