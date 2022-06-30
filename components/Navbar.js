@@ -252,7 +252,8 @@ document.getElementById("img").classList.remove("invert")
   
   }, []);
 setInterval(() => {
-  setitem(Object.keys(JSON.parse(localStorage.getItem("cart"))).length)
+  if(Object.keys(JSON.parse(localStorage.getItem("cart"))).length>0){
+  setitem(Object.keys(JSON.parse(localStorage.getItem("cart"))).length)}
 }, 1000);
  
  

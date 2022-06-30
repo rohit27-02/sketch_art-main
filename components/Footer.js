@@ -28,11 +28,7 @@ const Footer = () => {
 
   return (<>
 
-    <Head>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"/>
-</Head>
+   
 
    <div style={{height:"40vh",fontSize:"1.25vw"}} className="w-full bg-white">
      <div style={{fontFamily: "'Poppins', sans-serif",padding:"2.5vw 6.25vw"}} className='grid md:grid-flow-col py-6 2xl:py-10 2xl:px-24 md:py-8 md:px-20 px-7  w-full h-full'>
