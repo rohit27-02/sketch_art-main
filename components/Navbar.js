@@ -252,7 +252,7 @@ document.getElementById("img").classList.remove("invert")
   
   }, []);
 setInterval(() => {
-  if(Object.keys(cart).length>0 && Object.keys(cart).length !== item){
+  if(Object.keys(cart).length>=0 && Object.keys(cart).length !== item){
   setitem(Object.keys(cart).length)}
 }, 1000);
  
