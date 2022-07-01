@@ -11,6 +11,7 @@ import  RubberBand  from 'react-reveal/RubberBand'
 const Footer = () => {
   const [data, setdata] = useState({});
   const [category, setcategory] = useState([]);
+  const [sw, setsw] = useState(false);
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_HOST}/api/info`)
       .then((res) => res.json())
@@ -23,6 +24,9 @@ const Footer = () => {
         setcategory(data)
       })
 
+      if(screen.width>768){
+        setsw(true)
+      }
 
   }, []);
 
@@ -30,19 +34,19 @@ const Footer = () => {
 
    
 
-   <div style={{height:"40vh",fontSize:"1.25vw"}} className="w-full bg-white">
-     <div style={{fontFamily: "'Poppins', sans-serif",padding:"2.5vw 6.25vw"}} className='grid md:grid-flow-col py-6 2xl:py-10 2xl:px-24 md:py-8 md:px-20 px-7  w-full h-full'>
+   <div style={sw?{height:"40vh",fontSize:"1.25vw"}:{height:"40vw",fontSize:"1.25vh"}} className="w-full bg-white">
+     <div style={sw?{fontFamily: "'Poppins', sans-serif",padding:"2.5vw 6.25vw"}:{fontFamily: "'Poppins', sans-serif",padding:"2.5vh 6.25vw"}} className='grid grid-flow-col py-6 2xl:py-10 2xl:px-24 md:py-8 md:px-20 px-7  w-full h-full'>
        <div className='col-span-11  flex justify-evenly flex-col '>
          <p>SKETCH ART BY DEVELOPER INFOTECH</p>
          <h1 style={{fontWeight:'bolder',fontSize:"2em"}} className=''>You belong here. </h1>
-         <p>MADE WITH LOVE <RubberBand><span style={{fontSize:"1.8vw",marginLeft:"0.7vw"}} className='font-bold text-xl ml-2'>♡</span></RubberBand></p>
+         <p>MADE WITH LOVE <RubberBand><span style={sw?{fontSize:"1.8vw",marginLeft:"0.7vw"}:{fontSize:"1.8vh",marginLeft:"0.7vh"}} className='font-bold text-xl ml-2'>♡</span></RubberBand></p>
        </div>
        <div style={{padding:"1.875vw 0vw"}} className='col-span-1 flex flex-col  '>
         
-         <div style={{marginTop:"1.25vw"}} className='underline underline-offset-4'><a href={"/"}>HOME</a></div>
-         <div style={{marginTop:"1.25vw"}} className='underline underline-offset-4'><a href={"/about"}>ABOUT US</a></div>
-         <div style={{marginTop:"1.25vw"}} className='underline underline-offset-4'><a href=''>PRODUCTS</a></div>
-         <div style={{marginTop:"1.25vw"}} className='underline underline-offset-4'><a href={"/contact"}>CONTACT US</a></div>
+         <div style={sw?{marginTop:"1.25vw"}:{marginTop:"1.25vh"}} className='underline underline-offset-4'><a href={"/"}>HOME</a></div>
+         <div style={sw?{marginTop:"1.25vw"}:{marginTop:"1.25vh"}} className='underline underline-offset-4'><a href={"/about"}>ABOUT US</a></div>
+         <div style={sw?{marginTop:"1.25vw"}:{marginTop:"1.25vh"}} className='underline underline-offset-4'><a href=''>PRODUCTS</a></div>
+         <div style={sw?{marginTop:"1.25vw"}:{marginTop:"1.25vh"}} className='underline underline-offset-4'><a href={"/contact"}>CONTACT US</a></div>
         
        </div>
      </div>

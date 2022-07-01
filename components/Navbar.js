@@ -298,7 +298,7 @@ if(item[e.target.id].qty >1){
   const ref = useRef();
  
   return (<>
-  <div style={{fontSize:"1.25vw",height:"3.75vw",right:"3.5vw",bottom:"2.6vw"}} className=" fixed overflow-hidden bottom-8 h-12 min-w-fit right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full  items-center whatsapp flex justify-end"><a style={{ fontFamily: "'lato', sans-serif",right:"14vw",bottom:"1vw"}} id="what" className="absolute  right-44 bottom-3 w-0  " href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+919920223462</a><BsWhatsapp style={{padding:"0.625vw",fontSize:"3.8vw"}} className=' p-2  z-50 text-5xl ' /></div>
+  <div style={sw?{fontSize:"1.25vw",height:"3.75vw",right:"3.5vw",bottom:"2.6vw"}:{fontSize:"1.25vh",height:"3.75vh",right:"3.5vh",bottom:"2.6vh"}} className=" fixed overflow-hidden bottom-8 h-12 min-w-fit right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full  items-center whatsapp flex justify-end"><a style={sw?{ fontFamily: "'lato', sans-serif",right:"14vw",bottom:"1vw"}:{ fontFamily: "'lato', sans-serif",right:"14vh",bottom:"1vh"}} id="what" className="absolute  right-44 bottom-3 w-0  " href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+919920223462</a><BsWhatsapp style={sw?{padding:"0.625vw",fontSize:"3.8vw"}:{padding:"0.625vh",fontSize:"3.8vh"}} className=' p-2  z-50 text-5xl ' /></div>
 
 <ToastContainer
           position="top-center"
@@ -476,7 +476,7 @@ if(item[e.target.id].qty >1){
     </Dialog>
 
   
-    {dropDown && <div onMouseLeave={() => setdropDown(false)} style={{fontSize:"1.4vw",marginRight:"2.6vw",top:"4.6vw",padding:"0.2vw"}} className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm text-center z-50 top-16 px-5  text-lg md:px-0 py-3  md:acctext '>
+    {dropDown && <div onMouseLeave={() => setdropDown(false)} style={sw?{fontSize:"1.4vw",marginRight:"2.6vw",top:"4.6vw",padding:"0.2vw"}:{fontSize:"1.4vh",marginRight:"2.6vh",top:"4.6vh",padding:"0.2vh"}} className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm text-center z-50 top-16 px-5  text-lg md:px-0 py-3  md:acctext '>
       <ul>
         
         <a className='  ' href={'/orders'}><li className=''>Orders</li></a>
@@ -484,31 +484,32 @@ if(item[e.target.id].qty >1){
         {admin == "true" && <a className=' text-center ' href={"/adminpanel"}><li className=''>Admin Panel</li></a>}
       </ul>
     </div>}
-    <div ref={ref}  style={{fontFamily: "'lato', sans-serif",width:"35vw",padding:"1.5vw 0.5vw",fontSize:"0.8vw"}} className="sidebar text-gray-600 overflow-y-scroll scrollbar-hide text-lg md:text-xl 2xl:text-2xl fixed right-0 top-0 flex   flex-col p-10 2xl:w-96 transform transition-transform duration-500 ease-in-out  translate-x-full z-50 bg-white shadow-xl  h-full">
-      <h2  style={{fontFamily: "'Fjalla One', sans-serif" ,letterSpacing:"0.5vw",fontSize:"2.8vw",lineHeight:"3vw"}} className=" w-full text-center">CART</h2>
-      <ImArrowLeft2 style={{fontSize:"2vw",top:'2vw',left:"1.2vw"}} onClick={toggleCart} className=' cart fixed  left-4 cursor-pointer ' />
+    
+    <div ref={ref}  style={{fontFamily: "'lato', sans-serif"}} className="sidebar cart text-gray-600 overflow-y-scroll scrollbar-hide  fixed right-0 top-0 flex   flex-col  transform transition-transform duration-500 ease-in-out  translate-x-full z-50 bg-white shadow-xl  h-full">
+      <h2  style={{fontFamily: "'Fjalla One', sans-serif" }} className="carttitle w-full text-center">CART</h2>
+      <ImArrowLeft2 style={{}} onClick={toggleCart} className='arrowleft fixed  left-4 cursor-pointer ' />
       <div className='' onChange={toggleCart}>
-        <ul style={{padding:"1vw 1vw",height:"70vh"}} className=' overflow-y-scroll  rounded-xl  '>
-          {Object.keys(cart).length == 0 && <div style={{fontSize:"1.2vw"}}>
+        <ul style={{}} className='itemul overflow-y-scroll  rounded-xl  '>
+          {Object.keys(cart).length == 0 && <div style={{}} className="noitem">
             No items in the cart 😭
           </div>}
           {Object.keys(cart).map((k) => {
          
-            return <li style={{marginTop:"1.5vw",padding:"0vw 1vw 1vw",lineHeight:"1.3vw",backgroundColor:"#ebeaeb",height:"20vh"}} className='  ' key={k}>
+            return <li style={sw?{marginTop:"1.5vw",padding:"0vw 1vw 1vw",lineHeight:"1.3vw",backgroundColor:"#ebeaeb",height:"20vh"}:{marginTop:"1.5vh",padding:"0vw 1vh 1vh",lineHeight:"1.3vh",backgroundColor:"#ebeaeb",height:"20vw"}} className='  ' key={k}>
               
               <div style={{}} className='flex my-2 justify-between items-center'>
-                <div style={{width:"5.2vw",marginRight:"1vw",marginTop:"1vw"}} className="overflow-hidden self-start"><img className='object-scale-down' alt='cart' src={cart[k].img}></img></div>
-                <div style={{marginLeft:"0.5"}} className=' w-4/5'>
-                  <div style={{fontSize:"1.5vw"}} className="flex justify-between"><span style={{marginTop:"2vw"}} className="text-gray-800">{cart[k].name}</span> <ImBin2 style={{marginTop:"1vw"}} className='cursor-pointer text-gray-500 ' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/></div>
-                <div style={{margin:"0.7vw 0vw"}} className='flex'><div style={{marginRight:"1vw"}}><span className='text-gray-500'>Size</span> : <span style={{fontSize:"1vw"}}>{cart[k].width} x {cart[k].height}</span></div>
-                <div><span className='text-gray-500'>Color</span> :  <span style={{fontSize:"1vw"}}>{cart[k].variant}</span></div></div>
+                <div style={sw?{width:"5.2vw",marginRight:"1vw",marginTop:"1vw"}:{width:"5.2vh",marginRight:"1vh",marginTop:"1vh"}} className="overflow-hidden self-start"><img className='object-scale-down' alt='cart' src={cart[k].img}></img></div>
+                <div style={sw?{marginLeft:"0.5vw"}:{marginLeft:"0.5vh"}} className=' w-4/5'>
+                  <div style={sw?{fontSize:"1.5vw"}:{fontSize:"1.5vh"}} className="flex justify-between"><span style={sw?{marginTop:"2vw"}:{marginTop:"2vh"}} className="text-gray-800">{cart[k].name}</span> <ImBin2 style={sw?{marginTop:"1vw"}:{marginTop:"1vh"}} className='cursor-pointer text-gray-500 ' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/></div>
+                <div style={sw?{margin:"0.7vw 0vw"}:{margin:"0.7vh 0vh"}} className='flex'><div style={sw?{marginRight:"1vw"}:{marginRight:"1vh"}}><span className='text-gray-500'>Size</span> : <span style={sw?{fontSize:"1vw"}:{fontSize:"1vh"}}>{cart[k].width} x {cart[k].height}</span></div>
+                <div><span className='text-gray-500'>Color</span> :  <span style={sw?{fontSize:"1vw"}:{fontSize:"1vh"}}>{cart[k].variant}</span></div></div>
                
-               <div className='flex justify-between w-full'> <div className=' flex justify-end flex-col items-end' style={{fontSize:"1.5vw",fontFamily: "'Fjalla One', sans-serif"}}>₹ {cart[k].price*cart[k].qty}
+               <div className='flex justify-between w-full'> <div className=' flex justify-end flex-col items-end' style={sw?{fontSize:"1.5vw",fontFamily: "'Fjalla One', sans-serif"}:{fontSize:"1.5vh",fontFamily: "'Fjalla One', sans-serif"}}>₹ {cart[k].price*cart[k].qty}
                 </div>
-                <div style={{fontSize:"1.25vw",lineHeight:"1.6vw"}} className='flex items-center  bg-white border border-black '>
-                <AiOutlineMinus id={k} onClick={(e)=>minus(e)}className=' cursor-pointer mx-2' style={{margin:"0vw 0.5vw"}} />
+                <div style={sw?{fontSize:"1.25vw",lineHeight:"1.6vw"}:{fontSize:"1.25vh",lineHeight:"1.6vh"}} className='flex items-center  bg-white border border-black '>
+                <AiOutlineMinus id={k} onClick={(e)=>minus(e)}className=' cursor-pointer mx-2' style={sw?{margin:"0vw 0.5vw"}:{fontSize:"1.25vh",lineHeight:"1.6vh"}} />
                 <span style={{width:"3vw"}} className='h-full border-x  border-black w-10 text-center'>{cart[k].qty}</span>
-                <AiOutlinePlus id={k} onClick={(e)=>plus(e)} className=' cursor-pointer mx-2' style={{margin:"0vw 0.5vw"}} />
+                <AiOutlinePlus id={k} onClick={(e)=>plus(e)} className=' cursor-pointer mx-2' style={sw?{margin:"0vw 0.5vw"}:{fontSize:"1.25vh",lineHeight:"1.6vh"}} />
                 </div>
                 </div>
                
@@ -519,10 +520,10 @@ if(item[e.target.id].qty >1){
           })}
         </ul>
       </div>
-      <div style={{fontSize:"1.5vw",marginTop:"2vw",padding:"0vw 1vw"}} className='font-bold w-full flex justify-between mt-10'>
+      <div style={sw?{fontSize:"1.5vw",marginTop:"2vw",padding:"0vw 1vw"}:{fontSize:"1.5vh",marginTop:"2vh",padding:"0vh 1vh"}} className='font-bold w-full flex justify-between mt-10'>
         <span>Total ({item} items) </span> <span>₹ {subTotal}</span></div>
-     <div style={{marginTop:"1.8vw"}} className='w-full flex justify-center'>
-      <a href={"/Checkout"}><button style={{ backgroundColor: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }} className="flex  text-white hover:opacity-80     border-0  justify-center focus:outline-none   "><span className='my-auto'>Check out</span></button></a>
+     <div style={sw?{marginTop:"1.8vw"}:{marginTop:"1.8vh"}} className='w-full flex justify-center'>
+      <a href={"/Checkout"}><button style={sw?{ backgroundColor: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }:{ backgroundColor: "#bfb1c4",fontSize:"1.25vh",height:"3.125vh",width:"10.45vh" }} className="flex  text-white hover:opacity-80     border-0  justify-center focus:outline-none   "><span className='my-auto'>Check out</span></button></a>
       </div>
     </div>
 
@@ -530,7 +531,7 @@ if(item[e.target.id].qty >1){
     {/**main nav**/}
     <nav  id='nav' onMouseLeave={offproducts} className=" z-40 text-white  absolute top-0 w-full ">
 
-      <div style={{padding:"0vw 1vw"}}>
+      <div style={sw?{padding:"0vw 1vw"}:{padding:"0vw 1vh"}}>
         <div className="flex ">
          
 
@@ -580,12 +581,19 @@ if(item[e.target.id].qty >1){
             {item!=0 && <div style={{fontSize:"1.2vw",padding:"0vw 0.6vw",right:"2.3vw",top:"1.2vw"}} className=' z-50 absolute bg-black text-white right-3 top-2 px-2 rounded-full'>{item}</div>}
           </div>
           </div>
+
+          
           <div id='mnav' className="md:hidden text-white justify-between w-full flex  ">
-          <div> <a href="/" className="flex  py-1 ">
-                <img id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 invert w-auto " />
-              </a></div>
+          <div>
+
+<a href="/" className="flex   ">
+  <img style={{height:"5vh"}} id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 invert w-auto " />
+</a>
+
+</div>
+
               <div className='flex  items-center space-x-4'>
-            {!user.value && <a href="/Login" className="  transition duration-300">LOG IN</a>}
+            {!user.value && <a onClick={() => setlogin(true)} className="  transition duration-300">LOG IN</a>}
             {user.value && <MdAccountCircle className="   text-xl  cursor-pointer transition duration-300 " onClick={() => setdropDown(!dropDown)} />}
             <HiShoppingCart onMouseOver={toggleCart} onMouseEnter={() => setdropDown(false)} className='  cart  cursor-pointer text-xl  ' />
             <Hamburger size={20} toggled={isOpen} toggle={setOpen} className=" mobile-menu-button" />
@@ -595,7 +603,7 @@ if(item[e.target.id].qty >1){
       </div>
 
       {isOpen && <div id='mv' className=" mobile-menu absolute w-full animate-fade-in-down ">
-        <ul className="bg-white text-center">
+        <ul className="bg-white text-black text-center">
           <li className="active"><a href="/" className="block text-sm px-2 py-4  phover ">Home</a></li>
           <li><a onClick={toggleproducts} className="block text-sm px-2 py-4 phover transition duration-300">Products</a></li>
           <li><a href="/about" className="block text-sm px-2 py-4 phover transition duration-300">About</a></li>
