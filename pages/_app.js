@@ -4,11 +4,13 @@ import '../styles/globals.css'
 import Footer from '../components/Footer'
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Router from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import LoadingBar from 'react-top-loading-bar'
 import Navbar from '../components/Navbar';
 import Head from 'next/head';
+import NProgress from 'nprogress'; //nprogress module
+import 'nprogress/nprogress.css'; //styles of nprogress
  
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
@@ -16,6 +18,9 @@ function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState({value:null});
   const [key, setkey] = useState(0);
   const [progress, setProgress] = useState(0)
+
+  Router.events.on('routeChangeStart', () => NProgress.start()); Router.events.on('routeChangeComplete', () => NProgress.done()); Router.events.on('routeChangeError', () => NProgress.done());
+  
   
   const router = useRouter()
   useEffect(() => {
@@ -110,13 +115,7 @@ function MyApp({ Component, pageProps }) {
    <Head>
    <title>Sketch Art</title>
       </Head>
-    <LoadingBar
-        color='#bfb1c4'
-        progress={progress}
-        waitingTime={400}
-        height={4}
-        onLoaderFinished={() => setProgress(0)}
-      />
+    
   {showHeader && <Navbar saveCart={saveCart} logout={logout} user={user} key={key} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} {...pageProps} clearCart={clearCart} subTotal={subTotal}/>}
   <Component saveCart={saveCart} logout={logout} buyNow={buyNow} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} {...pageProps} subTotal={subTotal}/>
   {showHeader && <Footer />}
