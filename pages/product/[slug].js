@@ -11,6 +11,7 @@ import { MdOutlineCancel } from "react-icons/md"
 import { BsInfoCircleFill } from "react-icons/bs"
 import { BsImages } from "react-icons/bs"
 import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai';
+import { Router } from 'next/router';
 
 const Post = ({ buyNow, addToCart, product }) => {
   const [selectedheight, setselectedheight] = useState(6 );
