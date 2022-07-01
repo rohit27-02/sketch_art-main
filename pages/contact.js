@@ -104,7 +104,7 @@ const Contact = ({ info }) => {
 
   return (<>
 <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9-EbfHmRL48vGnmDpeITVl_QtA9wg9So">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDS6EharfRUAqb8P0MskFXi77g-KallLhE">
 </script>
 <ToastContainer
         position="top-center"

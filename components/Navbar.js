@@ -5,7 +5,6 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus, AiOutlineMenu } from 'react-icons/ai';
-import { BsFillBagCheckFill } from 'react-icons/bs';
 import { MdAccountCircle } from 'react-icons/md';
 import { useRef, useState, useEffect } from 'react';
 import { HiShoppingCart } from "react-icons/hi"
@@ -18,10 +17,10 @@ import { GoogleLogin } from '@react-oauth/google';
 import jwtDecode from 'jwt-decode';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-import { Bounce, Fade, Flip, LightSpeed, Rotate, Slide, Zoom } from 'react-reveal';
+import { Flip} from 'react-reveal';
 import { BsWhatsapp } from "react-icons/bs"
 import {ImArrowLeft2 ,ImBin2 } from "react-icons/im"
-import { data } from 'autoprefixer';
+
 
 function Navbar({ saveCart,logout, user, cart, addToCart, removeFromCart, clearCart, subTotal, products }) {
   const [dropDown, setdropDown] = useState(false);
@@ -244,19 +243,22 @@ setlistd(false)
       setsw(true)
     }
   setitem(Object.keys(cart).length)
+  console.log(Router.beforePopState)
+  if(Router.isReady == true){
 if(Router.pathname=="/product/[slug]" || Router.pathname=="/Checkout" || Router.pathname=="/motorizedblinds"){
 document.getElementById("nav").classList.remove("text-white")
 document.getElementById("img").classList.remove("invert")
-
 }
-  
+ console.log(Router.pathname) 
+}
   }, []);
+
 setInterval(() => {
   if(Object.keys(cart).length>=0 && Object.keys(cart).length !== item){
   setitem(Object.keys(cart).length)}
 }, 1000);
  
- 
+
 
   
  
@@ -372,7 +374,7 @@ if(item[e.target.id].qty >1){
                   <div className=''>Or</div>
                   <div className='border-b border-gray-800 my-3 w-32'></div>
                 </div>
-                <div className='pb-8 text-center'><GoogleOAuthProvider clientId="390204161646-6noec67uc8qleni584kq3ojnbbebeo1i.apps.googleusercontent.com"><GoogleLogin
+                <div className='pb-8 text-center'><GoogleOAuthProvider clientId="306346834844-dut40venl0hhf8vii57vbvimfq3rbb9l.apps.googleusercontent.com"><GoogleLogin
                   onSuccess={res => auth(res)}
                   onError={() => {
                     console.log('Login Failed');
@@ -456,7 +458,7 @@ if(item[e.target.id].qty >1){
                   <div className=''>Or</div>
                   <div className='border-b border-gray-800 my-3 w-32'></div>
                 </div>
-                <div className='pb-8 text-center'><GoogleOAuthProvider clientId="390204161646-6noec67uc8qleni584kq3ojnbbebeo1i.apps.googleusercontent.com"><GoogleLogin
+                <div className='pb-8 text-center'><GoogleOAuthProvider clientId="306346834844-dut40venl0hhf8vii57vbvimfq3rbb9l.apps.googleusercontent.com"><GoogleLogin
                   onSuccess={res => auth2(res)}
                   onError={() => {
                     console.log('Login Failed');
@@ -476,7 +478,7 @@ if(item[e.target.id].qty >1){
   
     {dropDown && <div onMouseLeave={() => setdropDown(false)} style={{fontSize:"1.4vw",marginRight:"2.6vw",top:"4.6vw",padding:"0.2vw"}} className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm text-center z-50 top-16 px-5  text-lg md:px-0 py-3  md:acctext '>
       <ul>
-        <a className='  ' href={"/myaccount"}><li className=''>Account</li></a>
+        
         <a className='  ' href={'/orders'}><li className=''>Orders</li></a>
         <li className='cursor-pointer' onClick={logout}>Logout</li>
         {admin == "true" && <a className=' text-center ' href={"/adminpanel"}><li className=''>Admin Panel</li></a>}
@@ -543,7 +545,7 @@ if(item[e.target.id].qty >1){
           </div>
 
             <div id='navtext' style={{fontSize:"1.25vw",paddingTop:"1.3vw"}} className="hidden md:flex  absolute w-full justify-center    ">
-              <a style={{ textUnderlineOffset: 8 }} href="/" onMouseEnter={offproducts} className="  hover:underline  decoration-2 ">HOME</a>
+              <Link style={{ textUnderlineOffset: 8 }} href="/" onMouseEnter={offproducts} className="  hover:underline  decoration-2 ">HOME</Link>
               <a style={{ textUnderlineOffset: 8}}  className=" "><span style={{padding:"0vw 2vw"}} onMouseEnter={toggleproducts} className='flex  justify-center px-6 cursor-pointer '>PRODUCTS< IoIosArrowDown style={{marginLeft:"1vw"}} className={`${nav ? 'rotate-180 transform ml-4 self-center' : 'ml-4 self-center'} `}/></span><div> {nav && <Flip top><div style={{fontSize:"1.25vw",marginTop:"0.4vw"}} className='  md:text-base bg-black bg-opacity-70  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
      
      <div style={{ }} className="flex flex-col  text-white">
@@ -551,10 +553,10 @@ if(item[e.target.id].qty >1){
          Object.keys(data).map((p) => {
            return (<div key={p} style={{fontSize:"1vw"}} className="flex z-50">
             
-               <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><a className='flex items-center ' href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}><span className='w-full uppercase'>{data[p]}</span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></a></li>
+               <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><span className='flex items-center '><span className='w-full uppercase'><Link  href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}>{data[p]}</Link></span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
              
              {listd && sub[p] && <div style={{left:"12.45vw"}}  className='z-50 absolute shadow-black shadow-sm bg-black bg-opacity-70 left-44 min-w-max flex flex-col'>
-             { subcategory[0].map((s)=>{return(<a key={s}  href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`} style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center' >{s}</a>)})}
+             { subcategory[0].map((s)=>{return(<div key={s}  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><Link   href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`}  >{s}</Link></div>)})}
              
                </div>}
                </div>
@@ -568,8 +570,8 @@ if(item[e.target.id].qty >1){
 
 
    </div></Flip>}</div></a>
-              <a style={{ textUnderlineOffset: 8 }}  href="/about" className="  hover:underline  decoration-2   ">ABOUT US</a>
-              <a style={{ textUnderlineOffset: 8 ,padding:"0vw 2vw" }}  onMouseEnter={offproducts} href="/contact" className="px-6     hover:underline  decoration-2   ">CONTACT US</a>
+              <Link style={{ textUnderlineOffset: 8 }}  href="/about" className="  hover:underline  decoration-2   z-50">ABOUT US</Link>
+              <div style={{ textUnderlineOffset: 8 ,margin:"0vw 2vw" }} ><Link  onMouseEnter={offproducts} href="/contact" className=" hover:underline  decoration-2   ">CONTACT US</Link></div>
             </div>
             <div style={{marginTop:"-0.5vw"}} className='flex items-center'>
             {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontSize:"1.25vw"}} className="z-50   text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover: transition duration-300">LOG IN</a>}
