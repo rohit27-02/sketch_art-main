@@ -20,6 +20,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { Flip} from 'react-reveal';
 import { BsWhatsapp } from "react-icons/bs"
 import {ImArrowLeft2 ,ImBin2 } from "react-icons/im"
+import { CgSwap } from 'react-icons/cg';
 
 
 function Navbar({ saveCart,logout, user, cart, addToCart, removeFromCart, clearCart, subTotal, products }) {
@@ -217,6 +218,11 @@ function Navbar({ saveCart,logout, user, cart, addToCart, removeFromCart, clearC
   const toggleproducts = () => {
 setnav(true)
   };
+  const toggleproducts2 = () => {
+setnav(!nav)
+setlistd(false)
+  };
+
   const offproducts = () => {
 setnav(false)
 setlistd(false)
@@ -291,7 +297,15 @@ if(item[e.target.id].qty >1){
   }
   const on=()=>{
     setlistd(true)
-    console.log(subcategory)
+    
+  }
+  const onoff=()=>{
+    setlistd(!listd)
+    
+  }
+  const swap=(e)=>{
+    const p = e.currentTarget.id
+    sub[p] ? onoff() : Router.push(`${process.env.NEXT_PUBLIC_HOST}/product/${data[p]}`)
   }
 
 
@@ -547,7 +561,7 @@ if(item[e.target.id].qty >1){
 
             <div id='navtext' style={{fontSize:"1.25vw",paddingTop:"1.3vw"}} className="hidden md:flex  absolute w-full justify-center    ">
               <Link style={{ textUnderlineOffset: 8 }} href="/" onMouseEnter={offproducts} className="  hover:underline  decoration-2 ">HOME</Link>
-              <a style={{ textUnderlineOffset: 8}}  className=" "><span style={{padding:"0vw 2vw"}} onMouseEnter={toggleproducts} className='flex  justify-center px-6 cursor-pointer '>PRODUCTS< IoIosArrowDown style={{marginLeft:"1vw"}} className={`${nav ? 'rotate-180 transform ml-4 self-center' : 'ml-4 self-center'} `}/></span><div> {nav && <Flip top><div style={{fontSize:"1.25vw",marginTop:"0.4vw"}} className='  md:text-base bg-black bg-opacity-70  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
+              <div style={{ textUnderlineOffset: 8}}  className=" "><span style={{padding:"0vw 2vw"}} onMouseEnter={toggleproducts} className='flex  justify-center px-6 cursor-pointer '>PRODUCTS< IoIosArrowDown style={{marginLeft:"1vw"}} className={`${nav ? 'rotate-180 transform ml-4 self-center' : 'ml-4 self-center'} `}/></span><div> {nav && <Flip top><div style={{fontSize:"1.25vw",marginTop:"0.4vw"}} className='  md:text-base bg-black bg-opacity-70  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
      
      <div style={{ }} className="flex flex-col  text-white">
        {
@@ -570,7 +584,7 @@ if(item[e.target.id].qty >1){
      </div>
 
 
-   </div></Flip>}</div></a>
+   </div></Flip>}</div></div>
               <Link style={{ textUnderlineOffset: 8 }}  href="/about" className="  hover:underline  decoration-2   z-50">ABOUT US</Link>
               <div style={{ textUnderlineOffset: 8 ,margin:"0vw 2vw" }} ><Link  onMouseEnter={offproducts} href="/contact" className=" hover:underline  decoration-2   ">CONTACT US</Link></div>
             </div>
@@ -606,7 +620,31 @@ if(item[e.target.id].qty >1){
       {isOpen && <div id='mv' className=" mobile-menu absolute w-full animate-fade-in-down ">
         <ul className="bg-white text-black text-center">
           <li className="active"><a href="/" className="block text-sm px-2 py-4  phover ">Home</a></li>
-          <li><a onClick={toggleproducts} className="block text-sm px-2 py-4 phover transition duration-300">Products</a></li>
+          <div  className=" "><span  onClick={toggleproducts2} className='flex  justify-center pl-8 phover px-2 py-4  text-sm cursor-pointer '>PRODUCTS< IoIosArrowDown style={{marginLeft:"1vh"}} className={`${nav ? 'rotate-180 transform  self-center' : 'self-center'} `}/></span>
+          <div> {nav && <Flip top><div style={{fontSize:"1.25vh",backgroundColor:"#bfb1c4"}}  >
+     
+     <div style={{ }} className="flex flex-col  text-white">
+       {
+         Object.keys(data).map((p) => {
+           return (<div key={p} style={{fontSize:"1.4vh"}} className="flex z-50">
+            
+               <li  id={p} onClick={(e)=>{swap(e)}} style={{height:"4vh",marginLeft:"2vh"}} className='flex items-center  '  ><span   className='flex items-center '><span className='w-full uppercase'>{data[p]}</span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vh"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
+             
+             {listd && sub[p] && <div style={{left:"24vh"}}  className='z-50 border-l-2 text-white border-white absolute min-w-max flex flex-col'>
+             { subcategory[0].map((s)=>{return(<div key={s}  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='  min-w-max uppercase cursor-pointer flex items-center'><Link   href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`}  >{s}</Link></div>)})}
+             
+               </div>}
+               </div>
+           )
+
+
+         })
+       }
+
+     </div>
+
+
+   </div></Flip>}</div></div>
           <li><a href="/about" className="block text-sm px-2 py-4 phover transition duration-300">About</a></li>
           <li><a href="/contact" className="block text-sm px-2 py-4 phover transition duration-300">Contact Us</a></li>
         </ul>
