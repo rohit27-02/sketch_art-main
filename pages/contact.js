@@ -122,10 +122,10 @@ const Contact = ({ info }) => {
         draggable
         pauseOnHover
       />
-  <div style={sw?{height:"85vh"}:{height:"85vw"}} className="w-full">
-  <div style={sw?{height:"90vh"}:{height:"90vw"}} className="overflow-hidden absolute z-10  top-0  w-full">
+  <div style={sw ?{height:"85vh"}:{height:"85vw"}} className="w-full">
+  <div style={sw ?{height:"90vh"}:{height:"90vw"}} className="overflow-hidden absolute z-10  top-0  w-full">
     <div className='bg-black w-full h-full absolute top-0 bg-opacity-40 z-30'></div>
-    <h1 style={sw?{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,fontSize:"4.75vw",top:"20vw"}:{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,fontSize:"4.75vh",top:"20vh"}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute   z-50 text-gray-200  '>CONTACT US</h1>
+    <h1 style={sw ?{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,fontSize:"4.75vw",top:"20vw"}:{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,fontSize:"4.75vh",top:"20vh"}} className='2xl:text-7xl text-6xl font-bold w-full text-center absolute   z-50 text-gray-200  '>CONTACT US</h1>
     <Slide bottom><img src='/contact us image.png' className='object-cover h-full w-full'></img></Slide>
   </div>
   </div>
