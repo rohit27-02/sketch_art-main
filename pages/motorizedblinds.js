@@ -20,7 +20,7 @@ const [sw, setsw] = useState(false);
 
       <div style={sw?{ fontFamily: "'Fjalla One', sans-serif",fontSize:"3.75vw",marginTop:"4vw",marginBottom:"4vw" }:{ fontFamily: "'Fjalla One', sans-serif",fontSize:"3.75vh",marginTop:"4vh",marginBottom:"4vh" }} className='text-center text-5xl  '>MOTORIZED BLINDS</div>
 
-      <Slide left><div style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "63vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex ">
+      <Slide left><div style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "65vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex ">
         {sw && <img src='/2016-nan-east-bay-playroom.jpeg' className='h-full w-4/6' alt='img'></img>}
         <div style={sw?{padding:"1.56vw"}:{padding:"1.56vh"}} className='p-5 space-y-8'>
           <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vw",marginTop:"2.5vw",lineHeight:"2.5vw "}:{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vh",marginTop:"1vh",lineHeight:"2.5vh "}} className='text-3xl scale-y-125 mt-8  text-gray-800 uppercase'>Cordless Design Offers Maximum<br></br> Safety for Children and Pets</h1>
@@ -30,7 +30,7 @@ const [sw, setsw] = useState(false);
         </div>
       </div></Slide>
 
-      <Slide right><div style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "63vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
+      <Slide right><div style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "65vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
         <div style={sw?{padding:"1.56vw"}:{padding:"1.56vh"}} className='p-5 space-y-8'>
           <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vw",marginTop:"2.5vw",lineHeight:"2.5vw "}:{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vh",marginTop:"1vh",lineHeight:"2.5vh "}} className='text-3xl scale-y-125 mt-8  text-gray-800 uppercase'>Automation Settings Adds Security When You Are Away from Home</h1>
           <p style={sw?{fontSize:"1.1vw",marginTop:"2.5vw",paddingRight:"2.5vw",lineHeight:"1.6vw "}:{fontSize:"1.2vh",marginTop:"1.5vh",paddingRight:"2.5vh",lineHeight:"1.8vh "}} className='text-sm leading-relaxed pr-8 '>Since motorized window blinds can operate automatically throughout the day they will make it seem like someone is home, even if you are thousands of miles away. Motorized window blinds are more of a deterrent to potential thieves than any other window covering, especially when coupled with an automated smart home lighting system.
@@ -43,7 +43,7 @@ const [sw, setsw] = useState(false);
         {sw && <img src='/pic-1.jpg' className='h-full w-5/12' alt='img'></img>}
       </div></Slide>
 
-      <Slide left><div style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "63vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
+      <Slide left><div style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "65vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
         {sw && <img src='/1-03.jpg' className='h-full w-5/12' alt='img'></img>}
         <div style={sw?{padding:"1.56vw"}:{padding:"1.56vh"}} className='p-5 space-y-8'>
           <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vw",marginTop:"2.5vw",lineHeight:"2.5vw "}:{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vh",marginTop:"1vh",lineHeight:"2.5vh "}} className='text-3xl scale-y-125 mt-8  text-gray-800 uppercase'>Varied Control Options Include Remotes, and Apps</h1>
@@ -65,16 +65,16 @@ const [sw, setsw] = useState(false);
         <a href='#bathroom' className='underline underline-offset-4'>BATHROOM</a>
       </div>
 
-      <Slide left> <div id="living" style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" ,marginTop:"4vw"}:{marginBottom:"4vh", height: "63vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" ,marginTop:"4vh"}} className="flex">
+      <Slide left> <div id="living" style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" ,marginTop:"4vw"}:{marginBottom:"4vh", height: "65vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" ,marginTop:"4vh"}} className="flex">
         {sw && <img src='/pexels-max-vakhtbovych-7533758.jpg' className='h-full w-3/6' alt='img'></img>}
         <div className='p-5 space-y-10'>
-          <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif",fontSize:"2.35vw",marginTop:"2.5vw",lineHeight:"2.5vw " }:{ fontFamily: "'Fjalla One', sans-serif",fontSize:"2.35vh",marginTop:"1.h",lineHeight:"2.5vh " }} className='text-3xl scale-y-125 mt-8  text-gray-800 uppercase'>Living Area</h1>
+          <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif",fontSize:"2.35vw",marginTop:"2.5vw",lineHeight:"2.5vw " }:{ fontFamily: "'Fjalla One', sans-serif",fontSize:"2.35vh",marginTop:"1vh",lineHeight:"2.5vh " }} className='text-3xl scale-y-125 mt-8  text-gray-800 uppercase'>Living Area</h1>
           <p style={sw?{fontSize:"1.1vw",marginTop:"2.5vw",paddingRight:"2.5vw",lineHeight:"1.6vw "}:{fontSize:"1.2vh",marginTop:"1.5vh",paddingRight:"2.5vh",lineHeight:"1.8vh "}} className='text-sm leading-relaxed pr-8 '>When picking the best window treatment for the living or dining room, you have more flexibility than, say, the bathroom or kitchen, and much of it rides on personal preferences. If you’re looking to keep things modern and minimalist, shades are probably the way to go. Sheer curtains will invite an almost ethereal element, while heavy, layered drapes will run more traditional. Triple shade blinds & honeycomb blinds give that hotel like look to your living area. Can’t decide? A combination of curtains and shades are always welcome.
 
           </p>
         </div>
       </div></Slide>
-      <Slide right><div id="bedroom" style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "63vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
+      <Slide right><div id="bedroom" style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "65vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
         <div className='p-5 space-y-10'>
           <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vw",marginTop:"2.5vw",lineHeight:"2.5vw "}:{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vh",marginTop:"1vh",lineHeight:"2.5vh "}} className='text-3xl scale-y-125 mt-8  text-gray-800 uppercase'>Bedroom</h1>
           <p style={sw?{fontSize:"1.1vw",marginTop:"2.5vw",paddingRight:"2.5vw",lineHeight:"1.6vw "}:{fontSize:"1.2vh",marginTop:"1.5vh",paddingRight:"2.5vh",lineHeight:"1.8vh "}} className='text-sm leading-relaxed pr-8 '>Window treatments for the bedroom are usually poised to serve more than an aesthetic purpose. From blackout shades to layered drapes, the functionality here is all about creating a soothing ambiance for a restful night’s (and morning’s!) sleep.
@@ -86,7 +86,7 @@ const [sw, setsw] = useState(false);
         {sw && <img src='/pexels-eren-li-7241676.jpg' className='h-full w-3/6' alt='img'></img>}
       </div></Slide>
       <Slide left>
-        <div id="kitchen" style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "63vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
+        <div id="kitchen" style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "65vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
           {sw && <img src='/pexels-max-vakhtbovych-7614610 (1).jpg' className='h-full w-3/6' alt='img'></img>}
           <div className='p-5 space-y-10'>
             <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vw",marginTop:"2.5vw",lineHeight:"2.5vw "}:{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vh",marginTop:"1vh",lineHeight:"2.5vh "}} className='text-3xl scale-y-125 mt-8  text-gray-800 uppercase'>Kitchen</h1>
@@ -97,9 +97,9 @@ const [sw, setsw] = useState(false);
           </div>
         </div></Slide>
       <Slide right>
-        <div id="bathroom" style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "63vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
+        <div id="bathroom" style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "65vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
           <div className='p-5 space-y-10'>
-            <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif",fontSize:"2.35vw",marginTop:"2.5vw",lineHeight:"2.5vw " }:{ fontFamily: "'Fjalla One', sans-serif",fontSize:"2.35vh",marginTop:"1.h",lineHeight:"2.5vh " }} className='text-3xl scale-y-125 mt-8  text-gray-800 uppercase'>Bathroom</h1>
+            <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif",fontSize:"2.35vw",marginTop:"2.5vw",lineHeight:"2.5vw " }:{ fontFamily: "'Fjalla One', sans-serif",fontSize:"2.35vh",marginTop:"1vh",lineHeight:"2.5vh " }} className='text-3xl scale-y-125 mt-8  text-gray-800 uppercase'>Bathroom</h1>
             <p style={sw?{fontSize:"1.1vw",marginTop:"2.5vw",paddingRight:"2.5vw",lineHeight:"1.6vw "}:{fontSize:"1.2vh",marginTop:"1.5vh",paddingRight:"2.5vh",lineHeight:"1.8vh "}} className='text-sm leading-relaxed pr-8 '>Bathroom windows are a fickle sort. There are those that span from wall to wall, the dreamy picture window set behind a freestanding tub, or the narrow strips high up on the wall which, let’s face it, are better than nothing. Anything faux wood or water will be the best window blinds for the bathroom.
 
               Linen or cotton blinds can work well in a bathroom but even better are woven wood ones made from bamboo or natural materials. It brings an element of the outside in and creates a spa-like experience in your bathroom.
