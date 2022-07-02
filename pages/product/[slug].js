@@ -98,7 +98,7 @@ useEffect(() => {
   return <>
 
   {sw && <div style={{height:"6.2vw",backgroundClip:""}} className='absolute border-b  border-black  top-0 w-full  '></div>}
-     <div style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }}  className='w-full overflow-hidden '><img className='  w-full' alt='img' src={product.poster}></img></div>
+    {sw && <div style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }}  className='w-full overflow-hidden '><img className='  w-full' alt='img' src={product.poster}></img></div>}
 {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
     <section id='main'   style={{  fontFamily: "'poppins', sans-serif"}} className="text-gray-900  justify-center flex body-font overflow-hidden">
       <ToastContainer
@@ -115,10 +115,10 @@ useEffect(() => {
       <div  className=" w-full ">
 
         <div  className='w-full  flex-col justify-center md:flex-row flex '>
-          <div style={{ backgroundColor: "#ebeaeb"}} className='md:w-5/12 w-full'>
+          <div style={{ backgroundColor: "#ebeaeb"}} className='md:w-5/12 pt-10 md:pt-0 w-full'>
            {sw && <img alt="ecommerce" style={{height:"100vh"}} className=" w-full" src="/Wall Image.png" />}
             <img alt="ecommerce" style={{height:"45vh",bottom:"-55vh",left:"24.5vw"}} className=" md:absolute mx-auto md:py-0 py-10 " src={product.variants[selectedcolor].img} />
-            <div style={sw?{fontSize:"1.1vw",paddingLeft:"1.875vw"}:{fontSize:"1.1vh",paddingLeft:"1.875vh"}} className='w-full pl-6  pb-4'>
+            <div style={sw?{fontSize:"1.1vw",paddingLeft:"1.875vw"}:{fontSize:"1.5vh",paddingLeft:"3vh"}} className='w-full pl-6  pb-4'>
               
               <div style={sw?{fontSize:"1.25vw",padding:"1.875vw"}:{fontSize:"2vh",padding:"1.875vh"}} className='text-gray-800 flex items-center  pb-2 pt-6'><p style={sw?{backgroundColor: "#bfb1c4",height:"1.1vw",width:"2vw",marginLeft:"-2.3vw"}:{backgroundColor: "#bfb1c4",height:"1.1vh",width:"2vh",marginLeft:"-2.3vh"}} className='w-5 -ml-6 absolute h-3'></p>Product Summary</div>
               <div className='w-full  grid grid-flow-col  '>
@@ -146,7 +146,7 @@ useEffect(() => {
             <div style={sw?{ backgroundColor: "#ebeaeb",padding:"3.75vw 3.125vw" }:{ backgroundColor: "#ebeaeb",padding:"3.75vh 3.125vh" }} className='py-12 text-gray-800 md:w-1/2 w-full px-4 md:px-10 '>
           <div  className='flex flex-col '>
             <span style={sw?{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vw"}:{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vh"}} className="  text-5xl uppercase ">{product.title} </span>
-            <div style={sw?{fontSize:"1.25vw",padding:"1.875vw 0vw"}:{fontSize:"1.25vh",padding:"1.875vh 0vh"}} className='space-x-6 flex py-6  text-base'>
+            <div style={sw?{fontSize:"1.25vw",padding:"1.875vw 0vw"}:{fontSize:"1.5vh",padding:"1.875vh 0vh"}} className='space-x-6 flex py-6  text-base'>
               <a href='#details' className='cursor-pointer flex items-center  space-x-3  pr-4 border-black underline underline-offset-2 '><BsInfoCircleFill /><span>Products Details</span></a>
               <a className='cursor-pointer underline flex items-center   space-x-3 underline-offset-2 '><BsImages /><span>Products Gallery</span></a>
             </div>
@@ -162,8 +162,8 @@ useEffect(() => {
               </div>
 
               <div style={sw?{marginTop:"3.75vw"}:{marginTop:"3.75vh"}} className='mt-12 flex space-x-8 items-center justify-start '>
-                <span style={sw?{fontSize:"1.25vw"}:{fontSize:"1.25vh"}}>Quantity</span>
-                <div style={sw?{fontSize:"1.25vw"}:{fontSize:"1.25vh"}} className='flex items-center  border border-black '>
+                <span style={sw?{fontSize:"1.25vw"}:{fontSize:"1.5vh"}}>Quantity</span>
+                <div style={sw?{fontSize:"1.25vw"}:{fontSize:"1.5vh"}} className='flex items-center  border border-black '>
                 <AiOutlineMinus onClick={() => {qty>1?setqty(qty-1):setqty(qty)}} className=' cursor-pointer mx-2' style={sw?{margin:"0vw 1vw"}:{margin:"0vw 1vh"}} />
                 <span style={sw?{width:"3.5vw"}:{width:"3.5vh"}} className='h-full border-x  border-black w-10 text-center'>{qty}</span>
                 <AiOutlinePlus onClick={() => { setqty(qty+1)}} className=' cursor-pointer mx-2' style={sw?{margin:"0vw 1vw"}:{margin:"0vw 1vh"}} />
@@ -171,11 +171,11 @@ useEffect(() => {
                 </div>
              
               <div style={sw?{margin:"1.875vw 0vw",paddingTop:"1.6vw"}:{margin:"1.875vh 0vw",paddingTop:"1.6vh"}} className="flex flex-col md:flex-row justify-between items-center my-6 pt-5">
-              <div style={sw?{fontSize:"1.25vw"}:{fontSize:"1.25vh"}}> Your Price
-              <span style={sw?{fontFamily: "'Fjalla One', sans-serif",fontSize:"1.58vw"}:{fontFamily: "'Fjalla One', sans-serif",fontSize:"1.58vh"}} className="title-font ml-4  text-xl text-gray-900">₹ {product.price*qty}</span></div>
+              <div style={sw?{fontSize:"1.25vw"}:{fontSize:"1.5vh"}}> Your Price
+              <span style={sw?{fontFamily: "'Fjalla One', sans-serif",fontSize:"1.58vw"}:{fontFamily: "'Fjalla One', sans-serif",fontSize:"2vh"}} className="title-font ml-4  text-xl text-gray-900">₹ {product.price*qty}</span></div>
               <div className='flex space-x-4 mt-4 md:mt-0'>
-              <button style={sw?{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw"}:{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vh",width:"8.75vh",height:"2.8125vh"}} className="flex items-center border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white " onClick={() => { buyNow(product.slug,qty, product.price, product.title, cartheight, cartwidth, product.variants[selectedcolor].color,mechanism ,product.variants[selectedcolor].img) }}>Buy now</button>
-              <button style={sw?{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw"}:{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vh",width:"8.75vh",height:"2.8125vh"}} onClick={() => { addToCart(product.slug, qty, product.price, product.title,cartheight, cartwidth, product.variants[selectedcolor].color, mechanism ,product.variants[selectedcolor].img) }} className="flex items-center   border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white  ">Add to cart</button>
+              <button style={sw?{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw"}:{ backgroundColor: "#bfb1c4" ,fontSize:"1.5vh",width:"10vh",height:"3.5vh"}} className="flex items-center border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white " onClick={() => { buyNow(product.slug,qty, product.price, product.title, cartheight, cartwidth, product.variants[selectedcolor].color,mechanism ,product.variants[selectedcolor].img) }}>Buy now</button>
+              <button style={sw?{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw"}:{ backgroundColor: "#bfb1c4" ,fontSize:"1.5vh",width:"10vh",height:"3.5vh"}} onClick={() => { addToCart(product.slug, qty, product.price, product.title,cartheight, cartwidth, product.variants[selectedcolor].color, mechanism ,product.variants[selectedcolor].img) }} className="flex items-center   border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white  ">Add to cart</button>
               </div>
             </div>
             </div>
@@ -189,7 +189,7 @@ useEffect(() => {
                   <>
                     <Disclosure.Button style={sw?{padding:"0vw 2.1875vw"}:{padding:"0vw 2.1875vh"}} className="flex w-full items-center bg-white px-7  text-left text-sm font-medium   focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
                     <p style={sw?{backgroundColor: "#bfb1c4",height:"1vw",width:"2.75vw",marginLeft:"-3.2vw"}:{backgroundColor: "#bfb1c4",height:"1vh",width:"2.75vh",marginLeft:"-3.2vh"}} className='w-8 -ml-10 absolute h-3'></p>
-                     <div style={sw?{fontSize:"1.25vw",padding:"1.875vw 0vw"}:{fontSize:"1.25vh",padding:"1.875vh 0vw"}} className='flex justify-between w-full py-6'>
+                     <div style={sw?{fontSize:"1.25vw",padding:"1.875vw 0vw"}:{fontSize:"1.5vh",padding:"1.875vh 0vw"}} className='flex justify-between w-full py-6'>
                       <span  >Product measurement</span>
                       <IoIosArrowDown
                         className={`${open ? 'rotate-180 transform' : ''
@@ -256,7 +256,7 @@ useEffect(() => {
                   <>
                     <Disclosure.Button style={sw?{padding:"0vw 2.1875vw"}:{padding:"0vw 2.1875vh"}} className="flex w-full justify-between  bg-white px-7 text-left text-sm font-medium  items-center focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
                     <p style={sw?{backgroundColor: "#bfb1c4",height:"1vw",width:"2.75vw",marginLeft:"-3.2vw"}:{backgroundColor: "#bfb1c4",height:"1vh",width:"2.75vh",marginLeft:"-3.2vh"}} className='w-8 -ml-10 absolute h-3'></p>
-                    <div style={sw?{fontSize:"1.25vw",padding:"1.875vw 0vw"}:{fontSize:"1.25vh",padding:"1.875vh 0vw"}} className='flex justify-between border-t-2 w-full py-6'>
+                    <div style={sw?{fontSize:"1.25vw",padding:"1.875vw 0vw"}:{fontSize:"1.5vh",padding:"1.875vh 0vw"}} className='flex justify-between border-t-2 w-full py-6'>
                       <span  >Select Mechanism</span>
                       <IoIosArrowDown
                         className={`${open ? 'rotate-180 transform' : ''
@@ -281,14 +281,14 @@ useEffect(() => {
         <div style={sw?{fontFamily: "'Roboto Slab', serif",marginTop:"4.375vw",padding:"0vw 3.75vw"}:{fontFamily: "'Roboto Slab', serif",marginTop:"4.375vh",padding:"0vw 3.75vh"}} className='grid grid-flow-row mb-20 md:mb-0 px-12 mt-14'>
           <div className='flex flex-col md:flex-row'>
             
-            <div id='details' className='mr-11 w-8/12  text-left 'style={sw?{fontSize:"1.25vw",marginRight:"5vw"}:{fontSize:"1.25vh",marginRight:"5vh"}}>
+            <div id='details' className='mr-11 w-8/12  text-left 'style={sw?{fontSize:"1.25vw",marginRight:"5vw"}:{fontSize:"2vh"}}>
             <div style={sw?{backgroundColor: "#bfb1c4",height:"1.5vw",width:"5vw",marginBottom:"0.75vw"}:{backgroundColor: "#bfb1c4",height:"1.5vh",width:"5vh",marginBottom:"0.75vh"}} className='w-10 mb-2  h-3'></div><span  style={{fontFamily: "'poppins', sans-serif"}}>Care & Cleaning</span>
-              <p className="leading-relaxed   mt-7 " style={sw?{fontSize:"1.1vw",marginTop:"2.188vw"}:{fontSize:"1.1vh",marginTop:"2.188vh"}}>{product.care}</p>
+              <p className="leading-relaxed   mt-7 " style={sw?{fontSize:"1.1vw",marginTop:"2.188vw"}:{fontSize:"1.5vh",marginTop:"2.188vh"}}>{product.care}</p>
             </div>
 
-            <div className=' w-11/12 mt-6 md:mt-0 text-left 'style={sw?{fontSize:"1.25vw"}:{fontSize:"1.25vh"}}>
+            <div className=' w-11/12 mt-6 md:mt-0 text-left 'style={sw?{fontSize:"1.25vw"}:{fontSize:"2vh"}}>
             <p style={sw?{backgroundColor: "#bfb1c4",height:"1.5vw",width:"5vw",marginBottom:"0.75vw"}:{backgroundColor: "#bfb1c4",height:"1.5vh",width:"5vh",marginBottom:"0.75vh"}} className='w-10 h-3 mb-2'></p><span style={{fontFamily: "'poppins', sans-serif"}}> Product Details</span>
-              <p className="leading-relaxed   mt-7  " style={sw?{fontSize:"1.1vw",marginTop:"2.188vw"}:{fontSize:"1.1vh",marginTop:"2.188vh"}}>{product.desc}</p>
+              <p className="leading-relaxed   mt-7  " style={sw?{fontSize:"1.1vw",marginTop:"2.188vw"}:{fontSize:"1.5vh",marginTop:"2.188vh"}}>{product.desc}</p>
             </div>
           </div>
 
