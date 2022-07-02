@@ -281,12 +281,12 @@ useEffect(() => {
         <div style={sw?{fontFamily: "'Roboto Slab', serif",marginTop:"4.375vw",padding:"0vw 3.75vw"}:{fontFamily: "'Roboto Slab', serif",marginTop:"4.375vh",padding:"0vw 3.75vh"}} className='grid grid-flow-row mb-20 md:mb-0 px-12 mt-14'>
           <div className='flex flex-col md:flex-row'>
             
-            <div id='details' className='mr-11 w-8/12  text-left 'style={sw?{fontSize:"1.25vw",marginRight:"5vw"}:{fontSize:"2vh"}}>
+            <div id='details' className='w-full md:w-8/12  text-left 'style={sw?{fontSize:"1.25vw",marginRight:"5vw"}:{fontSize:"2vh"}}>
             <div style={sw?{backgroundColor: "#bfb1c4",height:"1.5vw",width:"5vw",marginBottom:"0.75vw"}:{backgroundColor: "#bfb1c4",height:"1.5vh",width:"5vh",marginBottom:"0.75vh"}} className='w-10 mb-2  h-3'></div><span  style={{fontFamily: "'poppins', sans-serif"}}>Care & Cleaning</span>
               <p className="leading-relaxed   mt-7 " style={sw?{fontSize:"1.1vw",marginTop:"2.188vw"}:{fontSize:"1.5vh",marginTop:"2.188vh"}}>{product.care}</p>
             </div>
 
-            <div className=' w-11/12 mt-6 md:mt-0 text-left 'style={sw?{fontSize:"1.25vw"}:{fontSize:"2vh"}}>
+            <div className='w-full md:w-11/12 mt-6 md:mt-0 text-left 'style={sw?{fontSize:"1.25vw"}:{fontSize:"2vh"}}>
             <p style={sw?{backgroundColor: "#bfb1c4",height:"1.5vw",width:"5vw",marginBottom:"0.75vw"}:{backgroundColor: "#bfb1c4",height:"1.5vh",width:"5vh",marginBottom:"0.75vh"}} className='w-10 h-3 mb-2'></p><span style={{fontFamily: "'poppins', sans-serif"}}> Product Details</span>
               <p className="leading-relaxed   mt-7  " style={sw?{fontSize:"1.1vw",marginTop:"2.188vw"}:{fontSize:"1.5vh",marginTop:"2.188vh"}}>{product.desc}</p>
             </div>
