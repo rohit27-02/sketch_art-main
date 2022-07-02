@@ -626,12 +626,12 @@ if(item[e.target.id].qty >1){
      <div style={{ }} className="flex flex-col  text-white">
        {
          Object.keys(data).map((p) => {
-           return (<div key={p} style={{fontSize:"1.4vh"}} className="flex z-50">
+           return (<div key={p} style={{fontSize:"1.4vh"}} className="w-1/2 flex z-50">
             
-               <li  id={p} onClick={(e)=>{swap(e)}} style={{height:"4vh",marginLeft:"2vh"}} className='flex items-center  '  ><span   className='flex items-center '><span className='w-full uppercase'>{data[p]}</span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vh"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
+               <li  id={p} onClick={(e)=>{swap(e)}} style={{height:"4vh",marginLeft:"2vh"}} className='flex items-center  '  ><span   className='flex items-center '><span className='w-1.2 uppercase'>{data[p]}</span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vh"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
              
              {listd && sub[p] && <div style={{left:"24vh"}}  className='z-50 border-l-2 text-white border-white absolute min-w-max flex flex-col'>
-             { subcategory[0].map((s)=>{return(<div key={s}  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='  min-w-max uppercase cursor-pointer flex items-center'><Link   href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`}  >{s}</Link></div>)})}
+             { subcategory[0].map((s)=>{return(<div key={s}  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><Link   href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`}  >{s}</Link></div>)})}
              
                </div>}
                </div>
