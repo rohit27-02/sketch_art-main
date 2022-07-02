@@ -574,20 +574,22 @@ if(item[e.target.id].qty >1){
               <Link style={{ textUnderlineOffset: 8 }}  href="/about" className="  hover:underline  decoration-2   z-50">ABOUT US</Link>
               <div style={{ textUnderlineOffset: 8 ,margin:"0vw 2vw" }} ><Link  onMouseEnter={offproducts} href="/contact" className=" hover:underline  decoration-2   ">CONTACT US</Link></div>
             </div>
+
             <div style={{marginTop:"-0.5vw"}} className='flex items-center'>
             {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontSize:"1.25vw"}} className="z-50   text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover: transition duration-300">LOG IN</a>}
             {user.value && <MdAccountCircle style={{fontSize:"2.37vw"}} className=" font-medium  cursor-pointer transition  duration-300 md:text-3xl z-50 2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
-            <HiShoppingCart style={{fontSize:"2.37vw",margin:"0vw 2vw"}} id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='hover: cart  z-50 cursor-pointer md:text-3xl 2xl:text-4xl ' />
+            <HiShoppingCart style={{fontSize:"2.37vw",margin:"0vw 2vw"}} id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='  z-50 cursor-pointer  ' />
             {item!=0 && <div style={{fontSize:"1.2vw",padding:"0vw 0.6vw",right:"2.3vw",top:"1.2vw"}} className=' z-50 absolute bg-black text-white right-3 top-2 px-2 rounded-full'>{item}</div>}
           </div>
           </div>
-
+          </div>
+      </div>
           
           <div id='mnav' className="md:hidden text-white justify-between w-full flex  ">
           <div>
 
 <a href="/" className="flex   ">
-  <img style={{height:"5vh"}} id='img' src="/logo.svg" alt="Logo" className="h-10 md:h-16 invert w-auto " />
+  <img style={{height:"5vh"}} id='img' src="/logo.svg" alt="Logo" className="mt-1 invert w-auto " />
 </a>
 
 </div>
@@ -595,12 +597,11 @@ if(item[e.target.id].qty >1){
               <div className='flex  items-center space-x-4'>
             {!user.value && <a onClick={() => setlogin(true)} className="  transition duration-300">LOG IN</a>}
             {user.value && <MdAccountCircle className="   text-xl  cursor-pointer transition duration-300 " onClick={() => setdropDown(!dropDown)} />}
-            <HiShoppingCart onMouseOver={toggleCart} onMouseEnter={() => setdropDown(false)} className='  cart  cursor-pointer text-xl  ' />
+            <HiShoppingCart onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='text-xl  cursor-pointer  ' />
             <Hamburger size={20} toggled={isOpen} toggle={setOpen} className=" mobile-menu-button" />
             </div>
           </div>
-        </div>
-      </div>
+      
 
       {isOpen && <div id='mv' className=" mobile-menu absolute w-full animate-fade-in-down ">
         <ul className="bg-white text-black text-center">
