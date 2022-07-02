@@ -151,7 +151,7 @@ Sketchart strives for excellence by providing customized solutions. An expansive
         )}
       </VisibilitySensor>
 
-      <div style={sw?{marginTop:"3.7vw",padding:"1.5vw 10vw"}:{marginTop:"3.7vh",padding:"1.5vh 7vw"}}  className=' text-black mt-12 px-32 text-4xl font-bold text-center py-5  bg-white'>
+      <div style={sw?{marginTop:"3.7vw",padding:"1.5vw 10vw"}:{marginTop:"3.7vh",padding:"1.5vh 0vw"}}  className=' text-black mt-12 px-32 text-4xl font-bold text-center py-5  bg-white'>
         <h1  style={sw?{fontFamily: "'Fjalla One', sans-serif",fontSize:"2.8125vw",marginBottom:"5vw"}:{fontFamily: "'Fjalla One', sans-serif",fontSize:"2.8125vh",marginBottom:"5vh"}} className="text-gray-700">OUR PRESTIGIOUS CLIENTS</h1>
      
 
@@ -171,17 +171,17 @@ Sketchart strives for excellence by providing customized solutions. An expansive
   dotListClass="custom-dot-list-style"
   itemClass="carousel-item-padding-40-px"
 >
-  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"13.125vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Aditya Birla Group.png'></img></div>
-  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"13.125vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Barbeque.png'></img></div>
-  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"13.125vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Hindustani.png'></img></div>
-  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"13.125vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/intelent impact.png'></img></div>
-  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"13.125vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-scale-down scale-75' src='/jio.png'></img></div>
-  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"13.125vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Kalpa Taru.png'></img></div>
-  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"13.125vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain scale-95' src='/podar.png'></img></div>
-  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"13.125vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Raymond.png'></img></div>
-  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"13.125vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Rustomjee.png'></img></div>
-  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"13.125vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/citi bank.png'></img></div>
-  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"13.125vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Essel.png'></img></div>
+  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"12vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Aditya Birla Group.png'></img></div>
+  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"12vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Barbeque.png'></img></div>
+  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"12vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Hindustani.png'></img></div>
+  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"12vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/intelent impact.png'></img></div>
+  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"12vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-scale-down scale-75' src='/jio.png'></img></div>
+  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"12vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Kalpa Taru.png'></img></div>
+  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"12vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain scale-95' src='/podar.png'></img></div>
+  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"12vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Raymond.png'></img></div>
+  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"12vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Rustomjee.png'></img></div>
+  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"12vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/citi bank.png'></img></div>
+  <div style={sw?{margin:"0vw 3vw",height:"7.5vw",width:"13.125vw"}:{margin:"0vw 3vh",height:"7.5vh",width:"12vh"}}  className='flex justify-center items-center '> <img style={sw?{height:"10vw"}:{height:"10vh"}} className='object-contain' src='/Essel.png'></img></div>
   
 </Carousel>
 </div>
