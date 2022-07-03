@@ -509,21 +509,21 @@ if(item[e.target.id].qty >1){
           </div>}
           {Object.keys(cart).map((k) => {
          
-            return <li style={sw?{marginTop:"1.5vw",padding:"0vw 1vw 1vw",lineHeight:"1.3vw",backgroundColor:"#ebeaeb",height:"20vh"}:{marginTop:"1.5vh",padding:"0vw 1vh 1vh",lineHeight:"1.3vh",backgroundColor:"#ebeaeb",height:"20vw"}} className='  ' key={k}>
+            return <li style={sw?{marginTop:"1.5vw",padding:"0vw 1vw 1vw",lineHeight:"1.3vw",backgroundColor:"#ebeaeb",height:"20vh"}:{marginTop:"1.5vh",padding:"0vw 1vh 1vh",lineHeight:"1.3vh",backgroundColor:"#ebeaeb",height:"25vw"}} className='  ' key={k}>
               
               <div style={{}} className='flex my-2 justify-between items-center'>
-                <div style={sw?{width:"5.2vw",marginRight:"1vw",marginTop:"1vw"}:{width:"5.2vh",marginRight:"1vh",marginTop:"1vh"}} className="overflow-hidden self-start"><img className='object-scale-down' alt='cart' src={cart[k].img}></img></div>
+                <div style={sw?{width:"5.2vw",marginRight:"1vw",marginTop:"1vw"}:{width:"6vh",marginRight:"1vh",marginTop:"1vh"}} className="overflow-hidden self-start"><img className='object-scale-down' alt='cart' src={cart[k].img}></img></div>
                 <div style={sw?{marginLeft:"0.5vw"}:{marginLeft:"0.5vh"}} className=' w-4/5'>
                   <div style={sw?{fontSize:"1.5vw"}:{fontSize:"1.5vh"}} className="flex justify-between"><span style={sw?{marginTop:"2vw"}:{marginTop:"2vh"}} className="text-gray-800">{cart[k].name}</span> <ImBin2 style={sw?{marginTop:"1vw"}:{marginTop:"1vh"}} className='cursor-pointer text-gray-500 ' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/></div>
                 <div style={sw?{margin:"0.7vw 0vw"}:{margin:"0.7vh 0vh"}} className='flex'><div style={sw?{marginRight:"1vw"}:{marginRight:"1vh"}}><span className='text-gray-500'>Size</span> : <span style={sw?{fontSize:"1vw"}:{fontSize:"1vh"}}>{cart[k].width} x {cart[k].height}</span></div>
                 <div><span className='text-gray-500'>Color</span> :  <span style={sw?{fontSize:"1vw"}:{fontSize:"1vh"}}>{cart[k].variant}</span></div></div>
                
-               <div className='flex justify-between w-full'> <div className=' flex justify-end flex-col items-end' style={sw?{fontSize:"1.5vw",fontFamily: "'Fjalla One', sans-serif"}:{fontSize:"1.5vh",fontFamily: "'Fjalla One', sans-serif"}}>₹ {cart[k].price*cart[k].qty}
+               <div className='flex justify-between w-full'> <div className=' flex justify-end flex-col items-end' style={sw?{fontSize:"1.5vw",fontFamily: "'Fjalla One', sans-serif"}:{fontSize:"2vh",fontFamily: "'Fjalla One', sans-serif"}}>₹ {cart[k].price*cart[k].qty}
                 </div>
                 <div style={sw?{fontSize:"1.25vw",lineHeight:"1.6vw"}:{fontSize:"1.25vh",lineHeight:"1.6vh"}} className='flex items-center  bg-white border border-black '>
-                <AiOutlineMinus id={k} onClick={(e)=>minus(e)}className=' cursor-pointer mx-2' style={sw?{margin:"0vw 0.5vw"}:{fontSize:"1.25vh",lineHeight:"1.6vh"}} />
-                <span style={{width:"3vw"}} className='h-full border-x  border-black w-10 text-center'>{cart[k].qty}</span>
-                <AiOutlinePlus id={k} onClick={(e)=>plus(e)} className=' cursor-pointer mx-2' style={sw?{margin:"0vw 0.5vw"}:{fontSize:"1.25vh",lineHeight:"1.6vh"}} />
+                <AiOutlineMinus id={k} onClick={(e)=>minus(e)}className=' cursor-pointer mx-2' style={sw?{margin:"0vw 0.5vw"}:{fontSize:"1.25vh",lineHeight:"2vh",margin:"0.5vh 1vh"}} />
+                <span style={sw?{width:"3vw"}:{width:"3vh"}} className='h-full border-x flex items-center justify-center border-black '>{cart[k].qty}</span>
+                <AiOutlinePlus id={k} onClick={(e)=>plus(e)} className=' cursor-pointer mx-2' style={sw?{margin:"0vw 0.5vw"}:{fontSize:"1.25vh",lineHeight:"2vh",margin:"0.5vh 1vh"}} />
                 </div>
                 </div>
                
@@ -534,10 +534,10 @@ if(item[e.target.id].qty >1){
           })}
         </ul>
       </div>
-      <div style={sw?{fontSize:"1.5vw",marginTop:"2vw",padding:"0vw 1vw"}:{fontSize:"1.5vh",marginTop:"2vh",padding:"0vh 1vh"}} className='font-bold w-full flex justify-between mt-10'>
+      <div style={sw?{fontSize:"1.5vw",marginTop:"2vw",padding:"0vw 1vw"}:{fontSize:"2vh",marginTop:"2vh",padding:"0vh 1vh"}} className='font-bold w-full flex justify-between mt-10'>
         <span>Total ({item} items) </span> <span>₹ {subTotal}</span></div>
      <div style={sw?{marginTop:"1.8vw"}:{marginTop:"1.8vh"}} className='w-full flex justify-center'>
-      <a href={"/Checkout"}><button style={sw?{ backgroundColor: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }:{ backgroundColor: "#bfb1c4",fontSize:"1.25vh",height:"3.125vh",width:"10.45vh" }} className="flex  text-white hover:opacity-80     border-0  justify-center focus:outline-none   "><span className='my-auto'>Check out</span></button></a>
+      <a href={"/Checkout"}><button style={sw?{ backgroundColor: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }:{ backgroundColor: "#bfb1c4",fontSize:"2vh",height:"4vh",width:"12vh" }} className="flex  text-white hover:opacity-80     border-0  justify-center focus:outline-none   "><span className='my-auto'>Check out</span></button></a>
       </div>
     </div>
 

@@ -63,45 +63,45 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
             <div style={sw?{fontSize:"1.1vw",marginBottom:"2vw"}:{fontSize:"1.5vh",marginBottom:"2vh"}}>
                 <h2 style={sw?{fontSize:"1.5vw",marginBottom:"2vw",marginLeft:"16vw"}:{fontSize:"2vh",marginBottom:"2vh"}} className='font-bold text-xl md:mx-52 mx-8'>1. Contact Details</h2>
             <div style={sw?{width:"66vw"}:{width:"50vh"}} className="flex lg:w-2/3  w-full flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
-                <div className="relative flex justify-between w-full">
+                <div className="relative flex flex-col w-full ">
                     <label forhtml="full-name" className="leading-7  text-gray-600">Full Name</label>
-                    <input style={sw?{width:"32.5vw",height:"3.3vw",padding:"0.3vw 0.9vw"}:{width:"32.5vh",height:"3.3vh",padding:"0.3vh 0.9vh"}} type="text" id="full-name" name="full-name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                    <input style={sw?{width:"32.5vw",height:"3.3vw",padding:"0.3vw 0.9vw",margin:"1vw 0vw"}:{width:"100%",height:"4.5vh",padding:"0.3vh 0.9vh"}} type="text" id="full-name" name="full-name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
-                <div className="relative flex-grow flex justify-between w-full">
+                <div className="relative flex-grow flex flex-col w-full">
                     <label forhtml="email" className="leading-7  text-gray-600">Email</label>
-                    <input style={sw?{width:"32.5vw",height:"3.3vw",padding:"0.3vw 0.9vw"}:{width:"32.5vh",height:"3.3vh",padding:"0.3vh 0.9vh"}} type="email" id="email" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                    <input style={sw?{width:"32.5vw",height:"3.3vw",padding:"0.3vw 0.9vw",margin:"1vw 0vw"}:{width:"100%",height:"4.5vh",padding:"0.3vh 0.9vh"}} type="email" id="email" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
             </div>
             <div style={sw?{width:"66vw"}:{width:"50vh"}} className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
-                <div className="relative flex-grow flex justify-between w-full">
+                <div className="relative flex-grow flex flex-col w-full">
                     <label forhtml="address" className="leading-7  text-gray-600">Address</label>
-                    <textarea style={sw?{width:"66.2vw",height:"7vw",padding:"0.3vw 0.9vw"}:{width:"32.5vh",height:"7vh",padding:"0.3vh 0.9vh"}} type="text" id="address" name="address" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                    <textarea style={sw?{width:"66.2vw",height:"7vw",padding:"0.3vw 0.9vw",margin:"1vw 0vw"}:{width:"100%",height:"7vh",padding:"0.3vh 0.9vh"}} type="text" id="address" name="address" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
             </div>
             <div style={sw?{width:"66vw"}:{width:"50vh"}} className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
-                <div className="relative flex-grow flex justify-between w-full">
+                <div className="relative flex-grow flex flex-col w-full">
                     <label forhtml="phone" className="leading-7  text-gray-600">Phone number</label>
-                    <input style={sw?{width:"32.5vw",height:"3.3vw",padding:"0.3vw 0.9vw"}:{width:"38vh",height:"3.3vh",padding:"0.3vh 0.9vh"}} type="phone" id="phone" name="phone" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                    <input style={sw?{width:"32.5vw",height:"3.3vw",padding:"0.3vw 0.9vw",margin:"1vw 0vw"}:{width:"100%",height:"4.5vh",padding:"0.3vh 0.9vh"}} type="phone" id="phone" name="phone" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
-                <div className="relative flex-grow flex justify-between w-full">
+                <div className="relative flex-grow flex flex-col w-full">
                     <label forhtml="city" className="leading-7  text-gray-600">City</label>
-                    <input style={sw?{width:"32.5vw",height:"3.3vw",padding:"0.3vw 0.9vw"}:{width:"32.5vh",height:"3.3vh",padding:"0.3vh 0.9vh"}} type="text" id="city" name="city" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                    <input style={sw?{width:"32.5vw",height:"3.3vw",padding:"0.3vw 0.9vw",margin:"1vw 0vw"}:{width:"100%",height:"4.5vh",padding:"0.3vh 0.9vh"}} type="text" id="city" name="city" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
             </div>
             <div style={sw?{width:"66vw"}:{width:"50vh"}} className=" flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
-                <div className="relative flex-grow flex justify-between w-full">
+                <div className="relative flex-grow flex flex-col w-full">
                     <label forhtml="state" className="leading-7  text-gray-600">State</label>
-                    <input style={sw?{width:"32.5vw",height:"3.3vw",padding:"0.3vw 0.9vw"}:{width:"32.5vh",height:"3.3vh",padding:"0.3vh 0.9vh"}} type="text" id="state" name="state" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                    <input style={sw?{width:"32.5vw",height:"3.3vw",padding:"0.3vw 0.9vw",margin:"1vw 0vw"}:{width:"100%",height:"4.5vh",padding:"0.3vh 0.9vh"}} type="text" id="state" name="state" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
-                <div className="relative flex-grow flex justify-between w-full">
+                <div className="relative flex-grow flex flex-col w-full">
                     <label forhtml="pincode" className="leading-7  text-gray-600">Pincode</label>
-                    <input style={sw?{width:"32.5vw",height:"3.3vw",padding:"0.3vw 0.9vw"}:{width:"32.5vh",height:"3.3vh",padding:"0.3vh 0.9vh"}} type="number" id="pincode" name="pincode" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                    <input style={sw?{width:"32.5vw",height:"3.3vw",padding:"0.3vw 0.9vw",margin:"1vw 0vw"}:{width:"100%",height:"4.5vh",padding:"0.3vh 0.9vh"}} type="number" id="pincode" name="pincode" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
             </div>
             </div>
             <div>
             <h2 style={sw?{fontSize:"1.5vw",marginBottom:"2vw",marginLeft:"16vw"}:{fontSize:"2vh",marginBottom:"2vh"}} className='font-bold text-xl md:mx-52 md:py-10 py-6 mx-8'>2. Review Cart</h2> 
-           <div style={sw?{margin:"3vw 17vw",fontSize:"1.3vw"}:{margin:"1vw 9vw",fontSize:"1.5vh"}} className='mx-12 md:mx-56 my-3 '>
+           <div style={sw?{margin:"3vw 17vw",fontSize:"1.3vw"}:{margin:"1vw 6.5vw",fontSize:"1.5vh"}} className='mx-12 md:mx-56 my-3 '>
            <ol className='list-decimal font-semibold '>
                     {Object.keys(cart).length ==0 && <div>
                        No items in the cart 😭
@@ -122,9 +122,9 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
 
                        <td > <span>Qty : {cart[k].qty}</span></td>
 
-                        <td><CgTrashEmpty className='cursor-pointer' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/></td>
+                        <td><CgTrashEmpty style={sw?{fontSize:"2vw"}:{fontSize:"2vh"}} className='cursor-pointer' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/></td>
                         
-                        <td><div><img alt='product' style={{height:"12vw"}} src={cart[k].img}></img></div></td></tbody>
+                        <td><div><img alt='product' style={sw?{height:"12vw"}:{height:"12vh"}} src={cart[k].img}></img></div></td></tbody>
                        
                        
                     </li>})}    </table>
