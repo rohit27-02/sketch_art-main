@@ -160,7 +160,7 @@ const Contact = ({ info }) => {
    
      
     </div>
-    <div style={sw?{backgroundColor:"#bfb1c4",lineHeight:"5vw",fontSize:"1.25vw"}:{backgroundColor:"#bfb1c4",lineHeight:"5vh",fontSize:"1.25vh"}} className=" md:w-1/2 bg-white flex  flex-col md:ml-auto w-full">
+    <div style={sw?{backgroundColor:"#bfb1c4",lineHeight:"5vw",fontSize:"1.25vw",marginLeft:"2vw"}:{backgroundColor:"#bfb1c4",lineHeight:"5vh",fontSize:"1.25vh"}} className=" md:w-1/2 bg-white flex  flex-col md:ml-auto w-full">
       <h2 style={sw?{fontFamily: "'Fjalla One', sans-serif",wordSpacing:2,fontSize:"1.875vw",marginBottom:"1vw"}:{fontFamily: "'Fjalla One', sans-serif",wordSpacing:2,fontSize:"1.875vh",marginBottom:"1vh",marginTop:"2vh"}} className="text-white md:text-2xl 2xl:text-3xl mb-1 font-medium title-font">LEAVE A COMMENT</h2>
       
       <div  style={{marginBottom:"0.5vw"}} className="flex  relative  ">

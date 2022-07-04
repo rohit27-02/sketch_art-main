@@ -26,6 +26,8 @@ const Post = ({ buyNow, addToCart, product }) => {
   const [mechanism, setmechanism] = useState("Manual");
   const [qty, setqty] = useState(1);
   const [sw, setsw] = useState(false);
+  const [withmotor, setwithmotor] = useState(false);
+  const [motor, setmotor] = useState("Nil");
 
   const height = []
   const width = []
@@ -90,7 +92,11 @@ useEffect(() => {
     setisenable(!isenable)
   }
   const mechanismtype=(e)=>{
+    setwithmotor(false)
     setmechanism(e.target.id)
+    if(e.target.id == "motorized"){
+      setwithmotor(true)
+    }
   }
 
 
@@ -98,7 +104,7 @@ useEffect(() => {
   return <>
 
   {sw && <div style={{height:"6.2vw",backgroundClip:""}} className='absolute border-b  border-black  top-0 w-full  '></div>}
-    {sw && <div style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }}  className='w-full overflow-hidden '><img className='  w-full' alt='img' src={product.poster}></img></div>}
+    {sw && <div style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }}  className='w-full overflow-hidden '><img className=' w-full' alt='img' src={product.poster}></img></div>}
 {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
     <section id='main'   style={{  fontFamily: "'poppins', sans-serif"}} className="text-gray-900  justify-center flex body-font overflow-hidden">
       <ToastContainer
@@ -128,7 +134,7 @@ useEffect(() => {
                   <p className='leading-loose '>Height</p>
                   <p className='leading-loose '>Width</p>
                   <p className='leading-loose '>Mechanism</p>
-                 
+                 {withmotor && <p className='leading-loose '>Motor</p>}
                   
                 </div>
                 <div  className='ml-8 '>
@@ -137,6 +143,7 @@ useEffect(() => {
                   <p className='leading-loose '>{selectedheight}{selectedexactheight} inches</p>
                   <p className='leading-loose '>{selectedwidth}{selectedexactwidth} inches</p>
                   <p className='leading-loose '>{mechanism}</p>
+                  {withmotor && <p className='leading-loose '>{motor}</p>}
                  
                 </div>
               </div>
@@ -174,8 +181,8 @@ useEffect(() => {
               <div style={sw?{fontSize:"1.25vw"}:{fontSize:"1.5vh"}}> Your Price
               <span style={sw?{fontFamily: "'Fjalla One', sans-serif",fontSize:"1.58vw"}:{fontFamily: "'Fjalla One', sans-serif",fontSize:"2vh"}} className="title-font ml-4  text-xl text-gray-900">₹ {product.price*qty}</span></div>
               <div className='flex space-x-4 mt-4 md:mt-0'>
-              <button style={sw?{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw"}:{ backgroundColor: "#bfb1c4" ,fontSize:"1.5vh",width:"10vh",height:"3.5vh"}} className="flex items-center border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white " onClick={() => { buyNow(product.slug,qty, product.price, product.title, cartheight, cartwidth, product.variants[selectedcolor].color,mechanism ,product.variants[selectedcolor].img) }}>Buy now</button>
-              <button style={sw?{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw"}:{ backgroundColor: "#bfb1c4" ,fontSize:"1.5vh",width:"10vh",height:"3.5vh"}} onClick={() => { addToCart(product.slug, qty, product.price, product.title,cartheight, cartwidth, product.variants[selectedcolor].color, mechanism ,product.variants[selectedcolor].img) }} className="flex items-center   border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white  ">Add to cart</button>
+              <button style={sw?{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw"}:{ backgroundColor: "#bfb1c4" ,fontSize:"1.5vh",width:"10vh",height:"3.5vh"}} className="flex items-center border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white " onClick={() => { buyNow(product.slug,qty, product.price, product.title, cartheight, cartwidth, product.variants[selectedcolor].color,motor ,product.variants[selectedcolor].img) }}>Buy now</button>
+              <button style={sw?{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw"}:{ backgroundColor: "#bfb1c4" ,fontSize:"1.5vh",width:"10vh",height:"3.5vh"}} onClick={() => { addToCart(product.slug, qty, product.price, product.title,cartheight, cartwidth, product.variants[selectedcolor].color, motor ,product.variants[selectedcolor].img) }} className="flex items-center   border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white  ">Add to cart</button>
               </div>
             </div>
             </div>
@@ -264,9 +271,12 @@ useEffect(() => {
                       />
                       </div>
                     </Disclosure.Button>
-                    <Disclosure.Panel style={sw?{padding:"0.625vw 2.1875vw 2.5vw"}:{padding:"0.625vh 2.1875vh 2.5vh"}} className=" pt-2 pb-8  text-gray-500 flex justify-start px-7 bg-white">
-                      <button id="Manual"  onClick={(e)=>mechanismtype(e)} style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh"}} className='items-center btn  border-2  py-2 w-32 flex justify-center '>Manual</button>
-                      <button style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw",marginLeft:"1.875vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh",marginLeft:"1.875vh"}} className='items-center btn  border-2 ml-6 py-2 w-32 flex justify-center'>Motorized</button>
+                    <Disclosure.Panel style={sw?{padding:"0.625vw 2.1875vw 2.5vw"}:{padding:"0.625vh 2.1875vh 2.5vh"}} className=" pt-2 pb-8  text-gray-500 flex flex-col px-7 bg-white">
+                      <div className='flex'> <button id="Manual"  onClick={(e)=>mechanismtype(e)} style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh"}} className='items-center btn  border-2  py-2 w-32 flex justify-center '>Manual</button>
+                      <button onClick={(e)=>mechanismtype(e)} id="motorized" style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw",marginLeft:"1.875vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh",marginLeft:"1.875vh"}} className='items-center btn  border-2 ml-6 py-2 w-32 flex justify-center'>Motorized</button></div>
+                      <div>
+                        {withmotor && <div></div>}
+                      </div>
                     </Disclosure.Panel>
                   </>
                 )}

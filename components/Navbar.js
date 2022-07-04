@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable @next/next/link-passhref */
+
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+
 import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus, AiOutlineMenu } from 'react-icons/ai';
 import { MdAccountCircle } from 'react-icons/md';
 import { useRef, useState, useEffect } from 'react';
@@ -490,12 +490,12 @@ if(item[e.target.id].qty >1){
     </Dialog>
 
   
-    {dropDown && <div onMouseLeave={() => setdropDown(false)} style={sw?{fontSize:"1.4vw",marginRight:"2.6vw",top:"4.6vw",padding:"0.2vw"}:{fontSize:"1.4vh",marginRight:"2.6vh",top:"4.6vh",padding:"0.2vh"}} className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm text-center z-50 top-16 px-5  text-lg md:px-0 py-3  md:acctext '>
+    {dropDown && <div onMouseLeave={() => setdropDown(false)} style={sw?{fontSize:"1.4vw",marginRight:"3.7vw",top:"5vw",padding:"1vw 0.5vw"}:{fontSize:"1.5vh",marginRight:"4vh",top:"5vh",padding:"1vh"}} className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm '>
       <ul>
         
-        <a className='  ' href={'/orders'}><li className=''>Orders</li></a>
-        <li className='cursor-pointer' onClick={logout}>Logout</li>
-        {admin == "true" && <a className=' text-center ' href={"/adminpanel"}><li className=''>Admin Panel</li></a>}
+        <a className='  ' href={'/orders'}><li  className='hover:bg-gray-800 hover:text-white'>Orders</li></a>
+        <li className='cursor-pointer hover:bg-gray-800 hover:text-white' onClick={logout}>Logout</li>
+        {admin == "true" && <a className='hover:bg-gray-800 hover:text-white text-center'  href={"/adminpanel"}><li className=''>Admin Panel</li></a>}
       </ul>
     </div>}
     
@@ -560,7 +560,7 @@ if(item[e.target.id].qty >1){
           </div>
 
             <div id='navtext' style={{fontSize:"1.25vw",paddingTop:"1.3vw"}} className="hidden md:flex  absolute w-full justify-center    ">
-              <Link style={{ textUnderlineOffset: 8 }} href="/" onMouseEnter={offproducts} className="  hover:underline  decoration-2 ">HOME</Link>
+              <a style={{ textUnderlineOffset: 8 }} href="/" onMouseEnter={offproducts} className="  hover:underline  decoration-2 ">HOME</a>
               <div style={{ textUnderlineOffset: 8}}  className=" "><span style={{padding:"0vw 2vw"}} onMouseEnter={toggleproducts} className='flex  justify-center px-6 cursor-pointer '>PRODUCTS< IoIosArrowDown style={{marginLeft:"1vw"}} className={`${nav ? 'rotate-180 transform ml-4 self-center' : 'ml-4 self-center'} `}/></span><div> {nav && <Flip top><div style={{fontSize:"1.25vw",marginTop:"0.4vw"}} className='  md:text-base bg-black bg-opacity-70  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
      
      <div style={{ }} className="flex flex-col  text-white">
@@ -568,10 +568,10 @@ if(item[e.target.id].qty >1){
          Object.keys(data).map((p) => {
            return (<div key={p} style={{fontSize:"1vw"}} className="flex z-50">
             
-               <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><span className='flex items-center '><span className='w-full uppercase'><Link  href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}>{data[p]}</Link></span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
+               <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><span className='flex items-center '><span className='w-full uppercase'><a  href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}>{data[p]}</a></span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
              
              {listd && sub[p] && <div style={{left:"12.45vw"}}  className='z-50 absolute shadow-black shadow-sm bg-black bg-opacity-70 left-44 min-w-max flex flex-col'>
-             { subcategory[0].map((s)=>{return(<div key={s}  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><Link   href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`}  >{s}</Link></div>)})}
+             { subcategory[0].map((s)=>{return(<div key={s}  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`}  >{s}</a></div>)})}
              
                </div>}
                </div>
@@ -585,8 +585,8 @@ if(item[e.target.id].qty >1){
 
 
    </div></Flip>}</div></div>
-              <Link style={{ textUnderlineOffset: 8 }}  href="/about" className="  hover:underline  decoration-2   z-50">ABOUT US</Link>
-              <div style={{ textUnderlineOffset: 8 ,margin:"0vw 2vw" }} ><Link  onMouseEnter={offproducts} href="/contact" className=" hover:underline  decoration-2   ">CONTACT US</Link></div>
+              <a href="/about"><span style={{ textUnderlineOffset: 8 }}   className="  hover:underline  decoration-2   z-50">ABOUT US</span></a>
+              <div style={{ textUnderlineOffset: 8 ,margin:"0vw 2vw" }}  onMouseEnter={offproducts} className=" hover:underline  decoration-2   "><a  href="/contact" >CONTACT US</a></div>
             </div>
 
             <div style={{marginTop:"-0.5vw"}} className='flex items-center'>
@@ -631,7 +631,7 @@ if(item[e.target.id].qty >1){
                <li  id={p} onClick={(e)=>{swap(e)}} style={{height:"4vh",marginLeft:"2vh"}} className='flex items-center  '  ><span   className='flex items-center '><span className='w-1.2 uppercase'>{data[p]}</span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vh"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
              
              {listd && sub[p] && <div style={{left:"24vh"}}  className='z-50 border-l-2 text-white border-white absolute min-w-max flex flex-col'>
-             { subcategory[0].map((s)=>{return(<div key={s}  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><Link   href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`}  >{s}</Link></div>)})}
+             { subcategory[0].map((s)=>{return(<div key={s}  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`}  >{s}</a></div>)})}
              
                </div>}
                </div>
