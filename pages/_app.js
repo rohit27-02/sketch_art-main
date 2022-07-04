@@ -19,11 +19,12 @@ function MyApp({ Component, pageProps }) {
   const [key, setkey] = useState(0);
   
  
+  NProgress.configure({ showSpinner: publicRuntimeConfig.NProgressShowSpinner });
   
-  
+  Router.events.on('routeChangeStart',()=>{ NProgress.start()}); Router.events.on('routeChangeComplete', () =>{ NProgress.done()}); Router.events.on('routeChangeError', () => NProgress.done());
+  Router.hashChangeStart(url)
   const router = useRouter()
   useEffect(() => {
-    Router.events.on('routeChangeStart',()=>{ NProgress.start()}); Router.events.on('routeChangeComplete', () =>{ NProgress.done()}); Router.events.on('routeChangeError', () => NProgress.done());
    
     try {
       if (localStorage.getItem("cart")) {
