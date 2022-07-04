@@ -2,28 +2,35 @@
 /* eslint-disable react/jsx-no-undef */
 import '../styles/globals.css'
 import Footer from '../components/Footer'
-import { useState, useEffect } from 'react';
+import { useState, useEffect,CSSProperties } from 'react';
 import { useRouter } from 'next/router';
 import Router from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from '../components/Navbar';
 import Head from 'next/head';
-import NProgress from 'nprogress'; //nprogress module
-import 'nprogress/nprogress.css'; //styles of nprogress
+import ClipLoader from "react-spinners/ClipLoader";
  
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
   const [user, setUser] = useState({value:null});
   const [key, setkey] = useState(0);
-  
+  let [loading, setLoading] = useState(falsec);
+
+
+
+
+  const router = useRouter()  
+
  
-  NProgress.configure({ showSpinner: publicRuntimeConfig.NProgressShowSpinner });
+  useEffect(() => {
+    Router.events.on("hashChangeStart",()=>{console.log("i statted");setLoading(true)})
+    Router.events.on("routeChangeComplete",()=>setLoading(false))
+   
+  }, [router.events]);
+   
   
-  Router.events.on('routeChangeStart',()=>{ NProgress.start()}); Router.events.on('routeChangeComplete', () =>{ NProgress.done()}); Router.events.on('routeChangeError', () => NProgress.done());
-  Router.hashChangeStart(url)
-  const router = useRouter()
   useEffect(() => {
    
     try {
@@ -107,11 +114,15 @@ function MyApp({ Component, pageProps }) {
   }
 
   const showHeader = router.pathname === '/adminpanel' ? false : true;
+
+  
   return <>
    <Head>
    <title>Sketch Art</title>
       </Head>
-  
+      {loading && <div className="sweet-loading absolute flex justify-center items-center mt-40 ">
+      <ClipLoader className='z-50  ' color="red" loading={true}  size={150} />
+    </div>}
   {showHeader && <Navbar saveCart={saveCart} logout={logout} user={user} key={key} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} {...pageProps} clearCart={clearCart} subTotal={subTotal}/>}
   <Component saveCart={saveCart} logout={logout} buyNow={buyNow} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} {...pageProps} subTotal={subTotal}/>
   {showHeader && <Footer />}
