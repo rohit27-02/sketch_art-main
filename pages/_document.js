@@ -13,11 +13,16 @@ export default function Document() {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css"/>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
+
+        
       </Head>
       <body>
-        
+     
+     
+                
         <Main />
         <NextScript />
+        
       </body>
     </Html>
   )

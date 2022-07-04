@@ -249,13 +249,13 @@ setlistd(false)
       setsw(true)
     }
   setitem(Object.keys(cart).length)
-  console.log(Router.beforePopState)
+ 
   if(Router.isReady == true){
 if(Router.pathname=="/product/[slug]" || Router.pathname=="/Checkout" || Router.pathname=="/motorizedblinds"){
 document.getElementById("nav").classList.remove("text-white")
 document.getElementById("img").classList.remove("invert")
 }
- console.log(Router.pathname) 
+
 }
   }, []);
 
@@ -495,7 +495,7 @@ if(item[e.target.id].qty >1){
         
         <a className='  ' href={'/orders'}><li  className='hover:bg-gray-800 hover:text-white'>Orders</li></a>
         <li className='cursor-pointer hover:bg-gray-800 hover:text-white' onClick={logout}>Logout</li>
-        {admin == "true" && <a className='hover:bg-gray-800 hover:text-white text-center'  href={"/adminpanel"}><li className=''>Admin Panel</li></a>}
+        {admin == "true" && <a   href={"/adminpanel"}><li className='hover:bg-gray-800 hover:text-white'>Admin Panel</li></a>}
       </ul>
     </div>}
     

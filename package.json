@@ -25,6 +25,7 @@
     "mongodb": "^4.6.0",
     "mongoose": "^6.3.1",
     "next": "12.1.5",
+    "next-page-transitions": "^1.0.0-beta.2",
     "nodemailer": "^6.7.5",
     "nprogress": "^0.2.0",
     "react": "18.0.0",
@@ -36,6 +37,8 @@
     "react-multi-carousel": "^2.8.0",
     "react-popper": "^2.3.0",
     "react-reveal": "^1.2.2",
+    "react-shimmer-effect": "^1.0.9",
+    "react-spinners": "^0.13.3",
     "react-toastify": "^8.2.0",
     "react-visibility-sensor": "^5.1.1",
     "tailwind-scrollbar-hide": "^1.1.7"

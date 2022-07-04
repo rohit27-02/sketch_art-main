@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
   const [subTotal, setSubTotal] = useState(0);
   const [user, setUser] = useState({value:null});
   const [key, setkey] = useState(0);
-  let [loading, setLoading] = useState(falsec);
+  let [loading, setLoading] = useState(false);
 
 
 
