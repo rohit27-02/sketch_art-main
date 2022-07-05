@@ -13,6 +13,8 @@ import { BsImages } from "react-icons/bs"
 import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai';
 import { Router } from 'next/router';
 
+
+
 const Post = ({ buyNow, addToCart, product }) => {
   const [selectedheight, setselectedheight] = useState(6 );
   const [cartheight, setcartheight] = useState(6 );
@@ -104,7 +106,7 @@ useEffect(() => {
   return <>
 
   {sw && <div style={{height:"6.2vw",backgroundClip:""}} className='absolute border-b  border-black  top-0 w-full  '></div>}
-    {sw && <div style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }}  className='w-full overflow-hidden '><img  className=' w-full' alt='img' src={product.poster}></img></div>}
+    {sw && <img style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }} className=' w-full' alt='img' src={product.poster}></img>}
 {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
     <section id='main'   style={{  fontFamily: "'poppins', sans-serif"}} className="text-gray-900  justify-center flex body-font overflow-hidden">
       <ToastContainer

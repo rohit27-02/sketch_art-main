@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navbar from '../components/Navbar';
 import Head from 'next/head';
 import BounceLoader from "react-spinners/BounceLoader";
+import { start } from 'nprogress';
  
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
@@ -19,15 +20,16 @@ function MyApp({ Component, pageProps }) {
   let [loading, setLoading] = useState(false);
 
 
-
-
   const router = useRouter()  
 
- 
+
   useEffect(() => {
-    Router.events.on("hashChangeStart",(url)=>{console.log("i statted");setLoading(true)})
-    Router.events.on("routeChangeComplete",(url)=>setLoading(false))
+    console.log("vgucyv")
    
+   
+    router.events.on("routeChangeStart",(url)=>{setLoading(true)})
+    router.events.on("routeChangeError",(url)=>{console.log("i statted");setLoading(true)})
+    router.events.on("routeChangeComplete",(url)=>setLoading(false))
   }, [router.events]);
    
   
