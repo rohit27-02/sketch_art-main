@@ -2,15 +2,23 @@
 import React from 'react'
 import { Slide } from 'react-reveal'
 import { useRef, useState, useEffect } from 'react';
+import  Router  from 'next/router';
 
 const Motorizedblinds = () => {
+  const containerRef = useRef(null);
 const [sw, setsw] = useState(false);
 
   useEffect(() => {
     if(screen.width>768){
       setsw(true)
     }
-
+    console.log(Router.asPath)
+    if(Router.asPath == "/motorizedblinds/#second"){
+      setTimeout(() => {
+        containerRef.current.scrollIntoView({ behavior: 'smooth' });
+      }, 250);
+    }
+   
   }, []);
   return (<>
   {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
@@ -56,7 +64,7 @@ const [sw, setsw] = useState(false);
       </div>
       </Slide>
 
-      <div id='second'  className='space-x-6 space-y-6 text-center' style={sw?{ fontFamily: "'Roboto Slab', serif" ,marginTop:"3.125vw",fontSize:"1.25vw"}:{ fontFamily: "'Roboto Slab', serif" ,marginTop:"3.125vh",fontSize:"1.25vh"}} >
+      <div ref={containerRef} id='second'  className='space-x-6 space-y-6 text-center' style={sw?{ fontFamily: "'Roboto Slab', serif" ,paddingTop:"3.125vw",fontSize:"1.25vw"}:{ fontFamily: "'Roboto Slab', serif" ,paddingTop:"3.125vh",fontSize:"1.25vh"}} >
         <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif",fontSize:"3.75vw" }:{ fontFamily: "'Fjalla One', sans-serif",fontSize:"3.75vh" }} className='text-center text-5xl  '>HOW TO CHOOSE YOUR BLINDS ?</h1>
         <p style={sw?{margin:"1.875vw 0vw"}:{margin:"1.875vh 0vw"}} >Selecting window treatments for a specific room is all about assessing the way the space functions. </p>
         <a href='#living' className='underline underline-offset-4'>LIVING AREA</a>

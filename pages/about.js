@@ -7,6 +7,7 @@ import VisibilitySensor from 'react-visibility-sensor';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useEffect, useState } from 'react'
+import Router from 'next/router';
 
 
 import { Fade, LightSpeed, Slide, Zoom } from 'react-reveal';
@@ -60,7 +61,7 @@ const About = () => {
         <p  style={sw?{fontSize:"1.25vw",padding:"2.1875vw 0vw",marginRight:"3.75vw",lineHeight:"1.9vw"}:{fontSize:"1.5vh",padding:"2.1875vh 0vw",marginRight:"3.75vw",lineHeight:"2.2vh"}} className=' py-7 leading-relaxed mr-12  md:text-base 2xl:text-xl  font-thin'>With an industry experience of over 25 years, Sketchart is the leading manufacturer and importer of Window Blinds and Accessories, Motorized Blinds and Interior Flims in the country catering to clients across the globe. It is also the marketing partner for Dooya Motors based in China. Keen on widening its portfolio, Dooya is open to expanding its imports and exports as and when opportunities present themselves.
 
 Sketchart strives for excellence by providing customized solutions. An expansive range of world-class home fashion products while providing premium customer services that include global sourcing, quality assurance, logistics and finance.</p>
-<div  className=' '><a href={"/contact"} style={sw?{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`,fontSize:"1.4vw",padding:"0.625vw 1.875vw"}:{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`,fontSize:"1.4vh",padding:"0.625vh 1.875vh"}} className='text-lg   hover:opacity-80  py-2 px-6  text-white'>Contact Us</a></div>
+<div  className=' '><a onClick={()=>Router.push("/contact")} style={sw?{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`,fontSize:"1.4vw",padding:"0.625vw 1.875vw"}:{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`,fontSize:"1.4vh",padding:"0.625vh 1.875vh"}} className='text-lg cursor-pointer  hover:opacity-80  py-2 px-6  text-white'>Contact Us</a></div>
 </div></Slide>
       </div>
         {sw && <Slide right><img  style={sw?{margin:"0vw 2.5vw ",padding:"1vw",width:"39vw",height:"26.7vw"}:{margin:"0vw 2vh ",width:"39vh",height:"26.7vh"}} className="mx-8 p-3" src='https://media.istockphoto.com/photos/little-boy-opening-the-roller-blinds-in-the-morning-picture-id1178700357?k=20&m=1178700357&s=612x612&w=0&h=zZMixHxDvjJj4ce_fEjPEFE9ReFw5xabNAPh3Rypdxo='></img></Slide>}

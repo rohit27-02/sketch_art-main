@@ -21,6 +21,7 @@ import { auto } from '@popperjs/core';
 import Link from "next/link";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Router from "next/router";
 
 
 
@@ -125,7 +126,7 @@ if(screen.width>768){
                 Motorized window blinds perform the same purpose of traditional window blinds. These blinds have added functions that make them a valuable addition to your home's interior design.
               </p>
                 <div className="flex items-start">
-                  <button style={sw?{ color: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }:{ color: "#bfb1c4",fontSize:"1.25vh",height:"3.125vh",width:"10.45vh" }} className="inline-flex  bg-gray-100 font-semibold  border-0 justify-center items-center focus:outline-none hover:opacity-90  text-base"><a href="/motorizedblinds">Learn More</a></button>
+                  <button style={sw?{ color: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }:{ color: "#bfb1c4",fontSize:"1.25vh",height:"3.125vh",width:"10.45vh" }} className="inline-flex  bg-gray-100 font-semibold  border-0 justify-center items-center focus:outline-none hover:opacity-90  text-base"><a className="cursor-pointer" onClick={()=>Router.push("/motorizedblinds")}>Learn More</a></button>
                 </div>
               </Slide>
             </div>
@@ -139,7 +140,7 @@ if(screen.width>768){
               </h1></Slide>
               <Slide bottom><p  style={sw?{fontSize:"1.25vw",marginBottom:"2.5vw",lineHeight:"1.8vw"}:{fontSize:"1.25vh",marginBottom:"2.5vh",lineHeight:"1.8vh"}} className="mb-8  md:text-base text-sm 2xl:text-lg "> Selecting window treatments for a specific room is all about assessing the way the space functions. </p>
                 <div className="flex justify-start">
-                  <button style={sw?{ color: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }:{ color: "#bfb1c4",fontSize:"1.25vh",height:"3.125vh",width:"10.45vh" }} className=" inline-flex  bg-gray-100 font-semibold border-0 justify-center items-center focus:outline-none hover:opacity-90 text-base"><a href="/motorizedblinds#second">Learn More</a></button>
+                  <button style={sw?{ color: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }:{ color: "#bfb1c4",fontSize:"1.25vh",height:"3.125vh",width:"10.45vh" }} className=" inline-flex  bg-gray-100 font-semibold border-0 justify-center items-center focus:outline-none hover:opacity-90 text-base"><a className="cursor-pointer" onClick={()=>Router.push("/motorizedblinds#second",undefined,{scroll:false})}>Learn More</a></button>
                 </div>
               </Slide>
             </div>

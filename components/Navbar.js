@@ -537,7 +537,7 @@ if(item[e.target.id].qty >1){
       <div style={sw?{fontSize:"1.5vw",marginTop:"2vw",padding:"0vw 1vw"}:{fontSize:"2vh",marginTop:"2vh",padding:"0vh 1vh"}} className='font-bold w-full flex justify-between mt-10'>
         <span>Total ({item} items) </span> <span>₹ {subTotal}</span></div>
      <div style={sw?{marginTop:"1.8vw"}:{marginTop:"1.8vh"}} className='w-full flex justify-center'>
-      <a href={"/Checkout"}><button style={sw?{ backgroundColor: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }:{ backgroundColor: "#bfb1c4",fontSize:"2vh",height:"4vh",width:"12vh" }} className="flex  text-white hover:opacity-80     border-0  justify-center focus:outline-none   "><span className='my-auto'>Check out</span></button></a>
+      <a onClick={()=>Router.push("/Checkout")} ><button style={sw?{ backgroundColor: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }:{ backgroundColor: "#bfb1c4",fontSize:"2vh",height:"4vh",width:"12vh" }} className="flex  text-white hover:opacity-80     border-0  justify-center focus:outline-none   "><span className='my-auto'>Check out</span></button></a>
       </div>
     </div>
 
