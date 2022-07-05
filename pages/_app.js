@@ -24,10 +24,7 @@ function MyApp({ Component, pageProps }) {
 
 
   useEffect(() => {
-    console.log("vgucyv")
-   
-   
-    router.events.on("routeChangeStart",(url)=>{setLoading(true)})
+    router.events.on("routeChangeStart",(url)=>{setLoading(true);console.log("good")})
     router.events.on("routeChangeError",(url)=>{console.log("i statted");setLoading(true)})
     router.events.on("routeChangeComplete",(url)=>setLoading(false))
   }, [router.events]);
@@ -123,7 +120,7 @@ function MyApp({ Component, pageProps }) {
    <title>Sketch Art</title>
       </Head>
      
-      {loading ? <div className="sweet-loading absolute flex justify-center items-center mt-40 ">
+      {loading ? <div className="sweet-loading absolute w-full h-full flex justify-center items-center  ">
       <BounceLoader className='z-50  ' color="#bfbce4" loading={true}  size={150} />
     </div>:<>
   {showHeader && <Navbar saveCart={saveCart} logout={logout} user={user} key={key} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} {...pageProps} clearCart={clearCart} subTotal={subTotal}/>}

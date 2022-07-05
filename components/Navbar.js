@@ -495,7 +495,7 @@ if(item[e.target.id].qty >1){
         
         <a className='  ' href={'/orders'}><li  className='hover:bg-gray-800 hover:text-white'>Orders</li></a>
         <li className='cursor-pointer hover:bg-gray-800 hover:text-white' onClick={logout}>Logout</li>
-        {admin == "true" && <a   href={"/adminpanel"}><li className='hover:bg-gray-800 hover:text-white'>Admin Panel</li></a>}
+        {admin == "true" && <a onClick={()=>Router.push("/adminpanel")} ><li className='hover:bg-gray-800 cursor-pointer hover:text-white'>Admin Panel</li></a>}
       </ul>
     </div>}
     
@@ -560,7 +560,7 @@ if(item[e.target.id].qty >1){
           </div>
 
             <div id='navtext' style={{fontSize:"1.25vw",paddingTop:"1.3vw"}} className="hidden md:flex  absolute w-full justify-center    ">
-              <a style={{ textUnderlineOffset: 8 }} href="/" onMouseEnter={offproducts} className="  hover:underline  decoration-2 ">HOME</a>
+              <a style={{ textUnderlineOffset: 8 }} onClick={()=>Router.push("/")} onMouseEnter={offproducts} className="  hover:underline cursor-pointer decoration-2 ">HOME</a>
               <div style={{ textUnderlineOffset: 8}}  className=" "><span style={{padding:"0vw 2vw"}} onMouseEnter={toggleproducts} className='flex  justify-center px-6 cursor-pointer '>PRODUCTS< IoIosArrowDown style={{marginLeft:"1vw"}} className={`${nav ? 'rotate-180 transform ml-4 self-center' : 'ml-4 self-center'} `}/></span><div> {nav && <Flip top><div style={{fontSize:"1.25vw",marginTop:"0.4vw"}} className='  md:text-base bg-black bg-opacity-70  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
      
      <div style={{ }} className="flex flex-col  text-white">
@@ -568,10 +568,10 @@ if(item[e.target.id].qty >1){
          Object.keys(data).map((p) => {
            return (<div key={p} style={{fontSize:"1vw"}} className="flex z-50">
             
-               <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><span className='flex items-center '><span className='w-full uppercase'><a  href={`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`}>{data[p]}</a></span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
+               <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><span className='flex items-center '><span className='w-full cursor-pointer uppercase'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`)}>{data[p]}</a></span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
              
              {listd && sub[p] && <div style={{left:"12.45vw"}}  className='z-50 absolute shadow-black shadow-sm bg-black bg-opacity-70 left-44 min-w-max flex flex-col'>
-             { subcategory[0].map((s)=>{return(<div key={s}  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`}  >{s}</a></div>)})}
+             { subcategory[0].map((s)=>{return(<div key={s}  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/product/${s}`)}   >{s}</a></div>)})}
              
                </div>}
                </div>
@@ -585,8 +585,8 @@ if(item[e.target.id].qty >1){
 
 
    </div></Flip>}</div></div>
-              <a href="/about"><span style={{ textUnderlineOffset: 8 }}   className="  hover:underline  decoration-2   z-50">ABOUT US</span></a>
-              <div style={{ textUnderlineOffset: 8 ,margin:"0vw 2vw" }}  onMouseEnter={offproducts} className=" hover:underline  decoration-2   "><a  href="/contact" >CONTACT US</a></div>
+              <a onClick={()=>Router.push("/about")}><span style={{ textUnderlineOffset: 8 }}   className="  hover:underline  decoration-2 cursor-pointer  z-50">ABOUT US</span></a>
+              <div style={{ textUnderlineOffset: 8 ,margin:"0vw 2vw" }}  onMouseEnter={offproducts} className=" hover:underline cursor-pointer decoration-2   "><a  onClick={()=>Router.push("/contact")} >CONTACT US</a></div>
             </div>
 
             <div style={{marginTop:"-0.5vw"}} className='flex items-center'>
@@ -645,8 +645,8 @@ if(item[e.target.id].qty >1){
 
 
    </div></Flip>}</div></div>
-          <li><a href="/about" className="block text-sm px-2 py-4 phover transition duration-300">About</a></li>
-          <li><a href="/contact" className="block text-sm px-2 py-4 phover transition duration-300">Contact Us</a></li>
+          <li><a onClick={()=>Router.push("/about")}  className="block text-sm px-2 py-4 phover transition duration-300">About</a></li>
+          <li><a onClick={()=>Router.push("/contact")}  className="block text-sm px-2 py-4 phover transition duration-300">Contact Us</a></li>
         </ul>
       </div>}
 
