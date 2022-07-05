@@ -3,14 +3,7 @@
 
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 class MyDocument extends Document {
-  paceOptions = {
-    // Disable the 'elements' source
-    elements: false,
-  className:"wave ",
-    // Only show the progress on regular and ajax-y page navigation,
-    // not every request
-    restartOnRequestAfter: false
-  } 
+
  
   static async getInitialProps(ctx) {
    
