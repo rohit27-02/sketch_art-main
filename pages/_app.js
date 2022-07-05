@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from '../components/Navbar';
 import Head from 'next/head';
-import ClipLoader from "react-spinners/ClipLoader";
+import BounceLoader from "react-spinners/BounceLoader";
  
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
@@ -25,8 +25,8 @@ function MyApp({ Component, pageProps }) {
 
  
   useEffect(() => {
-    Router.events.on("hashChangeStart",()=>{console.log("i statted");setLoading(true)})
-    Router.events.on("routeChangeComplete",()=>setLoading(false))
+    Router.events.on("hashChangeStart",(url)=>{console.log("i statted");setLoading(true)})
+    Router.events.on("routeChangeComplete",(url)=>setLoading(false))
    
   }, [router.events]);
    
@@ -120,12 +120,15 @@ function MyApp({ Component, pageProps }) {
    <Head>
    <title>Sketch Art</title>
       </Head>
-      {loading && <div className="sweet-loading absolute flex justify-center items-center mt-40 ">
-      <ClipLoader className='z-50  ' color="red" loading={true}  size={150} />
-    </div>}
+     
+      {loading ? <div className="sweet-loading absolute flex justify-center items-center mt-40 ">
+      <BounceLoader className='z-50  ' color="#bfbce4" loading={true}  size={150} />
+    </div>:<>
   {showHeader && <Navbar saveCart={saveCart} logout={logout} user={user} key={key} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} {...pageProps} clearCart={clearCart} subTotal={subTotal}/>}
   <Component saveCart={saveCart} logout={logout} buyNow={buyNow} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} {...pageProps} subTotal={subTotal}/>
   {showHeader && <Footer />}
+  </>
+  }
  
 </>
   
