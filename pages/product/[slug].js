@@ -30,6 +30,7 @@ const Post = ({ buyNow, addToCart, product }) => {
   const [sw, setsw] = useState(false);
   const [withmotor, setwithmotor] = useState(false);
   const [motor, setmotor] = useState("Nil");
+  const [recomendedmotors, setrecomendedmotors] = useState([]);
 
   const height = []
   const width = []
@@ -41,7 +42,7 @@ const Post = ({ buyNow, addToCart, product }) => {
   for (let i = 14; i < 97; i++) {
     width.push(i +'  "')
   }
-
+const motors = ["motorA","motorB","motorC","motorD","motorE","motorF"]
  
   function selecth(e) {
     let m = (e.target.value).split(" ")
@@ -94,10 +95,22 @@ useEffect(() => {
     setisenable(!isenable)
   }
   const mechanismtype=(e)=>{
-    setwithmotor(false)
+    if(recomendedmotors !=[]){
+      setrecomendedmotors([])
+    }
+    if(e.target.id == "Manual"){
+      setwithmotor(false)
+    setrecomendedmotors([])
+    }
     setmechanism(e.target.id)
-    if(e.target.id == "motorized"){
+    if(e.target.id == "Motorized"){
       setwithmotor(true)
+      if(selectedheight<=40 && selectedexactwidth<=30){
+        recomendedmotors.push(motors[0],motors[1],motors[3])
+      }
+      else if(selectedheight>40 && selectedexactwidth>=30){
+        recomendedmotors.push(motors[2],motors[3],motors[4])
+      }
     }
   }
 
@@ -274,10 +287,10 @@ useEffect(() => {
                       </div>
                     </Disclosure.Button>
                     <Disclosure.Panel style={sw?{padding:"0.625vw 2.1875vw 2.5vw"}:{padding:"0.625vh 2.1875vh 2.5vh"}} className=" pt-2 pb-8  text-gray-500 flex flex-col px-7 bg-white">
-                      <div className='flex'> <button id="Manual"  onClick={(e)=>mechanismtype(e)} style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh"}} className='items-center btn  border-2  py-2 w-32 flex justify-center '>Manual</button>
-                      <button onClick={(e)=>mechanismtype(e)} id="motorized" style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw",marginLeft:"1.875vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh",marginLeft:"1.875vh"}} className='items-center btn  border-2 ml-6 py-2 w-32 flex justify-center'>Motorized</button></div>
-                      <div>
-                        {withmotor && <div></div>}
+                      <div className='flex'> <button id="Manual"  onClick={(e)=>mechanismtype(e)} style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh"}} className='items-center btn  border-2  py-2 w-32 flex  justify-center '>Manual</button>
+                      <button onClick={(e)=>mechanismtype(e)} id="Motorized" style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw",marginLeft:"1.875vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh",marginLeft:"1.875vh"}} className='items-center btn  border-2 ml-6 py-2 w-32 flex justify-center'>Motorized</button></div>
+                      <div style={sw?{marginTop:"2vw"}:{marginTop:"2vh"}}>
+                        {withmotor && Object.keys(recomendedmotors).map((m)=>{return <button id={recomendedmotors[m]} onClick={(e)=>setmotor(e.target.id)} style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw",marginRight:"1.875vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh",marginRight:"1.875vh"}} className=' btn  border-2  ' key={m}>{recomendedmotors[m]}</button>})}
                       </div>
                     </Disclosure.Panel>
                   </>

@@ -490,7 +490,7 @@ if(item[e.target.id].qty >1){
     </Dialog>
 
   
-    {dropDown && <div onMouseLeave={() => setdropDown(false)} style={sw?{fontSize:"1.4vw",marginRight:"3.7vw",top:"5vw",padding:"1vw 0.5vw"}:{fontSize:"1.5vh",marginRight:"4vh",top:"5vh",padding:"1vh"}} className='absolute animate-fade-in-down right-14 md:right-7 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm '>
+    {dropDown && <div onMouseLeave={() => setdropDown(false)} style={sw?{fontSize:"1.4vw",marginRight:"3.7vw",top:"5vw",padding:"1vw 0.5vw"}:{fontSize:"1.5vh",marginRight:"4vh",top:"5vh",padding:"1vh"}} className='absolute animate-fade-in-down right-14 md:right-7 z-50 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm '>
       <ul>
         
         <a className='  ' href={'/orders'}><li  className='hover:bg-gray-800 hover:text-white'>Orders</li></a>
