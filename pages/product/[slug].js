@@ -95,9 +95,7 @@ useEffect(() => {
     setisenable(!isenable)
   }
   const mechanismtype=(e)=>{
-    if(recomendedmotors !=[]){
-      setrecomendedmotors([])
-    }
+  
     if(e.target.id == "Manual"){
       setwithmotor(false)
     setrecomendedmotors([])
