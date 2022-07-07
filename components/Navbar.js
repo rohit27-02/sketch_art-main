@@ -251,7 +251,7 @@ setlistd(false)
   setitem(Object.keys(cart).length)
  
   if(Router.isReady == true){
-if(Router.pathname=="/product/[slug]" || Router.pathname=="/Checkout" || Router.pathname=="/motorizedblinds"){
+if(Router.pathname=="/product/[slug]" || Router.pathname=="/Checkout" || Router.pathname=="/motorizedblinds" || Router.pathname=="/orders"){
 document.getElementById("nav").classList.remove("text-white")
 document.getElementById("img").classList.remove("invert")
 }

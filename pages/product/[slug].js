@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -27,9 +28,11 @@ const Post = ({ buyNow, addToCart, product }) => {
   const [isenable, setisenable] = useState(false);
   const [mechanism, setmechanism] = useState("Manual");
   const [qty, setqty] = useState(1);
+  const [qty2, setqty2] = useState(1);
   const [sw, setsw] = useState(false);
   const [withmotor, setwithmotor] = useState(false);
   const [motor, setmotor] = useState(null);
+  const [motorprice, setmotorprice] = useState(1000);
   const [recomendedmotors, setrecomendedmotors] = useState([]);
 
   const height = []
@@ -118,7 +121,12 @@ useEffect(() => {
     }
   }
 
+useEffect(() => {
+  if(motor != null){
 
+    addToCart(motor, qty2, motorprice, motor,null, null, "black", motor ,"https://5.imimg.com/data5/BA/GJ/MY-2295700/toso-curtain-motor-500x500.jpg")
+  }
+}, [motor]);
 
   return <>
 
@@ -294,7 +302,14 @@ useEffect(() => {
                       <div className='flex'> <button  id="Manual"  onClick={(e)=>mechanismtype(e)} style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh"}} className='items-center btn  border-2  py-2 w-32 flex  justify-center '>Manual</button>
                       <button onClick={(e)=>mechanismtype(e)} id="Motorized" style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw",marginLeft:"1.875vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh",marginLeft:"1.875vh"}} className='items-center btn  border-2 ml-6 py-2 w-32 flex justify-center'>Motorized</button></div>
                       <div>
-                        {withmotor && Object.keys(recomendedmotors).map((m)=>{return <button id={recomendedmotors[m]} onClick={(e)=>setmotor(e.target.id)} style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw",marginRight:"1.875vw",marginTop:"2vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh",marginRight:"1.875vh",marginTop:"2vh"}} className=' btn  border-2  ' key={m}>{recomendedmotors[m]}</button>})}
+                        {withmotor && Object.keys(recomendedmotors).map((m)=>{return <><div   id={recomendedmotors[m]}  style={sw?{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"10vw",marginRight:"1.875vw",marginTop:"2vw",padding:"0.5vw"}:{borderColor:"#bfb1c4",height:"10vh",marginRight:"1.875vh",marginTop:"2vh",padding:"0.5vh"}} className='flex btn w-full border-2  ' key={m}>
+                        <img style={{width:"10vw"}} src='https://5.imimg.com/data5/BA/GJ/MY-2295700/toso-curtain-motor-500x500.jpg'></img>
+                        <span style={sw?{margin:"1vw"}:{margin:"1vh"}} className="h-full w-full">{recomendedmotors[m]}
+                        <span style={sw?{marginTop:"5vw"}:{marginTop:"5vw"}} className="float-right">price : ₹ 1000</span>
+                        </span>
+                        </div>
+                        <button  id={recomendedmotors[m]}  style={sw?{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw",margin:"1vw 0vw"}:{ backgroundColor: "#bfb1c4" ,fontSize:"1.5vh",width:"10vh",height:"3.5vh",margin:"1vh 0vw"}} onClick={function(e){ setmotor(e.target.id); }} className="flex items-center float-right  border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white  ">Add to cart</button>
+                        </>})}
                       </div>
                     </Disclosure.Panel>
                   </>
