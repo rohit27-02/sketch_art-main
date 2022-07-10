@@ -66,7 +66,7 @@ function MyApp({ Component, pageProps }) {
       newCart[item].qty = cart[item].qty + qty
     }
     else {
-      newCart[item] = { qty, price, name, height,width, variant,mechanism,img }
+      newCart[item] = { itemCode,qty, price, name, height,width, variant,mechanism,img }
     }
       setCart(newCart)
       saveCart(newCart)
@@ -81,6 +81,7 @@ function MyApp({ Component, pageProps }) {
       progress: undefined,
       })
   }
+  
   const removeFromCart = (itemCode, height,width, variant) => {
     let newCart = cart;
     let item = `${itemCode}${height}${width}${variant}`
@@ -94,7 +95,7 @@ function MyApp({ Component, pageProps }) {
     saveCart({})
     let newCart = cart;
     let item = `${itemCode}${height}${width}${variant}`
-    newCart[item] = { qty, price, name, height,width, variant,mechanism,img }
+    newCart[item] = {itemCode, qty, price, name, height,width, variant,mechanism,img }
     setCart(newCart)
     saveCart(newCart)
     router.push("/Checkout") 

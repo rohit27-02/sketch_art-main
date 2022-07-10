@@ -59,14 +59,13 @@ const Tshirts = ({ products, motors }) => {
       <img className='w-full h-full' src='/DOOYA BROCHURE JAN 2022 (2)-compressed_page-0007.jpg'></img>
     </div>}
 
-    <div>
-    
+   {type !="roller" && <div>
       <section className="text-gray-600 body-font ">
         <div className="container px-5 py-20  mx-auto ">
           <div className="flex flex-wrap justify-evenly   -m-4">
             {Object.keys(motors).map((item) => {
               return <div key={motors[item]._id} className="lg:w-1/4 md:w-1/3 p-2 m-4  w-full shadow-lg cursor-pointer ">
-                <a href={`/product/${motors[item].slug}`} className="block relative  rounded overflow-hidden">
+                  <a href={`/motors/${motors[item].slug}`} className="block relative  rounded overflow-hidden">
                   <img alt="ecommerce" className=" h-[36vh] m-auto block" src={motors[item].poster} />
 
                   <div className="mt-4 ">
@@ -82,7 +81,7 @@ const Tshirts = ({ products, motors }) => {
           </div>
         </div>
       </section>
-    </div>
+    </div>}
 
   </div>
   )

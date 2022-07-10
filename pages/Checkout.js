@@ -149,15 +149,15 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
     <tbody className='flex flex-row justify-between w-full items-center my-4'>
                        <td style={sw?{width:"20vw"}:{width:"20vh"}} className='w-52'> <div className='mx-4 flex flex-col '>
                       <span><span className='text-gray-600'> style :  </span>{cart[k].name}</span>
-                      <span><span className='text-gray-600'> width :  </span>{cart[k].width} inches</span>
-                      <span><span className='text-gray-600'> height : </span> {cart[k].height} inches</span>
+                      <span><span className='text-gray-600'> width :  </span>{cart[k].width} meters</span>
+                      <span><span className='text-gray-600'> height : </span> {cart[k].height} meters</span>
                       <span><span className='text-gray-600'> color :  </span>{cart[k].variant}</span>
                         </div>
                         </td>
 
                        <td > <span>Qty : {cart[k].qty}</span></td>
 
-                        <td><CgTrashEmpty style={sw?{fontSize:"2vw"}:{fontSize:"2vh"}} className='cursor-pointer' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/></td>
+                        <td><CgTrashEmpty style={sw?{fontSize:"2vw"}:{fontSize:"2vh"}} className='cursor-pointer' onClick={() => { removeFromCart(cart[k].itemCode,cart[k].height,cart[k].width,cart[k].variant) }}/></td>
                         
                         <td><div><img alt='product' style={sw?{height:"12vw"}:{height:"12vh"}} src={cart[k].img}></img></div></td></tbody>
                        

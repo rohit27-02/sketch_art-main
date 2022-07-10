@@ -255,7 +255,7 @@ setlistd2(false)
   setitem(Object.keys(cart).length)
  
   if(Router.isReady == true){
-if(Router.pathname=="/product/[slug]" || Router.pathname=="/Checkout" || Router.pathname=="/motorizedblinds" || Router.pathname=="/orders" || Router.pathname=="/category/[category]"){
+if(Router.pathname=="/product/[slug]" || Router.pathname=="/motors/[motor]" || Router.pathname=="/Checkout" || Router.pathname=="/motorizedblinds" || Router.pathname=="/orders" || Router.pathname=="/category/[category]"){
 document.getElementById("nav").classList.remove("text-white")
 document.getElementById("img").classList.remove("invert")
 }
@@ -274,23 +274,23 @@ setInterval(() => {
  
 
  const minus=(e)=>{
-  console.log(e.target.id)
+  console.log(e.currentTarget.id)
   const item = JSON.parse(localStorage.getItem("cart"))
-if(item[e.target.id].qty >1){
- item[e.target.id].qty=item[e.target.id].qty-1
+if(item[e.currentTarget.id].qty >1){
+ item[e.currentTarget.id].qty=item[e.currentTarget.id].qty-1
  saveCart(item)
  localStorage.setItem("cart",JSON.stringify(item))
- cart[e.target.id].qty=item[e.target.id].qty
+ cart[e.currentTarget.id].qty=item[e.currentTarget.id].qty
 }
  }
 
 
  const plus=(e)=>{
-  console.log(e.target.id)
+  console.log(e.currentTarget.id)
   const item = JSON.parse(localStorage.getItem("cart"))
- item[e.target.id].qty=item[e.target.id].qty+1
+ item[e.currentTarget.id].qty=item[e.currentTarget.id].qty+1
  localStorage.setItem("cart",JSON.stringify(item))
- cart[e.target.id].qty=item[e.target.id].qty
+ cart[e.currentTarget.id].qty=item[e.currentTarget.id].qty
  saveCart(item)
 
  }
@@ -522,7 +522,7 @@ if(item[e.target.id].qty >1){
               <div style={{}} className='flex my-2 justify-between items-center'>
                 <div style={sw?{width:"5.2vw",marginRight:"1vw",marginTop:"1vw"}:{width:"6vh",marginRight:"1vh",marginTop:"1vh"}} className="overflow-hidden self-start"><img className='object-scale-down' alt='cart' src={cart[k].img}></img></div>
                 <div style={sw?{marginLeft:"0.5vw"}:{marginLeft:"0.5vh"}} className=' w-4/5'>
-                  <div style={sw?{fontSize:"1.5vw"}:{fontSize:"1.5vh"}} className="flex justify-between"><span style={sw?{marginTop:"2vw"}:{marginTop:"2vh"}} className="text-gray-800">{cart[k].name}</span> <ImBin2 style={sw?{marginTop:"1vw"}:{marginTop:"1vh"}} className='cursor-pointer text-gray-500 ' onClick={() => { removeFromCart(cart[k].name,cart[k].height,cart[k].width,cart[k].variant) }}/></div>
+                  <div style={sw?{fontSize:"1.5vw"}:{fontSize:"1.5vh"}} className="flex justify-between"><span style={sw?{marginTop:"2vw"}:{marginTop:"2vh"}} className="text-gray-800">{cart[k].name}</span> <ImBin2 style={sw?{marginTop:"1vw"}:{marginTop:"1vh"}} className='cursor-pointer text-gray-500 ' onClick={() => { removeFromCart(cart[k].itemCode,cart[k].height,cart[k].width,cart[k].variant) }}/></div>
                 <div style={sw?{margin:"0.7vw 0vw"}:{margin:"0.7vh 0vh"}} className='flex'><div style={sw?{marginRight:"1vw"}:{marginRight:"1vh"}}><span className='text-gray-500'>Size</span> : <span style={sw?{fontSize:"1vw"}:{fontSize:"1vh"}}>{cart[k].width} x {cart[k].height}</span></div>
                 <div><span className='text-gray-500'>Color</span> :  <span style={sw?{fontSize:"1vw"}:{fontSize:"1vh"}}>{cart[k].variant}</span></div></div>
                
