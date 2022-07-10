@@ -657,10 +657,10 @@ if(item[e.target.id].qty >1){
        }
  <div  onClick={()=>{setlistd2(!listd2);setlistd(false)}} style={{height:"4vh",marginLeft:"2vh"}} className='flex items-center w-1/2'  ><span   className='flex items-center '><span className=' uppercase'>motors</span><span> < IoIosArrowDown style={{marginLeft:"1vh"}} className={`${listd2 ? '-rotate-90 transform' : ''} `}/></span></span>
 {listd2 && <div style={{left:"24vh"}}  className='z-50 border-l-2 text-white border-white absolute min-w-max min-h-fit flex flex-col'>
-<div  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/product/`}  >WIFI MOTORS</a></div>
-<div  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/product/`}  >TUBULAR MOTORS</a></div>
-<div  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/product/`}  >BATTERY MOTORS</a></div>
-<div  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/product/`}  >WIFI MOTORS</a></div>
+<div  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/category/wifi motors`}  >WIFI MOTORS</a></div>
+<div  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/category/tubular motors`}  >TUBULAR MOTORS</a></div>
+<div  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/category/battery motors`}  >BATTERY MOTORS</a></div>
+<div  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/category/wifi motors`}  >WIFI MOTORS</a></div>
 </div>}
 </div>
      </div>

@@ -23,6 +23,7 @@ import Router from 'next/router';
 
 const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isOpen2, setIsOpen2] = useState(false)
   const [title, settitle] = useState("");
   const [desc, setdesc] = useState("");
   const [price, setprice] = useState(0);
@@ -34,6 +35,7 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [color, setcolor] = useState("");
   const [colorcode, setcolorcode] = useState("");
   const [au, setau] = useState(false);
+  const [au2, setau2] = useState(false);
   const [pid, setpid] = useState();
   const [nav, setnav] = useState("products");
   const [data, setdata] = useState("false");
@@ -142,6 +144,14 @@ const selectedproduct= (event)=>{
   function addup() {
     setau(true)
   }
+  function openModal2() {
+    setIsOpen2(true)
+          } 
+  
+  function addup2() {
+    setau(true)
+  }
+ 
   const handleSubmit = async (e) => {
    
     e.preventDefault()
@@ -191,6 +201,57 @@ const selectedproduct= (event)=>{
     closeModal()
     Router.push("/adminpanel")
   }
+  const handleSubmit2 = async (e) => {
+   
+    e.preventDefault()
+    if(au){
+      const data = [{ title, poster, category, price, slug,subcategory }]
+      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addmotors`, {
+        method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }, body: JSON.stringify(data)
+    })
+  
+    toast.success('Product added to site', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });}
+    else{
+    if(index !=null && ready){
+     
+      const data = [{ title, desc,poster, variants, category,care,sub, price, availableQty,subcategory, slug }]
+   
+      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }, body: JSON.stringify({pid,data})
+      })
+    }
+   
+    toast.success('Product updated', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });  
+ 
+  }
+   
+    closeModal()
+    Router.push("/adminpanel")
+  }
+
+
   const removeItem = async () => {
    if(ready && pid != null){
     const data =  pid 
@@ -590,6 +651,132 @@ if(response.success){
         </Transition>
 
 
+        <Transition appear show={isOpen2} as={Fragment}>
+          <Dialog as="div" className="relative z-10" onClose={closeModal}>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-black bg-opacity-25" />
+            </Transition.Child>
+
+            <div  className="fixed inset-0 overflow-y-auto">
+              <div  className="flex min-h-full  w-full items-center justify-center p-4 text-center">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <Dialog.Panel className=" max-w-6xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <button onClick={closeModal} className='text-2xl hover:text-yellow-400'><MdCancel/></button>
+                    {au ? <Dialog.Title
+                      
+                      className="text-lg font-bold leading-6 text-gray-900 text-center mb-10"
+                    >
+                      Add New Motor
+                    </Dialog.Title>
+                      : <Dialog.Title
+                        
+                        className="text-lg font-bold leading-6 text-gray-900 text-center mb-10"
+                      >
+                      
+                        Update Product:  {pid}
+                      </Dialog.Title>}
+                    
+                    <form onSubmit={handleSubmit2} className="w-full">
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="title">
+                            Title
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                        
+                          <input value={title} name='title'  onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="title" type="text" ></input>
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="poster">
+                            Poster
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                        
+                        <input onChange={upload2} className="" id="poster" type="file" accept='image/*' />
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="slug">
+                            Slug
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                          <input  value={slug} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="slug" type="text" />
+                        </div>
+                      </div>
+                      
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="price">
+                            Price
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                          <input value={price} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="price" type="number" />
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="category">
+                            Category
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                          <input value={category} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="category" type="text" />
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="subcategory">
+                            subcategory
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                          <input value={subcategory} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="subcategory" type="text" />
+                        </div>
+                      </div>
+                     
+                      <div className="md:flex md:items-center">
+                        <div className="md:w-2/6"></div>
+                        <div className="md:w-4/6">
+                          {au ? <button className="shadow bg-yellow-400 hover:bg-yellow-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                            Add product
+                          </button> :
+                            ready && <button className="shadow bg-yellow-400 hover:bg-yellow-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                              update product
+                            </button>}
+                        </div>
+                      </div>
+                    </form>
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
+            </div>
+          </Dialog>
+        </Transition>
+
+
         <header className="text-gray-600 body-font">
           <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
             <a href={"/"} className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
@@ -613,7 +800,8 @@ if(response.success){
           </div>
         </header>
         {nav == "products" && <div className="flex flex-col">
-          <button onClick={function () { openModal(); addup(); }} className='   text-2xl mx-10 my-3 hover:text-yellow-600'><AiFillFileAdd /></button>
+          <button onClick={function () { openModal(); addup(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new product</button>
+          <button onClick={function () { openModal2(); addup2(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new motor</button>
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overflow-hidden">
