@@ -17,10 +17,10 @@ import { Router } from 'next/router';
 
 
 const Post = ({ buyNow, addToCart, product }) => {
-  const [selectedheight, setselectedheight] = useState(6 );
-  const [cartheight, setcartheight] = useState(6 );
-  const [cartwidth, setcartwidth] = useState(16 );
-  const [selectedwidth, setselectedwidth] = useState(16 );
+  const [selectedheight, setselectedheight] = useState(2 );
+  const [cartheight, setcartheight] = useState(2 );
+  const [cartwidth, setcartwidth] = useState(2 );
+  const [selectedwidth, setselectedwidth] = useState(2 );
   const [selectedexactwidth, setselectedexactwidth] = useState(".0");
   const [selectedexactheight, setselectedexactheight] = useState(".0");
   const [selectedcolor, setselectedcolor] = useState(0);
@@ -39,13 +39,13 @@ const Post = ({ buyNow, addToCart, product }) => {
   const width = []
   const exactHeightOrWidth = ['0', '1/8', '1/4', '3/8', '1/2', '5/8', '3/4', '7/8']
 
-  for (let i = 6; i < 121; i++) {
-    height.push(i +'  "')
+  for (let i = 2; i < 41; i++) {
+    height.push(i )
   }
-  for (let i = 14; i < 97; i++) {
-    width.push(i +'  "')
+  for (let i = 2; i < 31; i++) {
+    width.push(i )
   }
-const motors = ["motorA","motorB","motorC","motorD","motorE","motorF"]
+const motors = ["DM 35-RL-6/28","DM 35-FY-6/28","DM 35-SL-6/30","DM 45-RQ-6/28","DM 45-SL-10/26"]
  
   function selecth(e) {
     let m = (e.target.value).split(" ")
@@ -112,11 +112,14 @@ useEffect(() => {
       setrecomendedmotors([])
      }
       
-      if(selectedheight<=40 && selectedwidth<=30 ){
-        recomendedmotors.push(motors[0],motors[1],motors[3],motors[2])
+      if(selectedheight<=14 && selectedwidth<=10 ){
+        recomendedmotors.push(motors[0],motors[1],motors[2])
       }
-      else if(selectedheight>40 && selectedwidth>30 ){
-        recomendedmotors.push(motors[2],motors[3],motors[4])
+      else if(selectedheight<=20 && selectedwidth>10 && selectedwidth<=20 ){
+        recomendedmotors.push(motors[3],motors[4])
+      }
+      else if( selectedwidth<=10 && selectedwidth>=3 && selectedheight<100){
+        recomendedmotors.push(motors[1])
       }
     }
   }
@@ -167,8 +170,8 @@ useEffect(() => {
                 <div  className='ml-8 '>
                   <p className='leading-loose '>{product.category}</p>
                   <p className='leading-loose '>{product.variants[selectedcolor].color}</p>
-                  <p className='leading-loose '>{selectedheight}{selectedexactheight} inches</p>
-                  <p className='leading-loose '>{selectedwidth}{selectedexactwidth} inches</p>
+                  <p className='leading-loose '>{selectedheight}{selectedexactheight} Meters</p>
+                  <p className='leading-loose '>{selectedwidth}{selectedexactwidth} Meters</p>
                   <p className='leading-loose '>{mechanism}</p>
                   {withmotor && <p className='leading-loose '>{motor}</p>}
                  
@@ -301,6 +304,7 @@ useEffect(() => {
                     <Disclosure.Panel style={sw?{padding:"0.625vw 2.1875vw 2.5vw"}:{padding:"0.625vh 2.1875vh 2.5vh"}} className=" pt-2 pb-8  text-gray-500 flex flex-col px-7 bg-white">
                       <div className='flex'> <button  id="Manual"  onClick={(e)=>mechanismtype(e)} style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh"}} className='items-center btn  border-2  py-2 w-32 flex  justify-center '>Manual</button>
                       <button onClick={(e)=>mechanismtype(e)} id="Motorized" style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw",marginLeft:"1.875vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh",marginLeft:"1.875vh"}} className='items-center btn  border-2 ml-6 py-2 w-32 flex justify-center'>Motorized</button></div>
+                      {withmotor && <div style={sw?{marginTop:"1vw"}:{marginTop:"1vh"}}>Suggested Motors</div>}
                       <div>
                         {withmotor && Object.keys(recomendedmotors).map((m)=>{return <><div   id={recomendedmotors[m]}  style={sw?{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"10vw",marginRight:"1.875vw",marginTop:"2vw",padding:"0.5vw"}:{borderColor:"#bfb1c4",height:"10vh",marginRight:"1.875vh",marginTop:"2vh",padding:"0.5vh"}} className='flex btn w-full border-2  ' key={m}>
                         <img style={{width:"10vw"}} src='https://5.imimg.com/data5/BA/GJ/MY-2295700/toso-curtain-motor-500x500.jpg'></img>

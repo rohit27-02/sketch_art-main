@@ -3,11 +3,28 @@
 import React from 'react'
 import Product from '../../models/Product';
 import mongoose from "mongoose";
+import Router from 'next/router';
+import { useState,useEffect } from 'react';
 
 const Tshirts = ({products}) => {
-  return (
-    <div>
-      <div style={{ backgroundColor: "#bfb1c4" }} className='w-full h-20 absolute top-0'></div>
+  const [type, settype] = useState("roller");
+const [sw, setsw] = useState(false);
+
+  useEffect(() => {
+   if(screen.width>768){
+    setsw(true)
+   }
+    if(Router.asPath=="/category/tubular%20motors/"){
+      settype("tm");
+    }
+  }, []);
+   
+  
+
+  return (<div style={sw?{marginTop:"8vw"}:{marginTop:"8vh"}}>
+      {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
+     {sw &&<div style={{height:"6.2vw",backgroundClip:""}} className='absolute border-b  border-black  top-0 w-full  '></div>}
+   {type=="roller" && <div>
       <img className='' src="https://i.ibb.co/B2xYb9w/Group-39.png"></img>
       <section className="text-gray-600 body-font ">
   <div className="container px-5 py-20  mx-auto ">
@@ -29,6 +46,10 @@ const Tshirts = ({products}) => {
     </div>
   </div>
 </section>
+    </div>}
+    {type =="tm" && <div className='flex justify-center'>
+      <img className='object-scale-down' src='/DOOYA BROCHURE JAN 2022 (2)-compressed_page-0007.jpg'></img>
+      </div>}
     </div>
   )
 }
@@ -38,26 +59,9 @@ export async function getServerSideProps(context) {
 }
 
   let products = await Product.find({category:context.query.category}) 
-  let tshirts={}
-  for (let item of products){
-      if(item.title in tshirts){
-          if(!tshirts[item.title].color.includes(item.color)&& item.availableQty>0){
-              tshirts[item.title].color.push(item.color)
-          }
-          if(!tshirts[item.title].size.includes(item.size)&& item.availableQty>0){
-              tshirts[item.title].size.push(item.size)
-          }
-      }
-      else {
-          tshirts[item.title] = JSON.parse(JSON.stringify(item))
-          if(item.availableQty >0){
-              tshirts[item.title].color = [item.color]
-              tshirts[item.title].size = [item.size]
-          }
-      }
-  }
+ 
   return {
-    props: {products:JSON.parse(JSON.stringify(tshirts))}, // will be passed to the page component as props
+    props: {products:JSON.parse(JSON.stringify(products))}, // will be passed to the page component as props
   }
 }
 

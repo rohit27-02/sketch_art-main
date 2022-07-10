@@ -27,6 +27,7 @@ function Navbar({ saveCart,logout, user, cart, addToCart, removeFromCart, clearC
   const [dropDown, setdropDown] = useState(false);
   const [admin, setadmin] = useState(false);
   const [listd, setlistd] = useState(false);
+  const [listd2, setlistd2] = useState(false);
   const [nav, setnav] = useState(false);
   const [data, setdata] = useState([]);
   const [sw, setsw] = useState(false);
@@ -221,14 +222,17 @@ setnav(true)
   const toggleproducts2 = () => {
 setnav(!nav)
 setlistd(false)
+setlistd2(false)
   };
 
   const offproducts = () => {
 setnav(false)
 setlistd(false)
+setlistd2(false)
   };
   const off=()=>{
     setlistd(false)
+    setlistd2(false)
   }
   useEffect(() => {
     setadmin(localStorage.getItem("admin"));
@@ -251,7 +255,7 @@ setlistd(false)
   setitem(Object.keys(cart).length)
  
   if(Router.isReady == true){
-if(Router.pathname=="/product/[slug]" || Router.pathname=="/Checkout" || Router.pathname=="/motorizedblinds" || Router.pathname=="/orders"){
+if(Router.pathname=="/product/[slug]" || Router.pathname=="/Checkout" || Router.pathname=="/motorizedblinds" || Router.pathname=="/orders" || Router.pathname=="/category/[category]"){
 document.getElementById("nav").classList.remove("text-white")
 document.getElementById("img").classList.remove("invert")
 }
@@ -297,13 +301,17 @@ if(item[e.target.id].qty >1){
   }
   const on=()=>{
     setlistd(true)
+    setlistd2(false)
     
   }
   const onoff=()=>{
+    
     setlistd(!listd)
     
   }
+
   const swap=(e)=>{
+    setlistd2(false)
     const p = e.currentTarget.id
     sub[p] ? onoff() : Router.push(`${process.env.NEXT_PUBLIC_HOST}/product/${data[p]}`)
   }
@@ -569,7 +577,7 @@ if(item[e.target.id].qty >1){
            return (<div key={p} style={{fontSize:"1vw"}} className="flex z-50">
             
                <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><span className='flex items-center '><span className='w-full cursor-pointer uppercase'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`)}>{data[p]}</a></span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
-             
+            
              {listd && sub[p] && <div style={{left:"12.45vw"}}  className='z-50 absolute shadow-black shadow-sm bg-black bg-opacity-70 left-44 min-w-max flex flex-col'>
              { subcategory[0].map((s)=>{return(<div key={s}  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/product/${s}`)}   >{s}</a></div>)})}
              
@@ -580,7 +588,14 @@ if(item[e.target.id].qty >1){
 
          })
        }
-
+<div style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw",fontSize:"1vw"}} onMouseEnter={()=>{setlistd2(true);setlistd(false)}} className='flex items-center w-full cursor-pointer uppercase '>motors< IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd2 ? '-rotate-90 transform' : ''} `}/>
+{listd2 && <div style={{left:"12.45vw",top:"14vw"}}  className='z-50 absolute shadow-black shadow-sm bg-black bg-opacity-70  min-w-max flex flex-col'>
+<div  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/category/wifi motors`)}   >WIFI MOTORS</a></div>
+<div  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/category/tubular motors`)}   >TUBULAR MOTORS</a></div>
+<div  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/category/battery motors`)}   >BATTERY MOTORS</a></div>
+<div  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/category/wifi motors`)}   >WIFI MOTORS</a></div>
+</div> }
+</div>
      </div>
 
 
@@ -623,12 +638,12 @@ if(item[e.target.id].qty >1){
           <div  className=" "><span  onClick={toggleproducts2} className='flex  justify-center pl-8 phover px-2 py-4  text-sm cursor-pointer '>PRODUCTS< IoIosArrowDown style={{marginLeft:"1vh"}} className={`${nav ? 'rotate-180 transform  self-center' : 'self-center'} `}/></span>
           <div> {nav && <Flip top><div style={{fontSize:"1.25vh",backgroundColor:"#bfb1c4"}}  >
      
-     <div style={{ }} className="flex flex-col  text-white">
+     <div style={{ }} className="flex flex-col h-64 text-white">
        {
          Object.keys(data).map((p) => {
            return (<div key={p} style={{fontSize:"1.4vh"}} className="w-1/2 flex z-50">
             
-               <li  id={p} onClick={(e)=>{swap(e)}} style={{height:"4vh",marginLeft:"2vh"}} className='flex items-center  '  ><span   className='flex items-center '><span className='w-1.2 uppercase'>{data[p]}</span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vh"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
+               <li  id={p} onClick={(e)=>{swap(e)}} style={{height:"4vh",marginLeft:"2vh"}} className='flex items-center  '  ><span   className='flex items-center '><span className='uppercase'>{data[p]}</span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vh"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
              
              {listd && sub[p] && <div style={{left:"24vh"}}  className='z-50 border-l-2 text-white border-white absolute min-w-max flex flex-col'>
              { subcategory[0].map((s)=>{return(<div key={s}  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/product/${s}`}  >{s}</a></div>)})}
@@ -640,7 +655,14 @@ if(item[e.target.id].qty >1){
 
          })
        }
-
+ <div  onClick={()=>{setlistd2(!listd2);setlistd(false)}} style={{height:"4vh",marginLeft:"2vh"}} className='flex items-center w-1/2'  ><span   className='flex items-center '><span className=' uppercase'>motors</span><span> < IoIosArrowDown style={{marginLeft:"1vh"}} className={`${listd2 ? '-rotate-90 transform' : ''} `}/></span></span>
+{listd2 && <div style={{left:"24vh"}}  className='z-50 border-l-2 text-white border-white absolute min-w-max min-h-fit flex flex-col'>
+<div  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/product/`}  >WIFI MOTORS</a></div>
+<div  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/product/`}  >TUBULAR MOTORS</a></div>
+<div  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/product/`}  >BATTERY MOTORS</a></div>
+<div  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/product/`}  >WIFI MOTORS</a></div>
+</div>}
+</div>
      </div>
 
 
