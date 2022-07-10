@@ -627,6 +627,7 @@ if(item[e.currentTarget.id].qty >1){
             {!user.value && <a onClick={() => setlogin(true)} className="  transition duration-300">LOG IN</a>}
             {user.value && <MdAccountCircle className="   text-xl  cursor-pointer transition duration-300 " onClick={() => setdropDown(!dropDown)} />}
             <HiShoppingCart onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='text-xl  cursor-pointer  ' />
+            {item!=0 && <div style={{fontSize:"1.2vh",padding:"0vw 0.575vh",right:"6.75vh",top:"0.8vh"}} className=' z-50 absolute bg-black text-white right-3 top-2 px-4 rounded-full'>{item}</div>}
             <Hamburger size={20} toggled={isOpen} toggle={setOpen} className=" mobile-menu-button" />
             </div>
           </div>
