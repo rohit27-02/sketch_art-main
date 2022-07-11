@@ -29,50 +29,25 @@ const Tshirts = ({ products, motors }) => {
     {sw && <div style={{ height: "6.2vw", backgroundClip: "" }} className='absolute border-b  border-black  top-0 w-full  '></div>}
 
 
-    {type == "roller" && <div>
-      <img className='' src="https://i.ibb.co/B2xYb9w/Group-39.png"></img>
+    {type == "tm" && 
+    sw ? <img style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }} className=' w-full' alt='img' src="/Image for tubular motors.png"></img> :
+    <div style={{fontFamily: "'Fjalla One', sans-serif"}} className='text-center text-[3.5vh] pt-10 uppercase'>Tubular motors</div>
+   }
+
+    <div>
       <section className="text-gray-600 body-font ">
-        <div className="container px-5 py-20  mx-auto ">
-          <div className="flex flex-wrap justify-evenly   -m-4">
-            {Object.keys(products).map((item) => {
-              return <div key={products[item]._id} className="lg:w-1/4 md:w-1/3 p-2 m-4  w-full shadow-lg cursor-pointer ">
-                <a href={`/product/${products[item].slug}`} className="block relative  rounded overflow-hidden">
-                  <img alt="ecommerce" className=" h-[36vh] m-auto block" src={products[item].poster} />
-
-                  <div className="mt-4 ">
-                    <h2 className="text-center text-gray-900 title-font text-lg font-medium">{products[item].title}</h2>
-                    <p className="mt-1 text-center">₹{products[item].price}</p>
-
-                    <button className='mx-auto w-full p-4  hover:bg-slate-800 hover:text-white btn font-bold rounded'>Shop now</button>
-                  </div>
-                </a>
-              </div>
-            })}
-
-          </div>
-        </div>
-      </section>
-    </div>}
-
-
-    {type == "tm" && <div className='flex justify-center'>
-      <img className='w-full h-full' src='/DOOYA BROCHURE JAN 2022 (2)-compressed_page-0007.jpg'></img>
-    </div>}
-
-   {type !="roller" && <div>
-      <section className="text-gray-600 body-font ">
-        <div className="container px-5 py-20  mx-auto ">
-          <div className="flex flex-wrap justify-evenly   -m-4">
+        <div style={{padding:"7vw 1.7vw"}} className=" px-5 py-20  mx-auto ">
+          <div className="flex flex-wrap   ">
             {Object.keys(motors).map((item) => {
-              return <div key={motors[item]._id} className="lg:w-1/4 md:w-1/3 p-2 m-4  w-full shadow-lg cursor-pointer ">
+              return <div style={{marginLeft:"6vw"}} key={motors[item]._id} className="lg:w-1/4 md:w-1/3 p-2 my-[4vw]  w-full shadow-lg cursor-pointer ">
                   <a href={`/motors/${motors[item].slug}`} className="block relative  rounded overflow-hidden">
-                  <img alt="ecommerce" className=" h-[36vh] m-auto block" src={motors[item].poster} />
+                  <img alt="ecommerce" className=" w-[36vh] md:h-[36vh] m-auto block" src={motors[item].poster} />
 
-                  <div className="mt-4 ">
-                    <h2 className="text-center text-gray-900 title-font text-lg font-medium">{motors[item].title}</h2>
-                    <p className="mt-1 text-center">₹{motors[item].price}</p>
+                  <div className="md:mt-[3vw] mt-[3vh]">
+                    <h2 className="text-center text-gray-900 title-font text-[2vh] md:text-[1.5vw] font-medium">{motors[item].title}</h2>
+                    <p className="md:my-[1vw] my-[1vh] text-[1.75vh] md:text-[1.25vw] text-center">₹{motors[item].price}</p>
 
-                    <button className='mx-auto w-full p-4  hover:bg-slate-800 hover:text-white btn font-bold rounded'>Shop now</button>
+                    <button className='mx-auto w-full md:text-[1.25vw] md:px-[2vw] md:py-[1vw] text-[1.75vh] px-[2vh] py-[1vh]  hover:bg-slate-800 hover:text-white btn font-bold '>Shop now</button>
                   </div>
                 </a>
               </div>
@@ -81,7 +56,7 @@ const Tshirts = ({ products, motors }) => {
           </div>
         </div>
       </section>
-    </div>}
+    </div>
 
   </div>
   )

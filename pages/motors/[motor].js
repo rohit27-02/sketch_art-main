@@ -10,6 +10,7 @@ import { Disclosure, Dialog } from '@headlessui/react'
 import { IoIosArrowDown } from "react-icons/io"
 import { MdOutlineCancel } from "react-icons/md"
 import { BsInfoCircleFill } from "react-icons/bs"
+import { BiRightArrow } from "react-icons/bi"
 import { BsImages } from "react-icons/bs"
 import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai';
 import { Router } from 'next/router';
@@ -47,20 +48,33 @@ const Potor = ({ buyNow, addToCart, product }) => {
       <div  className=" w-full ">
 
         <div  className='w-full  flex-col justify-center md:flex-row flex '>
-          <div style={{ backgroundColor: "#ebeaeb"}} className='md:w-5/12 pt-10 md:pt-0 w-full'>
+          <div style={{ backgroundColor: "#ebeaeb"}} className='md:w-5/12 pb-[3vw] flex justify-center md:justify-start flex-col md:pt-0 w-full'>
           
-            <img alt="ecommerce" style={{height:"45vh",margin:"3vw "}} className="  mx-auto md:py-0 py-10 " src={product.poster} />
+            <img alt="ecommerce" style={sw?{height:"45vh",margin:"3vw "}:{height:"38.3vh"}} className="  mx-auto md:py-0 py-10 " src={product.poster} />
            
+            <div style={sw?{fontSize:"1.25vw",padding:"0vw 2.4vw 0.8vw"}:{fontSize:"2vh",padding:"1.875vh"}} className='text-gray-800 flex items-center  '><p style={sw?{backgroundColor: "#bfb1c4",height:"1vw",width:"2.75vw",marginLeft:"-3vw"}:{backgroundColor: "#bfb1c4",height:"1vh",width:"2.75vh",marginLeft:"-3.3vh"}} className='w-5 -ml-6 absolute h-3'></p>SPECIFICATIONS</div>
+              <div className='w-full px-[2vw]  grid grid-flow-col  '>
+              <ul >
+              {Object.keys(product.specs).map((f)=>{return  <li key={f} style={sw?{fontSize:"1vw",marginTop:"0.7vw"}:{fontSize:"2vh",marginTop:"1.25vh"}} className='  font-medium mt-4  flex items-center'>{product.specs[f]}</li>})}
+              </ul>
+              </div>
             </div>
+           
 
-            <div style={sw?{ backgroundColor: "#ebeaeb",padding:"3.75vw 3.125vw" }:{ backgroundColor: "#ebeaeb",padding:"3.75vh 3.125vh" }} className='py-12 text-gray-800 md:w-1/2 w-full px-4 md:px-10 '>
+            <div style={sw?{ padding:"3.75vw 3.125vw" }:{ backgroundColor: "#ebeaeb",padding:"3.75vh 3.125vh" }} className='py-12 text-gray-800 md:w-1/2 w-full px-4 md:px-10 '>
           <div  className='flex flex-col '>
             <span style={sw?{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vw"}:{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vh"}} className="  text-5xl uppercase ">{product.title} </span>
             <div style={sw?{fontSize:"1.25vw",padding:"1.875vw 0vw"}:{fontSize:"1.5vh",padding:"1.875vh 0vh"}} className='space-x-6 flex py-6  text-base'>
               <a href='#details' className='cursor-pointer flex items-center  space-x-3  pr-4 border-black underline underline-offset-2 '><BsInfoCircleFill /><span>Products Details</span></a>
               <a className='cursor-pointer underline flex items-center   space-x-3 underline-offset-2 '><BsImages /><span>Products Gallery</span></a>
             </div>
+            <div style={sw?{padding:"2vw 2.5vw 3vw",marginBottom:"1.875vw"}:{padding:"0vh 2.5vh",marginBottom:"1.875vh"}} className="  w-full px-8 mb-6 bg-white  ">
            
+            <div style={sw?{fontSize:"1.25vw"}:{fontSize:"2vh"}} className="flex items-center"> <p style={sw?{backgroundColor: "#bfb1c4", fontFamily: "'poppins', sans-serif",height:"1vw",width:"2.75vw",marginLeft:"-3.2vw"}:{backgroundColor: "#bfb1c4", fontFamily: "'poppins', sans-serif",height:"1vh",width:"2.75vh",marginLeft:"-3.2vh"}}  className='w-8 -ml-10 absolute h-3'></p>FEATURES</div>
+            <ul className='list list-disc'>
+              {Object.keys(product.features).map((f)=>{return  <li key={f} style={sw?{fontSize:"1.25vw",marginTop:"1.5vw"}:{fontSize:"2vh",marginTop:"1.25vh"}} className='  font-medium mt-4   items-center'>{product.features[f]}</li>})}
+              </ul>
+              </div>
            
             </div>
             <div style={sw?{marginTop:"3.75vw"}:{marginTop:"3.75vh"}} className='mt-12 flex space-x-8 items-center justify-start '>

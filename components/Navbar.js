@@ -336,11 +336,11 @@ if(item[e.currentTarget.id].qty >1){
     <Dialog style={{ width: "100vw", height: "100vh" }} className="fixed  flex justify-center items-center top-0 bg-black  bg-opacity-60 z-50" open={login} onClose={() => setlogin(false)}>
       <Dialog.Panel >
         {method =="login" && <div style={{fontFamily: "'Roboto Slab', serif"}} className='flex drop-shadow-md rounded-xl'>
-          <div className='bg-white block px-10 py-2  rounded-md'>
-            <div className="max-w-md  w-full space-y-6">
+          <div style={{padding:"0.8vw 4vw"}} className='bg-white block px-10 py-2  rounded-md'>
+            <div  className="  w-full space-y-6">
 
-              <form  onSubmit={handleSubmit} className="mt-8 scale-90 w-full md:scale-100 space-y-6" method="POST">
-                <h1 className='text-2xl font-bold text-center text-gray-600'>Welcome to SketchArt</h1>
+              <form style={{marginTop:"2.5vw",fontSize:"1.2vw"}} onSubmit={handleSubmit} className="mt-8  w-full space-y-6" method="POST">
+                <h1 style={{fontSize:"1.8vw" }} className=' font-bold text-center text-gray-600'>Welcome to SketchArt</h1>
                 <div className=" shadow-sm">
                   <div>
                     <label htmlFor="email" className="sr-only">
@@ -354,8 +354,8 @@ if(item[e.currentTarget.id].qty >1){
                       value={email}
                       autoComplete="email"
                       required
-
-                      className="appearance-nonerelative block w-full px-3  py-2 border mb-2 bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 text-lg"
+style={{padding:"0.5vw 1vw",width:"25vw"}}
+                      className="appearance-nonerelative block w-full px-3  py-2 border mb-2 bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10"
                       placeholder="Email"
                     />
                   </div>
@@ -371,7 +371,8 @@ if(item[e.currentTarget.id].qty >1){
                       type="password"
                       autoComplete="password"
                       required
-                      className="appearance-none  relative block w-96 px-3 py-2 border bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 text-lg"
+                      style={{padding:"0.5vw 1vw",marginTop:"0.8vw",width:"25vw"}}
+                      className="appearance-none  relative block w-full px-3 py-2 border bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 "
                       placeholder="Password"
                     />
                   </div>
@@ -379,24 +380,25 @@ if(item[e.currentTarget.id].qty >1){
                 <div className=''>
                   <button
                     type="submit"
-                    style={{ backgroundColor: "#bfb1c4" }} className="group drop-shadow-sm relative w-full flex justify-center py-2 px-4 border hover:shadow-lg text-white text-sm font-bold  "
+                    style={{ backgroundColor: "#bfb1c4",fontSize:"1.2vw",marginTop:"2vw",height:"3vw" }} className=" drop-shadow-sm relative w-full flex justify-center items-center border hover:shadow-lg text-white    "
                   >
 
                     Sign in
                   </button>
-                  <div className="text-sm space-x-4 mt-2 flex font-medium text-gray-800 justify-center">
-                    <a id='forgot' onClick={(e)=>{show(e)}} className='hover:text-black cursor-pointer' href="/Forgot" >
+                  <div style={{fontSize:"1.2vw" ,marginTop:"0.5vw"}} className="text-sm space-x-4 mt-2 flex font-medium text-gray-800 justify-center">
+                   {/**  <a id='forgot' onClick={(e)=>{show(e)}} className='hover:text-black cursor-pointer' href="/Forgot" >
                       Forgot password?
-                    </a>
+                    </a>*/}
                     <p id='signup' onClick={(e)=>{show(e)}} className='hover:text-black cursor-pointer'>Create account</p>
                   </div>
                 </div>
-                <div className='flex justify-center space-x-2 '>
-                  <div className='border-b border-gray-800 my-3 w-32'></div>
-                  <div className=''>Or</div>
-                  <div className='border-b border-gray-800 my-3 w-32'></div>
+                <div style={{margin:"2vw 0vw"}} className='flex justify-center  '>
+                  <div style={{width:"10vw"}} className='border-b border-gray-800  '></div>
+                  <div style={{margin:"-1vw 0.5vw"}} className=''>Or</div>
+                  <div style={{width:"10vw"}} className='border-b border-gray-800  '></div>
                 </div>
-                <div className='pb-8 text-center'><GoogleOAuthProvider clientId="306346834844-dut40venl0hhf8vii57vbvimfq3rbb9l.apps.googleusercontent.com"><GoogleLogin
+                <div style={{paddingBottom:"3vw"}} className=' text-center'><GoogleOAuthProvider  clientId="306346834844-dut40venl0hhf8vii57vbvimfq3rbb9l.apps.googleusercontent.com"><GoogleLogin
+                
                   onSuccess={res => auth(res)}
                   onError={() => {
                     console.log('Login Failed');
@@ -412,10 +414,10 @@ if(item[e.currentTarget.id].qty >1){
 
         {method =="signup" && <div style={{fontFamily: "'Roboto Slab', serif"}} className='flex drop-shadow-md rounded-xl'>
           <div className='bg-white block px-10 py-2  rounded-md'>
-            <div className="max-w-md  w-full space-y-6">
+            <div className="  w-full space-y-6">
 
-              <form onSubmit={handleSubmit2} className="mt-8 scale-90 w-full md:scale-100 space-y-6" method="POST">
-                <h1 className='text-2xl font-bold text-center text-gray-600'>Welcome to SketchArt</h1>
+              <form style={{marginTop:"2.5vw",fontSize:"1.2vw"}} onSubmit={handleSubmit2} className="mt-8  w-full space-y-6" method="POST">
+                <h1 style={{fontSize:"1.8vw" }} className=' font-bold text-center text-gray-600'>Welcome to SketchArt</h1>
                 <div className=" shadow-sm">
                   <div>
                    
@@ -427,8 +429,9 @@ if(item[e.currentTarget.id].qty >1){
                       value={name}
                       autoComplete="name"
                       required
+                      style={{padding:"0.5vw 1vw",width:"25vw"}}
 
-                      className="appearance-nonerelative block w-full px-3  py-2 border mb-2 bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 text-lg"
+                      className="appearance-none  relative block w-full px-3 py-2 border bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 "
                       placeholder="Name"
                     />
                   </div>
@@ -442,8 +445,8 @@ if(item[e.currentTarget.id].qty >1){
                       value={email}
                       autoComplete="email"
                       required
-
-                      className="appearance-nonerelative block w-full px-3  py-2 border mb-2 bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 text-lg"
+                      style={{padding:"0.5vw 1vw",marginTop:"0.8vw",width:"25vw"}}
+                      className="appearance-none  relative block w-full px-3 py-2 border bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 "
                       placeholder="Email"
                     />
                   </div>
@@ -457,7 +460,8 @@ if(item[e.currentTarget.id].qty >1){
                       type="password"
                       autoComplete="password"
                       required
-                      className="appearance-none  relative block w-96 px-3 py-2 border bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 text-lg"
+                      style={{padding:"0.5vw 1vw",marginTop:"0.8vw",width:"25vw"}}
+                      className="appearance-none  relative block w-full px-3 py-2 border bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 "
                       placeholder="Password"
                     />
                   </div>
@@ -465,20 +469,20 @@ if(item[e.currentTarget.id].qty >1){
                 <div className=''>
                   <button
                     type="submit"
-                    style={{ backgroundColor: "#bfb1c4" }} className="group drop-shadow-sm relative w-full flex justify-center py-2 px-4 border hover:shadow-lg text-white text-sm font-bold  "
+                    style={{ backgroundColor: "#bfb1c4",fontSize:"1.2vw",marginTop:"2vw",height:"3vw" }} className="group drop-shadow-sm relative w-full flex justify-center py-2 px-4 border hover:shadow-lg text-white text-sm font-bold  "
                   >
 
                     Sign up
                   </button>
-                  <div className="text-sm space-x-4 mt-2 flex font-medium text-gray-800 justify-center">
+                  <div  style={{fontSize:"1.2vw" ,marginTop:"0.5vw"}} className="text-sm space-x-4 mt-2 flex font-medium text-gray-800 justify-center">
                    
                     <p id='login' onClick={(e)=>{show(e)}} className='hover:text-black cursor-pointer pt-2 '>Already have an account ?</p>
                   </div>
                 </div>
                 <div className='flex justify-center space-x-2 '>
-                  <div className='border-b border-gray-800 my-3 w-32'></div>
-                  <div className=''>Or</div>
-                  <div className='border-b border-gray-800 my-3 w-32'></div>
+                  <div  style={{width:"10vw"}} className='border-b border-gray-800 '></div>
+                  <div style={{margin:"-1vw 0.5vw"}} className=''>Or</div>
+                  <div style={{width:"10vw"}} className='border-b border-gray-800 '></div>
                 </div>
                 <div className='pb-8 text-center'><GoogleOAuthProvider clientId="306346834844-dut40venl0hhf8vii57vbvimfq3rbb9l.apps.googleusercontent.com"><GoogleLogin
                   onSuccess={res => auth2(res)}
@@ -498,12 +502,12 @@ if(item[e.currentTarget.id].qty >1){
     </Dialog>
 
   
-    {dropDown && <div onMouseLeave={() => setdropDown(false)} style={sw?{fontSize:"1.4vw",marginRight:"3.7vw",top:"5vw",padding:"1vw 0.5vw"}:{fontSize:"1.5vh",marginRight:"4vh",top:"5vh",padding:"1vh"}} className='absolute animate-fade-in-down right-14 md:right-7 z-50 2xl:text-2xl md:text-base bg-white  shadow-black shadow-sm '>
+    {dropDown && <div onMouseLeave={() => setdropDown(false)} style={sw?{fontSize:"1.4vw",marginRight:"2vw",top:"5vw",padding:"0.5vw"}:{fontSize:"1.5vh",marginRight:"4vh",top:"5vh",padding:"1vh"}} className='absolute animate-fade-in-down right-14 md:right-7 z-50 2xl:text-2xl  bg-white  shadow-black shadow-sm '>
       <ul>
         
-        <a className='  ' href={'/orders'}><li  className='hover:bg-gray-800 hover:text-white'>Orders</li></a>
-        <li className='cursor-pointer hover:bg-gray-800 hover:text-white' onClick={logout}>Logout</li>
-        {admin == "true" && <a onClick={()=>Router.push("/adminpanel")} ><li className='hover:bg-gray-800 cursor-pointer hover:text-white'>Admin Panel</li></a>}
+        <a className='  ' href={'/orders'}><li style={sw?{padding:"0.8vw 2vw"}:{padding:"0.8vh 2vh"}} className='hover:bg-gray-800 hover:text-white'>Orders</li></a>
+        <li style={sw?{padding:"0.8vw 2vw"}:{padding:"0.8vh 2vh"}} className='cursor-pointer hover:bg-gray-800 hover:text-white' onClick={logout}>Logout</li>
+        {admin == "true" && <a onClick={()=>Router.push("/adminpanel")} ><li style={sw?{padding:"0.8vw 2vw"}:{padding:"0.8vh 2vh"}} className='hover:bg-gray-800 cursor-pointer hover:text-white'>Admin Panel</li></a>}
       </ul>
     </div>}
     
@@ -569,14 +573,14 @@ if(item[e.currentTarget.id].qty >1){
 
             <div id='navtext' style={{fontSize:"1.25vw",paddingTop:"1.3vw"}} className="hidden md:flex  absolute w-full justify-center    ">
               <a style={{ textUnderlineOffset: 8 }} onClick={()=>Router.push("/")} onMouseEnter={offproducts} className="  hover:underline cursor-pointer decoration-2 ">HOME</a>
-              <div style={{ textUnderlineOffset: 8}}  className=" "><span style={{padding:"0vw 2vw"}} onMouseEnter={toggleproducts} className='flex  justify-center px-6 cursor-pointer '>PRODUCTS< IoIosArrowDown style={{marginLeft:"1vw"}} className={`${nav ? 'rotate-180 transform ml-4 self-center' : 'ml-4 self-center'} `}/></span><div> {nav && <Flip top><div style={{fontSize:"1.25vw",marginTop:"0.4vw"}} className='  md:text-base bg-black bg-opacity-70  shadow-black shadow-sm  text-lg md:px-0 my-1  md:acctext ' >
+              <div style={{ textUnderlineOffset: 8}}  className=" "><span style={{padding:"0vw 2vw"}} onMouseEnter={toggleproducts} className='flex  justify-center px-6 cursor-pointer '>PRODUCTS< IoIosArrowDown style={{marginLeft:"1vw"}} className={`${nav ? 'rotate-180 transform ml-4 self-center' : 'ml-4 self-center'} `}/></span><div> {nav && <Flip top><div style={{fontSize:"1.25vw",marginTop:"0.4vw"}} className='   bg-black bg-opacity-70  shadow-black shadow-sm   md:px-0 my-1  md:acctext ' >
      
      <div style={{ }} className="flex flex-col  text-white">
        {
          Object.keys(data).map((p) => {
            return (<div key={p} style={{fontSize:"1vw"}} className="flex z-50">
             
-               <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><span className='flex items-center '><span className='w-full cursor-pointer uppercase'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/${sub[p]?"category":"product"}/${data[p]}`)}>{data[p]}</a></span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
+               <li  id={data[p]} onMouseEnter={sub[p] ? on:off} style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw"}} className='flex items-center  '  ><span className='flex items-center '><span className='w-full cursor-pointer uppercase'><a onClick={()=>{sub[p]?"":Router.push(`${process.env.NEXT_PUBLIC_HOST}/product/${data[p]}`)}}>{data[p]}</a></span><span>{sub[p] && < IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd ? '-rotate-90 transform' : ''} `}/>}</span></span></li>
             
              {listd && sub[p] && <div style={{left:"12.45vw"}}  className='z-50 absolute shadow-black shadow-sm bg-black bg-opacity-70 left-44 min-w-max flex flex-col'>
              { subcategory[0].map((s)=>{return(<div key={s}  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/product/${s}`)}   >{s}</a></div>)})}

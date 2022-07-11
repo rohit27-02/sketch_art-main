@@ -7,6 +7,8 @@ const MotorSchema = new mongoose.Schema({
     subcategory : {type: String},
     poster:{type:String,required:true},
     price : {type: Number, required:true},
+    features:{type:Array,required:true},
+    specs:{type:Array,required:true},
    
   
 },{timestamps:true});

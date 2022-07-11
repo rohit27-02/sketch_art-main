@@ -52,6 +52,8 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [feature, setfeature] = useState("");
   const [sub, setsub] = useState(false);
   const [features, setfeatures] = useState([]);
+  const [specs, setspecs] = useState([]);
+  const [spec, setspec] = useState("");
 
 
 useEffect(() => {
@@ -111,6 +113,9 @@ function rm(e){
     else if (e.target.id == "features") {
       setfeature(e.target.value)
     }
+    else if (e.target.id == "specs") {
+      setspec(e.target.value)
+    }
     else if (e.target.id == "slug") {
       setslug(e.target.value)
     }
@@ -137,6 +142,7 @@ function rm(e){
     setcare("")
     setposter("")
     setfeatures([])
+    setspecs([])
    
   }
 const selectedproduct= (event)=>{
@@ -221,7 +227,7 @@ const selectedproduct= (event)=>{
    
     e.preventDefault()
     if(au2){
-      const data = [{ title, poster, category, price, slug,subcategory }]
+      const data = [{ title, poster,specs, category, price, slug,subcategory ,features}]
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addmotors`, {
         method: "POST",
       headers: {
@@ -496,6 +502,16 @@ if(response.success){
   useEffect(() => {
 setfeature("")
   }, [features]);
+
+  function addspec(){
+   
+    setspecs(arr=>[...arr,spec])
+   
+  }
+
+  useEffect(() => {
+setspec("")
+  }, [specs]);
  
   return (
     <div>
@@ -831,6 +847,28 @@ setfeature("")
                           <input required value={subcategory} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="subcategory" type="text" />
                         </div>
                       </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="features">
+                            features
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                          <input value={feature} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="features" type="text" />
+                        </div>
+                        <AiOutlinePlus onClick={addfeature} className='cursor-pointer text-2xl mx-auto my-1 hover:bg-yellow-400 border-2 border-yellow-400 '/>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="specs">
+                            specification
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                          <input value={spec} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="specs" type="text" />
+                        </div>
+                        <AiOutlinePlus onClick={addspec} className='cursor-pointer text-2xl mx-auto my-1 hover:bg-yellow-400 border-2 border-yellow-400 '/>
+                      </div>
                      
                       <div className="md:flex md:items-center">
                         <div className="md:w-2/6"></div>
@@ -1024,9 +1062,7 @@ setfeature("")
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                         Price
                       </th>
-                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
-                        Quantity
-                      </th>
+                    
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                         Image
                       </th>
@@ -1062,9 +1098,7 @@ setfeature("")
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                           {products[p].price}
                         </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {products[p].availableQty}
-                        </td>
+                       
                         <td className="text-sm  text-gray-900 font-light  whitespace-nowrap">
                         <div className='grid grid-flow-col grid-rows-3 '>{products[p].variants.map((i)=>{return <div key={i}><img src={i.img} /></div>})}</div>
                         </td>
