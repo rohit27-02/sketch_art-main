@@ -596,7 +596,7 @@ if(item[e.currentTarget.id].qty >1){
 <div  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/category/curtain motors`)}   >CURTAIN MOTORS</a></div>
 </div> }
 </div>
-<div style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center' onClick={()=>Router.push(`/remotes`)}>Remotes</div>
+<div onMouseEnter={()=>setlistd2(false)} style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center' onClick={()=>Router.push(`/remotes`)}>Remotes</div>
      </div>
 
 
@@ -665,6 +665,7 @@ if(item[e.currentTarget.id].qty >1){
 <div  style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}} className='z-50  min-w-max uppercase cursor-pointer flex items-center'><a   href={`${process.env.NEXT_PUBLIC_HOST}/category/wifi motors`}  >WIFI MOTORS</a></div>
 </div>}
 </div>
+<div onMouseEnter={()=>setlistd2(false)} style={{fontSize:"1.4vh",height:"3.8vh",margin:"0vh 2vh"}}  className=' text-white min-w-max uppercase cursor-pointer flex items-center' onClick={()=>Router.push(`/remotes`)}>Remotes</div>
      </div>
 
 
