@@ -20,8 +20,12 @@ import { Router } from 'next/router';
 const Potor = ({ buyNow, addToCart, product }) => {
  const [sw, setsw] = useState(false);
  const [qty, setqty] = useState(1);
+ const [spec, setspec] = useState([]);
 
   useEffect(() => {
+    const a = product.specs.map((m)=>{return m.split(":")})
+    setspec(a)
+    console.log(a)
     if(screen.width>768){
       setsw(true)
     }
@@ -52,10 +56,13 @@ const Potor = ({ buyNow, addToCart, product }) => {
           
             <img alt="ecommerce" style={sw?{height:"45vh",margin:"3vw "}:{height:"38.3vh"}} className="  mx-auto md:py-0 py-10 " src={product.poster} />
            
-            <div style={sw?{fontSize:"1.25vw",padding:"0vw 2.4vw 0.8vw"}:{fontSize:"2vh",padding:"1.875vh"}} className='text-gray-800 flex items-center  '><p style={sw?{backgroundColor: "#bfb1c4",height:"1vw",width:"2.75vw",marginLeft:"-3vw"}:{backgroundColor: "#bfb1c4",height:"1vh",width:"2.75vh",marginLeft:"-3.3vh"}} className='w-5 -ml-6 absolute h-3'></p>SPECIFICATIONS</div>
-              <div className='w-full px-[2vw]  grid grid-flow-col  '>
+            <div style={sw?{fontSize:"1.25vw",padding:"0vw 2.4vw 0.8vw"}:{fontSize:"2vh",padding:"1.875vh"}} className='text-gray-800 ml-6 md:ml-0 flex items-center  '><p style={sw?{backgroundColor: "#bfb1c4",height:"1vw",width:"2.75vw",marginLeft:"-3vw"}:{backgroundColor: "#bfb1c4",height:"1vh",width:"2.75vh",marginLeft:"-3.3vh"}} className='w-5 -ml-6 absolute h-3'></p>SPECIFICATIONS</div>
+              <div className='w-full px-[2vw] ml-6 md:ml-0 grid grid-flow-col  '>
               <ul >
-              {Object.keys(product.specs).map((f)=>{return  <li key={f} style={sw?{fontSize:"1vw",marginTop:"0.7vw"}:{fontSize:"2vh",marginTop:"1.25vh"}} className='  font-medium mt-4  flex items-center'>{product.specs[f]}</li>})}
+              {(spec).map((f)=>{return  <li key={f} style={sw?{fontSize:"1vw",marginTop:"0.7vw"}:{fontSize:"1.5vh",marginTop:"1.25vh"}} className='  font-medium mt-4  flex items-center'>{f[0]}</li>})}
+              </ul>
+              <ul className='border-l pl-[2vw] border-gray-600'>
+              {(spec).map((f)=>{return  <li key={f} style={sw?{fontSize:"1vw",marginTop:"0.7vw"}:{fontSize:"1.5vh",marginTop:"1.25vh"}} className='  font-medium mt-4  flex items-center'>{f[1]}</li>})}
               </ul>
               </div>
             </div>
@@ -68,11 +75,11 @@ const Potor = ({ buyNow, addToCart, product }) => {
               <a href='#details' className='cursor-pointer flex items-center  space-x-3  pr-4 border-black underline underline-offset-2 '><BsInfoCircleFill /><span>Products Details</span></a>
               <a className='cursor-pointer underline flex items-center   space-x-3 underline-offset-2 '><BsImages /><span>Products Gallery</span></a>
             </div>
-            <div style={sw?{padding:"2vw 2.5vw 3vw",marginBottom:"1.875vw"}:{padding:"0vh 2.5vh",marginBottom:"1.875vh"}} className="  w-full px-8 mb-6 bg-white  ">
+            <div style={sw?{padding:"2vw 2.5vw 3vw",marginBottom:"1.875vw"}:{padding:"2vh 2.5vh 3vh",marginBottom:"1.875vh"}} className="  w-full px-8 mb-6 bg-white  ">
            
             <div style={sw?{fontSize:"1.25vw"}:{fontSize:"2vh"}} className="flex items-center"> <p style={sw?{backgroundColor: "#bfb1c4", fontFamily: "'poppins', sans-serif",height:"1vw",width:"2.75vw",marginLeft:"-3.2vw"}:{backgroundColor: "#bfb1c4", fontFamily: "'poppins', sans-serif",height:"1vh",width:"2.75vh",marginLeft:"-3.2vh"}}  className='w-8 -ml-10 absolute h-3'></p>FEATURES</div>
             <ul className='list list-disc'>
-              {Object.keys(product.features).map((f)=>{return  <li key={f} style={sw?{fontSize:"1.25vw",marginTop:"1.5vw"}:{fontSize:"2vh",marginTop:"1.25vh"}} className='  font-medium mt-4   items-center'>{product.features[f]}</li>})}
+              {Object.keys(product.features).map((f)=>{return  <li key={f} style={sw?{fontSize:"1.25vw",marginTop:"1.5vw"}:{fontSize:"2vh",marginTop:"1.25vh"}} className='  font-medium mt-4 ml-5 md:ml-0  items-center'>{product.features[f]}</li>})}
               </ul>
               </div>
            
