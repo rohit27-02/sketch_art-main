@@ -24,17 +24,20 @@ const Remotes = ({product}) => {
             <div style={sw?{ fontFamily: "'Fjalla One', sans-serif",fontSize:"3.75vw",marginTop:"4vw",marginBottom:"2vw" }:{ fontFamily: "'Fjalla One', sans-serif",fontSize:"3.75vh",marginTop:"4vh",marginBottom:"2vh" }} className='text-center text-gray-700 '>REMOTE</div>
             <div style={sw?{fontFamily: "'Roboto Slab', serif", fontSize:"2vw",marginBottom:"4vw" }:{ fontFamily: "'Roboto Slab', serif",fontSize:"2",marginBottom:"4vh" }} className='text-center text-gray-700 '>Essence of Design Beyond Appearance</div>
       
-      {Object.keys(product).map((p)=>{return <Slide left key={p}><div style={sw?{marginBottom:"4vw", height: "61vh",fontSize:"1.5vw", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "65vw",fontSize:"1.5vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex rhover">
+      {Object.keys(product).map((p)=>{return <Slide left key={p}><div style={sw?{marginBottom:"4vw", height: "61vh",fontSize:"1.5vw", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "65vw",fontSize:"1.5vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex w-full rhover">
                <img  src={product[p].poster} style={{padding:"3vw 5vw"}}  alt='img'></img>
-              <div style={sw?{padding:"1.56vw"}:{padding:"1.56vh"}} className='p-5 space-y-8'>
+              <div style={sw?{padding:"1.56vw"}:{padding:"1.56vh"}} className='p-5 w-full space-y-8'>
                 <ul style={sw?{marginTop:"2.5vw",paddingRight:"2.5vw",lineHeight:"1.6vw "}:{marginTop:"1.5vh",paddingRight:"2.5vh",lineHeight:"1.8vh "}} className=' list list-disc leading-relaxed pr-8 '>
-                <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif" ,marginTop:"2.5vw",lineHeight:"2.5vw "}:{ fontFamily: "'Fjalla One', sans-serif" ,marginTop:"1vh",lineHeight:"2.5vh "}} className='scale-y-125 mt-8  text-gray-800 uppercase'>{product[p].title}</h1>
-                <h5 style={{margin:"0.5vw 0vw 3.5vw"}} className='  text-gray-800 '>{product[p].slug}</h5>
+                <h1 style={sw?{ marginTop:"2.5vw"}:{ marginTop:"1vh"}} className='mt-8  text-gray-800 uppercase'>{product[p].title}</h1>
+                <h5 style={{margin:"0.5vw 0vw 3.5vw"}} className='  text-gray-800 '>({product[p].slug})</h5>
                     
-                    {product[p].features.map((f)=>{return  <li key={f}>{product[p].features[f]}</li>})}
+                    {product[p].features.map((f)=>{return  <li style={{marginBottom:"1vw"}} key={f}>{f}</li>})}
                    
                    
                 </ul>
+                <div className='float-right font-bold text-gray-700'>₹ {product[p].price}
+                <button style={sw?{ color: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw",marginTop:"1vw"}:{ color: "#bfb1c4" ,fontSize:"1.5vh",width:"10vh",height:"3.5vh",marginTop:"1vh"}} onClick={() => { addToCart(product.slug, qty="1", product.price, product.title,"1", "2", "white", undefined ,product.img) }} className="flex items-center z-50 font-bold hover:border-0 bg-white justify-center focus:outline-none   border-2">Add to cart</button>
+                </div>
               </div>
             </div></Slide>})}
             

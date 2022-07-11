@@ -220,7 +220,7 @@ const selectedproduct= (event)=>{
   const handleSubmit2 = async (e) => {
    
     e.preventDefault()
-    if(au){
+    if(au2){
       const data = [{ title, poster, category, price, slug,subcategory }]
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addmotors`, {
         method: "POST",
@@ -267,9 +267,9 @@ const selectedproduct= (event)=>{
     Router.push("/adminpanel")
   }
   const handleSubmit3 = async (e) => {
-   console.log("hellow")
     e.preventDefault()
-    if(au){
+   console.log("hellow")
+    if(au3){
       const data = [{ title, poster, features, price, slug }]
       console.log(data)
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addremote`, {
