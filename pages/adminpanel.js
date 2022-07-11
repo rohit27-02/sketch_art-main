@@ -24,6 +24,7 @@ import Router from 'next/router';
 const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isOpen2, setIsOpen2] = useState(false)
+  const [isOpen3, setIsOpen3] = useState(false)
   const [title, settitle] = useState("");
   const [desc, setdesc] = useState("");
   const [price, setprice] = useState(0);
@@ -36,6 +37,7 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [colorcode, setcolorcode] = useState("");
   const [au, setau] = useState(false);
   const [au2, setau2] = useState(false);
+  const [au3, setau3] = useState(false);
   const [pid, setpid] = useState();
   const [nav, setnav] = useState("products");
   const [data, setdata] = useState("false");
@@ -47,7 +49,9 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [img, setimg] = useState("");
   const [poster, setposter] = useState("");
   const [care, setcare] = useState("");
+  const [feature, setfeature] = useState("");
   const [sub, setsub] = useState(false);
+  const [features, setfeatures] = useState([]);
 
 
 useEffect(() => {
@@ -104,6 +108,9 @@ function rm(e){
     else if (e.target.id == "color") {
       setcolor(e.target.value)
     }
+    else if (e.target.id == "features") {
+      setfeature(e.target.value)
+    }
     else if (e.target.id == "slug") {
       setslug(e.target.value)
     }
@@ -113,6 +120,8 @@ function rm(e){
   }
   function closeModal() {
     setIsOpen(false)
+    setIsOpen2(false)
+    setIsOpen3(false)
     setau(false)
     settitle("")
     setdesc("")
@@ -127,7 +136,7 @@ function rm(e){
     setimg("")
     setcare("")
     setposter("")
-
+    setfeatures([])
    
   }
 const selectedproduct= (event)=>{
@@ -149,7 +158,14 @@ const selectedproduct= (event)=>{
           } 
   
   function addup2() {
-    setau(true)
+    setau2(true)
+  }
+  function openModal3() {
+    setIsOpen3(true)
+          } 
+  
+  function addup3() {
+    setau3(true)
   }
  
   const handleSubmit = async (e) => {
@@ -207,6 +223,56 @@ const selectedproduct= (event)=>{
     if(au){
       const data = [{ title, poster, category, price, slug,subcategory }]
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addmotors`, {
+        method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }, body: JSON.stringify(data)
+    })
+  
+    toast.success('Product added to site', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });}
+    else{
+    if(index !=null && ready){
+     
+      const data = [{ title, desc,poster, variants, category,care,sub, price, availableQty,subcategory, slug }]
+   
+      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }, body: JSON.stringify({pid,data})
+      })
+    }
+   
+    toast.success('Product updated', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });  
+ 
+  }
+   
+    closeModal()
+    Router.push("/adminpanel")
+  }
+  const handleSubmit3 = async (e) => {
+   console.log("hellow")
+    e.preventDefault()
+    if(au){
+      const data = [{ title, poster, features, price, slug }]
+      console.log(data)
+      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addremote`, {
         method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -415,12 +481,21 @@ if(response.success){
     document.getElementById("colorcode").value=""
     document.getElementById("img").value=""
   }
-  useEffect(() => {
 
+  useEffect(() => {
   setcolor("")
- 
   setimg("")
   }, [variants]);
+
+  function addfeature(){
+   
+    setfeatures(arr=>[...arr,feature])
+   
+  }
+
+  useEffect(() => {
+setfeature("")
+  }, [features]);
  
   return (
     <div>
@@ -488,7 +563,7 @@ if(response.success){
                         </div>
                         <div className="md:w-4/6">
                         
-                          <input value={title} name='title'  onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="title" type="text" ></input>
+                          <input  value={title} name='title'  onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="title" type="text" ></input>
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
@@ -499,7 +574,7 @@ if(response.success){
                         </div>
                         <div className="md:w-4/6">
                         
-                        <input onChange={upload2} className="" id="poster" type="file" accept='image/*' />
+                        <input  onChange={upload2} className="" id="poster" type="file" accept='image/*' />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
@@ -509,7 +584,7 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-4/6">
-                          <input  value={slug} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="slug" type="text" />
+                          <input   value={slug} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="slug" type="text" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
@@ -539,7 +614,7 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-4/6">
-                          <input value={price} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="price" type="number" />
+                          <input  value={price} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="price" type="number" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
@@ -549,7 +624,7 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-4/6">
-                          <input value={category} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="category" type="text" />
+                          <input  value={category} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="category" type="text" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
@@ -559,7 +634,7 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-4/6">
-                          <input value={subcategory} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="subcategory" type="text" />
+                          <input  value={subcategory} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="subcategory" type="text" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
@@ -569,7 +644,7 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-4/6">
-                          <input  value={availableQty} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="quantity" type="number" />
+                          <input   value={availableQty} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="quantity" type="number" />
                         </div>
                       </div>
                     
@@ -580,7 +655,7 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-2/6 mr-2 ">
-                          <input value={h} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="height" type="text" />
+                          <input  value={h} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="height" type="text" />
                         </div>
                         <AiOutlinePlus onClick={add} className='cursor-pointer hover:bg-yellow-400 '/>
                       </div>
@@ -591,7 +666,7 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-2/6 mr-2 ">
-                          <input value={w} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="width" type="text" />
+                          <input  value={w} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="width" type="text" />
                         </div>
                         <AiOutlinePlus onClick={addwidth} className='cursor-pointer hover:bg-yellow-400 '/>
                     </div>*/}
@@ -603,7 +678,7 @@ if(response.success){
                           </label>
                     </div>
                         <div className="md:w-40">
-                          <input value={color} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="color" type="text" />
+                          <input  value={color} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="color" type="text" />
                           
                         </div>
                       </div>
@@ -614,7 +689,7 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-20">
-                        <input onChange={uploadposter} className="" id="colorcode" type="file" accept='image/*' />
+                        <input  onChange={uploadposter} className="" id="colorcode" type="file" accept='image/*' />
                           
                         </div>
                       </div>
@@ -625,7 +700,7 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-fit">
-                          <input  onChange={(e)=>upload(e)}  type="file" id="img" accept="image/*"/>
+                          <input   onChange={(e)=>upload(e)}  type="file" id="img" accept="image/*"/>
     
                         </div>
                       </div>
@@ -678,7 +753,7 @@ if(response.success){
                 >
                   <Dialog.Panel className=" max-w-6xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <button onClick={closeModal} className='text-2xl hover:text-yellow-400'><MdCancel/></button>
-                    {au ? <Dialog.Title
+                    {au2 ? <Dialog.Title
                       
                       className="text-lg font-bold leading-6 text-gray-900 text-center mb-10"
                     >
@@ -701,7 +776,7 @@ if(response.success){
                         </div>
                         <div className="md:w-4/6">
                         
-                          <input value={title} name='title'  onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="title" type="text" ></input>
+                          <input required value={title} name='title'  onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="title" type="text" ></input>
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
@@ -712,7 +787,7 @@ if(response.success){
                         </div>
                         <div className="md:w-4/6">
                         
-                        <input onChange={upload2} className="" id="poster" type="file" accept='image/*' />
+                        <input required onChange={upload2} className="" id="poster" type="file" accept='image/*' />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
@@ -722,7 +797,7 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-4/6">
-                          <input  value={slug} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="slug" type="text" />
+                          <input required  value={slug} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="slug" type="text" />
                         </div>
                       </div>
                       
@@ -733,7 +808,7 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-4/6">
-                          <input value={price} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="price" type="number" />
+                          <input required value={price} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="price" type="number" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
@@ -743,7 +818,7 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-4/6">
-                          <input value={category} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="category" type="text" />
+                          <input required value={category} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="category" type="text" />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
@@ -753,14 +828,131 @@ if(response.success){
                           </label>
                         </div>
                         <div className="md:w-4/6">
-                          <input value={subcategory} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="subcategory" type="text" />
+                          <input required value={subcategory} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="subcategory" type="text" />
                         </div>
                       </div>
                      
                       <div className="md:flex md:items-center">
                         <div className="md:w-2/6"></div>
                         <div className="md:w-4/6">
-                          {au ? <button className="shadow bg-yellow-400 hover:bg-yellow-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                          {au2 ? <button className="shadow bg-yellow-400 hover:bg-yellow-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                            Add product
+                          </button> :
+                            ready && <button className="shadow bg-yellow-400 hover:bg-yellow-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                              update product
+                            </button>}
+                        </div>
+                      </div>
+                    </form>
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
+            </div>
+          </Dialog>
+        </Transition>
+
+        <Transition appear show={isOpen3} as={Fragment}>
+          <Dialog as="div" className="relative z-10" onClose={closeModal}>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-black bg-opacity-25" />
+            </Transition.Child>
+
+            <div  className="fixed inset-0 overflow-y-auto">
+              <div  className="flex min-h-full  w-full items-center justify-center p-4 text-center">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <Dialog.Panel className=" max-w-6xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <button onClick={closeModal} className='text-2xl hover:text-yellow-400'><MdCancel/></button>
+                    {au3 ? <Dialog.Title
+                      
+                      className="text-lg font-bold leading-6 text-gray-900 text-center mb-10"
+                    >
+                      Add New Remote
+                    </Dialog.Title>
+                      : <Dialog.Title
+                        
+                        className="text-lg font-bold leading-6 text-gray-900 text-center mb-10"
+                      >
+                      
+                        Update Product:  {pid}
+                      </Dialog.Title>}
+                    
+                    <form onSubmit={handleSubmit3} className="w-full">
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="title">
+                            Title
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                        
+                          <input required value={title} name='title'  onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="title" type="text" ></input>
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="poster">
+                            Poster
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                        
+                        <input required onChange={upload2} className="" id="poster" type="file" accept='image/*' />
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="slug">
+                            Slug
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                          <input required  value={slug} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="slug" type="text" />
+                        </div>
+                      </div>
+                      
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="price">
+                            Price
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                          <input required value={price} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="price" type="number" />
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="features">
+                            features
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                          <input value={feature} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="features" type="text" />
+                        </div>
+                        <AiOutlinePlus onClick={addfeature} className='cursor-pointer text-2xl mx-auto my-1 hover:bg-yellow-400 border-2 border-yellow-400 '/>
+                      </div>
+                     
+                     
+                      <div className="md:flex md:items-center">
+                        <div className="md:w-2/6"></div>
+                        <div className="md:w-4/6">
+                          {au3 ? <button  className="shadow bg-yellow-400 hover:bg-yellow-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
                             Add product
                           </button> :
                             ready && <button className="shadow bg-yellow-400 hover:bg-yellow-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
@@ -800,8 +992,11 @@ if(response.success){
           </div>
         </header>
         {nav == "products" && <div className="flex flex-col">
+          <div className='flex'>
           <button onClick={function () { openModal(); addup(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new product</button>
           <button onClick={function () { openModal2(); addup2(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new motor</button>
+          <button onClick={function () { openModal3(); addup3(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new remote</button>
+          </div>
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overflow-hidden">
@@ -1023,11 +1218,11 @@ if(response.success){
       </div>
       <div className="relative flex-grow w-full">
         <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-        <input onChange={(e)=>change(e)} type="email" id="email" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-transparent focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input required onChange={(e)=>change(e)} type="email" id="email" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-transparent focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <div className="relative flex-grow w-full">
         <label htmlFor="phone" className="leading-7 text-sm text-gray-600">Phone</label>
-        <input onChange={(e)=>change(e)} type="tel" id="phone" name="phone" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-transparent focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input required onChange={(e)=>change(e)} type="tel" id="phone" name="phone" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-transparent focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <button onClick={(e)=>update(e)} className="text-white inline-flex relative top-7 bg-yellow-300 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-400 rounded text-lg">Update</button>
     </form>

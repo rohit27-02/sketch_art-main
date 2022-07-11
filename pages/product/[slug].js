@@ -136,7 +136,7 @@ useEffect(() => {
   {sw && <div style={{height:"6.2vw",backgroundClip:""}} className='absolute border-b  border-black  top-0 w-full  '></div>}
     {sw && <img style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }} className=' w-full' alt='img' src={product.poster}></img>}
 {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
-    <section id='main'   style={{  fontFamily: "'poppins', sans-serif"}} className="text-gray-900  justify-center flex body-font overflow-hidden">
+    <section id='main'   style={{  fontFamily: "'poppins', sans-serif",padding:"0vw 3.5vw"}} className="text-gray-900  justify-center flex body-font overflow-hidden">
       <ToastContainer
         position="top-right"
         autoClose={1000}
@@ -156,7 +156,7 @@ useEffect(() => {
             <img alt="ecommerce" style={{height:"45vh",bottom:"-55vh",left:"24.5vw"}} className=" md:absolute mx-auto md:py-0 py-10 " src={product.variants[selectedcolor].img} />
             <div style={sw?{fontSize:"1.1vw",paddingLeft:"1.875vw"}:{fontSize:"1.5vh",paddingLeft:"3vh"}} className='w-full pl-6  pb-4'>
               
-              <div style={sw?{fontSize:"1.25vw",padding:"1.875vw"}:{fontSize:"2vh",padding:"1.875vh"}} className='text-gray-800 flex items-center  pb-2 pt-6'><p style={sw?{backgroundColor: "#bfb1c4",height:"1.1vw",width:"2vw",marginLeft:"-2.3vw"}:{backgroundColor: "#bfb1c4",height:"1.1vh",width:"2vh",marginLeft:"-2.3vh"}} className='w-5 -ml-6 absolute h-3'></p>Product Summary</div>
+              <div style={sw?{fontSize:"1.25vw",padding:"1.875vw"}:{fontSize:"2vh",padding:"1.875vh"}} className='text-gray-800 flex items-center  pb-2 pt-6'><p style={sw?{backgroundColor: "#bfb1c4",height:"1vw",width:"2.75vw",marginLeft:"-3.3vw"}:{backgroundColor: "#bfb1c4",height:"1vh",width:"2.75vh",marginLeft:"-3.3vh"}} className='w-5 -ml-6 absolute h-3'></p>Product Summary</div>
               <div className='w-full  grid grid-flow-col  '>
                 <div  className='text-gray-800 border-r  border-gray-300'>
                   <p className='leading-loose '>Style</p>
@@ -330,12 +330,12 @@ useEffect(() => {
           <div className='flex flex-col md:flex-row'>
             
             <div id='details' className='w-full md:w-8/12  text-left 'style={sw?{fontSize:"1.25vw",marginRight:"5vw"}:{fontSize:"2vh"}}>
-            <div style={sw?{backgroundColor: "#bfb1c4",height:"1.5vw",width:"5vw",marginBottom:"0.75vw"}:{backgroundColor: "#bfb1c4",height:"1.5vh",width:"5vh",marginBottom:"0.75vh"}} className='w-10 mb-2  h-3'></div><span  style={{fontFamily: "'poppins', sans-serif"}}>Care & Cleaning</span>
+            <div style={sw?{backgroundColor: "#bfb1c4",height:"1vw",width:"2.75vw",marginBottom:"0.75vw"}:{backgroundColor: "#bfb1c4",height:"1vh",width:"2.75vh",marginBottom:"0.75vh"}} className='w-10 mb-2  h-3'></div><span  style={{fontFamily: "'poppins', sans-serif"}}>Care & Cleaning</span>
               <p className="leading-relaxed   mt-7 " style={sw?{fontSize:"1.1vw",marginTop:"2.188vw"}:{fontSize:"1.5vh",marginTop:"2.188vh"}}>{product.care}</p>
             </div>
 
             <div className='w-full md:w-11/12 mt-6 md:mt-0 text-left 'style={sw?{fontSize:"1.25vw"}:{fontSize:"2vh"}}>
-            <p style={sw?{backgroundColor: "#bfb1c4",height:"1.5vw",width:"5vw",marginBottom:"0.75vw"}:{backgroundColor: "#bfb1c4",height:"1.5vh",width:"5vh",marginBottom:"0.75vh"}} className='w-10 h-3 mb-2'></p><span style={{fontFamily: "'poppins', sans-serif"}}> Product Details</span>
+            <p style={sw?{backgroundColor: "#bfb1c4",height:"1vw",width:"2.75vw",marginBottom:"0.75vw"}:{backgroundColor: "#bfb1c4",height:"1.5vh",width:"5vh",marginBottom:"0.75vh"}} className='w-10 h-3 mb-2'></p><span style={{fontFamily: "'poppins', sans-serif"}}> Product Details</span>
               <p className="leading-relaxed   mt-7  " style={sw?{fontSize:"1.1vw",marginTop:"2.188vw"}:{fontSize:"1.5vh",marginTop:"2.188vh"}}>{product.desc}</p>
             </div>
           </div>
