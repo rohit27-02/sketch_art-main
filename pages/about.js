@@ -90,7 +90,7 @@ Sketchart strives for excellence by providing customized solutions. An expansive
     
 
       <div style={sw?{height:"40vh"}:{height:"68vh"}} >
-        <div style={sw?{margin:"2.5vw 0vw",padding:"0vw 1vw"}:{margin:"-4vh 0vw"}} className=' flex flex-col md:flex-row items-center '>
+        <div style={sw?{margin:"2.5vw 0vw",padding:"3vw 1vw"}:{margin:"-4vh 0vw"}} className=' flex flex-col md:flex-row items-center '>
           {sw && <div style={sw?{paddingTop:"3.75vw",marginRight:"1vw"}:{paddingTop:"3.75vh",marginRight:"1vh"}} className='absolute  pt-12 mr-3'><img src="/Assest for Sketch Art-09.png"></img></div>}
           <div style={sw?{marginLeft:"0.5vw"}:{marginLeft:"20vh"}} className='md:w-2/12 h-20 w-3/12 scale-75 rotate-90 md:rotate-0 '>
           <Slide bottom><img className='md:object-scale-down' src="/Assest for Sketch Art-08.png"></img></Slide></div>

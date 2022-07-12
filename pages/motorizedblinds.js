@@ -24,7 +24,7 @@ const [sw, setsw] = useState(false);
   {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
      {sw &&<div style={{height:"6.2vw",backgroundClip:""}} className='absolute border-b  border-black  top-0 w-full  '></div>}
     <div style={sw?{padding:"6.275vw 7.5vw 3.125vw",marginTop:"4vw"}:{padding:"6.275vh 7.5vw 3.125vh",marginTop:"4vh"}} className='px-24 pt-20 pb-10'>
-      <Slide bottom> <div ><img style={sw?{height:"37.1vw",width:"83.75vw"}:{height:"45vw",width:"83.75vh"}} alt='img' src='https://www.mac.in/assets/site/images/product/MOTORISED-BLINDS/slider-1.jpg'></img></div></Slide>
+      <Slide bottom> <div ><img style={sw?{height:"37.1vw",width:"83.75vw"}:{height:"45vw",width:"83.75vh"}} alt='img' src='/IMage for motorized blinds.png'></img></div></Slide>
 
       <div style={sw?{ fontFamily: "'Fjalla One', sans-serif",fontSize:"3.75vw",marginTop:"4vw",marginBottom:"4vw" }:{ fontFamily: "'Fjalla One', sans-serif",fontSize:"3.75vh",marginTop:"4vh",marginBottom:"4vh" }} className='text-center text-5xl  '>MOTORIZED BLINDS</div>
 
