@@ -46,7 +46,7 @@ const Post = ({ buyNow, motor2, addToCart, product }) => {
   for (let i = 2; i < 31; i++) {
     width.push(i )
   }
-const motors = ["In-built Reciever","In-built Reciever","Silent motor","In-built Reciever","High Torque"]
+const motors = ["In-built Reciever with 36 maximum limit turns .","In-built Reciever with unlimited maximum limit turns ." ,"Silent motor with 36 maximum limit turns .","In-built Reciever with 44 maimum limit turns .","High Torque with 45 maximum limit turns ."]
  
   function selecth(e) {
     let m = (e.target.value).split(" ")
@@ -307,17 +307,19 @@ useEffect(() => {
                       <div className='flex'> <button  id="Manual"  onClick={(e)=>mechanismtype(e)} style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh"}} className='items-center btn  border-2  py-2 w-32 flex  justify-center '>Manual</button>
                       <button onClick={(e)=>mechanismtype(e)} id="Motorized" style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw",marginLeft:"1.875vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh",marginLeft:"1.875vh"}} className='items-center btn  border-2 ml-6 py-2 w-32 flex justify-center'>Motorized</button></div>
                       {withmotor && <div style={sw?{marginTop:"1vw"}:{marginTop:"1vh"}}>Suggested Motors</div>}
-                      <div className='md:max-h-[30vw] max-h-36 overflow-y-auto overflow-x-hidden'>
-                        {withmotor && Object.keys(recomendedmotors).map((m)=>{return <><div   id={recomendedmotors[m]}  style={sw?{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"10vw",marginRight:"1.875vw",marginTop:"2vw",padding:"0.5vw"}:{borderColor:"#bfb1c4",height:"10vh",marginRight:"1.875vh",marginTop:"2vh",padding:"0.5vh"}} className='flex btn w-full border-2  ' key={m}>
+                      <div className='md:max-h-[31vw] w-full max-h-36 overflow-y-auto overflow-x-hidden'>
+                        {withmotor && Object.keys(recomendedmotors).map((m)=>{return <><div   id={recomendedmotors[m]}  style={sw?{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"10vw",marginRight:"1.875vw",marginTop:"2vw",padding:"0.5vw"}:{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"10vh",marginRight:"1.875vh",marginTop:"2vh",padding:"0.5vh"}} className='flex btn w-full border-2  ' key={m}>
                         <img style={sw?{width:"10vw"}:{width:"10vh"}} src={motor2[m].poster}></img>
-                        <div className='md:ml-[1vw] ml-[1vh]'>
-                        <span style={sw?{margin:"1vw 0vw"}:{margin:"1vh 0vh"}} className="h-full  w-full">{motor2[m].title}</span>
+                        <div style={{}} className='md:ml-[1vw]  ml-[1vh]'>
+                        <span style={sw?{margin:"1vw 0vw",fontFamily: "'Fjalla One', sans-serif"}:{margin:"1vh 0vh",fontFamily: "'Fjalla One', sans-serif"}} className="h-full text-[1.8vh] md:text-[1.8vw] w-full">{motor2[m].title}</span>
                         <p>{motors[m]}</p>
-                      <a className='md:text-[1vw] underline hover:text-[#bfb1c4]' href={`/motors/${motor2[m].slug}`}>learn more</a>
+                        <div className='flex justify-between'>
+                      <a className='md:text-[1vw] underline hover:text-[#bfb1c4]' href={`/motors/${motor2[m].slug}`}>Learn More</a>
                         
-                        <span className="w-full float-right">price : ₹ {motor2[m].price}
+                        <span className="  "><span className='text-[1vh] md:text-[1vw]'>Price :</span> ₹ {motor2[m].price}
                         
                         </span>
+                        </div>
                         </div>
                         </div>
                         <button  id={recomendedmotors[m]}  style={sw?{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw",margin:"1vw 0vw"}:{ backgroundColor: "#bfb1c4" ,fontSize:"1.5vh",width:"10vh",height:"3.5vh",margin:"1vh 0vw"}} onClick={function(e){ setmotor(e.target.id); }} className="flex items-center float-right  border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white  ">Add to cart</button>
