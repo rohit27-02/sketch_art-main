@@ -13,10 +13,11 @@ import { BsInfoCircleFill } from "react-icons/bs"
 import { BsImages } from "react-icons/bs"
 import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai';
 import { Router } from 'next/router';
+import Motor from '../../models/Motor'
 
 
 
-const Post = ({ buyNow, addToCart, product }) => {
+const Post = ({ buyNow, motor2, addToCart, product }) => {
   const [selectedheight, setselectedheight] = useState(2 );
   const [cartheight, setcartheight] = useState(2 );
   const [cartwidth, setcartwidth] = useState(2 );
@@ -45,7 +46,7 @@ const Post = ({ buyNow, addToCart, product }) => {
   for (let i = 2; i < 31; i++) {
     width.push(i )
   }
-const motors = ["DM 35-RL-6/28","DM 35-FY-6/28","DM 35-SL-6/30","DM 45-RQ-6/28","DM 45-SL-10/26"]
+const motors = ["In-built Reciever","In-built Reciever","Silent motor","In-built Reciever","High Torque"]
  
   function selecth(e) {
     let m = (e.target.value).split(" ")
@@ -92,6 +93,7 @@ useEffect(() => {
       setsw(true)
     }
     document.getElementById(0).classList.add("border-2")
+    console.log(motor2)
   }, []);
 
   const measuringguide = () => {
@@ -113,13 +115,13 @@ useEffect(() => {
      }
       
       if(selectedheight<=14 && selectedwidth<=10 ){
-        recomendedmotors.push(motors[0],motors[1],motors[2])
+        recomendedmotors.push(motor2[0].title,motor2[1].title,motor2[2].title)
       }
       else if(selectedheight<=20 && selectedwidth>10 && selectedwidth<=20 ){
-        recomendedmotors.push(motors[3],motors[4])
+        recomendedmotors.push(motor2[3].title,motor2[4].title)
       }
       else if( selectedwidth<=10 && selectedwidth>=3 && selectedheight<100){
-        recomendedmotors.push(motors[1])
+        recomendedmotors.push(motor2[1].title)
       }
     }
   }
@@ -305,12 +307,18 @@ useEffect(() => {
                       <div className='flex'> <button  id="Manual"  onClick={(e)=>mechanismtype(e)} style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh"}} className='items-center btn  border-2  py-2 w-32 flex  justify-center '>Manual</button>
                       <button onClick={(e)=>mechanismtype(e)} id="Motorized" style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw",marginLeft:"1.875vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh",marginLeft:"1.875vh"}} className='items-center btn  border-2 ml-6 py-2 w-32 flex justify-center'>Motorized</button></div>
                       {withmotor && <div style={sw?{marginTop:"1vw"}:{marginTop:"1vh"}}>Suggested Motors</div>}
-                      <div>
+                      <div className='md:max-h-[30vw] max-h-36 overflow-y-auto overflow-x-hidden'>
                         {withmotor && Object.keys(recomendedmotors).map((m)=>{return <><div   id={recomendedmotors[m]}  style={sw?{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"10vw",marginRight:"1.875vw",marginTop:"2vw",padding:"0.5vw"}:{borderColor:"#bfb1c4",height:"10vh",marginRight:"1.875vh",marginTop:"2vh",padding:"0.5vh"}} className='flex btn w-full border-2  ' key={m}>
-                        <img style={{width:"10vw"}} src='https://5.imimg.com/data5/BA/GJ/MY-2295700/toso-curtain-motor-500x500.jpg'></img>
-                        <span style={sw?{margin:"1vw"}:{margin:"1vh"}} className="h-full w-full">{recomendedmotors[m]}
-                        <span style={sw?{marginTop:"5vw"}:{marginTop:"5vw"}} className="float-right">price : ₹ 1000</span>
+                        <img style={sw?{width:"10vw"}:{width:"10vh"}} src={motor2[m].poster}></img>
+                        <div className='md:ml-[1vw] ml-[1vh]'>
+                        <span style={sw?{margin:"1vw 0vw"}:{margin:"1vh 0vh"}} className="h-full  w-full">{motor2[m].title}</span>
+                        <p>{motors[m]}</p>
+                      <a className='md:text-[1vw] underline hover:text-[#bfb1c4]' href={`/motors/${motor2[m].slug}`}>learn more</a>
+                        
+                        <span className="w-full float-right">price : ₹ {motor2[m].price}
+                        
                         </span>
+                        </div>
                         </div>
                         <button  id={recomendedmotors[m]}  style={sw?{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw",margin:"1vw 0vw"}:{ backgroundColor: "#bfb1c4" ,fontSize:"1.5vh",width:"10vh",height:"3.5vh",margin:"1vh 0vw"}} onClick={function(e){ setmotor(e.target.id); }} className="flex items-center float-right  border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white  ">Add to cart</button>
                         </>})}
@@ -353,10 +361,11 @@ export async function getServerSideProps(context) {
     await mongoose.connect(process.env.MONGO_URI)
   }
   let product = await Product.findOne({ slug: context.query.slug })
+  let motor = await Motor.find({ category: "tubular motors" })
 
 
   return {
-    props: { product: JSON.parse(JSON.stringify(product)) }, // will be passed to the page component as props
+    props: { product: JSON.parse(JSON.stringify(product)),motor2:JSON.parse(JSON.stringify(motor)) }, // will be passed to the page component as props
   }
 }
 
