@@ -175,6 +175,7 @@ function Navbar({ saveCart,logout, user, cart, addToCart, removeFromCart, clearC
   }
   }
   const assign2=(obj)=>{
+    console.log(obj)
     return { name:obj.name, email:obj.email, password:obj.email}
   }
   const auth2 = async (e) => {
@@ -190,7 +191,7 @@ function Navbar({ saveCart,logout, user, cart, addToCart, removeFromCart, clearC
     let response = await res.json()
     setemail("")
     setname("")
-    setpassword("")
+    setPassword("")
     if(response.success){
     toast.success('congratulation your account is signed up', {
       position: "top-center",
