@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-head-element */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
@@ -10,8 +11,12 @@ import {GrMapLocation} from "react-icons/gr"
 import {AiOutlineFlag} from "react-icons/ai"
 import {IoIosPhonePortrait} from "react-icons/io"
 import Router from 'next/router';
-import { Loader } from '@googlemaps/js-api-loader';
 import { Slide } from 'react-reveal';
+import dynamic from 'next/dynamic'
+
+
+
+
 
 
 
@@ -22,6 +27,11 @@ const Contact = ({ info }) => {
   const [company, setcompany] = useState("");
   const [number, setnumber] = useState("");
   const [sw, setsw] = useState(false);
+
+  const Map = dynamic(() => import("../components/Map"), {
+    loading: () => "Loading...",
+    ssr: false
+  });
 
   function handleChange(e) {
     if (e.target.id == "name") {
@@ -71,46 +81,19 @@ const Contact = ({ info }) => {
     }
   }
 
-  const loader = new Loader({
-    apiKey: "AIzaSyB9-EbfHmRL48vGnmDpeITVl_QtA9wg9So",
-    version: "weekly",
-    libraries: ["places"]
-  });
   
-  const mapOptions = {
-    center: {
-      lat: 19.161515,
-      lng: 72.8526362
-    },
-    zoom: 20,
-   
-  };
-  loader
-  .load()
-  .then((google) => {
-    new google.maps.Map(document.getElementById("map"), mapOptions);
-    new google.maps.Marker({
-      position: {lat: 19.161515,
-        lng: 72.8526362},
-     
-      title:"hello",
-    })
-   ;
-  })
-  .catch(e => {
-    // do something
-  });
-
   useEffect(() => {
     if(screen.width>768){
       setsw(true)
     }
+    
   }, []);
 
+ 
+
   return (<>
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDS6EharfRUAqb8P0MskFXi77g-KallLhE">
-</script>
+
+
 <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -156,10 +139,15 @@ const Contact = ({ info }) => {
 
 <section  style={{fontFamily: "'Roboto Slab', serif",backgroundColor:"#bfb1c4" }} className="text-gray-600 body-font relative">
   <div style={sw?{padding:" 7.5vw 1.575vw"}:{padding:" 7.5vw 1.575vh"}} className=" px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
-    <div id='map' className="h-80 md:h-auto md:w-1/2 bg-gray-300  overflow-hidden  w-full p-10 flex items-end justify-center md:justify-start relative">
+   
+   <div id='map' className="h-80 md:h-auto md:w-1/2 bg-gray-300    w-full p-10  flex md:p-0 ">
+  
+  <Map/>
+   </div>
+    
    
      
-    </div>
+    
     <div style={sw?{backgroundColor:"#bfb1c4",lineHeight:"5vw",fontSize:"1.25vw",marginLeft:"2vw"}:{backgroundColor:"#bfb1c4",lineHeight:"5vh",fontSize:"1.25vh"}} className=" md:w-1/2 bg-white flex  flex-col md:ml-auto w-full">
       <h2 style={sw?{fontFamily: "'Fjalla One', sans-serif",wordSpacing:2,fontSize:"1.875vw",marginBottom:"1vw"}:{fontFamily: "'Fjalla One', sans-serif",wordSpacing:2,fontSize:"1.875vh",marginBottom:"1vh",marginTop:"2vh"}} className="text-white md:text-2xl 2xl:text-3xl mb-1 font-medium title-font">LEAVE A COMMENT</h2>
       

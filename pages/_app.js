@@ -11,6 +11,7 @@ import Navbar from '../components/Navbar';
 import Head from 'next/head';
 import BounceLoader from "react-spinners/BounceLoader";
 import { start } from 'nprogress';
+import 'mapbox-gl/dist/mapbox-gl.css';
  
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});

@@ -28,6 +28,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href="//fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@300&family=Poppins:wght@500&family=Fjalla+One&family=Roboto+Slab:wght@300&family=Playfair+Display&display=swap" rel="stylesheet" />
@@ -35,6 +36,7 @@ class MyDocument extends Document {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css"/>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
+        
         </Head>
         
         <body id='main'>
