@@ -4,7 +4,7 @@ import { CgTrashEmpty } from 'react-icons/cg';
 import {MdOutlinePayment} from "react-icons/md"
 import {useEffect, useState } from 'react';
 import jwt_decode from "jwt-decode";
-import { decode } from 'jsonwebtoken';
+import Router from 'next/router';
 
 const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
     const [sw, setsw] = useState();
@@ -74,7 +74,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
           key: "rzp_test_VlpBraARgWRC8D", // Enter the Key ID generated from the Dashboard
           name: "Sketch Art",
           currency: "INR",
-          amount: subTotal,
+          amount: subTotal*100,
           order_id: data.id,
           description: "Complete the payment",
           image: "/logo.jpeg",
@@ -85,9 +85,9 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
             alert(response.razorpay_signature);
           },
           prefill: {
-            name: "Manu Arora",
-            email: "manuarorawork@gmail.com",
-            contact: "9999999999",
+            name: name,
+            email: email,
+            contact: phone,
           },
         };
     
@@ -99,16 +99,22 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
         if(screen.width>768){
             setsw(true)
         }
+        if(localStorage.getItem("token")){
+          var decoded = jwt_decode(localStorage.getItem("token"));
+          setuser(decoded)
+        }
+        else{
+          Router.push("/")
+        }
 
-        var decoded = jwt_decode(localStorage.getItem("token"));
-        setuser(decoded)
+        
 
        
 
       }, []);
       useEffect(() => {
       
-        console.log(user)
+        
         setemail(user.email)
         setname(user.name)
       
