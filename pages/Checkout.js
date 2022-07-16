@@ -178,7 +178,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
                 </ol>
                 <div style={sw?{fontSize:"2vw",marginTop:"3vw"}:{fontSize:"2vh",marginTop:"3vh"}} className='font-bold'>Total : ₹ {subTotal}</div>
            </div>
-                <button style={sw?{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`,fontSize:"1.4vw",padding:"0.625vw 1.875vw",marginLeft:"16vw"}:{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`,fontSize:"1.4vh",padding:"0.625vh 1.875vh",marginLeft:"9vw"}} onClick={initiatepayment} className="flex text-white border-0 py-1 px-2 my-7 md:mx-56 mx-12 focus:outline-none  md:text-base 2xl:text-lg"><MdOutlinePayment className='my-auto mr-1'/>Pay now</button>
+                <button style={sw?{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`,fontSize:"1.4vw",padding:"0.625vw 1.875vw",marginLeft:"16vw"}:{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`,fontSize:"1.4vh",padding:"0.625vh 1.875vh",marginLeft:"9vw"}} onClick={initializeRazorpay} className="flex text-white border-0 py-1 px-2 my-7 md:mx-56 mx-12 focus:outline-none  md:text-base 2xl:text-lg"><MdOutlinePayment className='my-auto mr-1'/>Pay now</button>
             </div>
         </div>
         </>
