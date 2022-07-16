@@ -99,7 +99,21 @@ function MyApp({ Component, pageProps }) {
     newCart[item] = {itemCode, qty, price, name, height,width, variant,mechanism,img }
     setCart(newCart)
     saveCart(newCart)
-    router.push("/Checkout") 
+    if(localStorage.getItem("token")){
+      router.push("/Checkout") 
+    }
+    else{
+      toast.error("login first", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
+    }
+    
   }
   const clearCart = () => {
     setCart({})

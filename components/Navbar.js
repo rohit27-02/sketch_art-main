@@ -340,8 +340,8 @@ if(item[e.currentTarget.id].qty >1){
           <div style={{padding:"0.8vw 4vw"}} className='bg-white block px-10 py-2  rounded-md'>
             <div  className="  w-full space-y-6">
 
-              <form style={{marginTop:"2.5vw",fontSize:"1.2vw"}} onSubmit={handleSubmit} className="mt-8  w-full space-y-6" method="POST">
-                <h1 style={{fontSize:"1.8vw" }} className=' font-bold text-center text-gray-600'>Welcome to SketchArt</h1>
+              <form style={sw?{marginTop:"2.5vw",fontSize:"1.2vw"}:{marginTop:"2.5vh",fontSize:"1.2vh"}} onSubmit={handleSubmit} className="mt-8  w-full space-y-6" method="POST">
+                <h1 style={sw?{fontSize:"1.8vw" }:{fontSize:"1.8vh" }} className=' font-bold text-center text-gray-600'>Welcome to SketchArt</h1>
                 <div className=" shadow-sm">
                   <div>
                     <label htmlFor="email" className="sr-only">
@@ -355,7 +355,7 @@ if(item[e.currentTarget.id].qty >1){
                       value={email}
                       autoComplete="email"
                       required
-style={{padding:"0.5vw 1vw",width:"25vw"}}
+style={sw?{padding:"0.5vw 1vw",width:"25vw"}:{padding:"0.5vh 1vh",width:"25vh"}}
                       className="appearance-nonerelative block w-full px-3  py-2 border mb-2 bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10"
                       placeholder="Email"
                     />
@@ -372,7 +372,7 @@ style={{padding:"0.5vw 1vw",width:"25vw"}}
                       type="password"
                       autoComplete="password"
                       required
-                      style={{padding:"0.5vw 1vw",marginTop:"0.8vw",width:"25vw"}}
+                      style={sw?{padding:"0.5vw 1vw",marginTop:"0.8vw",width:"25vw"}:{padding:"0.5vh 1vh",marginTop:"0.8vh",width:"25vh"}}
                       className="appearance-none  relative block w-full px-3 py-2 border bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 "
                       placeholder="Password"
                     />
@@ -381,24 +381,24 @@ style={{padding:"0.5vw 1vw",width:"25vw"}}
                 <div className=''>
                   <button
                     type="submit"
-                    style={{ backgroundColor: "#bfb1c4",fontSize:"1.2vw",marginTop:"2vw",height:"3vw" }} className=" drop-shadow-sm relative w-full flex justify-center items-center border hover:shadow-lg text-white    "
+                    style={sw?{ backgroundColor: "#bfb1c4",fontSize:"1.2vw",marginTop:"2vw",height:"3vw" }:{ backgroundColor: "#bfb1c4",fontSize:"1.2vh",marginTop:"2vh",height:"3vh" }} className=" drop-shadow-sm relative w-full flex justify-center items-center border hover:shadow-lg text-white    "
                   >
 
                     Sign in
                   </button>
-                  <div style={{fontSize:"1.2vw" ,marginTop:"0.5vw"}} className="text-sm space-x-4 mt-2 flex font-medium text-gray-800 justify-center">
+                  <div style={sw?{fontSize:"1.2vw" ,marginTop:"0.5vw"}:{fontSize:"1.2vh" ,marginTop:"0.5vh"}} className="text-sm space-x-4 mt-2 flex font-medium text-gray-800 justify-center">
                    {/**  <a id='forgot' onClick={(e)=>{show(e)}} className='hover:text-black cursor-pointer' href="/Forgot" >
                       Forgot password?
                     </a>*/}
                     <p id='signup' onClick={(e)=>{show(e)}} className='hover:text-black cursor-pointer'>Create account</p>
                   </div>
                 </div>
-                <div style={{margin:"2vw 0vw"}} className='flex justify-center  '>
-                  <div style={{width:"10vw"}} className='border-b border-gray-800  '></div>
-                  <div style={{margin:"-1vw 0.5vw"}} className=''>Or</div>
-                  <div style={{width:"10vw"}} className='border-b border-gray-800  '></div>
+                <div style={sw?{margin:"2vw 0vw"}:{margin:"2vh 0vw"}} className='flex justify-center  '>
+                  <div style={sw?{width:"10vw"}:{width:"10vh"}} className='border-b border-gray-800  '></div>
+                  <div style={sw?{margin:"-1vw 0.5vw"}:{margin:"-1vh 0.5vh"}} className=''>Or</div>
+                  <div style={sw?{width:"10vw"}:{width:"10vh"}} className='border-b border-gray-800  '></div>
                 </div>
-                <div style={{paddingBottom:"3vw"}} className=' text-center'><GoogleOAuthProvider  clientId="306346834844-dut40venl0hhf8vii57vbvimfq3rbb9l.apps.googleusercontent.com"><GoogleLogin
+                <div style={sw?{paddingBottom:"3vw"}:{paddingBottom:"3vh"}} className=' text-center'><GoogleOAuthProvider  clientId="306346834844-dut40venl0hhf8vii57vbvimfq3rbb9l.apps.googleusercontent.com"><GoogleLogin
                 
                   onSuccess={res => auth(res)}
                   onError={() => {
@@ -417,8 +417,8 @@ style={{padding:"0.5vw 1vw",width:"25vw"}}
           <div className='bg-white block px-10 py-2  rounded-md'>
             <div className="  w-full space-y-6">
 
-              <form style={{marginTop:"2.5vw",fontSize:"1.2vw"}} onSubmit={handleSubmit2} className="mt-8  w-full space-y-6" method="POST">
-                <h1 style={{fontSize:"1.8vw" }} className=' font-bold text-center text-gray-600'>Welcome to SketchArt</h1>
+              <form style={sw?{marginTop:"2.5vw",fontSize:"1.2vw"}:{marginTop:"2.5vh",fontSize:"1.2vh"}} onSubmit={handleSubmit2} className="mt-8  w-full space-y-6" method="POST">
+                <h1 style={sw?{fontSize:"1.8vw" }:{fontSize:"1.8vh" }} className=' font-bold text-center text-gray-600'>Welcome to SketchArt</h1>
                 <div className=" shadow-sm">
                   <div>
                    
@@ -430,7 +430,7 @@ style={{padding:"0.5vw 1vw",width:"25vw"}}
                       value={name}
                       autoComplete="name"
                       required
-                      style={{padding:"0.5vw 1vw",width:"25vw"}}
+                      style={sw?{padding:"0.5vw 1vw",width:"25vw"}:{padding:"0.5vh 1vh",width:"25vh"}}
 
                       className="appearance-none  relative block w-full px-3 py-2 border bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 "
                       placeholder="Name"
@@ -446,7 +446,7 @@ style={{padding:"0.5vw 1vw",width:"25vw"}}
                       value={email}
                       autoComplete="email"
                       required
-                      style={{padding:"0.5vw 1vw",marginTop:"0.8vw",width:"25vw"}}
+                      style={sw?{padding:"0.5vw 1vw",marginTop:"0.8vw",width:"25vw"}:{padding:"0.5vh 1vh",marginTop:"0.8vh",width:"25vh"}}
                       className="appearance-none  relative block w-full px-3 py-2 border bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 "
                       placeholder="Email"
                     />
@@ -461,7 +461,7 @@ style={{padding:"0.5vw 1vw",width:"25vw"}}
                       type="password"
                       autoComplete="password"
                       required
-                      style={{padding:"0.5vw 1vw",marginTop:"0.8vw",width:"25vw"}}
+                      style={sw?{padding:"0.5vw 1vw",marginTop:"0.8vw",width:"25vw"}:{padding:"0.5vh 1vh",marginTop:"0.8vh",width:"25vh"}}
                       className="appearance-none  relative block w-full px-3 py-2 border bg-gray-200 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-black focus:border-black focus:z-10 "
                       placeholder="Password"
                     />
@@ -470,20 +470,20 @@ style={{padding:"0.5vw 1vw",width:"25vw"}}
                 <div className=''>
                   <button
                     type="submit"
-                    style={{ backgroundColor: "#bfb1c4",fontSize:"1.2vw",marginTop:"2vw",height:"3vw" }} className="group drop-shadow-sm relative w-full flex justify-center py-2 px-4 border hover:shadow-lg text-white text-sm font-bold  "
+                    style={sw?{ backgroundColor: "#bfb1c4",fontSize:"1.2vw",marginTop:"2vw",height:"3vw" }:{ backgroundColor: "#bfb1c4",fontSize:"1.2vh",marginTop:"2vh",height:"3vh" }} className="group drop-shadow-sm relative w-full flex justify-center items-center py-2 px-4 border hover:shadow-lg text-white text-sm font-bold  "
                   >
 
                     Sign up
                   </button>
-                  <div  style={{fontSize:"1.2vw" ,marginTop:"0.5vw"}} className="text-sm space-x-4 mt-2 flex font-medium text-gray-800 justify-center">
+                  <div  style={sw?{fontSize:"1.2vw" ,marginTop:"0.5vw"}:{fontSize:"1.2vh" ,marginTop:"0.5vh"}} className="text-sm space-x-4 mt-2 flex font-medium text-gray-800 justify-center">
                    
                     <p id='login' onClick={(e)=>{show(e)}} className='hover:text-black cursor-pointer pt-2 '>Already have an account ?</p>
                   </div>
                 </div>
                 <div className='flex justify-center space-x-2 '>
-                  <div  style={{width:"10vw"}} className='border-b border-gray-800 '></div>
-                  <div style={{margin:"-1vw 0.5vw"}} className=''>Or</div>
-                  <div style={{width:"10vw"}} className='border-b border-gray-800 '></div>
+                  <div  style={sw?{width:"10vw"}:{width:"10vh"}} className='border-b border-gray-800 '></div>
+                  <div style={sw?{margin:"-1vw 0.5vw"}:{margin:"-1vh 0.5vh"}} className=''>Or</div>
+                  <div style={sw?{width:"10vw"}:{width:"10vh"}} className='border-b border-gray-800 '></div>
                 </div>
                 <div className='pb-8 text-center'><GoogleOAuthProvider clientId="306346834844-dut40venl0hhf8vii57vbvimfq3rbb9l.apps.googleusercontent.com"><GoogleLogin
                   onSuccess={res => auth2(res)}
@@ -550,7 +550,15 @@ style={{padding:"0.5vw 1vw",width:"25vw"}}
       <div style={sw?{fontSize:"1.5vw",marginTop:"2vw",padding:"0vw 1vw"}:{fontSize:"2vh",marginTop:"2vh",padding:"0vh 1vh"}} className='font-bold w-full flex justify-between mt-10'>
         <span>Total ({item} items) </span> <span>₹ {subTotal}</span></div>
      <div style={sw?{marginTop:"1.8vw"}:{marginTop:"1.8vh"}} className='w-full flex justify-center'>
-      <a onClick={()=>Router.push("/Checkout")} ><button style={sw?{ backgroundColor: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }:{ backgroundColor: "#bfb1c4",fontSize:"2vh",height:"4vh",width:"12vh" }} className="flex  text-white hover:opacity-80     border-0  justify-center focus:outline-none   "><span className='my-auto'>Check out</span></button></a>
+      <a onClick={()=>{if(localStorage.getItem("token")){Router.push("/Checkout")}else{toast.error("login first", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      })}}} ><button style={sw?{ backgroundColor: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }:{ backgroundColor: "#bfb1c4",fontSize:"2vh",height:"4vh",width:"12vh" }} className="flex  text-white hover:opacity-80     border-0  justify-center focus:outline-none   "><span className='my-auto'>Check out</span></button></a>
       </div>
     </div>
 
