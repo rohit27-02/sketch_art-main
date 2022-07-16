@@ -25,24 +25,37 @@ export default function App() {
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [70,20],
       zoom: zoom,
+      
      
     })
    
     
       const marker = new mapboxgl.Marker()
-.setLngLat([lng, lat]).setPopup(popup).addTo(map.current);
-
-const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-  'Construction on the Washington Monument began in 1848.'
-  );
+.setLngLat([lng, lat]).setPopup( new mapboxgl.Popup({ offset: 25 }).setText(
+  "12, Nirmal Rubber Compound ,Opp Rocky Ind. Estate, I.B Patel Road, Goregaon East, Mumbai-400063"
+  )).addTo(map.current);
 
 
+
+  map.current.addControl(
+    new mapboxgl.GeolocateControl({
+    positionOptions: {
+    enableHighAccuracy: true
+    },
+    // When active the map will receive updates to the device's location as it changes.
+    trackUserLocation: true,
+    // Draw an arrow next to the location dot to indicate which direction the device is heading.
+    showUserHeading: true
+    })
+    );
+    
+  
  
 
   return (
     <div>
-      
-      <div id='map'  className="w-[20vw] h-auto" />
+     
+      <div id='map'  />
     </div>
   );
 }
