@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import { CgTrashEmpty } from 'react-icons/cg';
@@ -14,7 +15,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
     const [phone, setphone] = useState();
     const [pin, setpin] = useState();
     const [order, setorder] = useState({});
-    const [payment, setpayment] = useState();
+    const [payment, setpayment] = useState(false);
     const [user, setuser] = useState({});
 
     function handleChange(e) {
@@ -58,6 +59,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
       };
 
       const makePayment = async () => {
+        setpayment(true)
         const res = await initializeRazorpay();
     
         if (!res) {
@@ -69,6 +71,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
         const data = await fetch("/api/razorpay", { method: "POST" }).then((t) =>
           t.json()
         );
+        setpayment(false)
         console.log(data);
         var options = {
           key: "rzp_test_VlpBraARgWRC8D", // Enter the Key ID generated from the Dashboard
@@ -105,11 +108,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
         }
         else{
           Router.push("/")
-        }
-
-        
-
-       
+        } 
 
       }, []);
       useEffect(() => {
@@ -119,6 +118,8 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
         setname(user.name)
       
       }, [user]);
+
+      
     
     return (<>
      {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
@@ -188,7 +189,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
                 </ol>
                 <div style={sw?{fontSize:"2vw",marginTop:"3vw"}:{fontSize:"2vh",marginTop:"3vh"}} className='font-bold'>Total : ₹ {subTotal}</div>
            </div>
-                <button style={sw?{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`,fontSize:"1.4vw",padding:"0.625vw 1.875vw",marginLeft:"16vw"}:{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`,fontSize:"1.4vh",padding:"0.625vh 1.875vh",marginLeft:"9vw"}} onClick={makePayment} className="flex text-white border-0 py-1 px-2 my-7 md:mx-56 mx-12   md:text-base 2xl:text-lg"><MdOutlinePayment className='my-auto mr-1'/>Pay now</button>
+                {payment?<img className='h-[7vh] ml-[16vh] md:h-[7vw] md:ml-[16vw]' src='/334-loader-5 (1).webp'></img>:<button id='paynow' style={sw?{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`,fontSize:"1.4vw",padding:"0.625vw 1.875vw",marginLeft:"16vw"}:{backgroundColor:"#bfb1c4",fontFamily:`"Montserrat",sans-serif`,fontSize:"1.4vh",padding:"0.625vh 1.875vh",marginLeft:"9vw"}} onClick={makePayment} className="flex text-white  border-0 py-1 px-2 my-7 md:mx-56 mx-12   md:text-base 2xl:text-lg"><MdOutlinePayment className='my-auto mr-1'/>Pay now</button>}
             </div>
         </div>
         </>
