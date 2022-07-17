@@ -515,7 +515,10 @@ style={sw?{padding:"0.5vw 1vw",width:"25vw"}:{padding:"0.5vh 1vh",width:"25vh"}}
     <div ref={ref}  style={{fontFamily: "'lato', sans-serif"}} className="sidebar cart text-gray-600 overflow-y-scroll scrollbar-hide  fixed right-0 top-0 flex   flex-col  transform transition-transform duration-500 ease-in-out  translate-x-full z-50 bg-white shadow-xl  h-full">
       <h2  style={{fontFamily: "'Fjalla One', sans-serif" }} className="carttitle w-full text-center">CART</h2>
       <ImArrowLeft2 style={{}} onClick={toggleCart} className='arrowleft fixed  left-4 cursor-pointer ' />
-      <div className='' onChange={toggleCart}>
+      
+      {typeof window !== 'undefined' && localStorage.getItem("token") ?
+      
+      <div><div className='' onChange={toggleCart}>
         <ul style={{}} className='itemul overflow-y-scroll  rounded-xl  '>
           {Object.keys(cart).length == 0 && <div style={{}} className="noitem">
             No items in the cart 😭
@@ -547,8 +550,10 @@ style={sw?{padding:"0.5vw 1vw",width:"25vw"}:{padding:"0.5vh 1vh",width:"25vh"}}
           })}
         </ul>
       </div>
+
       <div style={sw?{fontSize:"1.5vw",marginTop:"2vw",padding:"0vw 1vw"}:{fontSize:"2vh",marginTop:"2vh",padding:"0vh 1vh"}} className='font-bold w-full flex justify-between mt-10'>
         <span>Total ({item} items) </span> <span>₹ {subTotal}</span></div>
+
      <div style={sw?{marginTop:"1.8vw"}:{marginTop:"1.8vh"}} className='w-full flex justify-center'>
       <a onClick={()=>{if(localStorage.getItem("token")){Router.push("/Checkout")}else{toast.error("login first", {
       position: "top-right",
@@ -559,7 +564,10 @@ style={sw?{padding:"0.5vw 1vw",width:"25vw"}:{padding:"0.5vh 1vh",width:"25vh"}}
       draggable: true,
       progress: undefined,
       })}}} ><button style={sw?{ backgroundColor: "#bfb1c4",fontSize:"1.25vw",height:"3.125vw",width:"10.45vw" }:{ backgroundColor: "#bfb1c4",fontSize:"2vh",height:"4vh",width:"12vh" }} className="flex  text-white hover:opacity-80     border-0  justify-center focus:outline-none   "><span className='my-auto'>Check out</span></button></a>
+      </div> 
       </div>
+      : <div className='noitem my-[3vh] mx-auto md:my-[3vw]'> Login to check cart</div>}
+
     </div>
 
 
@@ -622,7 +630,7 @@ style={sw?{padding:"0.5vw 1vw",width:"25vw"}:{padding:"0.5vh 1vh",width:"25vh"}}
             {!user.value && <a id="login"  onClick={() => setlogin(true)} style={{fontSize:"1.25vw"}} className="z-50   text-lg cursor-pointer 2x:text-xl hover:opacity-80  hover: transition duration-300">LOG IN</a>}
             {user.value && <MdAccountCircle style={{fontSize:"2.37vw"}} className=" font-medium  cursor-pointer transition  duration-300 md:text-3xl z-50 2xl:text-4xl" onMouseEnter={() => setdropDown(true)} />}
             <HiShoppingCart style={{fontSize:"2.37vw",margin:"0vw 2vw"}} id="cart" onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='  z-50 cursor-pointer  ' />
-            {item!=0 && <div style={{fontSize:"1.2vw",padding:"0vw 0.6vw",right:"2.3vw",top:"1.2vw"}} className=' z-50 absolute bg-black text-white right-3 top-2 px-2 rounded-full'>{item}</div>}
+            { typeof window !== 'undefined' && item!=0 && localStorage.getItem("token") && <div style={{fontSize:"1.2vw",padding:"0vw 0.6vw",right:"2.3vw",top:"1.2vw"}} className=' z-50 absolute bg-black text-white right-3 top-2 px-2 rounded-full'>{item}</div>}
           </div>
           </div>
           </div>
@@ -641,7 +649,7 @@ style={sw?{padding:"0.5vw 1vw",width:"25vw"}:{padding:"0.5vh 1vh",width:"25vh"}}
             {!user.value && <a onClick={() => setlogin(true)} className="  transition duration-300">LOG IN</a>}
             {user.value && <MdAccountCircle className="   text-xl  cursor-pointer transition duration-300 " onClick={() => setdropDown(!dropDown)} />}
             <HiShoppingCart onClick={toggleCart} onMouseEnter={() => setdropDown(false)} className='text-xl  cursor-pointer  ' />
-            {item!=0 && <div style={{fontSize:"1.2vh",padding:"0vw 0.575vh",right:"6.75vh",top:"0.8vh"}} className=' z-50 absolute bg-black text-white right-3 top-2 px-4 rounded-full'>{item}</div>}
+            {typeof window !== 'undefined' && item!=0 && localStorage.getItem("token") && <div style={{fontSize:"1.2vh",padding:"0vw 0.575vh",right:"6.75vh",top:"0.8vh"}} className=' z-50 absolute bg-black text-white right-3 top-2 px-4 rounded-full'>{item}</div>}
             <Hamburger size={20} toggled={isOpen} toggle={setOpen} className=" mobile-menu-button" />
             </div>
           </div>
