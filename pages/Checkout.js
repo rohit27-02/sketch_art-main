@@ -17,6 +17,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
     const [order, setorder] = useState({});
     const [payment, setpayment] = useState(false);
     const [user, setuser] = useState({});
+  
 
     function handleChange(e) {
         if (e.target.id == "name") {
@@ -68,7 +69,10 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
         }
     
         // Make API call to the serverless API
-        const data = await fetch("/api/razorpay", { method: "POST" }).then((t) =>
+        const data = await fetch("/api/razorpay", { method: "POST" ,
+        headers: {
+          "Content-Type": "application/json"
+        }, body: JSON.stringify(subTotal)}).then((t) =>
           t.json()
         );
         setpayment(false)
@@ -82,6 +86,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
           description: "Complete the payment",
           image: "/logo.jpeg",
           handler: function (response) {
+           
             // Validate payment at server - using webhooks is a better idea.
             alert(response.razorpay_payment_id);
             alert(response.razorpay_order_id);
@@ -92,6 +97,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
             email: email,
             contact: phone,
           },
+          "theme":{"color":"#bfb1c4"}
         };
     
         const paymentObject = new window.Razorpay(options);
@@ -109,6 +115,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
         else{
           Router.push("/")
         } 
+        
 
       }, []);
       useEffect(() => {
@@ -119,7 +126,12 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
       
       }, [user]);
 
-      
+      useEffect(() => {
+        if(subTotal == 0){
+          document.getElementById("paynow").classList.add("hidden")
+        }
+       
+      }, [subTotal]);
     
     return (<>
      {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
@@ -164,28 +176,24 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
                     {Object.keys(cart).length ==0 && <div>
                        No items in the cart 😭
                     </div> }
-                    <table className='w-full'>
+                    <div className='w-full'>
    
-                    {Object.keys(cart).map((k)=>{return <li key={k}>
-                        
-
-    <tbody className='flex flex-row justify-between w-full items-center my-4'>
-                       <td style={sw?{width:"20vw"}:{width:"20vh"}} className='w-52'> <div className='mx-4 flex flex-col '>
+                    {Object.keys(cart).map((k)=>{return <li key={k} className='flex flex-row justify-between w-full items-center my-4'>
+                       <span style={sw?{width:"20vw"}:{width:"20vh"}} className='w-52'> <div className='mx-4 flex flex-col '>
                       <span><span className='text-gray-600'> style :  </span>{cart[k].name}</span>
                       <span><span className='text-gray-600'> width :  </span>{cart[k].width} meters</span>
                       <span><span className='text-gray-600'> height : </span> {cart[k].height} meters</span>
                       <span><span className='text-gray-600'> color :  </span>{cart[k].variant}</span>
                         </div>
-                        </td>
+                        </span>
 
-                       <td > <span>Qty : {cart[k].qty}</span></td>
-
-                        <td><CgTrashEmpty style={sw?{fontSize:"2vw"}:{fontSize:"2vh"}} className='cursor-pointer' onClick={() => { removeFromCart(cart[k].itemCode,cart[k].height,cart[k].width,cart[k].variant) }}/></td>
+                      <span>Qty : {cart[k].qty}</span>
+                       <CgTrashEmpty style={sw?{fontSize:"2vw"}:{fontSize:"2vh"}} className='cursor-pointer' onClick={() => { removeFromCart(cart[k].itemCode,cart[k].height,cart[k].width,cart[k].variant) }}/>
                         
-                        <td><div><img alt='product' style={sw?{height:"12vw"}:{height:"12vh"}} src={cart[k].img}></img></div></td></tbody>
+                       <span><img alt='product' style={sw?{height:"12vw"}:{height:"12vh"}} src={cart[k].img}></img></span></li>
                        
                        
-                    </li>})}    </table>
+                   })}    </div>
                 </ol>
                 <div style={sw?{fontSize:"2vw",marginTop:"3vw"}:{fontSize:"2vh",marginTop:"3vh"}} className='font-bold'>Total : ₹ {subTotal}</div>
            </div>

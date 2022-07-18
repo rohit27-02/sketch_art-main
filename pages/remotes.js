@@ -36,7 +36,7 @@ const Remotes = ({product,addToCart}) => {
                    
                 </ul>
                 <div style={{right:"2vw",top:"20vw"}} className='md:absolute font-bold text-gray-700'>₹ {product[p].price}
-                <button style={sw?{ color: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw",marginTop:"1vw"}:{ color: "#bfb1c4" ,fontSize:"1.5vh",width:"10vh",height:"3.5vh",marginTop:"1vh"}} onClick={() => { addToCart(product[p].slug, 1, product[p].price, product[p].title,"1", "2", "white", undefined ,product[p].poster) }} className="flex items-center z-50 font-bold hover:border-0 bg-white justify-center focus:outline-none   border-2">Add to cart</button>
+                <button style={sw?{ fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw",marginTop:"1vw"}:{ fontSize:"1.5vh",width:"10vh",height:"3.5vh",marginTop:"1vh"}} onClick={() => { addToCart(product[p].slug, 1, product[p].price, product[p].title,"1", "2", "white", undefined ,product[p].poster) }} className="flex items-center z-50 font-bold  justify-center focus:outline-none text-white hover:bg-white hover:text-[#bfb1c4] bg-[#bfb1c4]  ">Add to cart</button>
                 </div>
               </div>
             </div></Slide>})}

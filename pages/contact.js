@@ -115,23 +115,23 @@ const Contact = ({ info }) => {
   <div  className='bg-white w-full'></div>
   <div style={{fontFamily: "'Roboto Slab', serif",backgroundColor:"#ebeaeb"}}>
   <div style={sw?{marginTop:"6.25vw",padding:"4.375vw 0vw"}:{marginTop:"6.25vh",padding:"4.375vh 2vw"}} className="flex  mt-20 py-14  items-center w-full">
-    <div style={sw?{padding:"0vw 8.75vw"}:{padding:"0vw 2vh"}} className='flex flex-col md:flex-row  md:justify-evenly items-center px-28 w-full'>
+    <div style={sw?{padding:"0vw 8.75vw"}:{padding:"0vw 2vh"}} className='flex flex-col md:flex-row items-center md:items-start md:justify-evenly px-28 w-full'>
 
-    <div style={sw?{fontSize:"1.25vw",lineHeight:"4vw"}:{fontSize:"1.25vh",lineHeight:"8vw"}} className='text-center  flex  flex-col items-center w-1/3'> 
+    <div style={sw?{fontSize:"1.25vw",lineHeight:"4vw"}:{fontSize:"1.25vh",lineHeight:"8vw"}} className='  flex  flex-col  items-center w-1/3'> 
         <AiOutlineFlag style={sw?{fontSize:"3.75vw"}:{fontSize:"3.75vh"}} className='text-5xl'/>
-        <h1>Our email</h1>
-        <p >{info[0].email}</p>
+        <h1 className='md:text-[2vw] text-[2vh]' style={{fontFamily: "'Fjalla One', sans-serif"}}>OUR EMAIL</h1>
+        <p className='md:h-[4vw] h-[4vh]'>{info[0].email}</p>
       </div>
-       <div style={sw?{fontSize:"1.25vw"}:{fontSize:"1.25vh",marginBottom:"4vw"}} className='text-center   flex flex-col items-center w-full md:w-1/3'> 
+       <div style={sw?{fontSize:"1.25vw"}:{fontSize:"1.25vh",marginBottom:"4vw"}} className='   flex flex-col items-center w-full md:w-1/3'> 
         <GrMapLocation style={sw?{fontSize:"3.75vw"}:{fontSize:"3.75vh"}} className='text-5xl'/>
-        <h1 style={sw?{margin:"1vw 0vw  1.6vw 0vw"}:{margin:"1.5vh 0vw  1.6vh 0vw"}}>Our address</h1>
-        <p>{info[0].address}</p>
+        <h1 className='md:text-[2vw] text-[2vh]' style={sw?{margin:"0.5vw 0vw  1.6vw 0vw",fontFamily: "'Fjalla One', sans-serif"}:{margin:"1.5vh 0vw  1.6vh 0vw",fontFamily: "'Fjalla One', sans-serif"}}>OUR ADDRESS</h1>
+        <p className='md:h-[4vw] h-[4vh]'>{info[0].address}</p>
       </div>
      
-       <div style={sw?{fontSize:"1.25vw",lineHeight:"4vw"}:{fontSize:"1.25vh",lineHeight:"8vw"}} className='text-center  flex  flex-col items-center w-1/3'>
+       <div style={sw?{fontSize:"1.25vw",lineHeight:"4vw"}:{fontSize:"1.25vh",lineHeight:"8vw"}} className='  flex  flex-col items-center w-1/3'>
         <IoIosPhonePortrait style={sw?{fontSize:"3.75vw"}:{fontSize:"3.75vh"}} className='text-5xl'/>
-        <h1>Call us</h1>
-        <p>{info[0].phone}</p>
+        <h1 className='md:text-[2vw] text-[2vh]' style={{fontFamily: "'Fjalla One', sans-serif"}}>CALL US</h1>
+        <p className='md:h-[4vw] h-[4vh]'>{info[0].phone}</p>
         </div>
     </div>
   </div>
@@ -154,21 +154,21 @@ const Contact = ({ info }) => {
       <div  style={{marginBottom:"0.5vw"}} className="flex  relative  ">
       <div >
         
-        <input placeholder='Name' required onChange={(e)=>handleChange(e)} type="text" style={sw?{width:"23vw",height:"3.4vw",padding:"0.325vw 0.9375vw"}:{width:"22vh",height:"3.4vh",padding:"0.325vh 0.9375vh"}} id="name" name="name" className="w-full  bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200  outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input placeholder='Name' required onChange={(e)=>handleChange(e)} type="text" style={sw?{width:"23vw",height:"3.4vw",padding:"0.325vw 0.9375vw"}:{width:"21vh",height:"3.4vh",padding:"0.325vh 0.9375vh"}} id="name" name="name" className="w-full  bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200  outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <div >
         
-        <input placeholder='Company' required onChange={(e)=>handleChange(e)} type="text" style={sw?{width:"23vw",height:"3.4vw",padding:"0.325vw 0.9375vw",marginLeft:"1.8vw"}:{width:"22vh",height:"3.4vh",padding:"0.325vh 0.9375vh",marginLeft:"1.8vh"}} id="company" name="company" className="w-full  bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200  outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input placeholder='Company' required onChange={(e)=>handleChange(e)} type="text" style={sw?{width:"23vw",height:"3.4vw",padding:"0.325vw 0.9375vw",marginLeft:"1.8vw"}:{width:"20.5vh",height:"3.4vh",padding:"0.325vh 0.9375vh",marginLeft:"1.8vh"}} id="company" name="company" className="w-full  bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200  outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       </div>
       <div style={{marginBottom:"1vw"}} className="flex  relative ">
       <div >
       
-        <input placeholder='Email' required onChange={(e)=>handleChange(e)} type="email" id="email" style={sw?{width:"23vw",height:"3.4vw",padding:"0.325vw 0.9375vw"}:{width:"22vh",height:"3.4vh",padding:"0.325vh 0.9375vh"}} name="email" className="w-full bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200  outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input placeholder='Email' required onChange={(e)=>handleChange(e)} type="email" id="email" style={sw?{width:"23vw",height:"3.4vw",padding:"0.325vw 0.9375vw"}:{width:"21vh",height:"3.4vh",padding:"0.325vh 0.9375vh"}} name="email" className="w-full bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200  outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <div >
         
-        <input placeholder='Number ' required onChange={(e)=>handleChange(e)} type="tel" id="number" style={sw?{width:"23vw",height:"3.4vw",padding:"0.325vw 0.9375vw",marginLeft:"1.8vw"}:{width:"22vh",height:"3.4vh",padding:"0.325vh 0.9375vh",marginLeft:"1.8vh"}} name="number" className="w-full bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200  outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input placeholder='Number ' required onChange={(e)=>handleChange(e)} type="tel" id="number" style={sw?{width:"23vw",height:"3.4vw",padding:"0.325vw 0.9375vw",marginLeft:"1.8vw"}:{width:"20.5vh",height:"3.4vh",padding:"0.325vh 0.9375vh",marginLeft:"1.8vh"}} name="number" className="w-full bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200  outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       </div>
       <div style={sw?{marginBottom:"1.5vw"}:{marginBottom:"1.5vh"}} className="flex relative mb-4">

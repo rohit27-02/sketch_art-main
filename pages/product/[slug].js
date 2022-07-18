@@ -239,7 +239,7 @@ useEffect(() => {
                     <Disclosure.Panel style={sw?{padding:"1.25vw 2.25vw 1.875vw "}:{padding:"1.25vh 2.25vh 1.875vh "}} className="px-7  pt-4 pb-6  bg-white text-gray-900">
                       <h1>Provide exact measurements. we will deduct for inside mount.
                       </h1>
-                      <div className="flex my-10 flex-col md:flex-row mx-auto space-y-4 md:space-y-0 md:space-x-10 ">
+                      <div className="flex my-10 flex-col md:flex-row mx-auto justify-center space-y-4 md:space-y-0 md:space-x-10 ">
 
                         <div className='flex items-center'><span className="">Height</span>
 
@@ -310,9 +310,9 @@ useEffect(() => {
                       <div className='md:max-h-[31vw] w-full max-h-36 overflow-y-auto overflow-x-hidden'>
                         {withmotor && Object.keys(recomendedmotors).map((m)=>{return <><div   id={recomendedmotors[m]}  style={sw?{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"10vw",marginRight:"1.875vw",marginTop:"2vw",padding:"0.5vw"}:{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"10vh",marginRight:"1.875vh",marginTop:"2vh",padding:"0.5vh"}} className='flex btn w-full border-2  ' key={m}>
                         <img style={sw?{width:"10vw"}:{width:"10vh"}} src={motor2[m].poster}></img>
-                        <div style={{}} className='md:ml-[1vw]  ml-[1vh]'>
+                        <div  className='md:ml-[1vw]  ml-[1vh]'>
                         <span style={sw?{margin:"1vw 0vw",fontFamily: "'Fjalla One', sans-serif"}:{margin:"1vh 0vh",fontFamily: "'Fjalla One', sans-serif"}} className="h-full text-[1.8vh] md:text-[1.8vw] w-full">{motor2[m].title}</span>
-                        <p>{motors[m]}</p>
+                        <p className='text-[1vh] md:text-[1vw]' style={{fontFamily:"'poppins',sans-seif"}}>{motors[m]}</p>
                         <div className='flex justify-between'>
                       <a className='md:text-[1vw] underline hover:text-[#bfb1c4]' href={`/motors/${motor2[m].slug}`}>Learn More</a>
                         
