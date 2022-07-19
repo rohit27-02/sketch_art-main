@@ -72,8 +72,8 @@ const Potor = ({ buyNow, addToCart, product }) => {
           <div  className='flex flex-col '>
             <span style={sw?{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vw"}:{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vh"}} className="  text-5xl uppercase ">{product.title} </span>
             <div style={sw?{fontSize:"1.25vw",padding:"1.875vw 0vw"}:{fontSize:"1.5vh",padding:"1.875vh 0vh"}} className='space-x-6 flex py-6  text-base'>
-              <a href='#details' className='cursor-pointer flex items-center  space-x-3  pr-4 border-black underline underline-offset-2 '><BsInfoCircleFill /><span>Products Details</span></a>
-              <a className='cursor-pointer underline flex items-center   space-x-3 underline-offset-2 '><BsImages /><span>Products Gallery</span></a>
+              
+         
             </div>
             <div style={sw?{padding:"2vw 2.5vw 3vw",marginBottom:"1.875vw"}:{padding:"2vh 2.5vh 3vh",marginBottom:"1.875vh"}} className="  w-full px-8 mb-6 bg-white  ">
            

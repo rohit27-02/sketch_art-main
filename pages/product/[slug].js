@@ -187,7 +187,7 @@ useEffect(() => {
             <span style={sw?{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vw"}:{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vh"}} className="  text-5xl uppercase ">{product.title} </span>
             <div style={sw?{fontSize:"1.25vw",padding:"1.875vw 0vw"}:{fontSize:"1.5vh",padding:"1.875vh 0vh"}} className='space-x-6 flex py-6  text-base'>
               <a href='#details' className='cursor-pointer flex items-center  space-x-3  pr-4 border-black underline underline-offset-2 '><BsInfoCircleFill /><span>Products Details</span></a>
-              <a className='cursor-pointer underline flex items-center   space-x-3 underline-offset-2 '><BsImages /><span>Products Gallery</span></a>
+
             </div>
            
             <div style={sw?{padding:"0vw 2.5vw",marginBottom:"1.875vw"}:{padding:"0vh 2.5vh",marginBottom:"1.875vh"}} className="  w-full px-8 mb-6 bg-white  ">
@@ -311,8 +311,8 @@ useEffect(() => {
                         {withmotor && Object.keys(recomendedmotors).map((m)=>{return <><div   id={recomendedmotors[m]}  style={sw?{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"10vw",marginRight:"1.875vw",marginTop:"2vw",padding:"0.5vw"}:{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"10vh",marginRight:"1.875vh",marginTop:"2vh",padding:"0.5vh"}} className='flex btn w-full border-2  ' key={m}>
                         <img style={sw?{width:"10vw"}:{width:"10vh"}} src={motor2[m].poster}></img>
                         <div  className='md:ml-[1vw]  ml-[1vh]'>
-                        <span style={sw?{margin:"1vw 0vw",fontFamily: "'Fjalla One', sans-serif"}:{margin:"1vh 0vh",fontFamily: "'Fjalla One', sans-serif"}} className="h-full text-[1.8vh] md:text-[1.8vw] w-full">{motor2[m].title}</span>
-                        <p className='text-[1vh] md:text-[1vw]' style={{fontFamily:"'poppins',sans-seif"}}>{motors[m]}</p>
+                        <span style={sw?{margin:"1vw 0vw",fontFamily: "'Fjalla One', sans-serif"}:{margin:"1vh 0vh",fontFamily: "'Fjalla One', sans-serif"}} className="h-full text-[1.8vh] md:text-[1.5vw] w-full">{motor2[m].title}</span>
+                        <p className='text-[1vh] md:mt-[1vw] mt-[1vh] md:text-[1vw]' style={{fontFamily:"'poppins',sans-seif"}}>{motors[m]}</p>
                         <div className='flex justify-between'>
                       <a className='md:text-[1vw] underline hover:text-[#bfb1c4]' href={`/motors/${motor2[m].slug}`}>Learn More</a>
                         
