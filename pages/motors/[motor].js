@@ -52,11 +52,11 @@ const Potor = ({ buyNow, addToCart, product }) => {
       <div  className=" w-full ">
 
         <div  className='w-full  flex-col justify-center md:flex-row flex '>
-          <div style={{ backgroundColor: "#ebeaeb"}} className='md:w-5/12 pb-[3vw] flex justify-center md:justify-start flex-col md:pt-0 w-full'>
+          <div  className='md:w-5/12 pb-[3vw] flex justify-center md:justify-start flex-col md:pt-0 w-full'>
           
-            <img alt="ecommerce" style={sw?{height:"45vh",margin:"3vw "}:{height:"38.3vh"}} className="  mx-auto md:py-0 py-10 " src={product.poster} />
+            <img alt="ecommerce" style={sw?{width:"38vw",marginBottom:"2.75vw"}:{height:"38.3vh",margin:"2.75vh 0vw"}} className="   " src={product.poster} />
            
-            <div style={sw?{fontSize:"1.25vw",padding:"0vw 2.4vw 0.8vw"}:{fontSize:"2vh",padding:"1.875vh"}} className='text-gray-800 ml-6 md:ml-0 flex items-center  '><p style={sw?{backgroundColor: "#bfb1c4",height:"1vw",width:"2.75vw",marginLeft:"-3vw"}:{backgroundColor: "#bfb1c4",height:"1vh",width:"2.75vh",marginLeft:"-3.3vh"}} className='w-5 -ml-6 absolute h-3'></p>SPECIFICATIONS</div>
+            <div style={sw?{fontSize:"1.25vw",padding:"0vw 2.4vw 0.8vw"}:{fontSize:"2vh",padding:"1.875vh"}} className='text-gray-800 ml-6 md:ml-0 flex items-center  '><p style={sw?{backgroundColor: "#bfb1c4",height:"1vw",width:"2.75vw",marginLeft:"-3vw"}:{backgroundColor: "#bfb1c4",height:"1vh",width:"2.75vh",marginLeft:"-3.3vh"}} className='w-5 -ml-6 absolute h-3'></p>Specifications</div>
               <div className='w-full px-[2vw] ml-6 md:ml-0 grid grid-flow-col  '>
               <ul >
               {(spec).map((f)=>{return  <li key={f} style={sw?{fontSize:"1vw",marginTop:"0.7vw"}:{fontSize:"1.5vh",marginTop:"1.25vh"}} className='  font-medium mt-4  flex items-center'>{f[0]}</li>})}
@@ -68,7 +68,7 @@ const Potor = ({ buyNow, addToCart, product }) => {
             </div>
            
 
-            <div style={sw?{ padding:"3.75vw 3.125vw" }:{ backgroundColor: "#ebeaeb",padding:"3.75vh 3.125vh" }} className='py-12 text-gray-800 md:w-1/2 w-full px-4 md:px-10 '>
+            <div  style={sw?{backgroundColor: "#ebeaeb", padding:"3.75vw 3.125vw" }:{ backgroundColor: "#ebeaeb",padding:"3.75vh 3.125vh" }} className='py-12 text-gray-800 md:w-1/2 w-full px-4 md:px-10 '>
           <div  className='flex flex-col '>
             <span style={sw?{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vw"}:{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vh"}} className="  text-5xl uppercase ">{product.title} </span>
             <div style={sw?{fontSize:"1.25vw",padding:"1.875vw 0vw"}:{fontSize:"1.5vh",padding:"1.875vh 0vh"}} className='space-x-6 flex py-6  text-base'>
@@ -77,9 +77,9 @@ const Potor = ({ buyNow, addToCart, product }) => {
             </div>
             <div style={sw?{padding:"2vw 2.5vw 3vw",marginBottom:"1.875vw"}:{padding:"2vh 2.5vh 3vh",marginBottom:"1.875vh"}} className="  w-full px-8 mb-6 bg-white  ">
            
-            <div style={sw?{fontSize:"1.25vw"}:{fontSize:"2vh"}} className="flex items-center"> <p style={sw?{backgroundColor: "#bfb1c4", fontFamily: "'poppins', sans-serif",height:"1vw",width:"2.75vw",marginLeft:"-3.2vw"}:{backgroundColor: "#bfb1c4", fontFamily: "'poppins', sans-serif",height:"1vh",width:"2.75vh",marginLeft:"-3.2vh"}}  className='w-8 -ml-10 absolute h-3'></p>FEATURES</div>
+            <div style={sw?{fontSize:"1.25vw"}:{fontSize:"2vh"}} className="flex items-center"> <p style={sw?{backgroundColor: "#bfb1c4", fontFamily: "'poppins', sans-serif",height:"1vw",width:"2.75vw",marginLeft:"-3.2vw"}:{backgroundColor: "#bfb1c4", fontFamily: "'poppins', sans-serif",height:"1vh",width:"2.75vh",marginLeft:"-3.2vh"}}  className='w-8 -ml-10 absolute h-3'></p>Features</div>
             <ul className='list list-disc'>
-              {Object.keys(product.features).map((f)=>{return  <li key={f} style={sw?{fontSize:"1.25vw",marginTop:"1.5vw"}:{fontSize:"2vh",marginTop:"1.25vh"}} className='  font-medium mt-4 ml-5 md:ml-0  items-center'>{product.features[f]}</li>})}
+              {Object.keys(product.features).map((f)=>{return  <li key={f} style={sw?{fontSize:"1vw",marginTop:"1.5vw"}:{fontSize:"1.5vh",marginTop:"1.25vh"}} className='  font-medium mt-4 ml-5 md:ml-0  items-center'>{product.features[f]}</li>})}
               </ul>
               </div>
            
