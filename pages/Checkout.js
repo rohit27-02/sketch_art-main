@@ -82,8 +82,8 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
         var options = {
           key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
           name: "Sketch Art",
-          currency: "INR",
-          amount: subTotal*100,
+          currency: data.currency,
+          amount: data.amount,
           order_id: data.id,
           description: "Complete the payment",
           image: "/logo.jpeg",
