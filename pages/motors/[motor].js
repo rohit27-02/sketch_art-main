@@ -37,7 +37,7 @@ const Potor = ({ buyNow, addToCart, product }) => {
   {sw && <div style={{height:"6.2vw",backgroundClip:""}} className='absolute border-b  border-black  top-0 w-full  '></div>}
 
 {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
-    <section id='main'   style={{  fontFamily: "'poppins', sans-serif",marginTop:"10vw"}} className="text-gray-900  justify-center flex body-font overflow-hidden">
+    <section id='main'   style={{  fontFamily: "'poppins', sans-serif",marginTop:"10vw"}} className="text-gray-900 md:px-[3.5vw] justify-center flex body-font overflow-hidden">
       <ToastContainer
         position="top-right"
         autoClose={1000}
@@ -54,7 +54,7 @@ const Potor = ({ buyNow, addToCart, product }) => {
         <div  className='w-full  flex-col justify-center md:flex-row flex '>
           <div  className='md:w-5/12 pb-[3vw] flex justify-center md:justify-start flex-col md:pt-0 w-full'>
           
-            <img alt="ecommerce" style={sw?{width:"38vw",marginBottom:"2.75vw"}:{height:"38.3vh",margin:"2.75vh 0vw"}} className="   " src={product.poster} />
+            <img alt="ecommerce" style={sw?{width:"38vw",marginBottom:"2.75vw"}:{height:"38.3vh",margin:"2.75vh 0vw"}} className=" h-[29vw] border-2 border-[#bfb1c4]  " src={product.poster} />
            
             <div style={sw?{fontSize:"1.25vw",padding:"0vw 2.4vw 0.8vw"}:{fontSize:"2vh",padding:"1.875vh"}} className='text-gray-800 ml-6 md:ml-0 flex items-center  '><p style={sw?{backgroundColor: "#bfb1c4",height:"1vw",width:"2.75vw",marginLeft:"-3vw"}:{backgroundColor: "#bfb1c4",height:"1vh",width:"2.75vh",marginLeft:"-3.3vh"}} className='w-5 -ml-6 absolute h-3'></p>Specifications</div>
               <div className='w-full px-[2vw] ml-6 md:ml-0 grid grid-flow-col  '>

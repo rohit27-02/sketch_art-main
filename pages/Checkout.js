@@ -60,6 +60,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
       };
 
       const makePayment = async (event) => {
+       
         event.preventDefault()
         setpayment(true)
         const res = await initializeRazorpay();
@@ -79,7 +80,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
         setpayment(false)
         console.log(data);
         var options = {
-          key: "rzp_test_VlpBraARgWRC8D", // Enter the Key ID generated from the Dashboard
+          key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
           name: "Sketch Art",
           currency: "INR",
           amount: subTotal*100,
@@ -117,7 +118,7 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
           Router.push("/")
         } 
         
-
+   
       }, []);
       useEffect(() => {
       
@@ -133,6 +134,8 @@ const Checkout = ({cart,removeFromCart,addToCart,subTotal}) => {
         }
        
       }, [subTotal]);
+
+    
     
     return (<>
      {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
