@@ -72,7 +72,8 @@ const [left, setleft] = useState(false);
           onMouseLeave={()=>setleft(false)}
           onMouseEnter={()=>setleft(true)}
           style={{
-            ...imgContainerDimesions
+            ...imgContainerDimesions,
+            height:"24vw"
           }}
         >
          {left && <div
