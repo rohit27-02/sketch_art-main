@@ -101,7 +101,7 @@ if(screen.width>768){
          
 
           <h1 style={sw?{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,lineHeight:1.2,fontSize:"4.75vw",top:"15vw"}:{fontFamily: "'Fjalla One', sans-serif",letterSpacing:1.5,lineHeight:1.2,fontSize:"4.75vh",top:"15vh"}} className='absolute md:top-52 top-14 text-center w-full font-extrabold z-20 2xl:text-7xl md:text-7xl  text-gray-200  '>PUSHING LIMITS<br></br> FOR YOUR LUXURIES</h1>
-          <Slide bottom><div className="bg-black w-full h-full absolute top-0 bg-opacity-40 z-10"></div><img className="h-full w-full object-cover" src='/Untitled-1.png'></img></Slide>
+          <Slide bottom><div className="bg-black w-full h-full absolute top-0 bg-opacity-50 z-10"></div><img className="h-full w-full object-cover" src='/WhatsApp Image 2022-07-20 at 10.47.30 PM.jpeg'></img></Slide>
         </div>
 
       </div>

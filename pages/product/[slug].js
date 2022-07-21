@@ -14,8 +14,8 @@ import { BsImages } from "react-icons/bs"
 import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai';
 import { Router } from 'next/router';
 import Motor from '../../models/Motor'
-import Zoom from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
+import AppWithZoomCustomization from "../../components/zoom"
+
 
 
 const Post = ({ buyNow, motor2, addToCart, product }) => {
@@ -161,8 +161,8 @@ useEffect(() => {
           <div style={{ backgroundColor: "#ebeaeb"}} className='md:w-5/12 pt-10 md:pt-0 w-full'>
           
            {sw && <img alt="ecommerce" style={{height:"100vh"}} className=" w-full" src="/Wall Image.png" />}
-  
-            <img id='img' alt="ecommerce" style={{height:"45vh",bottom:"-55vh",left:"24.5vw"}} className=" md:absolute mx-auto md:py-0 py-10 " src={product.variants[selectedcolor].img} />
+           <AppWithZoomCustomization  image={product.variants[selectedcolor].img}/>  
+
             
 
             <div style={sw?{fontSize:"1.1vw",paddingLeft:"1.875vw"}:{fontSize:"1.5vh",paddingLeft:"3vh"}} className='w-full pl-6  pb-4'>
