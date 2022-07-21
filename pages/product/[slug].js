@@ -14,7 +14,8 @@ import { BsImages } from "react-icons/bs"
 import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai';
 import { Router } from 'next/router';
 import Motor from '../../models/Motor'
-
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
 
 const Post = ({ buyNow, motor2, addToCart, product }) => {
@@ -150,12 +151,20 @@ useEffect(() => {
         draggable
         pauseOnHover
       />
+      {sw && <div className='absolute bg-white h-[11vw] w-[42.1vw] top-[23vw] left-0'>
+        <h1 style={{fontFamily: "'Fjalla One', sans-serif"}} className="text-[2.5vw] mt-[1.3vw] ml-[10vw] uppercase">{product.title}</h1>
+        <p className='ml-[10vw] text-[1.1vw]'>{product.tagline}</p>
+        </div>}
       <div  className=" w-full ">
 
         <div  className='w-full  flex-col justify-center md:flex-row flex '>
           <div style={{ backgroundColor: "#ebeaeb"}} className='md:w-5/12 pt-10 md:pt-0 w-full'>
+          
            {sw && <img alt="ecommerce" style={{height:"100vh"}} className=" w-full" src="/Wall Image.png" />}
-            <img alt="ecommerce" style={{height:"45vh",bottom:"-55vh",left:"24.5vw"}} className=" md:absolute mx-auto md:py-0 py-10 " src={product.variants[selectedcolor].img} />
+  
+            <img id='img' alt="ecommerce" style={{height:"45vh",bottom:"-55vh",left:"24.5vw"}} className=" md:absolute mx-auto md:py-0 py-10 " src={product.variants[selectedcolor].img} />
+            
+
             <div style={sw?{fontSize:"1.1vw",paddingLeft:"1.875vw"}:{fontSize:"1.5vh",paddingLeft:"3vh"}} className='w-full pl-6  pb-4'>
               
               <div style={sw?{fontSize:"1.25vw",padding:"1.875vw"}:{fontSize:"2vh",padding:"1.875vh"}} className='text-gray-800 flex items-center  pb-2 pt-6'><p style={sw?{backgroundColor: "#bfb1c4",height:"1vw",width:"2.75vw",marginLeft:"-3.3vw"}:{backgroundColor: "#bfb1c4",height:"1vh",width:"2.75vh",marginLeft:"-3.3vh"}} className='w-5 -ml-6 absolute h-3'></p>Product Summary</div>
