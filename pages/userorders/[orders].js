@@ -1,15 +1,19 @@
 import React from 'react'
 import mongoose from "mongoose"
-import Order from "../models/Order"
+import Order from '../../models/Order';
 import { useState,useEffect } from 'react'
+import jwt_decode from "jwt-decode";
+import Router from 'next/router';
 
-const Orders = () => {
+const Orders = (orders) => {
 const [sw, setsw] = useState(false);
+
 useEffect(() => {
  if(screen.width>768){
   setsw(true)
  }
-}, []);
+},[])
+
 
   return (<>
        {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
@@ -29,29 +33,35 @@ useEffect(() => {
                 #
               </th>
               <th style={sw?{padding:"1.25vw 1.875vw"}:{padding:"1.25vh 1.875vh"}} scope="col" className=" font-medium text-gray-900 px-6 py-4 text-left">
-                First
+                Order id
               </th>
               <th style={sw?{padding:"1.25vw 1.875vw"}:{padding:"1.25vh 1.875vh"}} scope="col" className=" font-medium text-gray-900 px-6 py-4 text-left">
-                Last
+                Date
               </th>
               <th style={sw?{padding:"1.25vw 1.875vw"}:{padding:"1.25vh 1.875vh"}} scope="col" className=" font-medium text-gray-900 px-6 py-4 text-left">
-                Handle
+                Amount
               </th>
+             
             </tr>
           </thead>
           <tbody >
-            <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-              <td style={sw?{padding:"1.25vw 1.875vw"}:{padding:"1.25vh 1.875vh"}} className="px-6 py-4 whitespace-nowrap  font-medium text-gray-900">1</td>
+
+            {Object.keys(orders.orders).map((o)=>
+            
+
+              <tr onClick={()=>Router.push(`/order/${orders.orders[o].paymentinfo.orderid}`)} key={o} className="bg-white border-b cursor-pointer transition duration-300 ease-in-out hover:bg-gray-100">
+             
+              <td style={sw?{padding:"1.25vw 1.875vw"}:{padding:"1.25vh 1.875vh"}} className="px-6 py-4 whitespace-nowrap  font-medium text-gray-900">{eval(`${o}+1`)}</td>
+              <td style={sw?{padding:"1.25vw 1.875vw"}:{padding:"1.25vh 1.875vh"}} className="px-6 py-4 whitespace-nowrap  font-medium text-gray-900">{orders.orders[o]._id}</td>
               <td style={sw?{padding:"1.25vw 1.875vw"}:{padding:"1.25vh 1.875vh"}} className=" text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                Mark
+              {orders.orders[o].createdAt.toString().split('T')[0]}
               </td>
               <td style={sw?{padding:"1.25vw 1.875vw"}:{padding:"1.25vh 1.875vh"}} className=" text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                Otto
+             ₹ {orders.orders[o].amount}
               </td>
-              <td style={sw?{padding:"1.25vw 1.875vw"}:{padding:"1.25vh 1.875vh"}} className=" text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                @mdo
-              </td>
+            
             </tr>
+           )}
            
           </tbody>
         </table>
@@ -69,10 +79,11 @@ export async function getServerSideProps(context) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGO_URI)
   }
-  let orders = await Order.find({  })
+  var decoded = jwt_decode(context.query.orders);
+  let orders = await Order.find({email:decoded.email})
 
   return {
-    props: { orders:orders }, 
+    props: { orders:JSON.parse(JSON.stringify(orders)) }, 
   }
 }
 

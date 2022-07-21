@@ -54,6 +54,7 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [features, setfeatures] = useState([]);
   const [specs, setspecs] = useState([]);
   const [spec, setspec] = useState("");
+  const [tagline, settagline] = useState("");
 
 
 useEffect(() => {
@@ -78,6 +79,7 @@ useEffect(() => {
   setsubcategory(products[index].subcategory)
   setcare(products[index].care)
   setposter(products[index].poster)
+  settagline(products[index].tagline)
  }
 
 }, [index]);
@@ -122,6 +124,9 @@ function rm(e){
     else if (e.target.id == "care") {
       setcare(e.target.value)
     }
+    else if (e.target.id == "tagline") {
+      settagline(e.target.value)
+    }
   }
   function closeModal() {
     setIsOpen(false)
@@ -141,6 +146,7 @@ function rm(e){
     setimg("")
     setcare("")
     setposter("")
+    settagline("")
     setfeatures([])
     setspecs([])
    
@@ -178,7 +184,7 @@ const selectedproduct= (event)=>{
    
     e.preventDefault()
     if(au){
-      const data = [{ title, desc,poster, variants, category,care, price, availableQty, slug,subcategory }]
+      const data = [{ title, desc,poster,tagline, variants, category,care, price, availableQty, slug,subcategory }]
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addproducts`, {
         method: "POST",
       headers: {
@@ -198,7 +204,7 @@ const selectedproduct= (event)=>{
     else{
     if(index !=null && ready){
      
-      const data = [{ title, desc,poster, variants, category,care,sub, price, availableQty,subcategory, slug }]
+      const data = [{ title, desc,poster,tagline, variants, category,care,sub, price, availableQty,subcategory, slug }]
    
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
         method: "POST",
@@ -580,6 +586,17 @@ setspec("")
                         <div className="md:w-4/6">
                         
                           <input  value={title} name='title'  onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="title" type="text" ></input>
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="title">
+                            Tagline
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                        
+                          <input  value={tagline} name='tagline'  onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="tagline" type="text" ></input>
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
@@ -1128,6 +1145,7 @@ setspec("")
             </div>
           </div>
         </div>}
+
         {nav == "users" && <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
@@ -1174,6 +1192,7 @@ setspec("")
             </div>
           </div>
         </div>}
+
         {nav == "orders" && <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
@@ -1181,9 +1200,10 @@ setspec("")
                 <table className="min-w-full text-center">
                   <thead className="border-b bg-gray-800">
                     <tr>
-                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
-                        id
+                    <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                       order id
                       </th>
+                    
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                         username
                       </th>
@@ -1191,11 +1211,33 @@ setspec("")
                         email
                       </th>
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
-                        sign up date
+                        date
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        amount
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        phone
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        address
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        picode
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        products
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        payment
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        status
                       </th>
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                         delete
                       </th>
+                     
                     </tr>
                   </thead>
                   {Object.keys(orders).map((o) => {
@@ -1203,16 +1245,45 @@ setspec("")
                     return <tbody key={orders[o]._id}>
 
                       <tr className="bg-white border-b">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{users[u]._id}</td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {orders[u].name}
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{orders[o]._id}</td>
+                        <td className="text-sm font-bold text-gray-900  px-6 py-4 whitespace-nowrap">
+                          {orders[o].name}
                         </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {orders[u].email}
+                        <td className="text-sm font-bold text-gray-900  px-6 py-4 whitespace-nowrap">
+                          {orders[o].email}
                         </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {orders[u].createdAt}
+                        <td className="text-sm font-bold text-gray-900  px-6 py-4 whitespace-nowrap">
+                          {orders[o].createdAt}
                         </td>
+                        <td className="text-sm font-bold text-gray-900  px-6 py-4 whitespace-nowrap">
+                          ₹ {orders[o].amount}
+                        </td>
+                        <td className="text-sm font-bold text-gray-900  px-6 py-4 whitespace-nowrap">
+                          {orders[o].phone}
+                        </td>
+                        <td className="text-sm font-bold text-gray-900  px-6 py-4 whitespace-nowrap">
+                          {orders[o].address}
+                        </td>
+                        <td className="text-sm font-bold text-gray-900  px-6 py-4 whitespace-nowrap">
+                          {orders[o].pincode}
+                        </td>
+                        <td className="text-sm font-bold text-gray-900 ce-y-8 flex flex-col px-6 py-4 whitespace-nowrap">
+                          <span className='w-full flex '><span className='w-40'>name</span> <span className='w-40'>color</span> <span className='w-40'>size</span> <span className='w-40'>quantity</span></span>
+                        {Object.keys(orders[o].products).map((p)=>{
+                          return  <span className='font-bold  flex ' key={p}><span className='w-40'>{orders[o].products[p].productId}</span><span className='w-40'> {orders[o].products[p].color}</span><span className='w-40'>{orders[o].products[p].size}</span><span className='w-40'> {orders[o].products[p].quantity}</span>  </span>
+                          
+                        })}
+                        </td>
+                        
+                        <td className="text-sm font-bold text-gray-900    whitespace-nowrap">
+                         <span className='flex'>payment_id : {orders[o].paymentinfo.payid}</span>
+                         <span>Order_id : {orders[o].paymentinfo.orderid}</span>
+                        
+                        </td>
+                        <td className="text-sm font-bold text-gray-900  px-6 py-4 whitespace-nowrap">
+                          {orders[o].status}
+                        </td>
+                       
                         <td className="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                           <button><RiDeleteBin5Fill /></button>
                         </td>

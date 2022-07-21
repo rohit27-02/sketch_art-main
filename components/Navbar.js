@@ -3,7 +3,6 @@
 
 import React from 'react'
 import Image from 'next/image'
-
 import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus, AiOutlineMenu } from 'react-icons/ai';
 import { MdAccountCircle } from 'react-icons/md';
 import { useRef, useState, useEffect } from 'react';
@@ -21,6 +20,7 @@ import { Flip} from 'react-reveal';
 import { BsWhatsapp } from "react-icons/bs"
 import {ImArrowLeft2 ,ImBin2 } from "react-icons/im"
 import { CgSwap } from 'react-icons/cg';
+import jwt_decode from "jwt-decode";
 
 
 function Navbar({ saveCart,logout, user, cart, addToCart, removeFromCart, clearCart, subTotal, products }) {
@@ -41,7 +41,7 @@ function Navbar({ saveCart,logout, user, cart, addToCart, removeFromCart, clearC
   const [method, setmethod] = useState("login");
   const [name, setname] = useState("");
   const [item, setitem] = useState(0);
-  const [navqty, setnavqty] = useState({});
+
 
 
 
@@ -256,12 +256,14 @@ setlistd2(false)
   setitem(Object.keys(cart).length)
  
   if(Router.isReady == true){
-if(Router.pathname=="/product/[slug]" || Router.pathname=="/motors/[motor]" || Router.pathname=="/Checkout" || Router.pathname=="/remotes" || Router.pathname=="/motorizedblinds" || Router.pathname=="/orders" || Router.pathname=="/category/[category]"){
+if(Router.pathname=="/product/[slug]" || Router.pathname=="/motors/[motor]" || Router.pathname=="/Checkout" || Router.pathname=="/remotes" || Router.pathname=="/motorizedblinds" || Router.pathname=="/userorders/[orders]" || Router.pathname=="/category/[category]" || Router.pathname=="/order/[Order]"){
 document.getElementById("nav").classList.remove("text-white")
 document.getElementById("img").classList.remove("invert")
 }
 
 }
+
+
   }, []);
 
 setInterval(() => {
@@ -506,7 +508,7 @@ style={sw?{padding:"0.5vw 1vw",width:"25vw"}:{padding:"0.5vh 1vh",width:"25vh"}}
     {dropDown && <div onMouseLeave={() => setdropDown(false)} style={sw?{fontSize:"1.4vw",marginRight:"2vw",top:"5vw",padding:"0.5vw"}:{fontSize:"1.5vh",marginRight:"4vh",top:"5vh",padding:"1vh"}} className='absolute animate-fade-in-down right-14 md:right-7 z-50 2xl:text-2xl  bg-white  shadow-black shadow-sm '>
       <ul>
         
-        <a className='  ' href={'/orders'}><li style={sw?{padding:"0.8vw 2vw"}:{padding:"0.8vh 2vh"}} className='hover:bg-gray-800 hover:text-white'>Orders</li></a>
+        <a className='  ' href={`/userorders/${user.value}`}><li style={sw?{padding:"0.8vw 2vw"}:{padding:"0.8vh 2vh"}} className='hover:bg-gray-800 hover:text-white'>Orders</li></a>
         <li style={sw?{padding:"0.8vw 2vw"}:{padding:"0.8vh 2vh"}} className='cursor-pointer hover:bg-gray-800 hover:text-white' onClick={logout}>Logout</li>
         {admin == "true" && <a onClick={()=>Router.push("/adminpanel")} ><li style={sw?{padding:"0.8vw 2vw"}:{padding:"0.8vh 2vh"}} className='hover:bg-gray-800 cursor-pointer hover:text-white'>Admin Panel</li></a>}
       </ul>
