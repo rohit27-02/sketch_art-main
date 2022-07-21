@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import useImageZoom from "react-image-zoom-hook";
+import { useState,useEffect } from "react";
  
 export default function AppWithZoomCustomization({image}) {
-console.log(image)
+const [left, setleft] = useState(false);
+
   
     const imgHeight = "1vw";
   
@@ -63,15 +65,17 @@ console.log(image)
   */
   
     return (
-      <div className="container absolute top-[55.5vw] justify-around left-[20vw] flex">
+      <div className=" absolute top-[51.5vw] w-[100vw] z-30 flex">
         <div
-          className="img-main-container"
+          className="left-[17vw] top-[5vw] absolute   "
           onMouseMove={moveLens}
+          onMouseLeave={()=>setleft(false)}
+          onMouseEnter={()=>setleft(true)}
           style={{
             ...imgContainerDimesions
           }}
         >
-          <div
+         {left && <div
             ref={meshRefCallback}
             className="mesh"
             style={{
@@ -80,12 +84,12 @@ console.log(image)
               width:"4vw"
             }}
           />
-  
+  }
           <img
             style={{
              
-              height:"20vw",
-              width:"14vw"
+              height:"24vw",
+              width:"18vw"
             }}
             ref={imgRefCallback}
             alt="test"
@@ -94,26 +98,26 @@ console.log(image)
           />
         </div>
   
-        <div
-          className="img-preview-section-container"
+       {left && <div
+          className=" overflow-hidden ml-[20vw]  bg-white "
           // ref={imagePreviewRefContainer}
   
           style={{
             
-            height:"100vw",
-            width:"60vw"
+            height:"50vw",
+            width:"50vw"
           }}
         >
-          <img
+         <div className="h-[240vw] w-[180vw]">
+         <img
             ref={imagePreviewRefCallback}
             alt="test-preview"
             src={previewImg}
-            style={{
-              ...previewImgDimensions
-            }}
-            className="img-preview-section absolute z-30"
+           
+            className="  z-30"
           />
-        </div>
+         </div>
+        </div>}
       </div>
     );
   }
