@@ -67,7 +67,7 @@ const [left, setleft] = useState(false);
     return (
       <div className=" absolute top-[51.5vw] w-[100vw] z-30 flex">
         <div
-          className="left-[17vw] top-[5vw] absolute   "
+          className="left-[17vw] top-[2vw] absolute   "
           onMouseMove={moveLens}
           onMouseLeave={()=>setleft(false)}
           onMouseEnter={()=>setleft(true)}
