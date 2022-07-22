@@ -67,13 +67,14 @@ const [left, setleft] = useState(false);
     return (
       <div className=" absolute top-[51.5vw] w-[100vw] z-30 flex">
         <div
-          className="left-[17vw] top-[2vw] absolute   "
+          className="left-[17vw] top-[2vw] absolute "
           onMouseMove={moveLens}
           onMouseLeave={()=>setleft(false)}
           onMouseEnter={()=>setleft(true)}
           style={{
             ...imgContainerDimesions,
-            height:"24vw"
+            height:"24vw",
+            width:"18vw"
           }}
         >
          {left && <div
@@ -100,13 +101,13 @@ const [left, setleft] = useState(false);
         </div>
   
        {left && <div
-          className=" overflow-hidden ml-[20vw]  bg-white "
+          className=" overflow-hidden ml-[22vw] drop-shadow-2xl backdrop-blur-2xl border-2   bg-white "
           // ref={imagePreviewRefContainer}
   
           style={{
             
-            height:"50vw",
-            width:"50vw"
+            height:"45vw",
+            width:"45vw"
           }}
         >
          <div className="h-[240vw] w-[180vw]">
