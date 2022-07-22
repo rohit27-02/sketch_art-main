@@ -24,11 +24,11 @@ const [sw, setsw] = useState(false);
   {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
      {sw &&<div style={{height:"6.2vw",backgroundClip:""}} className='absolute border-b  border-black  top-0 w-full  '></div>}
     <div style={sw?{padding:"6.275vw 7.5vw 3.125vw",marginTop:"4vw"}:{padding:"6.275vh 7.5vw 3.125vh",marginTop:"4vh"}} className='px-24 pt-20 pb-10'>
-      <Slide bottom> <div ><img style={sw?{height:"37.1vw",width:"83.75vw"}:{height:"45vw",width:"83.75vh"}} alt='img' src='/IMage for motorized blinds.png'></img></div></Slide>
+      {sw && <Slide bottom> <div ><img style={sw?{height:"37.1vw",width:"83.75vw"}:{height:"45vw",width:"83.75vh"}} alt='img' src='/IMage for motorized blinds.png'></img></div></Slide>}
 
       <div style={sw?{ fontFamily: "'Fjalla One', sans-serif",fontSize:"3.75vw",marginTop:"4vw",marginBottom:"4vw" }:{ fontFamily: "'Fjalla One', sans-serif",fontSize:"3.75vh",marginTop:"4vh",marginBottom:"4vh" }} className='text-center text-5xl  '>MOTORIZED BLINDS</div>
 
-      <Slide left><div style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "65vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex ">
+      <Slide left><div style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "70vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex ">
         {sw && <img src='/2016-nan-east-bay-playroom.jpeg' className='h-full w-4/6' alt='img'></img>}
         <div style={sw?{padding:"1.56vw"}:{padding:"1.56vh"}} className='p-5 space-y-8'>
           <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vw",marginTop:"2.5vw",lineHeight:"2.5vw "}:{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vh",marginTop:"1vh",lineHeight:"2.5vh "}} className='text-3xl scale-y-125 mt-8  text-gray-800 uppercase'>Cordless Design Offers Maximum<br></br> Safety for Children and Pets</h1>
@@ -38,7 +38,7 @@ const [sw, setsw] = useState(false);
         </div>
       </div></Slide>
 
-      <Slide right><div style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "65vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
+      <Slide right><div style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "70vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
         <div style={sw?{padding:"1.56vw"}:{padding:"1.56vh"}} className='p-5 space-y-8'>
           <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vw",marginTop:"2.5vw",lineHeight:"2.5vw "}:{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vh",marginTop:"1vh",lineHeight:"2.5vh "}} className='text-3xl scale-y-125 mt-8  text-gray-800 uppercase'>Automation Settings Adds Security When You Are Away from Home</h1>
           <p style={sw?{fontSize:"1.1vw",marginTop:"2.5vw",paddingRight:"2.5vw",lineHeight:"1.6vw "}:{fontSize:"1.2vh",marginTop:"1.5vh",paddingRight:"2.5vh",lineHeight:"1.8vh "}} className='text-sm leading-relaxed pr-8 '>Since motorized window blinds can operate automatically throughout the day they will make it seem like someone is home, even if you are thousands of miles away. Motorized window blinds are more of a deterrent to potential thieves than any other window covering, especially when coupled with an automated smart home lighting system.
@@ -51,7 +51,7 @@ const [sw, setsw] = useState(false);
         {sw && <img src='/pic-1.jpg' className='h-full w-5/12' alt='img'></img>}
       </div></Slide>
 
-      <Slide left><div style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "65vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
+      <Slide left><div style={sw?{marginBottom:"4vw", height: "61vh", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }:{marginBottom:"4vh", height: "70vw", backgroundColor: "#ebeaeb", fontFamily: "'Roboto Slab', serif" }} className="flex">
         {sw && <img src='/1-03.jpg' className='h-full w-5/12' alt='img'></img>}
         <div style={sw?{padding:"1.56vw"}:{padding:"1.56vh"}} className='p-5 space-y-8'>
           <h1 style={sw?{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vw",marginTop:"2.5vw",lineHeight:"2.5vw "}:{ fontFamily: "'Fjalla One', sans-serif" ,fontSize:"2.35vh",marginTop:"1vh",lineHeight:"2.5vh "}} className='text-3xl scale-y-125 mt-8  text-gray-800 uppercase'>Varied Control Options Include Remotes, and Apps</h1>
