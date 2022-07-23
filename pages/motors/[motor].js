@@ -59,7 +59,7 @@ const Potor = ({ buyNow, addToCart, product }) => {
             <div style={sw?{fontSize:"1.25vw",padding:"0vw 2.4vw 0.8vw"}:{fontSize:"2vh",padding:"1.875vh"}} className='text-gray-800 ml-6 md:ml-0 flex items-center  '><p style={sw?{backgroundColor: "#bfb1c4",height:"1vw",width:"2.75vw",marginLeft:"-3vw"}:{backgroundColor: "#bfb1c4",height:"1vh",width:"2.75vh",marginLeft:"-3.3vh"}} className='w-5 -ml-6 absolute h-3'></p>Specifications</div>
               <div className='w-full px-[2vw] ml-6 md:ml-0 grid grid-flow-col  '>
               <ul >
-              {(spec).map((f)=>{return  <li key={f} style={sw?{fontSize:"1vw",marginTop:"0.7vw"}:{fontSize:"1.5vh",marginTop:"1.25vh"}} className='  font-medium mt-4  flex items-center'>{f[0]}</li>})}
+              {(spec).map((f)=>{return  <li key={f} style={sw?{fontSize:"1vw",marginTop:"0.7vw"}:{fontSize:"1.5vh",marginTop:"1.25vh"}} className='  font-medium mt-4  lowercase flex items-center'>{f[0]}</li>})}
               </ul>
               <ul className='border-l pl-[2vw] border-gray-600'>
               {(spec).map((f)=>{return  <li key={f} style={sw?{fontSize:"1vw",marginTop:"0.7vw"}:{fontSize:"1.5vh",marginTop:"1.25vh"}} className='  font-medium mt-4  flex items-center'>{f[1]}</li>})}
