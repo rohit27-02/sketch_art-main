@@ -65,21 +65,19 @@ const [left, setleft] = useState(false);
   */
   
     return (
-      <div className=" absolute top-[51.5vw] w-[100vw] z-30 flex">
+      <div className=" w-[100vw]  z-30 flex">
         <div
-          className="left-[17vw] top-[2vw] absolute "
+          className=" "
           onMouseMove={moveLens}
           onMouseLeave={()=>setleft(false)}
           onMouseEnter={()=>setleft(true)}
           style={{
             ...imgContainerDimesions,
-            height:"24vw",
-            width:"18vw"
           }}
         >
          {left && <div
             ref={meshRefCallback}
-            className="mesh"
+            className="mesh cursor-zoom-in"
             style={{
               ...lensDimensions,
               height:"5vw",
@@ -88,20 +86,16 @@ const [left, setleft] = useState(false);
           />
   }
           <img
-            style={{
-             
-              height:"24vw",
-              width:"18vw"
-            }}
+        
             ref={imgRefCallback}
             alt="test"
             src={img}
-            className=""
+            className="h-[100vh] w-[40vw] cursor-zoom-in"
           />
         </div>
   
        {left && <div
-          className=" overflow-hidden ml-[22vw] drop-shadow-2xl backdrop-blur-2xl border-2   bg-white "
+          className=" overflow-hidden drop-shadow-2xl backdrop-blur-2xl border-2 z-30  bg-white "
           // ref={imagePreviewRefContainer}
   
           style={{
@@ -110,7 +104,7 @@ const [left, setleft] = useState(false);
             width:"45vw"
           }}
         >
-         <div className="h-[240vw] w-[180vw]">
+         <div className="h-[80vw] w-[200vw]">
          <img
             ref={imagePreviewRefCallback}
             alt="test-preview"

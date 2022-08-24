@@ -160,7 +160,7 @@ useEffect(() => {
         <div  className='w-full  flex-col justify-center md:flex-row flex '>
           <div style={{ backgroundColor: "#ebeaeb"}} className='md:w-5/12 pt-10 md:pt-0 w-full'>
           
-           {sw && <img alt="ecommerce" style={{height:"100vh"}} className=" w-full" src="/Wall Image.png" />}
+          
        
            {sw && <AppWithZoomCustomization   image={product.variants[selectedcolor].img}/>  }
            {!sw && <img src={product.variants[selectedcolor].img} className=" scale-75"></img>}
