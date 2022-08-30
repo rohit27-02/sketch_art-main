@@ -28,7 +28,6 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [title, settitle] = useState("");
   const [desc, setdesc] = useState("");
   const [price, setprice] = useState(0);
-  const [availableQty, setavailableQty] = useState(0);
   const [category, setcategory] = useState("");
   const [subcategory, setsubcategory] = useState(null);
   const [variants, setvariants] = useState([]);
@@ -65,14 +64,13 @@ Router.push("/")
 
 }, []);
 useEffect(() => {
-removeItem();
+setready(true)
 }, [pid]);
 useEffect(() => {
  if(au == false && isOpen){
   settitle(products[index].title)
   setdesc(products[index].desc)
   setprice(products[index].price)
-  setavailableQty(products[index].availableQty)
   setvariants(products[index].variants)
   setslug(products[index].slug)
   setcategory(products[index].category)
@@ -83,10 +81,7 @@ useEffect(() => {
  }
 
 }, [index]);
-function rm(e){
-  setpid(e.target.id)
-  
-}
+
 
   function handleChange(e) {
     if (e.target.id == "title") {
@@ -105,9 +100,6 @@ function rm(e){
       setsubcategory(e.target.value)
       setsub(true)
     }
-    else if (e.target.id == "quantity") {
-      setavailableQty(e.target.value)
-    }
     else if (e.target.id == "color") {
       setcolor(e.target.value)
     }
@@ -117,9 +109,7 @@ function rm(e){
     else if (e.target.id == "specs") {
       setspec(e.target.value)
     }
-    else if (e.target.id == "slug") {
-      setslug(e.target.value)
-    }
+
     else if (e.target.id == "care") {
       setcare(e.target.value)
     }
@@ -135,7 +125,6 @@ function rm(e){
     settitle("")
     setdesc("")
     setprice(0)
-    setavailableQty(0)
     setvariants([])
     setcategory("")
     setsubcategory(null)
@@ -183,7 +172,7 @@ const selectedproduct= (event)=>{
    
     e.preventDefault()
     if(au){
-      const data = [{ title, desc,poster,tagline, variants, category,care, price, availableQty, slug,subcategory }]
+      const data = [{ title, desc,poster,tagline, variants, category,care, price,subcategory }]
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addproducts`, {
         method: "POST",
       headers: {
@@ -203,7 +192,7 @@ const selectedproduct= (event)=>{
     else{
     if(index !=null && ready){
      
-      const data = [{ title, desc,poster,tagline, variants, category,care,sub, price, availableQty,subcategory, slug }]
+      const data = [{ title, desc,poster,tagline, variants, category,care,sub, price, subcategory }]
    
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
         method: "POST",
@@ -249,37 +238,14 @@ const selectedproduct= (event)=>{
       draggable: true,
       progress: undefined,
     });}
-    else{
-    if(index !=null && ready){
-     
-      const data = [{ title, desc,poster, variants, category,care,sub, price, availableQty,subcategory, slug }]
-   
-      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        }, body: JSON.stringify({pid,data})
-      })
-    }
-   
-    toast.success('Product updated', {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });  
- 
-  }
+  
    
     closeModal()
     Router.push("/adminpanel")
   }
   const handleSubmit3 = async (e) => {
     e.preventDefault()
-   console.log("hellow")
+   
     if(au3){
       const data = [{ title, poster, features, price, slug }]
       console.log(data)
@@ -299,39 +265,16 @@ const selectedproduct= (event)=>{
       draggable: true,
       progress: undefined,
     });}
-    else{
-    if(index !=null && ready){
-     
-      const data = [{ title, desc,poster, variants, category,care,sub, price, availableQty,subcategory, slug }]
-   
-      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        }, body: JSON.stringify({pid,data})
-      })
-    }
-   
-    toast.success('Product updated', {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });  
  
-  }
    
     closeModal()
     Router.push("/adminpanel")
   }
 
 
-  const removeItem = async () => {
-   if(pid != null){
-    const data =  pid 
+  const removeItem = async (e) => {
+  
+    const data =  e.currentTarget.id;
     let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/removeproduct`, {
       method: "POST",
       headers: {
@@ -340,7 +283,7 @@ const selectedproduct= (event)=>{
     })
     let response = await res.json()
    
-   {response.success=="success" && toast.success('Product removed', {
+   {response.success=="success" && toast.success('Product removed, Refresh the page to see changes', {
       position: "top-center",
       autoClose: 2000,
       hideProgressBar: false,
@@ -348,15 +291,12 @@ const selectedproduct= (event)=>{
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-    });}
-    setpid()
-    Router.push("/adminpanel")
-   }
+    }); }
+   
   }
   const removefeed = async (e) => {
 
-    setpid(e.currentTarget.id)
-    const data = {pid}
+    const data = e.currentTarget.id
     let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/removefeed`, {
       method: "POST",
       headers: {
@@ -609,16 +549,7 @@ setspec("")
                         <input  onChange={upload2} className="" id="poster" type="file" accept='image/*' />
                         </div>
                       </div>
-                      <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-2/6">
-                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="slug">
-                            Slug
-                          </label>
-                        </div>
-                        <div className="md:w-4/6">
-                          <input   value={slug} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="slug" type="text" />
-                        </div>
-                      </div>
+                    
                       <div className="md:flex md:items-center mb-6">
                         <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="description">
@@ -669,16 +600,7 @@ setspec("")
                           <input  value={subcategory} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="subcategory" type="text" />
                         </div>
                       </div>
-                      <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-2/6">
-                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="quantity">
-                            Quantity
-                          </label>
-                        </div>
-                        <div className="md:w-4/6">
-                          <input   value={availableQty} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="quantity" type="number" />
-                        </div>
-                      </div>
+                  
                     
                      {/* <div className="md:flex md:items-center mb-6">
                         <div className="md:w-2/6">
@@ -1057,9 +979,7 @@ setspec("")
                 <table className="min-w-full text-center">
                   <thead className="border-b bg-gray-800">
                     <tr>
-                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
-                        id
-                      </th>
+                    
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                         Name
                       </th>
@@ -1072,14 +992,12 @@ setspec("")
                     {/*  <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                         sizes
                   </th>*/}
-                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
-                        Color
-                      </th>
+                     
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                         Price
                       </th>
                     
-                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                      <th  className="text-sm  font-medium text-white px-6 py-4">
                         Image
                       </th>
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
@@ -1093,8 +1011,8 @@ setspec("")
                   {Object.keys(products).map((p,i) => {
 
                     return <tbody key={products[p]._id}>
-                      <tr className="bg-white border-b ">
-                        <td id='id' className=" px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{products[p]._id}</td>
+                      <tr className="bg-white border-b  ">
+                       
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                           {products[p].title}
                         </td>
@@ -1108,15 +1026,13 @@ setspec("")
                          <div>{products[p].height.map((i)=>{ return <div key={i}>{i} x </div>}) }</div>
                          <div>{products[p].width.map((i)=>{ return <div key={i}>{i}  </div>}) }</div>
                   </td>*/}
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <div>{products[p].variants.map((i)=>{return <div key={i}>{i.color}</div>})}</div>
-                        </td>
+                       
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                           {products[p].price}
                         </td>
                        
-                        <td className="text-sm  text-gray-900 font-light  whitespace-nowrap">
-                        <div className='grid grid-flow-col grid-rows-3 '>{products[p].variants.map((i)=>{return <div key={i}><img src={i.img} /></div>})}</div>
+                        <td className="  flex justify-center overflow-y-scroll h-[17vw]">
+                        <div className='  grid grid-flow-row w-full  grid-cols-2   '>{products[p].variants.map((i)=>{return <div className='mb-[2vw] h-[15vw] w-[10vw]' key={i}><img src={i.img} />{i.color}</div>})}</div>
                         </td>
                         <td className="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
 
@@ -1134,7 +1050,7 @@ setspec("")
 
                         </td>
                         <td className="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <button id={products[p]._id} onClick={(e)=>rm(e)}><RiDeleteBin5Fill /></button>
+                          <button id={products[p]._id} onClick={(e)=>removeItem(e)}><RiDeleteBin5Fill /></button>
                         </td>
                       </tr >
                     </tbody>

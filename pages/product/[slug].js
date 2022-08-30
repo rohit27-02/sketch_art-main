@@ -373,7 +373,7 @@ export async function getServerSideProps(context) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGO_URI)
   }
-  let product = await Product.findOne({ slug: context.query.slug })
+  let product = await Product.findOne({ title: context.query.slug })
   let motor = await Motor.find({ category: "tubular motors" })
 
 

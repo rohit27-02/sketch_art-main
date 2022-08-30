@@ -14,7 +14,6 @@ const handler = async (req, res) => {
             let p = new Product({
                 title: req.body[i].title,
                 tagline: req.body[i].tagline,
-                slug: req.body[i].slug,
                 desc: req.body[i].desc,
                 care: req.body[i].care,
                 variants:req.body[i].variants.map((j)=>{return{color:j.color,colorcode:j.colorcode,img:j.img}}),
@@ -24,7 +23,6 @@ const handler = async (req, res) => {
               //  width: req.body[i].width,
                 price: req.body[i].price,
                 poster: req.body[i].poster,
-                availableQty: req.body[i].availableQty,
                 sub:sub,
 
                 
