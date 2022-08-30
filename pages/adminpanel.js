@@ -65,7 +65,7 @@ Router.push("/")
 
 }, []);
 useEffect(() => {
-setready(true)
+removeItem();
 }, [pid]);
 useEffect(() => {
  if(au == false && isOpen){
@@ -85,8 +85,7 @@ useEffect(() => {
 }, [index]);
 function rm(e){
   setpid(e.target.id)
-  setready(true)
-  removeItem();
+  
 }
 
   function handleChange(e) {
@@ -331,7 +330,7 @@ const selectedproduct= (event)=>{
 
 
   const removeItem = async () => {
-   if(ready && pid != null){
+   if(pid != null){
     const data =  pid 
     let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/removeproduct`, {
       method: "POST",
