@@ -86,6 +86,7 @@ useEffect(() => {
   function handleChange(e) {
     if (e.target.id == "title") {
       settitle(e.target.value)
+      setslug(e.target.value)
     }
     else if (e.target.id == "desc") {
       setdesc(e.target.value)
@@ -172,15 +173,15 @@ const selectedproduct= (event)=>{
    
     e.preventDefault()
     if(au){
-      const data = [{ title, desc,poster,tagline, variants, category,care, price,subcategory }]
+      const data = [{ title, desc,poster,tagline, variants, category,care,slug, price,subcategory }]
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addproducts`, {
         method: "POST",
       headers: {
         "Content-Type": "application/json"
       }, body: JSON.stringify(data)
     })
-  
-    toast.success('Product added to site', {
+ 
+    if(res.status){toast.success('Product added to site', {
       position: "top-center",
       autoClose: 2000,
       hideProgressBar: false,
@@ -188,11 +189,11 @@ const selectedproduct= (event)=>{
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-    });}
+    });}}
     else{
     if(index !=null && ready){
      
-      const data = [{ title, desc,poster,tagline, variants, category,care,sub, price, subcategory }]
+      const data = [{ title, desc,poster,tagline, variants, category,care,sub,slug, price, subcategory }]
    
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
         method: "POST",
@@ -200,9 +201,9 @@ const selectedproduct= (event)=>{
           "Content-Type": "application/json"
         }, body: JSON.stringify({pid,data})
       })
-    }
-   
-    toast.success('Product updated', {
+    
+  
+    if(res.status){toast.success('Product updated', {
       position: "top-center",
       autoClose: 2000,
       hideProgressBar: false,
@@ -213,9 +214,14 @@ const selectedproduct= (event)=>{
     });  
  
   }
+}
+    }
    
     closeModal()
-    Router.push("/adminpanel")
+    setTimeout(() => {
+      Router.push("/adminpanel")
+    }, 2000);
+    
   }
   const handleSubmit2 = async (e) => {
    
@@ -283,7 +289,7 @@ const selectedproduct= (event)=>{
     })
     let response = await res.json()
    
-   {response.success=="success" && toast.success('Product removed, Refresh the page to see changes', {
+   {response.success=="success" && toast.success('Product removed', {
       position: "top-center",
       autoClose: 2000,
       hideProgressBar: false,
@@ -291,7 +297,11 @@ const selectedproduct= (event)=>{
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-    }); }
+    }); 
+    setTimeout(() => {
+      Router.push("/adminpanel")
+    }, 2000);
+  }
    
   }
   const removefeed = async (e) => {
@@ -625,13 +635,13 @@ setspec("")
                         <AiOutlinePlus onClick={addwidth} className='cursor-pointer hover:bg-yellow-400 '/>
                     </div>*/}
                       <div className='grid grid-flow-row grid-cols-2 bg-slate-100 pt-6'>
-                      <div className="md:flex md:items-center mb-6">
+                      <div className="md:flex  md:items-center mb-6">
                         <div className="md:w-2/6">
-                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="color">
+                          <label className="block text-gray-500 font-bold text-center mb-1 md:mb-0 pr-4" htmlFor="color">
                             Color
                           </label>
                     </div>
-                        <div className="md:w-40">
+                        <div className="">
                           <input  value={color} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="color" type="text" />
                           
                         </div>

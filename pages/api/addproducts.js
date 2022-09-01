@@ -15,6 +15,7 @@ const handler = async (req, res) => {
                 title: req.body[i].title,
                 tagline: req.body[i].tagline,
                 desc: req.body[i].desc,
+                slug:req.body[i].slug,
                 care: req.body[i].care,
                 variants:req.body[i].variants.map((j)=>{return{color:j.color,colorcode:j.colorcode,img:j.img}}),
                 category: req.body[i].category,
@@ -31,7 +32,7 @@ const handler = async (req, res) => {
             
         }
        
-        res.status(200).json({ success: "success" })
+        res.status(200).json({ success: true })
     }
     else {
         res.status(400).json({ error: "This method is not allowed" })

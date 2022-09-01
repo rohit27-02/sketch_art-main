@@ -10,7 +10,7 @@ const handler = async (req, res) => {
       
         console.log(req.body)
             let p= await Product.findOneAndReplace({_id:req.body.pid},req.body.data[0])
-            res.status(200).json({ success: "success" })
+            res.status(200).json({ success: true })
         
     }
     else {
