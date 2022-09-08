@@ -52,6 +52,7 @@ const Contact = ({ info }) => {
   }
   async function submit(e) {
     const data = { name, email, message,number,company }
+    console.log(data)
     let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/feedback`, {
       method: "POST",
       headers: {
@@ -168,7 +169,7 @@ const Contact = ({ info }) => {
       </div>
       <div >
         
-        <input placeholder='Number ' required onChange={(e)=>handleChange(e)} type="tel" id="number" style={sw?{width:"23vw",height:"3.4vw",padding:"0.325vw 0.9375vw",marginLeft:"1.8vw"}:{width:"20.5vh",height:"3.4vh",padding:"0.325vh 0.9375vh",marginLeft:"1.8vh"}} name="number" className="w-full bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200  outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input placeholder='Number ' required onChange={(e)=>handleChange(e)} type="number" id="number" style={sw?{width:"23vw",height:"3.4vw",padding:"0.325vw 0.9375vw",marginLeft:"1.8vw"}:{width:"20.5vh",height:"3.4vh",padding:"0.325vh 0.9375vh",marginLeft:"1.8vh"}} name="number" className="w-full bg-white  border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200  outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       </div>
       <div style={sw?{marginBottom:"1.5vw"}:{marginBottom:"1.5vh"}} className="flex relative mb-4">

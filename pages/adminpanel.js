@@ -7,7 +7,9 @@ import User from '../models/User';
 import Info from '../models/Info';
 import Order from '../models/Order';
 import Feed from '../models/Feed';
-import mongoose from "mongoose";
+import Motor from '../models/Motor';
+import Remotes2 from '../models/Remotes2';
+import mongoose from 'mongoose';
 import { GrDocumentUpdate } from "react-icons/gr"
 import { AiFillFileAdd,AiOutlinePlus } from "react-icons/ai"
 import { RiDeleteBin5Fill } from "react-icons/ri"
@@ -21,7 +23,7 @@ import Router from 'next/router';
 
 
 
-const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
+const adminpanel = ({ logout,remotes,motors, products, users,info,feed ,orders}) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isOpen2, setIsOpen2] = useState(false)
   const [isOpen3, setIsOpen3] = useState(false)
@@ -54,6 +56,9 @@ const adminpanel = ({ logout, products, users,info,feed ,orders}) => {
   const [specs, setspecs] = useState([]);
   const [spec, setspec] = useState("");
   const [tagline, settagline] = useState("");
+  const [product, setproduct] = useState("blind");
+  const [drop, setdrop] = useState(false);
+
 
 
 useEffect(() => {
@@ -434,6 +439,19 @@ if(response.success){
 }
  
   }
+ async function removeorder(e){
+  const data = e.currentTarget.id
+  console.log(data)
+  let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/removeorder`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    }, body: JSON.stringify(data)
+  })
+  let response = await res.json()
+  if(response.success)
+ { Router.push("/adminpanel")}
+  }
 
 
   function addvariant(){
@@ -746,7 +764,7 @@ setspec("")
                       <div className="md:flex md:items-center mb-6">
                         <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="poster">
-                            Poster
+                            Product Image
                           </label>
                         </div>
                         <div className="md:w-4/6">
@@ -754,16 +772,7 @@ setspec("")
                         <input required onChange={upload2} className="" id="poster" type="file" accept='image/*' />
                         </div>
                       </div>
-                      <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-2/6">
-                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="slug">
-                            Slug
-                          </label>
-                        </div>
-                        <div className="md:w-4/6">
-                          <input required  value={slug} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="slug" type="text" />
-                        </div>
-                      </div>
+                    
                       
                       <div className="md:flex md:items-center mb-6">
                         <div className="md:w-2/6">
@@ -893,7 +902,7 @@ setspec("")
                       <div className="md:flex md:items-center mb-6">
                         <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="poster">
-                            Poster
+                            Product Image
                           </label>
                         </div>
                         <div className="md:w-4/6">
@@ -901,16 +910,7 @@ setspec("")
                         <input required onChange={upload2} className="" id="poster" type="file" accept='image/*' />
                         </div>
                       </div>
-                      <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-2/6">
-                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="slug">
-                            Slug
-                          </label>
-                        </div>
-                        <div className="md:w-4/6">
-                          <input required  value={slug} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="slug" type="text" />
-                        </div>
-                      </div>
+                     
                       
                       <div className="md:flex md:items-center mb-6">
                         <div className="md:w-2/6">
@@ -963,7 +963,14 @@ setspec("")
             </a>
             <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
 
-              <button onClick={(e) => layout(e)} id="products" className='rounded-md hover:bg-yellow-300 p-1 mr-5' >Products</button>
+              <button onMouseEnter={()=>setdrop(true)} onClick={(e) => layout(e)} id="products" className='rounded-md flex justify-center p-1 mr-5' >Products
+               {drop && <div onMouseLeave={()=>setdrop(false)} className='absolute shadow-2xl bg-white  text-left'>
+                <div onClick={()=>setproduct("blind")} className=' hover:bg-yellow-300 p-4 '>blinds</div>
+                <div onClick={()=>setproduct("motor")} className=' hover:bg-yellow-300 p-4 '>motors</div>
+                <div onClick={()=>setproduct("remote")} className=' hover:bg-yellow-300 p-4 '>remotes</div>
+                </div>
+                }
+                </button>
               <button onClick={(e) => layout(e)} id="users" className='rounded-md hover:bg-yellow-300 p-1 mr-5' >Users</button>
               <button onClick={(e) => layout(e)} id="orders" className='rounded-md hover:bg-yellow-300 p-1 mr-5' >Orders</button>
               <button onClick={(e) => layout(e)} id="info" className='rounded-md hover:bg-yellow-300 p-1 mr-5' >Info</button>
@@ -977,13 +984,14 @@ setspec("")
             </button>
           </div>
         </header>
+
         {nav == "products" && <div className="flex flex-col">
           <div className='flex'>
           <button onClick={function () { openModal(); addup(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new product</button>
           <button onClick={function () { openModal2(); addup2(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new motor</button>
           <button onClick={function () { openModal3(); addup3(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new remote</button>
           </div>
-          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          {product=="blind" && <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overflow-hidden">
                 <table className="min-w-full text-center">
@@ -1068,7 +1076,167 @@ setspec("")
                 </table>
               </div>
             </div>
-          </div>
+          </div>}
+          {product=="motor" &&  <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
+              <div className="overflow-hidden">
+                <table className="min-w-full text-center">
+                  <thead className="border-b bg-gray-800">
+                    <tr>
+                    
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        Name
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        Category
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                       model
+                      </th>                     
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        Price
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        features
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        specification
+                      </th>
+                    
+                      <th  className="text-sm  font-medium text-white px-6 py-4">
+                        Image
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        Delete
+                      </th>
+                    </tr>
+                  </thead >
+                  {Object.keys(motors).map((p,i) => {
+
+                    return <tbody key={motors[p]._id}>
+                      <tr className="bg-white border-b  ">
+                       
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {motors[p].title}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {motors[p].category}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {motors[p].subcategory}
+                        </td>
+                       
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {motors[p].price}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {Object.keys(motors[p].features).map((i)=>{
+                          return <div key={motors[p].specs[i]}>
+                            <li className='text-left'>{motors[p].features[i]}</li>
+                           </div>
+                          })}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {Object.keys(motors[p].specs).map((i)=>{
+                          return <div key={motors[p].specs[i]}>
+                            <li className='text-left'>{motors[p].specs[i]}</li>
+                           </div>
+                          })}
+                        </td>
+                        <td className=" text-gray-900 font-light  whitespace-nowrap">
+                          <img src={motors[p].poster}/>
+                        </td>
+
+
+                      
+                        <td className="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          <button id={motors[p]._id} onClick={(e)=>removeItem(e)}><RiDeleteBin5Fill /></button>
+                        </td>
+                      </tr >
+                    </tbody>
+                  })}
+                </table>
+              </div>
+            </div>
+          </div>}
+          {product=="remote" &&  <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="py-4 inline-block min-w-full px-10 lg:px-8">
+              <div className="overflow-hidden">
+                <table className="min-w-full text-center">
+                  <thead className="border-b bg-gray-800">
+                    <tr>
+                    
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        Name
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        features
+                      </th>
+                     
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        Price
+                      </th>
+                    
+                      <th  className="text-sm  font-medium text-white px-6 py-4">
+                        Image
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        Update
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        Delete
+                      </th>
+                    </tr>
+                  </thead >
+                  {Object.keys(remotes).map((p,i) => {
+
+                    return <tbody key={remotes[p]._id}>
+                      <tr className="bg-white border-b  ">
+                       
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {remotes[p].title}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {Object.keys(motors[p].features).map((i)=>{
+                          return <div key={motors[p].features[i]}>
+                            <li className='text-left'>{motors[p].features[i]}</li>
+                           </div>
+                          })}
+                        </td>
+                       
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {remotes[p].price}
+                        </td>
+                        <td className=" text-gray-900 font-light  whitespace-nowrap">
+                          <img src={remotes[p].poster}/>
+                        </td>
+                       
+                        <td className="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+
+                          <button
+                        id={remotes[p]._id}
+                        value={i}
+                      
+                            type="button"
+                            onClick={function(event){selectedproduct(event);}}
+                            className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+                          >
+                            <GrDocumentUpdate />
+                          
+                          </button>
+
+                        </td>
+                        <td className="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          <button id={remotes[p]._id} onClick={(e)=>removeItem(e)}><RiDeleteBin5Fill /></button>
+                        </td>
+                      </tr >
+                    </tbody>
+                  })}
+                </table>
+              </div>
+            </div>
+          </div>} 
+
         </div>}
 
         {nav == "users" && <div className="flex flex-col">
@@ -1154,6 +1322,15 @@ setspec("")
                         products
                       </th>
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                       color
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        size
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        quantity
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                         payment
                       </th>
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
@@ -1209,8 +1386,8 @@ setspec("")
                           {orders[o].status}
                         </td>
                        
-                        <td className="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <button><RiDeleteBin5Fill /></button>
+                        <td className="text-xl  text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          <button><RiDeleteBin5Fill id={orders[0]._id} onClick={(e)=>removeorder(e)} className='hover:text-2xl' /></button>
                         </td>
                       </tr>
                     </tbody>
@@ -1328,12 +1505,14 @@ export async function getServerSideProps(context) {
     await mongoose.connect(process.env.MONGO_URI)
   }
   let products = await Product.find()
+  let motors = await Motor.find()
+  let remotes = await Remotes2.find()
   let users = await User.find().sort({createdAt:-1})
   let orders = await Order.find().sort({createdAt:-1})
 let info = await Info.find()
 let feed = await Feed.find().sort({createdAt:-1})
   return {
-    props: { products: JSON.parse(JSON.stringify(products)), users: JSON.parse(JSON.stringify(users)),orders: JSON.parse(JSON.stringify(orders)),info: JSON.parse(JSON.stringify(info)),feed: JSON.parse(JSON.stringify(feed)) },
+    props: {remotes: JSON.parse(JSON.stringify(remotes)),motors: JSON.parse(JSON.stringify(motors)), products: JSON.parse(JSON.stringify(products)), users: JSON.parse(JSON.stringify(users)),orders: JSON.parse(JSON.stringify(orders)),info: JSON.parse(JSON.stringify(info)),feed: JSON.parse(JSON.stringify(feed)) },
   }
 }
 

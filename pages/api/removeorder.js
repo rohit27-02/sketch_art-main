@@ -1,11 +1,11 @@
-import Product from "../../models/Product"
+import Order from "../../models/Order"
 import connectDb from "../../middleware/mongoose"
 
 
 const handler = async (req, res) => {
     if (req.method == "POST") {
-   
-            let p= await Product.deleteOne(req.body)
+   console.log(req.body)
+            let p= await Order.deleteOne({"_id":req.body})
          
         res.status(200).json({ success: "success" })
     }
