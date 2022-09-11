@@ -11,10 +11,11 @@ import { IoIosArrowDown } from "react-icons/io"
 import { MdOutlineCancel } from "react-icons/md"
 import { BsInfoCircleFill } from "react-icons/bs"
 import { BsImages } from "react-icons/bs"
-import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai';
+import { AiOutlinePlus,AiOutlineMinus,AiOutlineLeft,AiOutlineRight } from 'react-icons/ai';
 import { Router } from 'next/router';
 import Motor from '../../models/Motor'
 import AppWithZoomCustomization from "../../components/zoom"
+
 
 
 
@@ -36,6 +37,9 @@ const Post = ({ buyNow, motor2, addToCart, product }) => {
   const [motor, setmotor] = useState(null);
   const [motorprice, setmotorprice] = useState(1000);
   const [recomendedmotors, setrecomendedmotors] = useState([]);
+  const [showgallery, setshowgallery] = useState(false);
+  const [index, setindex] = useState(0);
+  const [i, seti] = useState(0);
 
   const height = []
   const width = []
@@ -94,7 +98,8 @@ useEffect(() => {
       setsw(true)
     }
     document.getElementById(0).classList.add("border-2")
-    console.log(motor2)
+    Object.keys(product.variants).map((p,d)=>seti(d));
+
   }, []);
 
   const measuringguide = () => {
@@ -133,6 +138,7 @@ useEffect(() => {
     addToCart(motor, qty2, motorprice, motor,null, null, "black", motor ,"https://5.imimg.com/data5/BA/GJ/MY-2295700/toso-curtain-motor-500x500.jpg")
   }
 }, [motor]);
+
 
   return <>
 
@@ -197,8 +203,18 @@ useEffect(() => {
           <div  className='flex flex-col '>
             <span style={sw?{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vw"}:{fontFamily: "'Fjalla One', sans-serif",fontSize:"3.8vh"}} className="  text-5xl uppercase ">{product.title} </span>
             <div style={sw?{fontSize:"1.25vw",padding:"1.875vw 0vw"}:{fontSize:"1.5vh",padding:"1.875vh 0vh"}} className='space-x-6 flex py-6  text-base'>
-              <a href='#details' className='cursor-pointer flex items-center  space-x-3  pr-4 border-black underline underline-offset-2 '><BsInfoCircleFill /><span>Products Details</span></a>
+              <a href='#details' className='cursor-pointer flex items-center  space-x-3  pr-4 border-black underline underline-offset-2 '><BsInfoCircleFill /><span>Product Details</span></a>
+              <button onClick={()=>setshowgallery(true)} className='cursor-pointer flex items-center  space-x-3  pr-4 border-black underline underline-offset-2 '><BsImages /><span>Product Gallery</span></button>
+              <Dialog style={{ width: "100vw", height: "100vh" }} className="fixed bg-black flex justify-center items-center top-0   bg-opacity-60 z-50" open={showgallery} onClose={() => setshowgallery(false)}>
+                        <Dialog.Panel > 
+                        <div style={sw?{padding:"2vw"}:{padding:"0vw 0vw"}} className='h-[90vh] w-[80vw] flex justify-evenly items-center text-[4vw] bg-white '>
+                        <AiOutlineLeft onClick={()=>setindex(index==0?0:index-1)} className='cursor-pointer hover:border-2 border-[#bfb1c4] text-gray-700 transition-all duration-150 rounded-full hover:bg-[#bfb1c4]'/>
+                        <img className='h-[90vh]' src={product.variants[index].img}></img>
+                        <AiOutlineRight onClick={()=>setindex(index==i?index:index+1)} className='cursor-pointer hover:border-2 border-[#bfb1c4] text-gray-700 transition-all duration-150 rounded-full hover:bg-[#bfb1c4]'/>
 
+                        </div>
+                        </Dialog.Panel>
+                      </Dialog>
             </div>
            
             <div style={sw?{padding:"0vw 2.5vw",marginBottom:"1.875vw"}:{padding:"0vh 2.5vh",marginBottom:"1.875vh"}} className="  w-full px-8 mb-6 bg-white  ">
