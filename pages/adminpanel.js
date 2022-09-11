@@ -58,6 +58,7 @@ const adminpanel = ({ logout,remotes,motors, products, users,info,feed ,orders})
   const [tagline, settagline] = useState("");
   const [product, setproduct] = useState("blind");
   const [drop, setdrop] = useState(false);
+  const [gallery, setgallery] = useState([]);
 
 
 
@@ -83,6 +84,7 @@ useEffect(() => {
   setcare(products[index].care)
   setposter(products[index].poster)
   settagline(products[index].tagline)
+  setgallery(products[index].gallery)
  }
 
 }, [index]);
@@ -143,6 +145,7 @@ useEffect(() => {
     settagline("")
     setfeatures([])
     setspecs([])
+    setgallery([])
    
   }
 const selectedproduct= (event)=>{
@@ -178,7 +181,7 @@ const selectedproduct= (event)=>{
    
     e.preventDefault()
     if(au){
-      const data = [{ title, desc,poster,tagline, variants, category,care,slug, price,subcategory }]
+      const data = [{ title, desc,poster,tagline, variants,gallery, category,care,slug, price,subcategory }]
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addproducts`, {
         method: "POST",
       headers: {
@@ -198,7 +201,7 @@ const selectedproduct= (event)=>{
     else{
     if(index !=null && ready){
      
-      const data = [{ title, desc,poster,tagline, variants, category,care,sub,slug, price, subcategory }]
+      const data = [{ title, desc,poster,tagline,gallery, variants, category,care,sub,slug, price, subcategory }]
    
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateproducts`, {
         method: "POST",
@@ -416,6 +419,30 @@ if(response.success){
 }
  
   }
+  async function upload3(e){
+   
+    var file = document.getElementById('gallery');
+    var form = new FormData();
+    form.append("image", file.files[0])
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`,{
+      method:"POST",body:form,
+    })
+
+    let response = await res.json()
+    setgallery(response.data.url)
+  if(response.success){
+    toast.success('Image uploaded', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+   
+    }
  async function uploadposter(){
    
   var file = document.getElementById('colorcode');
@@ -612,6 +639,16 @@ setspec("")
                         </div>
                         <div className="md:w-4/6">
                           <textarea value={desc} onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="desc" type="text" />
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="gallery">
+                            Gallery
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+                        <input  onChange={upload3} className="" id="gallery" multiple="multiple" type="file" accept='image/*' />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
