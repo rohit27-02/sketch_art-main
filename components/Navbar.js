@@ -612,7 +612,7 @@ style={sw?{padding:"0.5vw 1vw",width:"25vw"}:{padding:"0.5vh 1vh",width:"25vh"}}
          })
        }
 <div style={{height:"2.85vw",width:"11vw",marginLeft:"0.4vw",fontSize:"1vw"}} onMouseEnter={()=>{setlistd2(true);setlistd(false)}} className='flex items-center w-full cursor-pointer uppercase '>motors< IoIosArrowDown style={{marginLeft:"1vw"}} className={`${listd2 ? '-rotate-90 transform' : ''} `}/>
-{listd2 && <div style={{left:"12.45vw",top:"14vw"}}  className='z-50 absolute shadow-black shadow-sm bg-black bg-opacity-70  min-w-max flex flex-col'>
+{listd2 && <div style={{left:"12.45vw",top:"14vw"}}  className='z-50 ml-[7.2vw] shadow-black shadow-sm bg-black bg-opacity-70  min-w-max flex flex-col'>
 <div  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/category/wifi motors`)}   >WIFI MOTORS</a></div>
 <div  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/category/tubular motors`)}   >TUBULAR MOTORS</a></div>
 <div  style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center'><a onClick={()=>Router.push(`${process.env.NEXT_PUBLIC_HOST}/category/battery motors`)}   >BATTERY MOTORS</a></div>

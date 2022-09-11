@@ -3,27 +3,28 @@ import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-load
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 
+
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2tldGNoYXJ0IiwiYSI6ImNsNW5maTh2ZzBlcmIzZXBmcnR2ZHpkYXUifQ.qIF3V5Kc2_6MBxb3nuR0lQ';
 
 export default function App() {
  
-  const map = useRef(null);
+  
   const [lng, setLng] = useState(72.853710);
   const [lat, setLat] = useState(19.161180);
-  const [zoom, setZoom] = useState(10);
+  const [zoom, setZoom] = useState(16);
 
-  useEffect(() => {
-    map.current.flyTo({
-      center: [lng, lat],
-      essential: true // this animation is considered essential with respect to prefers-reduced-motion
-      });
-  }, []);
+  // useEffect(() => {
+  //   map.current.flyTo({
+  //     center: [lng, lat],
+  //     essential: true // this animation is considered essential with respect to prefers-reduced-motion
+  //     });
+  // }, []);
 
 
-    map.current = new mapboxgl.Map({
+   const map = new mapboxgl.Map({
       container: "map",
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [70,20],
+      center: [lng,lat],
       zoom: zoom,
       
      
@@ -33,11 +34,11 @@ export default function App() {
       const marker = new mapboxgl.Marker()
 .setLngLat([lng, lat]).setPopup( new mapboxgl.Popup({ offset: 25 }).setText(
   "12, Nirmal Rubber Compound ,Opp Rocky Ind. Estate, I.B Patel Road, Goregaon East, Mumbai-400063"
-  )).addTo(map.current);
+  )).addTo(map);
 
 
 
-  map.current.addControl(
+  map.addControl(
     new mapboxgl.GeolocateControl({
     positionOptions: {
     enableHighAccuracy: true

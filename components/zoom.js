@@ -104,13 +104,13 @@ const [left, setleft] = useState(false);
             width:"45vw"
           }}
         >
-         <div className="h-[80vw] w-[200vw]">
+         <div className="h-[500rem]  w-[200rem]">
          <img
             ref={imagePreviewRefCallback}
             alt="test-preview"
             src={previewImg}
            
-            className="  z-30"
+            className=" z-30"
           />
          </div>
         </div>}

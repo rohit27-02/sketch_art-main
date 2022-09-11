@@ -452,6 +452,32 @@ if(response.success){
   if(response.success)
  { Router.push("/adminpanel")}
   }
+  async function removemotor(e){
+    const data = e.currentTarget.id
+    console.log(data)
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/removemotor`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }, body: JSON.stringify(data)
+    })
+    let response = await res.json()
+    if(response.success)
+   { Router.push("/adminpanel")}
+    }
+    async function removeremote(e){
+      const data = e.currentTarget.id
+      console.log(data)
+      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/removeremote`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }, body: JSON.stringify(data)
+      })
+      let response = await res.json()
+      if(response.success)
+     { Router.push("/adminpanel")}
+      }
 
 
   function addvariant(){
@@ -965,9 +991,9 @@ setspec("")
 
               <button onMouseEnter={()=>setdrop(true)} onClick={(e) => layout(e)} id="products" className='rounded-md flex justify-center p-1 mr-5' >Products
                {drop && <div onMouseLeave={()=>setdrop(false)} className='absolute shadow-2xl bg-white  text-left'>
-                <div onClick={()=>setproduct("blind")} className=' hover:bg-yellow-300 p-4 '>blinds</div>
-                <div onClick={()=>setproduct("motor")} className=' hover:bg-yellow-300 p-4 '>motors</div>
-                <div onClick={()=>setproduct("remote")} className=' hover:bg-yellow-300 p-4 '>remotes</div>
+                <div onClick={()=>{setproduct("blind");setnav("products")}} className=' hover:bg-yellow-300 p-4 '>blinds</div>
+                <div onClick={()=>{setproduct("motor");setnav("products")}} className=' hover:bg-yellow-300 p-4 '>motors</div>
+                <div onClick={()=>{setproduct("remote");setnav("products")}} className=' hover:bg-yellow-300 p-4 '>remotes</div>
                 </div>
                 }
                 </button>
@@ -1150,7 +1176,7 @@ setspec("")
 
                       
                         <td className="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <button id={motors[p]._id} onClick={(e)=>removeItem(e)}><RiDeleteBin5Fill /></button>
+                          <button id={motors[p]._id} onClick={(e)=>removemotor(e)}><RiDeleteBin5Fill /></button>
                         </td>
                       </tr >
                     </tbody>
@@ -1227,7 +1253,7 @@ setspec("")
 
                         </td>
                         <td className="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <button id={remotes[p]._id} onClick={(e)=>removeItem(e)}><RiDeleteBin5Fill /></button>
+                          <button id={remotes[p]._id} onClick={(e)=>removeremote(e)}><RiDeleteBin5Fill /></button>
                         </td>
                       </tr >
                     </tbody>

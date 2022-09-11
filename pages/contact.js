@@ -30,7 +30,7 @@ const Contact = ({ info }) => {
 
   const Map = dynamic(() => import("../components/Map"), {
     loading: () => "Loading...",
-    ssr: false
+    ssr: true
   });
 
   function handleChange(e) {
