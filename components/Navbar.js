@@ -256,7 +256,7 @@ setlistd2(false)
   setitem(Object.keys(cart).length)
  
   if(Router.isReady == true){
-if(Router.pathname=="/product/[slug]" || Router.pathname=="/motors/[motor]" || Router.pathname=="/Checkout" || Router.pathname=="/remotes" || Router.pathname=="/motorizedblinds" || Router.pathname=="/userorders/[orders]" || Router.pathname=="/category/[category]" || Router.pathname=="/order/[Order]"){
+if(Router.pathname=="/product/[slug]" || Router.pathname=="/motors/[motor]" || Router.pathname=="/Checkout" ||  Router.pathname=="/switches&receivers" || Router.pathname=="/remotes" || Router.pathname=="/motorizedblinds" || Router.pathname=="/userorders/[orders]" || Router.pathname=="/category/[category]" || Router.pathname=="/order/[Order]"){
 document.getElementById("nav").classList.remove("text-white")
 document.getElementById("img").classList.remove("invert")
 }
@@ -271,11 +271,6 @@ setInterval(() => {
   setitem(Object.keys(cart).length)}
 }, 1000);
  
-
-
-  
- 
-
  const minus=(e)=>{
   console.log(e.currentTarget.id)
   const item = JSON.parse(localStorage.getItem("cart"))
@@ -620,6 +615,7 @@ style={sw?{padding:"0.5vw 1vw",width:"25vw"}:{padding:"0.5vh 1vh",width:"25vh"}}
 </div> }
 </div>
 <div onMouseEnter={()=>setlistd2(false)} style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center' onClick={()=>Router.push(`/remotes`)}>Remotes</div>
+<div onMouseEnter={()=>setlistd2(false)} style={{fontSize:"1vw",height:"2.85vw",width:"11vw",margin:"0vw 0.5vw"}} className=' text-white min-w-max uppercase cursor-pointer flex items-center' onClick={()=>Router.push(`/switches&receivers`)}>Switches/Receivers</div>
      </div>
 
 
