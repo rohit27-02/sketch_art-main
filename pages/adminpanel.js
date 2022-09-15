@@ -38,10 +38,10 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
   const [slug, setslug] = useState("");
   const [color, setcolor] = useState("");
   const [colorcode, setcolorcode] = useState("");
-  const [au, setau] = useState(false);
-  const [au2, setau2] = useState(false);
-  const [au3, setau3] = useState(false);
-  const [au4, setau4] = useState(false);
+  const [au, setau] = useState(true);
+  const [au2, setau2] = useState(true);
+  const [au3, setau3] = useState(true);
+  const [au4, setau4] = useState(true);
   const [pid, setpid] = useState();
   const [nav, setnav] = useState("products");
   const [data, setdata] = useState("false");
@@ -60,6 +60,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
   const [spec, setspec] = useState("");
   const [tagline, settagline] = useState("");
   const [product, setproduct] = useState("blind");
+  const [type, settype] = useState("");
   const [drop, setdrop] = useState(false);
   const [gallery, setgallery] = useState([]);
 
@@ -76,7 +77,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     setready(true)
   }, [pid]);
   useEffect(() => {
-    if (au == false && isOpen) {
+    if (type=="blind" && au==false  && isOpen) {
       settitle(products[index].title)
       setdesc(products[index].desc)
       setprice(products[index].price)
@@ -89,8 +90,23 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
       settagline(products[index].tagline)
       setgallery(products[index].gallery)
     }
+    else if(type=="remote" && au3==false  && isOpen3 ){
+      settitle(remotes[index].title)
+      setslug(remotes[index].slug)
+      setprice(remotes[index].price)
+      setposter(remotes[index].poster)
+      setfeatures(remotes[index].features)
+    }
+    else if(type=="switch" && au4==false  && isOpen4 ){
+      settitle(switches[index].title)
+      setslug(switches[index].slug)
+      setprice(switches[index].price)
+      setposter(switches[index].poster)
+      setfeatures(switches[index].features)
+    }
 
   }, [index]);
+ 
 
 
   function handleChange(e) {
@@ -100,6 +116,9 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     }
     else if (e.target.id == "desc") {
       setdesc(e.target.value)
+    }
+    else if (e.target.id == "slug") {
+      setslug(e.target.value)
     }
     else if (e.target.id == "price") {
       setprice(e.target.value)
@@ -129,11 +148,16 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     }
   }
   function closeModal() {
+    setindex()
+    settype("")
     setIsOpen(false)
     setIsOpen2(false)
     setIsOpen3(false)
     setIsOpen4(false)
-    setau(false)
+    setau(true)
+    setau2(true)
+    setau3(true)
+    setau4(true)
     settitle("")
     setdesc("")
     setprice(0)
@@ -153,38 +177,41 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
 
   }
   const selectedproduct = (event) => {
+    setau(false)
     setpid(event.currentTarget.id)
     setindex(event.currentTarget.value)
+    settype("blind")
     openModal()
+
+  }
+  const selectedproduct3 = (event) => {
+    setau3(false)
+    setpid(event.currentTarget.id)
+    setindex(event.currentTarget.value)
+    settype("remote")
+    openModal3()
+
+  }
+  const selectedproduct4 = (event) => {
+    setau4(false)
+    setpid(event.currentTarget.id)
+    setindex(event.currentTarget.value)
+    settype("switch")
+    openModal4()
 
   }
 
   function openModal() {
     setIsOpen(true)
   }
-
-  function addup() {
-    setau(true)
-  }
   function openModal2() {
     setIsOpen2(true)
-  }
-
-  function addup2() {
-    setau2(true)
   }
   function openModal3() {
     setIsOpen3(true)
   }
   function openModal4() {
     setIsOpen4(true)
-  }
-
-  function addup3() {
-    setau3(true)
-  }
-  function addup4() {
-    setau4(true)
   }
 
   const handleSubmit = async (e) => {
@@ -276,7 +303,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     e.preventDefault()
 
     if (au3) {
-      const data = [{ title, poster, features, price, slug }]
+      const data = [{ title, poster, features, price,slug}]
       console.log(data)
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addremote`, {
         method: "POST",
@@ -294,6 +321,34 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
         draggable: true,
         progress: undefined,
       });
+    }
+    else{
+      if (index != null && ready) {
+
+        const data = [{ title, slug, poster,  price, features }]
+
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateremote`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          }, body: JSON.stringify({ pid, data })
+        })
+
+
+        if (res.status) {
+          toast.success('Product updated', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+
+        }
+      }
+
     }
 
 
@@ -322,6 +377,34 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
         draggable: true,
         progress: undefined,
       });
+    }
+    else{
+      if (index != null && ready) {
+
+        const data = [{ title, slug, poster,  price, features }]
+
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateswitch`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          }, body: JSON.stringify({ pid, data })
+        })
+
+
+        if (res.status) {
+          toast.success('Product updated', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+
+        }
+      }
+
     }
 
 
@@ -989,13 +1072,24 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
                       </div>
                       <div className="md:flex md:items-center mb-6">
                         <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="description">
+                            Description
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+
+                          <input required value={slug} name='description' onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="slug" type="text" ></input>
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="poster">
                             Product Image
                           </label>
                         </div>
                         <div className="md:w-4/6">
 
-                          <input required onChange={upload2} className="" id="poster" type="file" accept='image/*' />
+                          <input onChange={upload2} className="" id="poster" type="file" accept='image/*' />
                         </div>
                       </div>
 
@@ -1097,6 +1191,17 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
                       </div>
                       <div className="md:flex md:items-center mb-6">
                         <div className="md:w-2/6">
+                          <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="description">
+                            Description
+                          </label>
+                        </div>
+                        <div className="md:w-4/6">
+
+                          <input required value={slug} name='description' onChange={(e) => handleChange(e)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" id="slug" type="text" ></input>
+                        </div>
+                      </div>
+                      <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-2/6">
                           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="poster">
                             Product Image
                           </label>
@@ -1185,10 +1290,10 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
 
         {nav == "products" && <div className="flex flex-col">
           <div className='flex'>
-            <button onClick={function () { openModal(); addup(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new product</button>
-            <button onClick={function () { openModal2(); addup2(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new motor</button>
-            <button onClick={function () { openModal3(); addup3(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new remote</button>
-            <button onClick={function () { openModal4(); addup4(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new switch/receiver</button>
+            <button onClick={function () { openModal();  }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new product</button>
+            <button onClick={function () { openModal2(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new motor</button>
+            <button onClick={function () { openModal3(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new remote</button>
+            <button onClick={function () { openModal4(); }} className='   flex items-center mx-10 text-xl my-2   hover:text-yellow-600'><AiFillFileAdd className='mr-4' />Add new switch/receiver</button>
           </div>
           {product == "blind" && <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
@@ -1417,7 +1522,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
                             value={i}
 
                             type="button"
-                            onClick={function (event) { selectedproduct(event); }}
+                            onClick={function (event) { selectedproduct3(event); }}
                             className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
                           >
                             <GrDocumentUpdate />
@@ -1494,7 +1599,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
                             value={i}
 
                             type="button"
-                            onClick={function (event) { selectedproduct(event); }}
+                            onClick={function (event) { selectedproduct4(event); }}
                             className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
                           >
                             <GrDocumentUpdate />
