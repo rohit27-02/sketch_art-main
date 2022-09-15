@@ -37,7 +37,7 @@ const Footer = () => {
    <div style={sw?{height:"40vh",fontSize:"1.25vw"}:{height:"40vw",fontSize:"1.25vh"}} className="w-full bg-white">
      <div style={sw?{fontFamily: "'Poppins', sans-serif",padding:"2.5vw 6.25vw"}:{fontFamily: "'Poppins', sans-serif",padding:"2.5vh 6.25vw"}} className='grid grid-flow-col py-6 2xl:py-10 2xl:px-24 md:py-8 md:px-20 px-7  w-full h-full'>
        <div className='col-span-11  flex justify-evenly flex-col '>
-         <p>SKETCH ART BY<a href='https://developersinfotech.com/' target="blank"  className='underline underline-offset-4'> DEVELOPER INFOTECH</a></p>
+         <p>SKETCH ART BY<a href='https://developersinfotech.com/' target="blank"  className='underline underline-offset-4'> DEVELOPERS INFOTECH</a></p>
          <h1 style={{fontWeight:'bolder',fontSize:"2em"}} className=''>You belong here. </h1>
          <p >MADE WITH LOVE <RubberBand><span style={sw?{fontSize:"1.8vw",marginLeft:"0.7vw"}:{fontSize:"1.8vh",marginLeft:"0.7vh"}} className='font-bold text-xl ml-2'>♡</span></RubberBand></p>
        </div>
