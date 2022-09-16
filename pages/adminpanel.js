@@ -104,6 +104,16 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
       setposter(switches[index].poster)
       setfeatures(switches[index].features)
     }
+    else if(type=="motor" && au2==false  && isOpen2 ){
+      settitle(motors[index].title)
+      setslug(motors[index].slug)
+      setprice(motors[index].price)
+      setposter(motors[index].poster)
+      setfeatures(motors[index].features)
+      setspecs(motors[index].specs)
+      setcategory(motors[index].category)
+      setsubcategory(motors[index].subcategory)
+    }
 
   }, [index]);
  
@@ -182,6 +192,14 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     setindex(event.currentTarget.value)
     settype("blind")
     openModal()
+
+  }
+  const selectedproduct2 = (event) => {
+    setau2(false)
+    setpid(event.currentTarget.id)
+    setindex(event.currentTarget.value)
+    settype("motor")
+    openModal2()
 
   }
   const selectedproduct3 = (event) => {
@@ -293,6 +311,33 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
         draggable: true,
         progress: undefined,
       });
+    }
+    else {
+      if (index != null && ready) {
+
+        const data = [{ title, poster, specs, category, price, slug, subcategory, features }]
+
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updatemotor`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          }, body: JSON.stringify({ pid, data })
+        })
+
+
+        if (res.status) {
+          toast.success('Product updated', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+
+        }
+      }
     }
 
 
@@ -940,7 +985,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
                         </div>
                         <div className="md:w-4/6">
 
-                          <input required onChange={upload2} className="" id="poster" type="file" accept='image/*' />
+                          <input onChange={upload2} className="" id="poster" type="file" accept='image/*' />
                         </div>
                       </div>
 
@@ -1411,6 +1456,9 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
                         Image
                       </th>
                       <th scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        Update
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                         Delete
                       </th>
                     </tr>
@@ -1450,7 +1498,21 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
                         <td className=" text-gray-900 font-light  whitespace-nowrap">
                           <img src={motors[p].poster} />
                         </td>
+                        <td className="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
 
+<button
+  id={motors[p]._id}
+  value={i}
+
+  type="button"
+  onClick={function (event) { selectedproduct2(event); }}
+  className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+>
+  <GrDocumentUpdate />
+
+</button>
+
+</td>
 
 
                         <td className="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
