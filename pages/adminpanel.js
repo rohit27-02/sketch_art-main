@@ -548,7 +548,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     var file = document.getElementById('img');
     var form = new FormData();
     form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`, {
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=ade4f9ea8a8111891d3ed7be57cacb84`, {
       method: "POST", body: form,
     })
     let response = await res.json()
@@ -571,10 +571,34 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     var file = document.getElementById('poster');
     var form = new FormData();
     form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`, {
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=ade4f9ea8a8111891d3ed7be57cacb84`, {
       method: "POST", body: form,
     })
     let response = await res.json()
+    setposter(response.data.url)
+    if (response.success) {
+      toast.success('Image uploaded', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+
+  }
+  async function upload4(e) {
+
+    var file = document.getElementById('poster2');
+    var form = new FormData();
+    form.append("image", file.files[0])
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=ade4f9ea8a8111891d3ed7be57cacb84`, {
+      method: "POST", body: form,
+    })
+    let response = await res.json()
+    console.log(response)
     setposter(response.data.url)
     if (response.success) {
       toast.success('Image uploaded', {
@@ -594,7 +618,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     var file = document.getElementById('gallery');
     var form = new FormData();
     form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`, {
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=ade4f9ea8a8111891d3ed7be57cacb84`, {
       method: "POST", body: form,
     })
 
@@ -618,7 +642,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     var file = document.getElementById('colorcode');
     var form = new FormData();
     form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`, {
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=ade4f9ea8a8111891d3ed7be57cacb84`, {
       method: "POST", body: form,
     })
     let response = await res.json()
@@ -1134,7 +1158,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
                         </div>
                         <div className="md:w-4/6">
 
-                          <input onChange={upload2} className="" id="poster" type="file" accept='image/*' />
+                          <input onChange={upload4} className="" id="poster2" type="file" accept='image/*' />
                         </div>
                       </div>
 
