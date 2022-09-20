@@ -18,6 +18,15 @@ const Tshirts = ({ products, motors }) => {
     if (Router.asPath == "/category/tubular%20motors/") {
       settype("tm");
     }
+    else if (Router.asPath == "/category/battery%20motors/") {
+      settype("bm");
+    }
+    else if (Router.asPath == "/category/wifi%20motors/") {
+      settype("wm");
+    }
+    else if (Router.asPath == "/category/curtain%20motors/") {
+      settype("cm");
+    }
   }, []);
 
 
@@ -29,11 +38,23 @@ const Tshirts = ({ products, motors }) => {
     {sw && <div style={{ height: "6.2vw", backgroundClip: "" }} className='absolute border-b  border-black  top-0 w-full  '></div>}
 
 
-    {type == "tm" && 
-    sw ? <img style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }} className=' w-full' alt='img' src="/Image for tubular motors.png"></img> :
-    <div style={{fontFamily: "'Fjalla One', sans-serif"}} className='text-center text-[3.5vh] pt-10 uppercase'>Tubular motors</div>
+    {type == "tm" && <div>{ sw ? <img style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }} className=' w-full' alt='img' src="/Image for tubular motors.png"></img>:"" }
+     <div style={{fontFamily: "'Fjalla One', sans-serif"}} className='text-center md:text-[3.5vw] text-[3.5vh] pt-10 uppercase'>Tubular motors</div>
+     </div>
    }
-
+    {type == "bm" && <div>{ sw ? <img style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }} className=' w-full' alt='img' src="/battery motor.jpg"></img>:"" }
+     <div style={{fontFamily: "'Fjalla One', sans-serif"}} className='text-center md:text-[3.5vw] text-[3.5vh] pt-10 uppercase'>Battery motors</div>
+     </div>
+   }
+    {type == "wm" && <div>{ sw ? <img style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }} className=' w-full' alt='img' src="/wifi motors.jpg"></img>:"" }
+     <div style={{fontFamily: "'Fjalla One', sans-serif"}} className='text-center md:text-[3.5vw] text-[3.5vh] pt-10 uppercase'>Wifi motors</div>
+     </div>
+   }
+    {type == "cm" && <div>{ sw ? <img style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }} className=' w-full' alt='img' src="/curtain motor.jpg"></img>:"" }
+     <div style={{fontFamily: "'Fjalla One', sans-serif"}} className='text-center md:text-[3.5vw] text-[3.5vh] pt-10 uppercase'>Curtain motors</div>
+     </div>
+   }
+  
     <div>
       <section className="text-gray-600 body-font ">
         <div style={{padding:"7vw 1.7vw"}} className=" px-5 py-20  mx-auto ">
