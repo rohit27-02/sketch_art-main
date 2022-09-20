@@ -548,7 +548,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     var file = document.getElementById('img');
     var form = new FormData();
     form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=ade4f9ea8a8111891d3ed7be57cacb84`, {
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`, {
       method: "POST", body: form,
     })
     let response = await res.json()
@@ -571,7 +571,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     var file = document.getElementById('poster');
     var form = new FormData();
     form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=ade4f9ea8a8111891d3ed7be57cacb84`, {
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`, {
       method: "POST", body: form,
     })
     let response = await res.json()
@@ -618,7 +618,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     var file = document.getElementById('gallery');
     var form = new FormData();
     form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=ade4f9ea8a8111891d3ed7be57cacb84`, {
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`, {
       method: "POST", body: form,
     })
 
@@ -642,7 +642,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     var file = document.getElementById('colorcode');
     var form = new FormData();
     form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=ade4f9ea8a8111891d3ed7be57cacb84`, {
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`, {
       method: "POST", body: form,
     })
     let response = await res.json()
