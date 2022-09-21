@@ -19,7 +19,7 @@ const Remotes = ({product,addToCart}) => {
         {!sw && <div style={{backgroundColor:"#bfb1c4"}} className='w-full absolute top-0 h-12'></div>}
            {sw &&<div style={{height:"6.2vw",backgroundClip:""}} className='absolute border-b  border-black  top-0 w-full  '></div>}
           <div style={sw?{padding:"6.275vw 4.5vw 3.125vw",marginTop:"4vw"}:{padding:"6.275vh 0vh",marginTop:"4vh"}} className='px-24 pt-20 pb-10'>
-            {sw && <Slide bottom> <div style={{height:"37.1vw",width:"89.75vw"}} className="overflow-hidden  "><img  className=" absolute bottom-0" alt='img' src='/Wifi motor.jpg'></img></div></Slide>}
+            {sw && <Slide bottom> <div style={{height:"37.1vw",width:"89.75vw"}} className="overflow-hidden  "><img  className=" absolute bottom-0" alt='img' src='/switches.jpg'></img></div></Slide>}
       
             <div style={sw?{ fontFamily: "'Fjalla One', sans-serif",fontSize:"3.75vw",marginTop:"4vw",marginBottom:"2vw" }:{ fontFamily: "'Fjalla One', sans-serif",fontSize:"3.75vh",marginTop:"4vh",marginBottom:"2vh" }} className='text-center text-gray-700 '>SWITCHES/RECEIVERS</div>
             <div style={sw?{fontFamily: "'Roboto Slab', serif", fontSize:"2vw",marginBottom:"4vw" }:{ fontFamily: "'Roboto Slab', serif",fontSize:"2",marginBottom:"4vh" }} className='text-center text-gray-700 '>Essence of Design Beyond Appearance</div>
