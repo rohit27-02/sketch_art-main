@@ -63,6 +63,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
   const [type, settype] = useState("");
   const [drop, setdrop] = useState(false);
   const [gallery, setgallery] = useState([]);
+  const [imgbb, setimgbb] = useState();
 
 
 
@@ -71,6 +72,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     if (!localStorage.getItem("admin")) {
       Router.push("/")
     }
+    setimgbb("f69cfc63c7641818ddd9ec258565f5a1")
 
   }, []);
   useEffect(() => {
@@ -548,7 +550,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     var file = document.getElementById('img');
     var form = new FormData();
     form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`, {
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=${imgbb}`, {
       method: "POST", body: form,
     })
     let response = await res.json()
@@ -571,7 +573,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     var file = document.getElementById('poster');
     var form = new FormData();
     form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`, {
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=${imgbb}`, {
       method: "POST", body: form,
     })
     let response = await res.json()
@@ -594,7 +596,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     var file = document.getElementById('poster2');
     var form = new FormData();
     form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=ade4f9ea8a8111891d3ed7be57cacb84`, {
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=${imgbb}`, {
       method: "POST", body: form,
     })
     let response = await res.json()
@@ -618,7 +620,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     var file = document.getElementById('gallery');
     var form = new FormData();
     form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`, {
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=${imgbb}`, {
       method: "POST", body: form,
     })
 
@@ -642,7 +644,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     var file = document.getElementById('colorcode');
     var form = new FormData();
     form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=47756aea4064f79d79d4cba1f59ee5ba`, {
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=${imgbb}`, {
       method: "POST", body: form,
     })
     let response = await res.json()

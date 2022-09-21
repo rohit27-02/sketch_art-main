@@ -318,7 +318,7 @@ if(item[e.currentTarget.id].qty >1){
   const ref = useRef();
  
   return (<>
-  <div style={sw?{fontSize:"1.25vw",height:"3.75vw",right:"3.5vw",bottom:"2.6vw"}:{fontSize:"1.6vh",height:"5vh",right:"3vh",bottom:"2.6vh"}} className=" fixed overflow-hidden bottom-8 h-12 min-w-fit right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full  items-center whatsapp flex justify-end"><a style={sw?{ fontFamily: "'lato', sans-serif",right:"14vw",bottom:"1vw"}:{ fontFamily: "'lato', sans-serif",right:"18.5vh",bottom:"1.2vh"}} id="what" className="absolute  right-44 bottom-3 w-0  " href="//api.whatsapp.com/send?phone=+919920223462&text=hii" title="Share on whatsapp">+919920223462</a><BsWhatsapp style={sw?{padding:"0.625vw",fontSize:"3.8vw"}:{padding:"0.8vh",fontSize:"5vh"}} className=' p-2  z-50 text-5xl ' /></div>
+  <div style={sw?{fontSize:"1.25vw",height:"3.75vw",right:"3.5vw",bottom:"2.6vw"}:{fontSize:"1.6vh",height:"5vh",right:"3vh",bottom:"2.6vh"}} className=" fixed overflow-hidden bottom-8 h-12 min-w-fit right-12 z-50 cursor-pointer text-white bg-green-500 rounded-full  items-center whatsapp flex justify-end"><a style={sw?{ fontFamily: "'lato', sans-serif",right:"14vw",bottom:"1vw"}:{ fontFamily: "'lato', sans-serif",right:"18.5vh",bottom:"1.2vh"}} id="what" className="absolute  right-44 bottom-3 w-0  " href="//api.whatsapp.com/send?phone=+919920223462&text=hi" title="Share on whatsapp">+919920223462</a><BsWhatsapp style={sw?{padding:"0.625vw",fontSize:"3.8vw"}:{padding:"0.8vh",fontSize:"5vh"}} className=' p-2  z-50 text-5xl ' /></div>
 
 <ToastContainer
           position="top-center"
