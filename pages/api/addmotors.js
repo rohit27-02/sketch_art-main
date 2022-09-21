@@ -9,8 +9,8 @@ const handler = async (req, res) => {
                 title: req.body[i].title,
               
                 slug: req.body[i].slug,
-              features:req.body[i].features,
-              specs:req.body[i].features,
+                features:req.body[i].features,
+                specs:req.body[i].specs,
                
                 category: req.body[i].category,
                 subcategory: req.body[i].subcategory,

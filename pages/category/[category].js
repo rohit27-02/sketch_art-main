@@ -61,7 +61,7 @@ const Tshirts = ({ products, motors }) => {
           <div className="flex flex-wrap   ">
             {Object.keys(motors).map((item) => {
               return <div style={{marginLeft:"6vw"}} key={motors[item]._id} className="lg:w-1/4 md:w-1/3 p-2 my-[4vw]  w-full shadow-lg cursor-pointer ">
-                  <a href={`/motors/${motors[item].slug}`} className="block relative  rounded overflow-hidden">
+                  <a href={`/motors/${motors[item]._id}`} className="block relative  rounded overflow-hidden">
                   <img alt="ecommerce" className=" w-[36vh] md:h-[36vh] m-auto block" src={motors[item].poster} />
 
                   <div className="md:mt-[3vw] mt-[3vh]">

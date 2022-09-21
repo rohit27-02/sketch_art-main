@@ -639,30 +639,31 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
   async function upload3(e) {
 
     var file = document.getElementById('gallery');
-    const params = {
-      Bucket: BUCKET_NAME,
-      Key: file.files[0].name, // File name you want to save as in S3
-      Body: file.files[0]
-  };
-  s3.upload(params, function(err, data) {
-    if (err) {
-        throw err;
-    }
-    setgallery(data.Location)
-      toast.success('Image uploaded', {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    
-});
-   
-  
-
+    console.log(file.files)
+    Object.keys(file.files).map((p)=>{
+      const params = {
+        Bucket: BUCKET_NAME,
+        Key: file.files[p].name, // File name you want to save as in S3
+        Body: file.files[p]
+    };
+    s3.upload(params, function(err, data) {
+      if (err) {
+          throw err;
+      }
+     else{ setgallery(...gallery,data.Location)
+      console.log(gallery)
+      }
+  });
+    })
+    toast.success('Images uploaded', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
   async function uploadposter() {
 

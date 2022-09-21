@@ -117,8 +117,7 @@ export async function getServerSideProps(context) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGO_URI)
   }
-
-  let product = await Motor.findOne({ slug: context.query.motor })
+  let product = await Motor.findOne({ _id: context.query.motor })
 
 
   return {
