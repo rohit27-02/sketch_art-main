@@ -21,7 +21,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { MdCancel } from 'react-icons/md';
 import Router from 'next/router';
-
+const AWS = require('aws-sdk');
 
 
 const adminpanel = ({ logout, remotes, motors, switches, products, users, info, feed, orders }) => {
@@ -63,8 +63,14 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
   const [type, settype] = useState("");
   const [drop, setdrop] = useState(false);
   const [gallery, setgallery] = useState([]);
-  const [imgbb, setimgbb] = useState();
 
+  const ID = "AKIA6QMMEE6ODDBYMP77";
+  const SECRET = "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";
+  const BUCKET_NAME = 'sketchartphotos';
+  const s3 = new AWS.S3({
+    accessKeyId: ID,
+    secretAccessKey: SECRET
+});
 
 
   useEffect(() => {
@@ -72,7 +78,6 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     if (!localStorage.getItem("admin")) {
       Router.push("/")
     }
-    setimgbb("f69cfc63c7641818ddd9ec258565f5a1")
 
   }, []);
   useEffect(() => {
@@ -415,15 +420,19 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
         }, body: JSON.stringify(data)
       })
 
-      toast.success('Product added to site', {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      
+      if (res.status) {
+        toast.success('Product updated', {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+      }
     }
     else{
       if (index != null && ready) {
@@ -548,14 +557,16 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
   async function upload(e) {
 
     var file = document.getElementById('img');
-    var form = new FormData();
-    form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=${imgbb}`, {
-      method: "POST", body: form,
-    })
-    let response = await res.json()
-    setimg(response.data.url)
-    if (response.success) {
+    const params = {
+      Bucket: BUCKET_NAME,
+      Key: file.files[0].name, // File name you want to save as in S3
+      Body: file.files[0]
+  };
+  s3.upload(params, function(err, data) {
+    if (err) {
+        throw err;
+    }
+    setimg(data.Location)
       toast.success('Image uploaded', {
         position: "top-center",
         autoClose: 2000,
@@ -565,20 +576,24 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
         draggable: true,
         progress: undefined,
       });
-    }
+    
+});
+   
+  
 
   }
   async function upload2(e) {
-
     var file = document.getElementById('poster');
-    var form = new FormData();
-    form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=${imgbb}`, {
-      method: "POST", body: form,
-    })
-    let response = await res.json()
-    setposter(response.data.url)
-    if (response.success) {
+    const params = {
+      Bucket: BUCKET_NAME,
+      Key: file.files[0].name, // File name you want to save as in S3
+      Body: file.files[0]
+  };
+  s3.upload(params, function(err, data) {
+    if (err) {
+        throw err;
+    }
+    setposter(data.Location)
       toast.success('Image uploaded', {
         position: "top-center",
         autoClose: 2000,
@@ -588,21 +603,25 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
         draggable: true,
         progress: undefined,
       });
-    }
+    
+});
+   
+  
 
   }
   async function upload4(e) {
 
     var file = document.getElementById('poster2');
-    var form = new FormData();
-    form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=${imgbb}`, {
-      method: "POST", body: form,
-    })
-    let response = await res.json()
-    console.log(response)
-    setposter(response.data.url)
-    if (response.success) {
+    const params = {
+      Bucket: BUCKET_NAME,
+      Key: file.files[0].name, // File name you want to save as in S3
+      Body: file.files[0]
+  };
+  s3.upload(params, function(err, data) {
+    if (err) {
+        throw err;
+    }
+    setposter(data.Location)
       toast.success('Image uploaded', {
         position: "top-center",
         autoClose: 2000,
@@ -612,21 +631,24 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
         draggable: true,
         progress: undefined,
       });
-    }
-
+    
+});
+   
+  
   }
   async function upload3(e) {
 
     var file = document.getElementById('gallery');
-    var form = new FormData();
-    form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=${imgbb}`, {
-      method: "POST", body: form,
-    })
-
-    let response = await res.json()
-    setgallery(response.data.url)
-    if (response.success) {
+    const params = {
+      Bucket: BUCKET_NAME,
+      Key: file.files[0].name, // File name you want to save as in S3
+      Body: file.files[0]
+  };
+  s3.upload(params, function(err, data) {
+    if (err) {
+        throw err;
+    }
+    setgallery(data.Location)
       toast.success('Image uploaded', {
         position: "top-center",
         autoClose: 2000,
@@ -636,20 +658,25 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
         draggable: true,
         progress: undefined,
       });
-    }
+    
+});
+   
+  
 
   }
   async function uploadposter() {
 
     var file = document.getElementById('colorcode');
-    var form = new FormData();
-    form.append("image", file.files[0])
-    let res = await fetch(`https://api.imgbb.com/1/upload?key=${imgbb}`, {
-      method: "POST", body: form,
-    })
-    let response = await res.json()
-    setcolorcode(response.data.url)
-    if (response.success) {
+    const params = {
+      Bucket: BUCKET_NAME,
+      Key: file.files[0].name, // File name you want to save as in S3
+      Body: file.files[0]
+  };
+  s3.upload(params, function(err, data) {
+    if (err) {
+        throw err;
+    }
+    setcolorcode(data.Location)
       toast.success('Image uploaded', {
         position: "top-center",
         autoClose: 2000,
@@ -659,7 +686,10 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
         draggable: true,
         progress: undefined,
       });
-    }
+    
+});
+   
+  
 
   }
   async function removeorder(e) {
