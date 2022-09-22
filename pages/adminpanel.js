@@ -191,7 +191,6 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
     setfeatures([])
     setspecs([])
     setgallery([])
-
   }
   const selectedproduct = (event) => {
     setau(false)
@@ -639,8 +638,9 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
   async function upload3(e) {
 
     var file = document.getElementById('gallery');
-    console.log(file.files)
+
     Object.keys(file.files).map((p)=>{
+      
       const params = {
         Bucket: BUCKET_NAME,
         Key: file.files[p].name, // File name you want to save as in S3
@@ -650,10 +650,12 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
       if (err) {
           throw err;
       }
-     else{ setgallery(...gallery,data.Location)
-      console.log(gallery)
+     else{ 
+      setgallery(arr=>[...arr,data.Location])
+     
       }
   });
+
     })
     toast.success('Images uploaded', {
       position: "top-center",
@@ -665,6 +667,10 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
       progress: undefined,
     });
   }
+useEffect(() => {
+ console.log(gallery)
+}, [gallery]);
+
   async function uploadposter() {
 
     var file = document.getElementById('colorcode');
@@ -762,6 +768,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
   useEffect(() => {
     setfeature("")
   }, [features]);
+
 
   function addspec() {
 
@@ -882,7 +889,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
                           </label>
                         </div>
                         <div className="md:w-4/6">
-                          <input onChange={upload3} className="" id="gallery" multiple="multiple" type="file" accept='image/*' />
+                          <input onChange={upload3} type="file" className="" id="gallery" multiple="multiple"  directory="" webkitdirectory=""   />
                         </div>
                       </div>
                       <div className="md:flex md:items-center mb-6">
