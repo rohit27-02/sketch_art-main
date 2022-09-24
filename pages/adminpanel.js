@@ -96,6 +96,7 @@ const adminpanel = ({ logout, remotes, motors, switches, products, users, info, 
       setposter(products[index].poster)
       settagline(products[index].tagline)
       setgallery(products[index].gallery)
+      setsub(products[index].sub)
     }
     else if(type=="remote" && au3==false  && isOpen3 ){
       settitle(remotes[index].title)
