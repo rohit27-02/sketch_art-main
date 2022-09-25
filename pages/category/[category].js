@@ -50,7 +50,7 @@ const Tshirts = ({ products, motors }) => {
      <div style={{fontFamily: "'Fjalla One', sans-serif"}} className='text-center md:text-[3.5vw] text-[3.5vh] pt-10 uppercase'>Wifi motors</div>
      </div>
    }
-    {type == "cm" && <div>{ sw ? <img style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }} className=' w-full' alt='img' src="/curtainmotor.jpg"></img>:"" }
+    {type == "cm" && <div>{ sw ? <img style={sw?{height:"73vh",marginBottom:"4.5vw",marginTop:"10vw" ,padding:"0vw 7.5vw"}:{height:"50vw",marginTop:"9vh" }} className=' w-full' alt='img' src="/Curtain motor.jpg"></img>:"" }
      <div style={{fontFamily: "'Fjalla One', sans-serif"}} className='text-center md:text-[3.5vw] text-[3.5vh] pt-10 uppercase'>Curtain motors</div>
      </div>
    }
