@@ -19,7 +19,7 @@ import AppWithZoomCustomization from "../../components/zoom"
 
 
 
-const Post = ({ buyNow, motor2, addToCart, product }) => {
+const Post = ({ buyNow, motor2, addToCart, product ,m1,m2,m3,m4}) => {
   const [selectedheight, setselectedheight] = useState(2 );
   const [cartheight, setcartheight] = useState(2 );
   const [cartwidth, setcartwidth] = useState(2 );
@@ -51,7 +51,6 @@ const Post = ({ buyNow, motor2, addToCart, product }) => {
   for (let i = 2; i < 31; i++) {
     width.push(i )
   }
-const motors = ["In-built Reciever with 36 maximum limit turns .","In-built Reciever with unlimited maximum limit turns ." ,"Silent motor with 36 maximum limit turns .","In-built Reciever with 44 maimum limit turns .","High Torque with 45 maximum limit turns ."]
  
   function selecth(e) {
     let m = (e.target.value).split(" ")
@@ -119,25 +118,46 @@ useEffect(() => {
       setmotor(null)
       setrecomendedmotors([])
      }
+     if(selectedheight<=20 && selectedwidth>10 && selectedwidth<=20 ){
+      setrecomendedmotors(m1);
+   
+    }
       
-      if(selectedheight<=14 && selectedwidth<=10 ){
-        recomendedmotors.push(motor2[0].title,motor2[1].title,motor2[2].title)
-      }
-      else if(selectedheight<=20 && selectedwidth>10 && selectedwidth<=20 ){
-        recomendedmotors.push(motor2[3].title,motor2[4].title)
+      if(selectedheight<=14 && selectedwidth<=10 && selectedwidth>=3 ){
+        setrecomendedmotors(m2);
+      
       }
       else if( selectedwidth<=10 && selectedwidth>=3 && selectedheight<100){
-        recomendedmotors.push(motor2[1].title)
+        setrecomendedmotors(m3);
       }
+      else if(selectedheight<=14 && selectedwidth<=10 && selectedwidth>=2){
+        setrecomendedmotors(m4);
+      }
+     
     }
   }
+  useEffect(() => {
+    if( recomendedmotors.length > 0){
+      setmotor(null)
+      setrecomendedmotors([])
+     }
+     if(selectedheight<=20 && selectedwidth>10 && selectedwidth<=20 ){
+      setrecomendedmotors(m1);
+   
+    }
+      
+      if(selectedheight<=14 && selectedwidth<=10 && selectedwidth>=3 ){
+        setrecomendedmotors(m2);
+      
+      }
+      else if( selectedwidth<=10 && selectedwidth>=3 && selectedheight<100){
+        setrecomendedmotors(m3);
+      }
+      else if(selectedheight<=14 && selectedwidth<=10 && selectedwidth>=2){
+        setrecomendedmotors(m4);
+      }
+  }, [selectedheight,selectedwidth]);
 
-useEffect(() => {
-  if(motor != null){
-
-    addToCart(motor, qty2, motorprice, motor,null, null, "black", motor ,"https://5.imimg.com/data5/BA/GJ/MY-2295700/toso-curtain-motor-500x500.jpg")
-  }
-}, [motor]);
 
 
   return <>
@@ -335,21 +355,22 @@ useEffect(() => {
                       <button onClick={(e)=>mechanismtype(e)} id="Motorized" style={sw?{borderColor:"#bfb1c4",height:"3.4375vw",width:"10vw",marginLeft:"1.875vw"}:{borderColor:"#bfb1c4",height:"3.4375vh",width:"10vh",marginLeft:"1.875vh"}} className='items-center btn  border-2 ml-6 py-2 w-32 flex justify-center'>Motorized</button></div>
                       {withmotor && <div style={sw?{marginTop:"1vw"}:{marginTop:"1vh"}}>Suggested Motors</div>}
                       <div className='md:max-h-[31vw] w-full max-h-36 overflow-y-auto overflow-x-hidden'>
-                        {withmotor && Object.keys(recomendedmotors).map((m)=>{return <><div   id={recomendedmotors[m]}  style={sw?{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"10vw",marginRight:"1.875vw",marginTop:"2vw",padding:"0.5vw"}:{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"10vh",marginRight:"1.875vh",marginTop:"2vh",padding:"0.5vh"}} className='flex btn w-full border-2  ' key={m}>
-                        <img style={sw?{width:"10vw"}:{width:"10vh"}} src={motor2[m].poster}></img>
+                        {withmotor && Object.keys(recomendedmotors).map((m)=>{return <><div   id={recomendedmotors[m].slug}  style={sw?{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"17vw",marginRight:"1.875vw",marginTop:"2vw",padding:"0.5vw"}:{fontFamily:"'lato',san-serif",borderColor:"#bfb1c4",height:"17vh",marginRight:"1.875vh",marginTop:"2vh",padding:"0.5vh"}} className='flex btn w-full border-2  ' key={m}>
+                        <img style={sw?{width:"10vw"}:{width:"10vh"}} src={recomendedmotors[m].poster}></img>
                         <div  className='md:ml-[1vw]  ml-[1vh]'>
-                        <span style={sw?{margin:"1vw 0vw",fontFamily: "'Fjalla One', sans-serif"}:{margin:"1vh 0vh",fontFamily: "'Fjalla One', sans-serif"}} className="h-full text-[1.8vh] md:text-[1.5vw] w-full">{motor2[m].title}</span>
-                        <p className='text-[1vh] md:mt-[1vw] mt-[1vh] md:text-[1vw]' style={{fontFamily:"'poppins',sans-seif"}}>{motors[m]}</p>
-                        <div className='flex justify-between'>
-                      <a className='md:text-[1vw] underline hover:text-[#bfb1c4]' href={`/motors/${motor2[m].slug}`}>Learn More</a>
+                        <span style={sw?{margin:"1vw 0vw",fontFamily: "'Fjalla One', sans-serif"}:{margin:"1vh 0vh",fontFamily: "'Fjalla One', sans-serif"}} className="h-full text-[1.8vh] md:text-[1.5vw] w-full underline-offset-8 underline">{recomendedmotors[m].title}</span>
+                        <div className='overflow-y-scroll scrollbar-hide h-[8vw]  m-[1vw]'>{Object.keys(recomendedmotors[m].features).map((p)=>{return <li key={recomendedmotors[m].features[p]} className='text-[1vh] md:mt-[1vw] mt-[1vh] md:text-[1vw]' style={{fontFamily:"'poppins',sans-seif"}}>{recomendedmotors[m].features[p]}</li>})}</div>
+                        <div className='flex justify-between border-t py-[1vw] border-slate-600'>
+                      <a className='md:text-[1vw] underline hover:text-[#bfb1c4]' href={`/motors/${recomendedmotors[m]._id}`}>Learn More</a>
                         
-                        <span className="  "><span className='text-[1vh] md:text-[1vw]'>Price :</span> ₹ {motor2[m].price}
+                        <span className="  "><span className='text-[1vh] md:text-[1vw]'>Price :</span> ₹ {recomendedmotors[m].price}
                         
                         </span>
                         </div>
                         </div>
                         </div>
-                        <button  id={recomendedmotors[m]}  style={sw?{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw",margin:"1vw 0vw"}:{ backgroundColor: "#bfb1c4" ,fontSize:"1.5vh",width:"10vh",height:"3.5vh",margin:"1vh 0vw"}} onClick={function(e){ setmotor(e.target.id); }} className="flex items-center float-right  border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white  ">Add to cart</button>
+
+                        <button  id={recomendedmotors[m]}  style={sw?{ backgroundColor: "#bfb1c4" ,fontSize:"1.1vw",width:"8.75vw",height:"2.8125vw",margin:"1vw 0vw"}:{ backgroundColor: "#bfb1c4" ,fontSize:"1.5vh",width:"10vh",height:"3.5vh",margin:"1vh 0vw"}} onClick={()=>{ addToCart(recomendedmotors[m].title,1,recomendedmotors[m].price,recomendedmotors[m].title,null,null,null,null,recomendedmotors[m].poster) }} className="flex items-center float-right  border-0 md:py-2 py-1 w-28 justify-center focus:outline-none text-white  ">Add to cart</button>
                         </>})}
                       </div>
                     </Disclosure.Panel>
@@ -391,10 +412,14 @@ export async function getServerSideProps(context) {
   }
   let product = await Product.findOne({ title: context.query.slug })
   let motor = await Motor.find({ category: "tubular motors" })
+  let m1 = await Motor.find({ subcategory:{$in:["DM45-RQ-6/28" ,"DM45-SL-10/26"]}})
+  let m2 = await Motor.find({ subcategory:{$in:["DM35-RL-6/28","DM35-FY-6/28","DM35-SL-6/30"]} })
+  let m3 = await Motor.find({ subcategory:"DM35-FY-6/28" })
+  let m4 = await Motor.find({ subcategory:"DM35-SL-6/30" })
 
 
   return {
-    props: { product: JSON.parse(JSON.stringify(product)),motor2:JSON.parse(JSON.stringify(motor)) }, // will be passed to the page component as props
+    props: { product: JSON.parse(JSON.stringify(product)),motor2:JSON.parse(JSON.stringify(motor)),m1:JSON.parse(JSON.stringify(m1)),m2:JSON.parse(JSON.stringify(m2)),m3:JSON.parse(JSON.stringify(m3)),m4:JSON.parse(JSON.stringify(m4)) }, // will be passed to the page component as props
   }
 }
 
